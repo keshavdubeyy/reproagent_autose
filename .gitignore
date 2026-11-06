@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.DS_Store
+benchmarks/.cache/
+benchmarks/envs/
+benchmarks/repos/
+# keep evaluation evidence, drop UI sessions and logs
+results/sessions/
+results/*.log
+.benchmarks/
