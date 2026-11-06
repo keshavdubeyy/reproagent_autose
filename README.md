@@ -8,6 +8,7 @@ Everything runs locally. The SLM is `qwen2.5-coder:3b` served by Ollama. No host
 
 * Architecture and design rationale: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
 * Mid-term progress report (results, failures, remaining work): [docs/PROGRESS_REPORT.md](docs/PROGRESS_REPORT.md)
+* Full project report with diagrams and charts (PDF): [docs/ReproAgent_Project_Report_Midterm.pdf](docs/ReproAgent_Project_Report_Midterm.pdf)
 
 ## Setup (Windows / Linux / macOS, 8 GB RAM is enough)
 
