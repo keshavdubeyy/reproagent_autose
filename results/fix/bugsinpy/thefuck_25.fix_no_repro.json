@@ -1,0 +1,99 @@
+{
+  "bug_id": "thefuck_25",
+  "mode": "fix_no_repro",
+  "status": "not_fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "# thefuck/rules/mkdir_p.py (module thefuck.rules.mkdir_p) - matches the bug report\n@sudo_support\ndef get_new_command(command, settings):\n    return re.sub(r'^hdfs dfs -mkdir (.*)', 'hdfs dfs -mkdir -p \\\\1', command.script)\n",
+        "diff": "--- a/thefuck/rules/mkdir_p.py\n+++ b/thefuck/rules/mkdir_p.py\n@@ -10,4 +10,4 @@\n \n @sudo_support\n def get_new_command(command, settings):\n-    return re.sub('^mkdir (.*)', 'mkdir -p \\\\1', command.script)\n+    return re.sub(r'^hdfs dfs -mkdir (.*)', 'hdfs dfs -mkdir -p \\\\1', command.script)\n",
+        "raw_llm_output": "Root cause: The `mkdir_p` rule is incorrectly handling the `hdfs dfs -mkdir` command. The `re.sub` function is not correctly replacing the `mkdir` command with `mkdir -p` when the error message indicates that the directory does not exist.\n\n```python\n# thefuck/rules/mkdir_p.py (module thefuck.rules.mkdir_p) - matches the bug report\n@sudo_support\ndef get_new_command(command, settings):\n    return re.sub(r'^hdfs dfs -mkdir (.*)', 'hdfs dfs -mkdir -p \\\\1', command.script)\n```"
+      },
+      "check": {
+        "category": "regression",
+        "accepted": false,
+        "feedback": "Your patch breaks 1 existing test(s) that passed before: FAILED tests/rules/test_mkdir_p.py::test_get_new_command - AssertionError: as.... Keep the existing behaviour and fix only the bug.",
+        "repro_status": null,
+        "regressions": [
+          "tests/rules/test_mkdir_p.py::test_get_new_command"
+        ],
+        "output": "....F......                                                              [100%]\n================================== FAILURES ===================================\nE   AssertionError: assert 'mkdir foo/bar/baz' == 'mkdir -p foo/bar/baz'\n      \n      - mkdir -p foo/bar/baz\n      ?      ---\n      + mkdir foo/bar/baz\nC:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_25_patch_6us9d4m3\\repo\\tests\\rules\\test_mkdir_p.py:21: AssertionError: assert 'mkdir foo/bar/baz' == 'mkdir -p foo/bar/baz'\n=========================== short test summary info ===========================\nFAILED tests/rules/test_mkdir_p.py::test_get_new_command - AssertionError: as...\n1 failed, 10 passed in 0.18s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "thefuck/rules/mkdir_p.py",
+      "module": "thefuck.rules.mkdir_p",
+      "name": "get_new_command",
+      "lineno": 11,
+      "end_lineno": 13,
+      "source": "@sudo_support\ndef get_new_command(command, settings):\n    return re.sub('^mkdir (.*)', 'mkdir -p \\\\1', command.script)",
+      "score": 9.5,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "thefuck/rules/mkdir_p.py",
+      "module": "thefuck.rules.mkdir_p",
+      "name": "match",
+      "lineno": 5,
+      "end_lineno": 8,
+      "source": "@sudo_support\ndef match(command, settings):\n    return ('mkdir' in command.script\n            and 'No such file or directory' in command.stderr)",
+      "score": 6.5,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "thefuck/rules/heroku_not_command.py",
+      "module": "thefuck.rules.heroku_not_command",
+      "name": "get_new_command",
+      "lineno": 17,
+      "end_lineno": 19,
+      "source": "def get_new_command(command, settings):\n    wrong = re.findall(r'`(\\w+)` is not a heroku command', command.stderr)[0]\n    return replace_command(command, wrong, _get_suggests(command.stderr))",
+      "score": 5.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "thefuck/rules/docker_not_command.py",
+      "module": "thefuck.rules.docker_not_command",
+      "name": "get_new_command",
+      "lineno": 22,
+      "end_lineno": 26,
+      "source": "@sudo_support\ndef get_new_command(command, settings):\n    wrong_command = re.findall(\n        r\"docker: '(\\w+)' is not a docker command.\", command.stderr)[0]\n    return replace_command(command, wrong_command, get_docker_commands())",
+      "score": 5.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "thefuck/rules/git_not_command.py",
+      "module": "thefuck.rules.git_not_command",
+      "name": "get_new_command",
+      "lineno": 12,
+      "end_lineno": 17,
+      "source": "@git_support\ndef get_new_command(command, settings):\n    broken_cmd = re.findall(r\"git: '([^']*)' is not a git command\",\n                            command.stderr)[0]\n    matched = get_all_matched_commands(command.stderr)\n    return replace_command(command, broken_cmd, matched)",
+      "score": 5.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "thefuck/rules/tsuru_not_command.py",
+      "module": "thefuck.rules.tsuru_not_command",
+      "name": "get_new_command",
+      "lineno": 11,
+      "end_lineno": 15,
+      "source": "def get_new_command(command, settings):\n    broken_cmd = re.findall(r'tsuru: \"([^\"]*)\" is not a tsuru command',\n                            command.stderr)[0]\n    return replace_command(command, broken_cmd,\n                           get_all_matched_commands(command.stderr))",
+      "score": 5.0,
+      "why": "matches the bug report"
+    }
+  ],
+  "final_diff": null,
+  "total_time_s": 29.2,
+  "llm_calls": 1,
+  "regression_tests": [
+    "tests/rules/test_mkdir_p.py",
+    "tests/rules/test_heroku_not_command.py"
+  ],
+  "correct": false,
+  "no_regression": null,
+  "eval_output": null,
+  "repro_from": "full_v2",
+  "repro_valid": true
+}

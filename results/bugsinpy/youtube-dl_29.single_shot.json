@@ -1,0 +1,51 @@
+{
+  "bug_id": "youtube-dl_29",
+  "mode": "single_shot",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import unittest\nfrom youtube_dl.utils import unified_strdate\n\nclass TestUnifiedStrdate(unittest.TestCase):\n    def test_unified_strdate_unparseable_date(self):\n        self.assertIsNone(unified_strdate('UNKNOWN DATE FORMAT'))\n",
+        "raw_llm_output": "```python\nimport unittest\nfrom youtube_dl.utils import unified_strdate\n\nclass TestUnifiedStrdate(unittest.TestCase):\n    def test_unified_strdate_unparseable_date(self):\n        self.assertIsNone(unified_strdate('UNKNOWN DATE FORMAT'))\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 4.02,
+        "output": "F\n================================== FAILURES ===================================\n__________ TestUnifiedStrdate.test_unified_strdate_unparseable_date ___________\ntest_reproagent_repro.py:6: in test_unified_strdate_unparseable_date\n    self.assertIsNone(unified_strdate('UNKNOWN DATE FORMAT'))\nE   AssertionError: 'None' is not None\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::TestUnifiedStrdate::test_unified_strdate_unparseable_date\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 3.14s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError: 'None' is not None"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[slm-judge] The test is failing because the code is returning 'UNKNOWN DATE FORMAT' instead of None for unparseable dates, which contradicts the expected behavior described in the report. (actual: 'None')"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "unified_strdate function returns non-empty string for unparseable dates",
+    "expected": "unified_strdate should return None for unparseable dates",
+    "observed": "unified_strdate('UNKNOWN DATE FORMAT') returns 'UNKNOWN DATE FORMAT' instead of None",
+    "symbols": [
+      "unified_strdate"
+    ],
+    "files": [
+      "youtube_dl/utils.py"
+    ],
+    "example_inputs": [
+      "UNKNOWN DATE FORMAT"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import unittest\nfrom youtube_dl.utils import unified_strdate\n\nclass TestUnifiedStrdate(unittest.TestCase):\n    def test_unified_strdate_unparseable_date(self):\n        self.assertIsNone(unified_strdate('UNKNOWN DATE FORMAT'))\n",
+  "total_time_s": 54.4,
+  "llm_calls": 3,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n1 passed in 2.86s",
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

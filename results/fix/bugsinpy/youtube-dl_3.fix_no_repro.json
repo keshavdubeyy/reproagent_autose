@@ -1,0 +1,97 @@
+{
+  "bug_id": "youtube-dl_3",
+  "mode": "fix_no_repro",
+  "status": "fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "def _htmlentity_transform(entity_with_semicolon):\n    \"\"\"Transforms an HTML entity to a character.\"\"\"\n    entity = entity_with_semicolon[:-1]\n\n    # Known non-numeric HTML entity\n    if entity in compat_html_entities.name2codepoint:\n        return compat_chr(compat_html_entities.name2codepoint[entity])\n\n    # Handle bare '&' characters\n    if entity == '&':\n        return '&'\n\n    # TODO: HTML5 allows entities without a semicolon. For example,\n    # '&Eacuteric' should be decoded as '\u00c9ric'.\n    if entity_with_semicolon in compat_html_entities_html5:\n        return compat_html_entities_html5[entity_with_semicolon]\n\n    mobj = re.match(r'#(x[0-9a-fA-F]+|[0-9]+)', entity)\n    if mobj is not None:\n        numstr = mobj.group(1)\n        if numstr.startswith('x'):\n            base = 16\n            numstr = '0%s' % numstr\n        else:\n            base = 10\n        # See https://github.com/rg3/youtube-dl/issues/7518\n        try:\n            return compat_chr(int(numstr, base))\n        except ValueError:\n            pass\n\n    # Unknown entity in name, return its literal representation\n    return '&%s;' % entity\n",
+        "diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -566,6 +566,10 @@\n     # Known non-numeric HTML entity\n     if entity in compat_html_entities.name2codepoint:\n         return compat_chr(compat_html_entities.name2codepoint[entity])\n+\n+    # Handle bare '&' characters\n+    if entity == '&':\n+        return '&'\n \n     # TODO: HTML5 allows entities without a semicolon. For example,\n     # '&Eacuteric' should be decoded as '\u00c9ric'.\n",
+        "raw_llm_output": "Root cause: The `_htmlentity_transform` function does not handle bare '&' characters correctly when they are not part of an entity. This results in entities following bare '&' characters not being decoded.\n\nFix:\n```python\ndef _htmlentity_transform(entity_with_semicolon):\n    \"\"\"Transforms an HTML entity to a character.\"\"\"\n    entity = entity_with_semicolon[:-1]\n\n    # Known non-numeric HTML entity\n    if entity in compat_html_entities.name2codepoint:\n        return compat_chr(compat_html_entities.name2codepoint[entity])\n\n    # Handle bare '&' characters\n    if entity == '&':\n        return '&'\n\n    # TODO: HTML5 allows entities without a semicolon. For example,\n    # '&Eacuteric' should be decoded as '\u00c9ric'.\n    if entity_with_semicolon in compat_html_entities_html5:\n        return compat_html_entities_html5[entity_with_semicolon]\n\n    mobj = re.match(r'#(x[0-9a-fA-F]+|[0-9]+)', entity)\n    if mobj is not None:\n        numstr = mobj.group(1)\n        if numstr.startswith('x'):\n            base = 16\n            numstr = '0%s' % numstr\n        else:\n            base = 10\n        # See https://github.com/rg3/youtube-dl/issues/7518\n        try:\n            return compat_chr(int(numstr, base))\n        except ValueError:\n            pass\n\n    # Unknown entity in name, return its literal representation\n    return '&%s;' % entity\n```"
+      },
+      "check": {
+        "category": "plausible",
+        "accepted": true,
+        "feedback": "",
+        "repro_status": null,
+        "regressions": [],
+        "output": "\\\\UNC\\\\ComputerName\\\\abc'\nE   AssertionError: b'C:\\\\Users\\\\risha\\\\AppData\\\\Local\\\\Temp\\\\repro_youtube-dl_3_patch_al5zh82o\\\\repo\\\\youtube_dl\\\\extractor\\\\megaphone.py:21: SyntaxWarning: \"\\\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\\\\\.\"? A raw string is also an option.\\r\\n  \\'thumbnail\\': \\'re:^https://.*\\\\.png.*$\\',\\r\\nC:\\\\Users\\\\risha\\\\AppData\\\\Local\\\\Temp\\\\repro_youtube-dl_3_patch_al5zh82o\\\\repo\\\\youtube_dl\\\\extractor\\\\pandatv.py:39: SyntaxWarning: \"is not\" with \\'int\\' literal. Did you mean \"!=\"?\\r\\n  if error_code is not 0:\\r\\n' is not false\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:756: AssertionError: b'C:\\\\Users\\\\risha\\\\AppData\\\\Local\\\\Temp\\\\repro_youtube-dl_3_patch_al5zh82o\\\\repo\\\\youtube_dl\\\\extractor\\\\megaphone.py:21: SyntaxWarning: \"\\\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\\\\\.\"? A raw string is also an option.\\r\\n  \\'thumbnail\\': \\'re:^https://.*\\\\.png.*$\\',\\r\\nC:\\\\Users\\\\risha\\\\AppData\\\\Local\\\\Temp\\\\repro_youtube-dl_3_patch_al5zh82o\\\\repo\\\\youtube_dl\\\\extractor\\\\pandatv.py:39: SyntaxWarning: \"is not\" with \\'int\\' literal. Did you mean \"!=\"?\\r\\n  if error_code is not 0:\\r\\n' is not false\n=========================== short test summary info ===========================\nFAILED test/test_utils.py::TestUtil::test_sanitize_path - AssertionError: '\\\\...\nFAILED test/test_execution.py::TestExecution::test_cmdline_umlauts - Assertio...\n2 failed, 78 passed in 10.32s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "unescapeHTML",
+      "lineno": 593,
+      "end_lineno": 599,
+      "source": "def unescapeHTML(s):\n    if s is None:\n        return None\n    assert type(s) == compat_str\n\n    return re.sub(\n        r'&([^;]+;)', lambda m: _htmlentity_transform(m.group(1)), s)",
+      "score": 23.0,
+      "why": "named in the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "_htmlentity_transform",
+      "lineno": 562,
+      "end_lineno": 590,
+      "source": "def _htmlentity_transform(entity_with_semicolon):\n    \"\"\"Transforms an HTML entity to a character.\"\"\"\n    entity = entity_with_semicolon[:-1]\n\n    # Known non-numeric HTML entity\n    if entity in compat_html_entities.name2codepoint:\n        return compat_chr(compat_html_entities.name2codepoint[entity])\n\n    # TODO: HTML5 allows entities without a semicolon. For example,\n    # '&Eacuteric' should be decoded as '\u00c9ric'.\n    if entity_with_semicolon in compat_html_entities_html5:\n        return compat_html_entities_html5[entity_with_semicolon]\n\n    mobj = re.match(r'#(x[0-9a-fA-F]+|[0-9]+)', entity)\n    if mobj is not None:\n        numstr = mobj.group(1)\n        if numstr.startswith('x'):\n            base = 16\n            numstr = '0%s' % numstr\n        else:\n            base = 10\n        # See https://github.com/rg3/youtube-dl/issues/7518\n        try:\n            return compat_chr(int(numstr, base))\n        except ValueError:\n            pass\n\n    # Unknown entity in name, return its literal representation\n    return '&%s;' % entity",
+      "score": 10.8,
+      "why": "called by unescapeHTML"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "_windows_write_string",
+      "lineno": 1307,
+      "end_lineno": 1379,
+      "source": "def _windows_write_string(s, out):\n    \"\"\" Returns True if the string was written using special methods,\n    False if it has yet to be written out.\"\"\"\n    # Adapted from http://stackoverflow.com/a/3259271/35070\n\n    import ctypes\n    import ctypes.wintypes\n\n    WIN_OUTPUT_IDS = {\n        1: -11,\n        2: -12,\n    }\n\n    try:\n        fileno = out.fileno()\n    except AttributeError:\n        # If the output stream doesn't have a fileno, it's virtual\n        return False\n    except io.UnsupportedOperation:\n        # Some strange Windows pseudo files?\n        return False\n    if fileno not in WIN_OUTPUT_IDS:\n        return False\n\n    GetStdHandle = ctypes.WINFUNCTYPE(\n        ctypes.wintypes.HANDLE, ctypes.wintypes.DWORD)(\n        (b'GetStdHandle', ctypes.windll.kernel32))\n    h = GetStdHandle(WIN_OUTPUT_IDS[fileno])\n\n    WriteConsoleW = ctypes.WINFUNCTYPE(\n        ctypes.wintypes.BOOL, ctypes.wintypes.HANDLE, ctypes.wintypes.LPWSTR,\n        ctypes.wintypes.DWORD, ctypes.POINTER(ctypes.wintypes.DWORD),\n        ctypes.wintypes.LPVOID)((b'WriteConsoleW', ctypes.windll.kernel32))\n    written = ctypes.wintypes.DWORD(0)\n\n    GetFileType = ctypes.WINFUNCTYPE(ctypes.wintypes.DWORD, ctypes.wintypes.DWORD)((b'GetFileType', ctypes.windll.kernel32))\n    FILE_TYPE_CHAR = 0x0002\n    FILE_TYPE_REMOTE = 0x8000\n    GetConsoleMode = ctypes.WINFUNCTYPE(\n        ctypes.wintypes.BOOL, ctypes.wintypes.HANDLE,\n        ctypes.POINTER(ctypes.wintypes.DWORD))(\n        (b'GetConsoleMode', ctypes.windll.kernel32))\n    INVALID_HANDLE_VALUE = ctypes.wintypes.DWORD(-1).value\n\n    def not_a_console(handle):\n        if handle == INVALID_HANDLE_VALUE or handle is None:\n            return True\n        return ((GetFileType(handle) & ~FILE_TYPE_REMOTE) != FILE_TYPE_CHAR or\n                GetConsoleMode(handle, ctypes.byref(ctypes.wintypes.DWORD())) == 0)\n\n    if not_a_console(h):\n        return False\n\n    def next_nonbmp_pos(s):\n        try:\n            return next(i for i, c in enumerate(s) if ord(c) > 0xffff)\n        except StopIteration:\n            return len(s)\n\n    while s:\n        count = min(next_nonbmp_pos(s), 1024)\n\n        ret = WriteConsoleW(\n            h, s, count if count else 2, ctypes.byref(written), None)\n        if ret == 0:\n            raise OSError('Failed to write string')\n        if not count:  # We just wrote a non-BMP character\n            assert written.value == 2\n            s = s[1:]\n        else:\n            assert written.value > 0\n            s = s[written.value:]\n    return True",
+      "score": 9.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "clean_html",
+      "lineno": 421,
+      "end_lineno": 435,
+      "source": "def clean_html(html):\n    \"\"\"Clean an HTML snippet into a readable string\"\"\"\n\n    if html is None:  # Convenience for sanitizing descriptions etc.\n        return html\n\n    # Newline vs <br />\n    html = html.replace('\\n', ' ')\n    html = re.sub(r'(?u)\\s*<\\s*br\\s*/?\\s*>\\s*', '\\n', html)\n    html = re.sub(r'(?u)<\\s*/\\s*p\\s*>\\s*<\\s*p[^>]*>', '\\n', html)\n    # Strip html tags\n    html = re.sub('<.*?>', '', html)\n    # Replace html entities\n    html = unescapeHTML(html)\n    return html.strip()",
+      "score": 9.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "is_html",
+      "lineno": 2416,
+      "end_lineno": 2433,
+      "source": "def is_html(first_bytes):\n    \"\"\" Detect whether a file contains HTML by examining its first bytes. \"\"\"\n\n    BOMS = [\n        (b'\\xef\\xbb\\xbf', 'utf-8'),\n        (b'\\x00\\x00\\xfe\\xff', 'utf-32-be'),\n        (b'\\xff\\xfe\\x00\\x00', 'utf-32-le'),\n        (b'\\xff\\xfe', 'utf-16-le'),\n        (b'\\xfe\\xff', 'utf-16-be'),\n    ]\n    for bom, enc in BOMS:\n        if first_bytes.startswith(bom):\n            s = first_bytes[len(bom):].decode(enc, 'replace')\n            break\n    else:\n        s = first_bytes.decode('utf-8', 'replace')\n\n    return re.match(r'^\\s*<', s)",
+      "score": 9.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "write_string",
+      "lineno": 1382,
+      "end_lineno": 1401,
+      "source": "def write_string(s, out=None, encoding=None):\n    if out is None:\n        out = sys.stderr\n    assert type(s) == compat_str\n\n    if sys.platform == 'win32' and encoding is None and hasattr(out, 'fileno'):\n        if _windows_write_string(s, out):\n            return\n\n    if ('b' in getattr(out, 'mode', '') or\n            sys.version_info[0] < 3):  # Python 2 lies about mode of sys.stderr\n        byt = s.encode(encoding or preferredencoding(), 'ignore')\n        out.write(byt)\n    elif hasattr(out, 'buffer'):\n        enc = encoding or getattr(out, 'encoding', None) or preferredencoding()\n        byt = s.encode(enc, 'ignore')\n        out.buffer.write(byt)\n    else:\n        out.write(s)\n    out.flush()",
+      "score": 9.0,
+      "why": "matches the bug report"
+    }
+  ],
+  "final_diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -566,6 +566,10 @@\n     # Known non-numeric HTML entity\n     if entity in compat_html_entities.name2codepoint:\n         return compat_chr(compat_html_entities.name2codepoint[entity])\n+\n+    # Handle bare '&' characters\n+    if entity == '&':\n+        return '&'\n \n     # TODO: HTML5 allows entities without a semicolon. For example,\n     # '&Eacuteric' should be decoded as '\u00c9ric'.\n",
+  "total_time_s": 84.6,
+  "llm_calls": 1,
+  "regression_tests": [
+    "test/test_utils.py",
+    "test/test_execution.py"
+  ],
+  "correct": false,
+  "no_regression": true,
+  "eval_output": "C:\\Users\\risha\\AppData\\Local\\Temp\\repro_oracle_iaks0ols\\repo\\youtube_dl\\extractor\\megaphone.py:21: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n  'thumbnail': 're:^https://.*\\.png.*$',\nC:\\Users\\risha\\AppData\\Local\\Temp\\repro_oracle_iaks0ols\\repo\\youtube_dl\\extractor\\pandatv.py:39: SyntaxWarning: \"is not\" with 'int' literal. Did you mean \"!=\"?\n  if error_code is not 0:\nTraceback (most recent call last):\n  File \"<string>\", line 2, in <module>\n    assert unescapeHTML('&a&quot;') == '&a\"'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+  "repro_from": "full",
+  "repro_valid": true
+}

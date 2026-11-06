@@ -1,0 +1,54 @@
+{
+  "bug_id": "shop_shipping",
+  "mode": "baseline",
+  "verdict": "not_reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import sys\nsys.path.append('/path/to/project/root')  # Update with the actual path to your project\n\nfrom your_module import calculate_shipping  # Update with the actual module and function name\n\ndef test_free_shipping_for_500_order():\n    order_amount = 500\n    expected_shipping = 0\n    actual_shipping = calculate_shipping(order_amount)\n    assert actual_shipping == expected_shipping, f\"Expected free shipping for Rs {order_amount}, but got {actual_shipping}\"\n",
+        "raw_llm_output": "```python\nimport sys\nsys.path.append('/path/to/project/root')  # Update with the actual path to your project\n\nfrom your_module import calculate_shipping  # Update with the actual module and function name\n\ndef test_free_shipping_for_500_order():\n    order_amount = 500\n    expected_shipping = 0\n    actual_shipping = calculate_shipping(order_amount)\n    assert actual_shipping == expected_shipping, f\"Expected free shipping for Rs {order_amount}, but got {actual_shipping}\"\n```"
+      },
+      "execution": {
+        "status": "collection_error",
+        "exit_code": 2,
+        "duration_s": 1.65,
+        "output": "=================================== ERRORS ====================================\n__________________ ERROR collecting test_reproagent_repro.py __________________\nImportError while importing test module 'C:\\Users\\risha\\AppData\\Local\\Temp\\repro_shop_shipping_hndstwe7\\repo\\test_reproagent_repro.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\Program Files\\Python314\\Lib\\importlib\\__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_reproagent_repro.py:4: in <module>\n    from your_module import calculate_shipping  # Update with the actual module and function name\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   ModuleNotFoundError: No module named 'your_module'\n=========================== short test summary info ===========================\nERROR test_reproagent_repro.py\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.27s",
+        "exception_type": "ModuleNotFoundError",
+        "failure_line": "ModuleNotFoundError: No module named 'your_module'"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: ModuleNotFoundError: No module named 'your_module'. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    }
+  ],
+  "spec": {
+    "summary": "Shipping charged on Rs 500 orders despite free shipping policy",
+    "expected": "Free shipping for orders of Rs 500 or more",
+    "observed": "Rs 50 shipping fee charged for an Rs 500 order",
+    "symbols": [
+      "shipping_fee",
+      "free_shipping",
+      "order_amount"
+    ],
+    "files": [
+      "checkout.py",
+      "shipping.py"
+    ],
+    "example_inputs": [
+      "order_amount=500"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": null,
+  "total_time_s": 44.7,
+  "llm_calls": 2,
+  "fail_to_pass": false,
+  "fixed_version_output": null,
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

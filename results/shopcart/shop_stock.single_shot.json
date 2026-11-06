@@ -1,0 +1,56 @@
+{
+  "bug_id": "shop_stock",
+  "mode": "single_shot",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef test_checkout_reduces_stock():\n    # Create a product with 10 units in stock\n    product = Product(\"P1\", \"Pen\", 20, stock=10)\n    \n    # Create a cart with the product and quantity\n    cart = Cart()\n    cart.add(product, 3)\n    \n    # Perform the checkout\n    bill = checkout(cart)\n    \n    # Assert that the product's stock is reduced by 3 units\n    assert product.stock == 7\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef test_checkout_reduces_stock():\n    # Create a product with 10 units in stock\n    product = Product(\"P1\", \"Pen\", 20, stock=10)\n    \n    # Create a cart with the product and quantity\n    cart = Cart()\n    cart.add(product, 3)\n    \n    # Perform the checkout\n    bill = checkout(cart)\n    \n    # Assert that the product's stock is reduced by 3 units\n    assert product.stock == 7\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 2.4,
+        "output": "F\n================================== FAILURES ===================================\n_________________________ test_checkout_reduces_stock _________________________\ntest_reproagent_repro.py:17: in test_checkout_reduces_stock\n    assert product.stock == 7\nE   assert 9 == 7\nE    +  where 9 = <shopcart.cart.Product object at 0x000001DB1F40C440>.stock\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_checkout_reduces_stock - assert 9 == 7\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.09s",
+        "exception_type": "AssertionError",
+        "failure_line": "assert 9 == 7"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[evidence-match] actual value 9 is the wrong value the report observed"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "Inventory not reduced correctly after checkout",
+    "expected": "The product's stock should be reduced by 3 units after a customer buys 3 units.",
+    "observed": "The product's stock shows 9 units instead of 7 after the checkout.",
+    "symbols": [
+      "inventory",
+      "stock",
+      "reduce",
+      "buy",
+      "checkout"
+    ],
+    "files": [
+      "inventory.py",
+      "checkout.py"
+    ],
+    "example_inputs": [
+      "product_id=1, quantity=3"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef test_checkout_reduces_stock():\n    # Create a product with 10 units in stock\n    product = Product(\"P1\", \"Pen\", 20, stock=10)\n    \n    # Create a cart with the product and quantity\n    cart = Cart()\n    cart.add(product, 3)\n    \n    # Perform the checkout\n    bill = checkout(cart)\n    \n    # Assert that the product's stock is reduced by 3 units\n    assert product.stock == 7\n",
+  "total_time_s": 44.4,
+  "llm_calls": 2,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n1 passed in 0.02s",
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

@@ -1,0 +1,107 @@
+{
+  "bug_id": "youtube-dl_29",
+  "mode": "fix_no_repro",
+  "status": "fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "# youtube_dl/utils.py (module youtube_dl.utils) - updated unified_strdate function\ndef unified_strdate(date_str, day_first=True):\n    \"\"\"Return a string with the date in the format YYYYMMDD\"\"\"\n\n    if date_str is None:\n        return None\n\n    upload_date = None\n    # Replace commas\n    date_str = date_str.replace(',', ' ')\n    # %z (UTC offset) is only supported in python>=3.2\n    if not re.match(r'^[0-9]{1,2}-[0-9]{1,2}-[0-9]{4}$', date_str):\n        date_str = re.sub(r' ?(\\+|-)[0-9]{2}:?[0-9]{2}$', '', date_str)\n    # Remove AM/PM + timezone\n    date_str = re.sub(r'(?i)\\s*(?:AM|PM)(?:\\s+[A-Z]+)?', '', date_str)\n\n    format_expressions = [\n        '%d %B %Y',\n        '%d %b %Y',\n        '%B %d %Y',\n        '%b %d %Y',\n        '%b %dst %Y %I:%M%p',\n        '%b %dnd %Y %I:%M%p',\n        '%b %dth %Y %I:%M%p',\n        '%Y %m %d',\n        '%Y-%m-%d',\n        '%Y/%m/%d',\n        '%Y/%m/%d %H:%M:%S',\n        '%Y-%m-%d %H:%M:%S',\n        '%Y-%m-%d %H:%M:%S.%f',\n        '%d.%m.%Y %H:%M',\n        '%d.%m.%Y %H.%M',\n        '%Y-%m-%dT%H:%M:%SZ',\n        '%Y-%m-%dT%H:%M:%S.%fZ',\n        '%Y-%m-%dT%H:%M:%S.%f0Z',\n        '%Y-%m-%dT%H:%M:%S',\n        '%Y-%m-%dT%H:%M:%S.%f',\n        '%Y-%m-%dT%H:%M',\n    ]\n    if day_first:\n        format_expressions.extend([\n            '%d-%m-%Y',\n            '%d.%m.%Y',\n            '%d/%m/%Y',\n            '%d/%m/%y',\n            '%d/%m/%Y %H:%M:%S',\n        ])\n    else:\n        format_expressions.extend([\n            '%m-%d-%Y',\n            '%m.%d.%Y',\n            '%m/%d/%Y',\n            '%m/%d/%y',\n            '%m/%d/%Y %H:%M:%S',\n        ])\n    for expression in format_expressions:\n        try:\n            upload_date = datetime.datetime.strptime(date_str, expression).strftime('%Y%m%d')\n        except ValueError:\n            pass\n    if upload_date is None:\n        timetuple = email.utils.parsedate_tz(date_str)\n        if timetuple:\n            upload_date = datetime.datetime(*timetuple[:6]).strftime('%Y%m%d')\n    return compat_str(upload_date)\n",
+        "diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -854,6 +854,7 @@\n \n     if date_str is None:\n         return None\n+\n     upload_date = None\n     # Replace commas\n     date_str = date_str.replace(',', ' ')\n",
+        "raw_llm_output": "Root cause: The `unified_strdate` function does not handle the case where the input date string is `None` correctly. It should return `None` in such cases, but instead, it returns a non-empty string.\n\nTo fix this, we need to ensure that the function checks for `None` before attempting to parse the date string. Here's the updated code:\n\n```python\n# youtube_dl/utils.py (module youtube_dl.utils) - updated unified_strdate function\ndef unified_strdate(date_str, day_first=True):\n    \"\"\"Return a string with the date in the format YYYYMMDD\"\"\"\n\n    if date_str is None:\n        return None\n\n    upload_date = None\n    # Replace commas\n    date_str = date_str.replace(',', ' ')\n    # %z (UTC offset) is only supported in python>=3.2\n    if not re.match(r'^[0-9]{1,2}-[0-9]{1,2}-[0-9]{4}$', date_str):\n        date_str = re.sub(r' ?(\\+|-)[0-9]{2}:?[0-9]{2}$', '', date_str)\n    # Remove AM/PM + timezone\n    date_str = re.sub(r'(?i)\\s*(?:AM|PM)(?:\\s+[A-Z]+)?', '', date_str)\n\n    format_expressions = [\n        '%d %B %Y',\n        '%d %b %Y',\n        '%B %d %Y',\n        '%b %d %Y',\n        '%b %dst %Y %I:%M%p',\n        '%b %dnd %Y %I:%M%p',\n        '%b %dth %Y %I:%M%p',\n        '%Y %m %d',\n        '%Y-%m-%d',\n        '%Y/%m/%d',\n        '%Y/%m/%d %H:%M:%S',\n        '%Y-%m-%d %H:%M:%S',\n        '%Y-%m-%d %H:%M:%S.%f',\n        '%d.%m.%Y %H:%M',\n        '%d.%m.%Y %H.%M',\n        '%Y-%m-%dT%H:%M:%SZ',\n        '%Y-%m-%dT%H:%M:%S.%fZ',\n        '%Y-%m-%dT%H:%M:%S.%f0Z',\n        '%Y-%m-%dT%H:%M:%S',\n        '%Y-%m-%dT%H:%M:%S.%f',\n        '%Y-%m-%dT%H:%M',\n    ]\n    if day_first:\n        format_expressions.extend([\n            '%d-%m-%Y',\n            '%d.%m.%Y',\n            '%d/%m/%Y',\n            '%d/%m/%y',\n            '%d/%m/%Y %H:%M:%S',\n        ])\n    else:\n        format_expressions.extend([\n            '%m-%d-%Y',\n            '%m.%d.%Y',\n            '%m/%d/%Y',\n            '%m/%d/%y',\n            '%m/%d/%Y %H:%M:%S',\n        ])\n    for expression in format_expressions:\n        try:\n            upload_date = datetime.datetime.strptime(date_str, expression).strftime('%Y%m%d')\n        except ValueError:\n            pass\n    if upload_date is None:\n        timetuple = email.utils.parsedate_tz(date_str)\n        if timetuple:\n            upload_date = datetime.datetime(*timetuple[:6]).strftime('%Y%m%d')\n    return compat_str(upload_date)\n```"
+      },
+      "check": {
+        "category": "plausible",
+        "accepted": true,
+        "feedback": "",
+        "repro_status": null,
+        "regressions": [],
+        "output": "\\repo\\\\youtube_dl\\\\extractor\\\\youporn.py:46: SyntaxWarning: \"\\\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\\\\\.\"? A raw string is also an option.\\r\\n  \\'thumbnail\\': \\'re:^https?://.*\\\\.jpg$\\',\\r\\nC:\\\\Users\\\\risha\\\\AppData\\\\Local\\\\Temp\\\\repro_youtube-dl_29_patch_abebdz9q\\\\repo\\\\youtube_dl\\\\extractor\\\\yourupload.py:22: SyntaxWarning: \"\\\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\\\\\.\"? A raw string is also an option.\\r\\n  \\'thumbnail\\': \\'re:^https?://.*\\\\.jpe?g\\',\\r\\nC:\\\\Users\\\\risha\\\\AppData\\\\Local\\\\Temp\\\\repro_youtube-dl_29_patch_abebdz9q\\\\repo\\\\youtube_dl\\\\extractor\\\\zapiks.py:27: SyntaxWarning: \"\\\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\\\\\.\"? A raw string is also an option.\\r\\n  \\'thumbnail\\': \\'re:^https?://.*\\\\.jpg$\\',\\r\\nC:\\\\Users\\\\risha\\\\AppData\\\\Local\\\\Temp\\\\repro_youtube-dl_29_patch_abebdz9q\\\\repo\\\\youtube_dl\\\\extractor\\\\zingmp3.py:71: SyntaxWarning: \"\\\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\\\\\.\"? A raw string is also an option.\\r\\n  \\'thumbnail\\': \\'re:^https?://.*\\\\.jpg$\\',\\r\\n' is not false\n=========================== short test summary info ===========================\nFAILED test/test_utils.py::TestUtil::test_sanitize_path - AssertionError: '\\\\...\nFAILED test/test_execution.py::TestExecution::test_cmdline_umlauts - Assertio...\n2 failed, 52 passed in 12.00s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "unified_strdate",
+      "lineno": 852,
+      "end_lineno": 914,
+      "source": "def unified_strdate(date_str, day_first=True):\n    \"\"\"Return a string with the date in the format YYYYMMDD\"\"\"\n\n    if date_str is None:\n        return None\n    upload_date = None\n    # Replace commas\n    date_str = date_str.replace(',', ' ')\n    # %z (UTC offset) is only supported in python>=3.2\n    if not re.match(r'^[0-9]{1,2}-[0-9]{1,2}-[0-9]{4}$', date_str):\n        date_str = re.sub(r' ?(\\+|-)[0-9]{2}:?[0-9]{2}$', '', date_str)\n    # Remove AM/PM + timezone\n    date_str = re.sub(r'(?i)\\s*(?:AM|PM)(?:\\s+[A-Z]+)?', '', date_str)\n\n    format_expressions = [\n        '%d %B %Y',\n        '%d %b %Y',\n        '%B %d %Y',\n        '%b %d %Y',\n        '%b %dst %Y %I:%M%p',\n        '%b %dnd %Y %I:%M%p',\n        '%b %dth %Y %I:%M%p',\n        '%Y %m %d',\n        '%Y-%m-%d',\n        '%Y/%m/%d',\n        '%Y/%m/%d %H:%M:%S',\n        '%Y-%m-%d %H:%M:%S',\n        '%Y-%m-%d %H:%M:%S.%f',\n        '%d.%m.%Y %H:%M',\n        '%d.%m.%Y %H.%M',\n        '%Y-%m-%dT%H:%M:%SZ',\n        '%Y-%m-%dT%H:%M:%S.%fZ',\n        '%Y-%m-%dT%H:%M:%S.%f0Z',\n        '%Y-%m-%dT%H:%M:%S',\n        '%Y-%m-%dT%H:%M:%S.%f',\n        '%Y-%m-%dT%H:%M',\n    ]\n    if day_first:\n        format_expressions.extend([\n            '%d-%m-%Y',\n            '%d.%m.%Y',\n            '%d/%m/%Y',\n            '%d/%m/%y',\n            '%d/%m/%Y %H:%M:%S',\n        ])\n    else:\n        format_expressions.extend([\n            '%m-%d-%Y',\n            '%m.%d.%Y',\n            '%m/%d/%Y',\n            '%m/%d/%y',\n            '%m/%d/%Y %H:%M:%S',\n        ])\n    for expression in format_expressions:\n        try:\n            upload_date = datetime.datetime.strptime(date_str, expression).strftime('%Y%m%d')\n        except ValueError:\n            pass\n    if upload_date is None:\n        timetuple = email.utils.parsedate_tz(date_str)\n        if timetuple:\n            upload_date = datetime.datetime(*timetuple[:6]).strftime('%Y%m%d')\n    return compat_str(upload_date)",
+      "score": 26.0,
+      "why": "named in the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "str_or_none",
+      "lineno": 1398,
+      "end_lineno": 1399,
+      "source": "def str_or_none(v, default=None):\n    return default if v is None else compat_str(v)",
+      "score": 9.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "ExtractorError.format_traceback",
+      "lineno": 548,
+      "end_lineno": 551,
+      "source": "    def format_traceback(self):\n        if self.traceback is None:\n            return None\n        return ''.join(traceback.format_tb(self.traceback))",
+      "score": 9.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "parse_age_limit",
+      "lineno": 1678,
+      "end_lineno": 1682,
+      "source": "def parse_age_limit(s):\n    if s is None:\n        return None\n    m = re.match(r'^(?P<age>\\d{1,2})\\+?$', s)\n    return int(m.group('age')) if m else US_RATINGS.get(s, None)",
+      "score": 9.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "float_or_none",
+      "lineno": 1410,
+      "end_lineno": 1416,
+      "source": "def float_or_none(v, scale=1, invscale=1, default=None):\n    if v is None:\n        return default\n    try:\n        return float(v) * invscale / scale\n    except ValueError:\n        return default",
+      "score": 9.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "hyphenate_date",
+      "lineno": 960,
+      "end_lineno": 967,
+      "source": "def hyphenate_date(date_str):\n    \"\"\"\n    Convert a date in 'YYYYMMDD' format to 'YYYY-MM-DD' format\"\"\"\n    match = re.match(r'^(\\d\\d\\d\\d)(\\d\\d)(\\d\\d)$', date_str)\n    if match is not None:\n        return '-'.join(match.groups())\n    else:\n        return date_str",
+      "score": 9.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "US_RATINGS",
+      "lineno": 1669,
+      "end_lineno": 1675,
+      "source": "US_RATINGS = {\n    'G': 0,\n    'PG': 10,\n    'PG-13': 13,\n    'R': 16,\n    'NC': 18,\n}",
+      "score": 8.0,
+      "why": "constant read by parse_age_limit"
+    }
+  ],
+  "final_diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -854,6 +854,7 @@\n \n     if date_str is None:\n         return None\n+\n     upload_date = None\n     # Replace commas\n     date_str = date_str.replace(',', ' ')\n",
+  "total_time_s": 141.0,
+  "llm_calls": 1,
+  "regression_tests": [
+    "test/test_utils.py",
+    "test/test_execution.py"
+  ],
+  "correct": false,
+  "no_regression": true,
+  "eval_output": ": 're:^https?://.*\\.jpe?g',\nC:\\Users\\risha\\AppData\\Local\\Temp\\repro_oracle_zlfilvq7\\repo\\youtube_dl\\extractor\\zapiks.py:27: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n  'thumbnail': 're:^https?://.*\\.jpg$',\nC:\\Users\\risha\\AppData\\Local\\Temp\\repro_oracle_zlfilvq7\\repo\\youtube_dl\\extractor\\zingmp3.py:71: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n  'thumbnail': 're:^https?://.*\\.jpg$',\nTraceback (most recent call last):\n  File \"<string>\", line 2, in <module>\n    assert unified_strdate('UNKNOWN DATE FORMAT') is None\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+  "repro_from": "full",
+  "repro_valid": true
+}

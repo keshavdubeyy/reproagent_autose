@@ -1,0 +1,140 @@
+{
+  "bug_id": "ml_gst",
+  "mode": "full",
+  "verdict": "not_reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import GST_RATE, gst\n\n@pytest.mark.parametrize(\"product_price\", [1000])\ndef test_gst_on_bill_is_wrong(product_price):\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", product_price))\n    cart.apply_coupon(\"BULK10\")\n    subtotal = cart.subtotal()\n    expected_tax = gst(subtotal)\n    assert expected_tax == Decimal(\"162.00\"), f\"Expected GST to be {expected_tax}, but got {gst(subtotal)}\"\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import GST_RATE, gst\n\n@pytest.mark.parametrize(\"product_price\", [1000])\ndef test_gst_on_bill_is_wrong(product_price):\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", product_price))\n    cart.apply_coupon(\"BULK10\")\n    subtotal = cart.subtotal()\n    expected_tax = gst(subtotal)\n    assert expected_tax == Decimal(\"162.00\"), f\"Expected GST to be {expected_tax}, but got {gst(subtotal)}\"\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.95,
+        "output": "F\n================================== FAILURES ===================================\n_______________________ test_gst_on_bill_is_wrong[1000] _______________________\ntest_reproagent_repro.py:12: in test_gst_on_bill_is_wrong\n    assert expected_tax == Decimal(\"162.00\"), f\"Expected GST to be {expected_tax}, but got {gst(subtotal)}\"\n                           ^^^^^^^\nE   NameError: name 'Decimal' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_gst_on_bill_is_wrong[1000] - NameError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.10s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'Decimal' is not defined",
+        "n_failed": 1,
+        "n_passed": 0,
+        "failing": [
+          "test_gst_on_bill_is_wrong"
+        ]
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'Decimal' is not defined. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 2,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import GST_RATE, gst\n\n@pytest.mark.parametrize(\"product_price\", [1000])\ndef test_gst_on_bill_is_wrong(product_price):\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", product_price))\n    cart.apply_coupon(\"BULK10\")\n    subtotal = cart.subtotal()\n    expected_tax = gst(subtotal)\n    assert expected_tax == Decimal(\"162.00\"), f\"Expected GST to be {expected_tax}, but got {gst(subtotal)}\"\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import GST_RATE, gst\n\n@pytest.mark.parametrize(\"product_price\", [1000])\ndef test_gst_on_bill_is_wrong(product_price):\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", product_price))\n    cart.apply_coupon(\"BULK10\")\n    subtotal = cart.subtotal()\n    expected_tax = gst(subtotal)\n    assert expected_tax == Decimal(\"162.00\"), f\"Expected GST to be {expected_tax}, but got {gst(subtotal)}\"\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.73,
+        "output": "F\n================================== FAILURES ===================================\n_______________________ test_gst_on_bill_is_wrong[1000] _______________________\ntest_reproagent_repro.py:12: in test_gst_on_bill_is_wrong\n    assert expected_tax == Decimal(\"162.00\"), f\"Expected GST to be {expected_tax}, but got {gst(subtotal)}\"\n                           ^^^^^^^\nE   NameError: name 'Decimal' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_gst_on_bill_is_wrong[1000] - NameError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.08s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'Decimal' is not defined",
+        "n_failed": 1,
+        "n_passed": 0,
+        "failing": [
+          "test_gst_on_bill_is_wrong"
+        ]
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'Decimal' is not defined. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 3,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import GST_RATE, gst\n\n@pytest.mark.parametrize(\"product_price\", [1000])\ndef test_gst_on_bill_is_wrong(product_price):\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", product_price))\n    cart.apply_coupon(\"BULK10\")\n    subtotal = cart.subtotal()\n    expected_tax = gst(subtotal)\n    assert expected_tax == Decimal(\"162.00\"), f\"Expected GST to be {expected_tax}, but got {gst(subtotal)}\"\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import GST_RATE, gst\n\n@pytest.mark.parametrize(\"product_price\", [1000])\ndef test_gst_on_bill_is_wrong(product_price):\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", product_price))\n    cart.apply_coupon(\"BULK10\")\n    subtotal = cart.subtotal()\n    expected_tax = gst(subtotal)\n    assert expected_tax == Decimal(\"162.00\"), f\"Expected GST to be {expected_tax}, but got {gst(subtotal)}\"\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.79,
+        "output": "F\n================================== FAILURES ===================================\n_______________________ test_gst_on_bill_is_wrong[1000] _______________________\ntest_reproagent_repro.py:12: in test_gst_on_bill_is_wrong\n    assert expected_tax == Decimal(\"162.00\"), f\"Expected GST to be {expected_tax}, but got {gst(subtotal)}\"\n                           ^^^^^^^\nE   NameError: name 'Decimal' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_gst_on_bill_is_wrong[1000] - NameError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.08s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'Decimal' is not defined",
+        "n_failed": 1,
+        "n_passed": 0,
+        "failing": [
+          "test_gst_on_bill_is_wrong"
+        ]
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'Decimal' is not defined. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 4,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import GST_RATE, gst\n\n@pytest.mark.parametrize(\"product_price\", [1000])\ndef test_gst_on_bill_is_wrong(product_price):\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", product_price))\n    cart.apply_coupon(\"BULK10\")\n    subtotal = cart.subtotal()\n    expected_tax = gst(subtotal)\n    assert expected_tax == Decimal(\"180.00\"), f\"Expected GST to be {expected_tax}, but got {gst(subtotal)}\"\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import GST_RATE, gst\n\n@pytest.mark.parametrize(\"product_price\", [1000])\ndef test_gst_on_bill_is_wrong(product_price):\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", product_price))\n    cart.apply_coupon(\"BULK10\")\n    subtotal = cart.subtotal()\n    expected_tax = gst(subtotal)\n    assert expected_tax == Decimal(\"180.00\"), f\"Expected GST to be {expected_tax}, but got {gst(subtotal)}\"\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.76,
+        "output": "F\n================================== FAILURES ===================================\n_______________________ test_gst_on_bill_is_wrong[1000] _______________________\ntest_reproagent_repro.py:12: in test_gst_on_bill_is_wrong\n    assert expected_tax == Decimal(\"180.00\"), f\"Expected GST to be {expected_tax}, but got {gst(subtotal)}\"\n                           ^^^^^^^\nE   NameError: name 'Decimal' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_gst_on_bill_is_wrong[1000] - NameError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.08s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'Decimal' is not defined",
+        "n_failed": 1,
+        "n_passed": 0,
+        "failing": [
+          "test_gst_on_bill_is_wrong"
+        ]
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'Decimal' is not defined. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    }
+  ],
+  "spec": {
+    "summary": "GST calculation error on the bill",
+    "expected": "GST should be 18% of Rs 900 after discounts and coupons",
+    "observed": "GST is Rs 120.00",
+    "symbols": [
+      "GST",
+      "discount",
+      "coupons",
+      "tax"
+    ],
+    "files": [
+      "cart.py",
+      "checkout.py"
+    ],
+    "example_inputs": [
+      "add_product(1000, 'product1')",
+      "check_out()"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": null,
+  "total_time_s": 165.3,
+  "llm_calls": 8,
+  "fail_to_pass": false,
+  "fixed_version_output": null,
+  "fix": null,
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

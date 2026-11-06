@@ -1,0 +1,95 @@
+{
+  "bug_id": "shop_set_quantity_zero",
+  "mode": "fix_multi",
+  "status": "fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "class Cart:  # other members omitted\n    def set_quantity(self, sku: str, quantity: int) -> None:\n        \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n        if quantity < 0:\n            raise ValueError(\"quantity cannot be negative\")\n        if quantity == 0:\n            self.remove(sku)\n        else:\n            self.items[sku][1] = quantity\n",
+        "diff": "--- a/shopcart/cart.py\n+++ b/shopcart/cart.py\n@@ -29,7 +29,10 @@\n         \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n         if quantity < 0:\n             raise ValueError(\"quantity cannot be negative\")\n-        self.items[sku][1] = quantity\n+        if quantity == 0:\n+            self.remove(sku)\n+        else:\n+            self.items[sku][1] = quantity\n \n     def remove(self, sku: str) -> bool:\n         \"\"\"Remove an item. Returns False if it was not in the cart.\"\"\"\n",
+        "raw_llm_output": "Root cause: The `set_quantity` method does not correctly handle the case when the quantity is set to 0. When the quantity is 0, it should remove the item from the cart, but it does not.\n\n```python\nclass Cart:  # other members omitted\n    def set_quantity(self, sku: str, quantity: int) -> None:\n        \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n        if quantity < 0:\n            raise ValueError(\"quantity cannot be negative\")\n        if quantity == 0:\n            self.remove(sku)\n        else:\n            self.items[sku][1] = quantity\n```\n\nThis change ensures that when the quantity is set to 0, the `remove` method is called, effectively removing the item from the cart.",
+        "kind": "patch",
+        "changed": [
+          "shopcart/cart.py:Cart.set_quantity"
+        ]
+      },
+      "check": {
+        "category": "plausible",
+        "accepted": true,
+        "feedback": "",
+        "repro_status": "passed",
+        "regressions": [],
+        "output": "...                                                                      [100%]\n3 passed in 0.02s\n\n",
+        "repro_failed": null,
+        "repro_failing": []
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.set_quantity",
+      "lineno": 28,
+      "end_lineno": 32,
+      "source": "    def set_quantity(self, sku: str, quantity: int) -> None:\n        \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n        if quantity < 0:\n            raise ValueError(\"quantity cannot be negative\")\n        self.items[sku][1] = quantity",
+      "score": 15.5,
+      "why": "method called by the reproduction test (last action before the assert)"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.remove",
+      "lineno": 34,
+      "end_lineno": 36,
+      "source": "    def remove(self, sku: str) -> bool:\n        \"\"\"Remove an item. Returns False if it was not in the cart.\"\"\"\n        return self.items.pop(sku, None) is not None",
+      "score": 11.0,
+      "why": "method called by the reproduction test (its result is asserted)"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.add",
+      "lineno": 20,
+      "end_lineno": 26,
+      "source": "    def add(self, product: Product, quantity: int = 1) -> None:\n        if quantity <= 0:\n            raise ValueError(\"quantity must be positive\")\n        if product.sku in self.items:\n            self.items[product.sku][1] += quantity\n        else:\n            self.items[product.sku] = [product, quantity]",
+      "score": 5.5,
+      "why": "method called by the reproduction test"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.__init__",
+      "lineno": 16,
+      "end_lineno": 18,
+      "source": "    def __init__(self):\n        self.items = {}          # sku -> [product, quantity]\n        self.coupon = None",
+      "score": 3.5,
+      "why": "called by the reproduction test"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Product.__init__",
+      "lineno": 8,
+      "end_lineno": 12,
+      "source": "    def __init__(self, sku: str, name: str, price, stock: int = 100):\n        self.sku = sku\n        self.name = name\n        self.price = Decimal(str(price))\n        self.stock = stock",
+      "score": 2.0,
+      "why": "called by the reproduction test"
+    }
+  ],
+  "final_diff": "--- a/shopcart/cart.py\n+++ b/shopcart/cart.py\n@@ -29,7 +29,10 @@\n         \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n         if quantity < 0:\n             raise ValueError(\"quantity cannot be negative\")\n-        self.items[sku][1] = quantity\n+        if quantity == 0:\n+            self.remove(sku)\n+        else:\n+            self.items[sku][1] = quantity\n \n     def remove(self, sku: str) -> bool:\n         \"\"\"Remove an item. Returns False if it was not in the cart.\"\"\"\n",
+  "total_time_s": 31.6,
+  "llm_calls": 1,
+  "regression_tests": [
+    "tests/test_cart.py"
+  ],
+  "locations": [
+    "shopcart/cart.py:Cart.set_quantity"
+  ],
+  "correct": true,
+  "no_regression": true,
+  "eval_output": "",
+  "repro_from": "full",
+  "repro_valid": true
+}

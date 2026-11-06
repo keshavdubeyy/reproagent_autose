@@ -1,0 +1,141 @@
+{
+  "bug_id": "ml_boundaries",
+  "mode": "fix_multi",
+  "status": "fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "# shopcart/pricing.py (module shopcart.pricing) - called by the reproduction test (its result is asserted)\ndef bulk_discount(subtotal) -> Decimal:\n    \"\"\"10% discount for orders of Rs 1,000 or more.\"\"\"\n    subtotal = Decimal(str(subtotal))\n    if subtotal >= DISCOUNT_THRESHOLD:\n        return money(subtotal * DISCOUNT_RATE)\n    return money(0)\n",
+        "diff": "--- a/shopcart/pricing.py\n+++ b/shopcart/pricing.py\n@@ -17,7 +17,7 @@\n def bulk_discount(subtotal) -> Decimal:\n     \"\"\"10% discount for orders of Rs 1,000 or more.\"\"\"\n     subtotal = Decimal(str(subtotal))\n-    if subtotal > DISCOUNT_THRESHOLD:\n+    if subtotal >= DISCOUNT_THRESHOLD:\n         return money(subtotal * DISCOUNT_RATE)\n     return money(0)\n \n",
+        "raw_llm_output": "Root cause: The comparison in the `bulk_discount` function was using `>`, which is strict inequality. This means it was not including the threshold value of 1000 in the discount calculation. To fix this, we need to change the comparison to `>=`.\n\n```python\n# shopcart/pricing.py (module shopcart.pricing) - called by the reproduction test (its result is asserted)\ndef bulk_discount(subtotal) -> Decimal:\n    \"\"\"10% discount for orders of Rs 1,000 or more.\"\"\"\n    subtotal = Decimal(str(subtotal))\n    if subtotal >= DISCOUNT_THRESHOLD:\n        return money(subtotal * DISCOUNT_RATE)\n    return money(0)\n```",
+        "kind": "patch",
+        "changed": [
+          "shopcart/pricing.py:bulk_discount"
+        ]
+      },
+      "check": {
+        "category": "partial",
+        "accepted": false,
+        "feedback": "Your patch made progress and was KEPT: 1 more reproduction test function(s) now pass, but 1 still fail(s) (test_shipping_fee): AssertionError: Expected shipping fee 0, got 50.00. The bug needs a change in ANOTHER place too.",
+        "repro_status": "failed",
+        "regressions": [],
+        "output": ".F                                                                       [100%]\n================================== FAILURES ===================================\n______________________________ test_shipping_fee ______________________________\ntest_reproagent_repro.py:20: in test_shipping_fee\n    assert actual_shipping_fee == expected_shipping_fee, f\"Expected shipping fee {expected_shipping_fee}, got {actual_shipping_fee}\"\nE   AssertionError: Expected shipping fee 0, got 50.00\nE   assert Decimal('50.00') == 0\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_shipping_fee - AssertionError: Expected...\n1 failed, 1 passed in 0.09s",
+        "repro_failed": 1,
+        "repro_failing": [
+          "test_shipping_fee"
+        ]
+      }
+    },
+    {
+      "patch": {
+        "attempt": 2,
+        "code": "# shopcart/pricing.py (module shopcart.pricing) - called by shipping_fee\ndef shipping_fee(amount) -> Decimal:\n    \"\"\"Flat Rs 50 shipping, free for orders of Rs 500 or more.\"\"\"\n    if Decimal(str(amount)) >= FREE_SHIPPING_THRESHOLD:\n        return money(0)\n    return money(SHIPPING_FEE)\n",
+        "diff": "--- a/shopcart/pricing.py\n+++ b/shopcart/pricing.py\n@@ -17,14 +17,14 @@\n def bulk_discount(subtotal) -> Decimal:\n     \"\"\"10% discount for orders of Rs 1,000 or more.\"\"\"\n     subtotal = Decimal(str(subtotal))\n-    if subtotal > DISCOUNT_THRESHOLD:\n+    if subtotal >= DISCOUNT_THRESHOLD:\n         return money(subtotal * DISCOUNT_RATE)\n     return money(0)\n \n \n def shipping_fee(amount) -> Decimal:\n     \"\"\"Flat Rs 50 shipping, free for orders of Rs 500 or more.\"\"\"\n-    if Decimal(str(amount)) > FREE_SHIPPING_THRESHOLD:\n+    if Decimal(str(amount)) >= FREE_SHIPPING_THRESHOLD:\n         return money(0)\n     return money(SHIPPING_FEE)\n \n",
+        "raw_llm_output": "Root cause: The `shipping_fee` function incorrectly compares the order amount to `FREE_SHIPPING_THRESHOLD` without converting it to a `Decimal` before comparison. This leads to incorrect discount calculations.\n\n```python\n# shopcart/pricing.py (module shopcart.pricing) - called by shipping_fee\ndef shipping_fee(amount) -> Decimal:\n    \"\"\"Flat Rs 50 shipping, free for orders of Rs 500 or more.\"\"\"\n    if Decimal(str(amount)) >= FREE_SHIPPING_THRESHOLD:\n        return money(0)\n    return money(SHIPPING_FEE)\n```",
+        "kind": "patch",
+        "changed": [
+          "shopcart/pricing.py:bulk_discount",
+          "shopcart/pricing.py:shipping_fee"
+        ]
+      },
+      "check": {
+        "category": "plausible",
+        "accepted": true,
+        "feedback": "",
+        "repro_status": "passed",
+        "regressions": [],
+        "output": "...                                                                      [100%]\n3 passed in 0.02s\n\n",
+        "repro_failed": null,
+        "repro_failing": []
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "shipping_fee",
+      "lineno": 25,
+      "end_lineno": 29,
+      "source": "def shipping_fee(amount) -> Decimal:\n    \"\"\"Flat Rs 50 shipping, free for orders of Rs 500 or more.\"\"\"\n    if Decimal(str(amount)) > FREE_SHIPPING_THRESHOLD:\n        return money(0)\n    return money(SHIPPING_FEE)",
+      "score": 11.0,
+      "why": "called by the reproduction test (its result is asserted)"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "bulk_discount",
+      "lineno": 17,
+      "end_lineno": 22,
+      "source": "def bulk_discount(subtotal) -> Decimal:\n    \"\"\"10% discount for orders of Rs 1,000 or more.\"\"\"\n    subtotal = Decimal(str(subtotal))\n    if subtotal > DISCOUNT_THRESHOLD:\n        return money(subtotal * DISCOUNT_RATE)\n    return money(0)",
+      "score": 9.5,
+      "why": "called by the reproduction test (its result is asserted)"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "money",
+      "lineno": 13,
+      "end_lineno": 14,
+      "source": "def money(x) -> Decimal:\n    return Decimal(str(x)).quantize(Decimal(\"0.01\"), rounding=ROUND_HALF_UP)",
+      "score": 4.0,
+      "why": "called by bulk_discount"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "FREE_SHIPPING_THRESHOLD",
+      "lineno": 6,
+      "end_lineno": 6,
+      "source": "FREE_SHIPPING_THRESHOLD = 500  # orders of Rs 500 or more ship free",
+      "score": 10.0,
+      "why": "constant read by shipping_fee"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "SHIPPING_FEE",
+      "lineno": 7,
+      "end_lineno": 7,
+      "source": "SHIPPING_FEE = Decimal(\"50\")",
+      "score": 10.0,
+      "why": "constant read by shipping_fee"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "DISCOUNT_THRESHOLD",
+      "lineno": 4,
+      "end_lineno": 4,
+      "source": "DISCOUNT_THRESHOLD = 1000      # orders of Rs 1,000 or more get a discount",
+      "score": 8.5,
+      "why": "constant read by bulk_discount"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "DISCOUNT_RATE",
+      "lineno": 5,
+      "end_lineno": 5,
+      "source": "DISCOUNT_RATE = Decimal(\"0.10\")",
+      "score": 8.5,
+      "why": "constant read by bulk_discount"
+    }
+  ],
+  "final_diff": "--- a/shopcart/pricing.py\n+++ b/shopcart/pricing.py\n@@ -17,14 +17,14 @@\n def bulk_discount(subtotal) -> Decimal:\n     \"\"\"10% discount for orders of Rs 1,000 or more.\"\"\"\n     subtotal = Decimal(str(subtotal))\n-    if subtotal > DISCOUNT_THRESHOLD:\n+    if subtotal >= DISCOUNT_THRESHOLD:\n         return money(subtotal * DISCOUNT_RATE)\n     return money(0)\n \n \n def shipping_fee(amount) -> Decimal:\n     \"\"\"Flat Rs 50 shipping, free for orders of Rs 500 or more.\"\"\"\n-    if Decimal(str(amount)) > FREE_SHIPPING_THRESHOLD:\n+    if Decimal(str(amount)) >= FREE_SHIPPING_THRESHOLD:\n         return money(0)\n     return money(SHIPPING_FEE)\n \n",
+  "total_time_s": 47.6,
+  "llm_calls": 2,
+  "regression_tests": [
+    "tests/test_cart.py"
+  ],
+  "locations": [
+    "shopcart/pricing.py:bulk_discount",
+    "shopcart/pricing.py:shipping_fee"
+  ],
+  "correct": true,
+  "no_regression": true,
+  "eval_output": "",
+  "repro_from": "full",
+  "repro_valid": true
+}

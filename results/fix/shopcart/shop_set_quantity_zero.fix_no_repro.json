@@ -1,0 +1,96 @@
+{
+  "bug_id": "shop_set_quantity_zero",
+  "mode": "fix_no_repro",
+  "status": "fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "class Cart:  # other members omitted\n    def set_quantity(self, sku: str, quantity: int) -> None:\n        \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n        if quantity < 0:\n            raise ValueError(\"quantity cannot be negative\")\n        if quantity == 0:\n            self.remove(sku)\n        else:\n            self.items[sku][1] = quantity\n",
+        "diff": "--- a/shopcart/cart.py\n+++ b/shopcart/cart.py\n@@ -29,7 +29,10 @@\n         \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n         if quantity < 0:\n             raise ValueError(\"quantity cannot be negative\")\n-        self.items[sku][1] = quantity\n+        if quantity == 0:\n+            self.remove(sku)\n+        else:\n+            self.items[sku][1] = quantity\n \n     def remove(self, sku: str) -> bool:\n         \"\"\"Remove an item. Returns False if it was not in the cart.\"\"\"\n",
+        "raw_llm_output": "Root cause: The `set_quantity` method does not handle the case where the quantity is set to 0, which should remove the item from the cart.\n\n```python\nclass Cart:  # other members omitted\n    def set_quantity(self, sku: str, quantity: int) -> None:\n        \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n        if quantity < 0:\n            raise ValueError(\"quantity cannot be negative\")\n        if quantity == 0:\n            self.remove(sku)\n        else:\n            self.items[sku][1] = quantity\n```"
+      },
+      "check": {
+        "category": "plausible",
+        "accepted": true,
+        "feedback": "",
+        "repro_status": null,
+        "regressions": [],
+        "output": "...                                                                      [100%]\n3 passed in 0.04s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.set_quantity",
+      "lineno": 28,
+      "end_lineno": 32,
+      "source": "    def set_quantity(self, sku: str, quantity: int) -> None:\n        \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n        if quantity < 0:\n            raise ValueError(\"quantity cannot be negative\")\n        self.items[sku][1] = quantity",
+      "score": 27.0,
+      "why": "named in the bug report"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.item_count",
+      "lineno": 38,
+      "end_lineno": 39,
+      "source": "    def item_count(self) -> int:\n        return sum(q for _, q in self.items.values())",
+      "score": 10.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.remove",
+      "lineno": 34,
+      "end_lineno": 36,
+      "source": "    def remove(self, sku: str) -> bool:\n        \"\"\"Remove an item. Returns False if it was not in the cart.\"\"\"\n        return self.items.pop(sku, None) is not None",
+      "score": 10.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.subtotal",
+      "lineno": 41,
+      "end_lineno": 42,
+      "source": "    def subtotal(self) -> Decimal:\n        return money(sum((p.price * q for p, q in self.items.values()), Decimal(\"0\")))",
+      "score": 7.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.apply_coupon",
+      "lineno": 44,
+      "end_lineno": 48,
+      "source": "    def apply_coupon(self, code: str) -> bool:\n        if coupon_rate(code) > 0:\n            self.coupon = code\n            return True\n        return False",
+      "score": 7.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "money",
+      "lineno": 13,
+      "end_lineno": 14,
+      "source": "def money(x) -> Decimal:\n    return Decimal(str(x)).quantize(Decimal(\"0.01\"), rounding=ROUND_HALF_UP)",
+      "score": 2.8,
+      "why": "called by Cart.subtotal"
+    }
+  ],
+  "final_diff": "--- a/shopcart/cart.py\n+++ b/shopcart/cart.py\n@@ -29,7 +29,10 @@\n         \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n         if quantity < 0:\n             raise ValueError(\"quantity cannot be negative\")\n-        self.items[sku][1] = quantity\n+        if quantity == 0:\n+            self.remove(sku)\n+        else:\n+            self.items[sku][1] = quantity\n \n     def remove(self, sku: str) -> bool:\n         \"\"\"Remove an item. Returns False if it was not in the cart.\"\"\"\n",
+  "total_time_s": 23.7,
+  "llm_calls": 1,
+  "regression_tests": [
+    "tests/test_cart.py"
+  ],
+  "correct": true,
+  "no_regression": true,
+  "eval_output": "",
+  "repro_from": "full",
+  "repro_valid": true
+}

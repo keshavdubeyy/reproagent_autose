@@ -1,0 +1,99 @@
+{
+  "bug_id": "youtube-dl_13",
+  "mode": "fix_no_repro",
+  "status": "not_fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "def urljoin(base, path):\n    if isinstance(path, bytes):\n        path = path.decode('utf-8')\n    if not isinstance(path, compat_str) or not path:\n        return path\n    if re.match(r'^(?:https?:)?//', path):\n        return path\n    if base is None:\n        return path\n    if isinstance(base, bytes):\n        base = base.decode('utf-8')\n    if not isinstance(base, compat_str) or not re.match(\n            r'^(?:https?:)?//', base):\n        return None\n    return compat_urlparse.urljoin(base, path)\n",
+        "diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -1867,8 +1867,10 @@\n     if isinstance(path, bytes):\n         path = path.decode('utf-8')\n     if not isinstance(path, compat_str) or not path:\n-        return None\n+        return path\n     if re.match(r'^(?:https?:)?//', path):\n+        return path\n+    if base is None:\n         return path\n     if isinstance(base, bytes):\n         base = base.decode('utf-8')\n",
+        "raw_llm_output": "Root cause: The `urljoin` function does not handle non-http/https schemes correctly. It incorrectly returns `None` for non-http/https URLs when the base URL is also `None`.\n\nFix:\n```python\ndef urljoin(base, path):\n    if isinstance(path, bytes):\n        path = path.decode('utf-8')\n    if not isinstance(path, compat_str) or not path:\n        return path\n    if re.match(r'^(?:https?:)?//', path):\n        return path\n    if base is None:\n        return path\n    if isinstance(base, bytes):\n        base = base.decode('utf-8')\n    if not isinstance(base, compat_str) or not re.match(\n            r'^(?:https?:)?//', base):\n        return None\n    return compat_urlparse.urljoin(base, path)\n```"
+      },
+      "check": {
+        "category": "regression",
+        "accepted": false,
+        "feedback": "Your patch breaks 1 existing test(s) that passed before: FAILED test/test_utils.py::TestUtil::test_urljoin - AssertionError: '' != None. Keep the existing behaviour and fix only the bug.",
+        "repro_status": null,
+        "regressions": [
+          "test/test_utils.py::TestUtil::test_urljoin"
+        ],
+        "output": "...........................................................F............ [ 87%]\n..F.......                                                               [100%]\n================================== FAILURES ===================================\nE   AssertionError: '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc\\\\' != '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc'\n    - \\\\?\\UNC\\ComputerName\\abc\\\n    ?                         -\n    + \\\\?\\UNC\\ComputerName\\abc\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:750: AssertionError: '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc\\\\' != '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc'\nE   AssertionError: '' != None\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:918: AssertionError: '' != None\n=========================== short test summary info ===========================\nFAILED test/test_utils.py::TestUtil::test_sanitize_path - AssertionError: '\\\\...\nFAILED test/test_utils.py::TestUtil::test_urljoin - AssertionError: '' != None\n2 failed, 80 passed in 4.80s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "urljoin",
+      "lineno": 1866,
+      "end_lineno": 1878,
+      "source": "def urljoin(base, path):\n    if isinstance(path, bytes):\n        path = path.decode('utf-8')\n    if not isinstance(path, compat_str) or not path:\n        return None\n    if re.match(r'^(?:https?:)?//', path):\n        return path\n    if isinstance(base, bytes):\n        base = base.decode('utf-8')\n    if not isinstance(base, compat_str) or not re.match(\n            r'^(?:https?:)?//', base):\n        return None\n    return compat_urlparse.urljoin(base, path)",
+      "score": 18.0,
+      "why": "named in the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "url_or_none",
+      "lineno": 1934,
+      "end_lineno": 1938,
+      "source": "def url_or_none(url):\n    if not url or not isinstance(url, compat_str):\n        return None\n    url = url.strip()\n    return url if re.match(r'^(?:[a-zA-Z][\\da-zA-Z.+-]*:)?//', url) else None",
+      "score": 7.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/extractor/ooyala.py",
+      "module": "youtube_dl.extractor.ooyala",
+      "name": "OoyalaIE._url_for_embed_code",
+      "lineno": 154,
+      "end_lineno": 156,
+      "source": "    @staticmethod\n    def _url_for_embed_code(embed_code):\n        return 'http://player.ooyala.com/player.js?embedCode=%s' % embed_code",
+      "score": 6.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "strip_or_none",
+      "lineno": 1930,
+      "end_lineno": 1931,
+      "source": "def strip_or_none(v):\n    return None if v is None else v.strip()",
+      "score": 4.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "base_url",
+      "lineno": 1862,
+      "end_lineno": 1863,
+      "source": "def base_url(url):\n    return re.match(r'https?://[^?#&]+/', url).group()",
+      "score": 4.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "int_or_none",
+      "lineno": 1891,
+      "end_lineno": 1902,
+      "source": "def int_or_none(v, scale=1, default=None, get_attr=None, invscale=1):\n    if get_attr:\n        if v is not None:\n            v = getattr(v, get_attr, None)\n    if v == '':\n        v = None\n    if v is None:\n        return default\n    try:\n        return int(v) * invscale // scale\n    except ValueError:\n        return default",
+      "score": 4.0,
+      "why": "called by InfoExtractor._parse_html5_media_entries"
+    }
+  ],
+  "final_diff": null,
+  "total_time_s": 31.4,
+  "llm_calls": 1,
+  "regression_tests": [
+    "test/test_utils.py",
+    "test/test_YoutubeDLCookieJar.py"
+  ],
+  "correct": false,
+  "no_regression": null,
+  "eval_output": null,
+  "repro_from": "full",
+  "repro_valid": true
+}

@@ -1,0 +1,49 @@
+{
+  "bug_id": "youtube-dl_29",
+  "mode": "full",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import unittest\nfrom youtube_dl.utils import unified_strdate\n\nclass TestUnifiedStrdate(unittest.TestCase):\n    def test_unified_strdate_unparseable_date(self):\n        self.assertIsNone(unified_strdate('UNKNOWN DATE FORMAT'))\n",
+        "raw_llm_output": "```python\nimport unittest\nfrom youtube_dl.utils import unified_strdate\n\nclass TestUnifiedStrdate(unittest.TestCase):\n    def test_unified_strdate_unparseable_date(self):\n        self.assertIsNone(unified_strdate('UNKNOWN DATE FORMAT'))\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 4.65,
+        "output": "F\n================================== FAILURES ===================================\n__________ TestUnifiedStrdate.test_unified_strdate_unparseable_date ___________\ntest_reproagent_repro.py:6: in test_unified_strdate_unparseable_date\n    self.assertIsNone(unified_strdate('UNKNOWN DATE FORMAT'))\nE   AssertionError: 'None' is not None\n============================== warnings summary ===============================\nyoutube_dl\\utils.py:369\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_29_8lk2hd9p\\repo\\youtube_dl\\utils.py:369: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n    path_part if path_part in ['.', '..'] else re.sub('(?:[/<>:\"\\\\|\\\\\\\\?\\\\*]|[\\s.]$)', '#', path_part)\n\nyoutube_dl\\utils.py:940\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_29_8lk2hd9p\\repo\\youtube_dl\\utils.py:940: SyntaxWarning: \"\\d\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\d\"? A raw string is also an option.\n    match = re.match('(now|today)(?P<sign>[+-])(?P<time>\\d+)(?P<unit>day|week|month|year)(s)?', date_str)\n\n...\nyoutube_dl\\extractor\\yesjapan.py:24\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_29_8lk2hd9p\\repo\\youtube_dl\\extractor\\yesjapan.py:24: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    'thumbnail': 're:^https?://.*\\.jpg$',\n\nyoutube_dl\\extractor\\yinyuetai.py:21\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_29_8lk2hd9p\\repo\\youtube_dl\\extractor\\yinyuetai.py:21: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    'thumbnail': 're:^https?://.*\\.jpg$',\n\nyoutube_dl\\extractor\\ynet.py:20\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_29_8lk2hd9p\\repo\\youtube_dl\\extractor\\ynet.py:20: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    'thumbnail': 're:^https?://.*\\.jpg',\n\nyoutube_dl\\extractor\\ynet.py:28\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_29_8lk2hd9p\\repo\\youtube_dl\\extractor\\ynet.py:28: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    'thumbnail': 're:^https?://.*\\.jpg',\n\nyoutube_dl\\extractor\\youku.py:91\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_29_8lk2hd9p\\repo\\youtube_dl\\extractor\\youku.py:91: SyntaxWarning: \"\\:\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\:\"? A raw string is also an option.\n    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/\\:._-1234567890')\n\nyoutube_dl\\extractor\\youporn.py:27\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_29_8lk2hd9p\\repo\\youtube_dl\\extractor\\youporn.py:27: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    'thumbnail': 're:^https?://.*\\.jpg$',\n\nyoutube_dl\\extractor\\youporn.py:46\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_29_8lk2hd9p\\repo\\youtube_dl\\extractor\\youporn.py:46: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    'thumbnail': 're:^https?://.*\\.jpg$',\n\nyoutube_dl\\extractor\\yourupload.py:22\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_29_8lk2hd9p\\repo\\youtube_dl\\extractor\\yourupload.py:22: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    'thumbnail': 're:^https?://.*\\.jpe?g',\n\nyoutube_dl\\extractor\\zapiks.py:27\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_29_8lk2hd9p\\repo\\youtube_dl\\extractor\\zapiks.py:27: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    'thumbnail': 're:^https?://.*\\.jpg$',\n\nyoutube_dl\\extractor\\zingmp3.py:71\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_29_8lk2hd9p\\repo\\youtube_dl\\extractor\\zingmp3.py:71: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    'thumbnail': 're:^https?://.*\\.jpg$',\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::TestUnifiedStrdate::test_unified_strdate_unparseable_date\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 403 warnings in 3.82s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError: 'None' is not None"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[slm-judge] The test is failing because the code is returning 'UNKNOWN DATE FORMAT' instead of None for unparseable dates, which contradicts the expected behavior described in the report. (actual: 'UNKNOWN DATE FORMAT')"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "unified_strdate function returns non-empty string for unparseable dates",
+    "expected": "unified_strdate should return None for unparseable dates",
+    "observed": "unified_strdate('UNKNOWN DATE FORMAT') returns 'UNKNOWN DATE FORMAT' instead of None",
+    "symbols": [
+      "unified_strdate"
+    ],
+    "files": [
+      "youtube_dl/utils.py"
+    ],
+    "example_inputs": [
+      "UNKNOWN DATE FORMAT"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import unittest\nfrom youtube_dl.utils import unified_strdate\n\nclass TestUnifiedStrdate(unittest.TestCase):\n    def test_unified_strdate_unparseable_date(self):\n        self.assertIsNone(unified_strdate('UNKNOWN DATE FORMAT'))\n",
+  "total_time_s": 75.0,
+  "llm_calls": 3,
+  "fail_to_pass": true,
+  "fixed_version_output": "\n    'thumbnail': 're:^https?://.*\\.jpg$',\n\nyoutube_dl\\extractor\\youporn.py:46\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_29_fixed_6ad8lc8n\\repo\\youtube_dl\\extractor\\youporn.py:46: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    'thumbnail': 're:^https?://.*\\.jpg$',\n\nyoutube_dl\\extractor\\yourupload.py:22\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_29_fixed_6ad8lc8n\\repo\\youtube_dl\\extractor\\yourupload.py:22: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    'thumbnail': 're:^https?://.*\\.jpe?g',\n\nyoutube_dl\\extractor\\zapiks.py:27\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_29_fixed_6ad8lc8n\\repo\\youtube_dl\\extractor\\zapiks.py:27: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    'thumbnail': 're:^https?://.*\\.jpg$',\n\nyoutube_dl\\extractor\\zingmp3.py:71\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_29_fixed_6ad8lc8n\\repo\\youtube_dl\\extractor\\zingmp3.py:71: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    'thumbnail': 're:^https?://.*\\.jpg$',\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n1 passed, 403 warnings in 3.13s"
+}

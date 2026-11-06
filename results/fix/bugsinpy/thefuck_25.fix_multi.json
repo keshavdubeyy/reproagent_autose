@@ -1,0 +1,114 @@
+{
+  "bug_id": "thefuck_25",
+  "mode": "fix_multi",
+  "status": "not_fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "# thefuck/rules/mkdir_p.py (module thefuck.rules.mkdir_p) - called by the reproduction test (its result is asserted)\n@sudo_support\ndef get_new_command(command, settings):\n    if 'hdfs dfs -mkdir' in command.script:\n        return re.sub('^hdfs dfs -mkdir (.*)', 'hdfs dfs -mkdir -p \\\\1', command.script)\n    return command.script\n\n# thefuck/rules/mkdir_p.py (module thefuck.rules.mkdir_p) - called by the reproduction test (its result is asserted)\n@sudo_support\ndef match(command, settings):\n    return ('mkdir' in command.script\n            and 'No such file or directory' in command.stderr)\n",
+        "diff": "--- a/thefuck/rules/mkdir_p.py\n+++ b/thefuck/rules/mkdir_p.py\n@@ -10,4 +10,6 @@\n \n @sudo_support\n def get_new_command(command, settings):\n-    return re.sub('^mkdir (.*)', 'mkdir -p \\\\1', command.script)\n+    if 'hdfs dfs -mkdir' in command.script:\n+        return re.sub('^hdfs dfs -mkdir (.*)', 'hdfs dfs -mkdir -p \\\\1', command.script)\n+    return command.script\n",
+        "raw_llm_output": "Root cause: The `get_new_command` function is not correctly handling the case where the command is `hdfs dfs -mkdir`. The regular expression `^mkdir (.*)` is not matching the `hdfs dfs -mkdir` command because it does not include the `-p` option.\n\nTo fix this, we need to modify the regular expression to match the `hdfs dfs -mkdir` command and then add the `-p` option to the command.\n\n```python\n# thefuck/rules/mkdir_p.py (module thefuck.rules.mkdir_p) - called by the reproduction test (its result is asserted)\n@sudo_support\ndef get_new_command(command, settings):\n    if 'hdfs dfs -mkdir' in command.script:\n        return re.sub('^hdfs dfs -mkdir (.*)', 'hdfs dfs -mkdir -p \\\\1', command.script)\n    return command.script\n\n# thefuck/rules/mkdir_p.py (module thefuck.rules.mkdir_p) - called by the reproduction test (its result is asserted)\n@sudo_support\ndef match(command, settings):\n    return ('mkdir' in command.script\n            and 'No such file or directory' in command.stderr)\n```",
+        "kind": "patch",
+        "changed": [
+          "thefuck/rules/mkdir_p.py:get_new_command"
+        ]
+      },
+      "check": {
+        "category": "regression",
+        "accepted": false,
+        "feedback": "Your patch breaks 1 existing test(s) that passed before: FAILED tests/rules/test_mkdir_p.py::test_get_new_command - AssertionError: as.... Keep the existing behaviour and fix only the bug.",
+        "repro_status": "passed",
+        "regressions": [
+          "tests/rules/test_mkdir_p.py::test_get_new_command"
+        ],
+        "output": "....F........                                                            [100%]\n================================== FAILURES ===================================\nE   AssertionError: assert 'mkdir foo/bar/baz' == 'mkdir -p foo/bar/baz'\n      \n      - mkdir -p foo/bar/baz\n      ?      ---\n      + mkdir foo/bar/baz\nC:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_25_patch_3vg4w98o\\repo\\tests\\rules\\test_mkdir_p.py:21: AssertionError: assert 'mkdir foo/bar/baz' == 'mkdir -p foo/bar/baz'\n=========================== short test summary info ===========================\nFAILED tests/rules/test_mkdir_p.py::test_get_new_command - AssertionError: as...\n1 failed, 12 passed in 0.16s\n\n",
+        "repro_failed": null,
+        "repro_failing": []
+      }
+    },
+    {
+      "patch": {
+        "attempt": 2,
+        "code": "# thefuck/rules/mkdir_p.py (module thefuck.rules.mkdir_p) - called by the reproduction test (its result is asserted)\n@sudo_support\ndef get_new_command(command, settings):\n    if 'hdfs dfs -mkdir' in command.script:\n        return re.sub('^hdfs dfs -mkdir (.*)', 'hdfs dfs -mkdir -p \\\\1', command.script)\n    return command.script\n\n# thefuck/rules/mkdir_p.py (module thefuck.rules.mkdir_p) - called by the reproduction test (its result is asserted)\n@sudo_support\ndef match(command, settings):\n    return ('mkdir' in command.script\n            and 'No such file or directory' in command.stderr)\n",
+        "diff": "--- a/thefuck/rules/mkdir_p.py\n+++ b/thefuck/rules/mkdir_p.py\n@@ -10,4 +10,6 @@\n \n @sudo_support\n def get_new_command(command, settings):\n-    return re.sub('^mkdir (.*)', 'mkdir -p \\\\1', command.script)\n+    if 'hdfs dfs -mkdir' in command.script:\n+        return re.sub('^hdfs dfs -mkdir (.*)', 'hdfs dfs -mkdir -p \\\\1', command.script)\n+    return command.script\n",
+        "raw_llm_output": "Root cause: The `get_new_command` function does not handle the case where the script starts with `hdfs dfs -mkdir` correctly. The current implementation incorrectly replaces `mkdir` with `mkdir -p` but does not replace `hdfs dfs -mkdir` with `hdfs dfs -mkdir -p`.\n\n```python\n# thefuck/rules/mkdir_p.py (module thefuck.rules.mkdir_p) - called by the reproduction test (its result is asserted)\n@sudo_support\ndef get_new_command(command, settings):\n    if 'hdfs dfs -mkdir' in command.script:\n        return re.sub('^hdfs dfs -mkdir (.*)', 'hdfs dfs -mkdir -p \\\\1', command.script)\n    return command.script\n\n# thefuck/rules/mkdir_p.py (module thefuck.rules.mkdir_p) - called by the reproduction test (its result is asserted)\n@sudo_support\ndef match(command, settings):\n    return ('mkdir' in command.script\n            and 'No such file or directory' in command.stderr)\n```",
+        "kind": "patch",
+        "changed": [
+          "thefuck/rules/mkdir_p.py:get_new_command"
+        ]
+      },
+      "check": {
+        "category": "regression",
+        "accepted": false,
+        "feedback": "Your patch breaks 1 existing test(s) that passed before: FAILED tests/rules/test_mkdir_p.py::test_get_new_command - AssertionError: as.... Keep the existing behaviour and fix only the bug.",
+        "repro_status": "passed",
+        "regressions": [
+          "tests/rules/test_mkdir_p.py::test_get_new_command"
+        ],
+        "output": "....F........                                                            [100%]\n================================== FAILURES ===================================\nE   AssertionError: assert 'mkdir foo/bar/baz' == 'mkdir -p foo/bar/baz'\n      \n      - mkdir -p foo/bar/baz\n      ?      ---\n      + mkdir foo/bar/baz\nC:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_25_patch_ze22t4ct\\repo\\tests\\rules\\test_mkdir_p.py:21: AssertionError: assert 'mkdir foo/bar/baz' == 'mkdir -p foo/bar/baz'\n=========================== short test summary info ===========================\nFAILED tests/rules/test_mkdir_p.py::test_get_new_command - AssertionError: as...\n1 failed, 12 passed in 0.14s\n\n",
+        "repro_failed": null,
+        "repro_failing": []
+      }
+    },
+    {
+      "patch": {
+        "attempt": 3,
+        "code": "# thefuck/rules/mkdir_p.py (module thefuck.rules.mkdir_p) - called by the reproduction test (its result is asserted)\n@sudo_support\ndef get_new_command(command, settings):\n    if 'hdfs dfs -mkdir' in command.script:\n        # Split the command to replace 'hdfs dfs -mkdir' with 'hdfs dfs -mkdir -p'\n        command_parts = command.script.split(' ')\n        # Check if the command starts with 'hdfs dfs -mkdir'\n        if command_parts[0] == 'hdfs' and command_parts[1] == 'dfs' and command_parts[2] == '-mkdir':\n            # Replace 'hdfs dfs -mkdir' with 'hdfs dfs -mkdir -p'\n            command_parts[2] = '-mkdir -p'\n            # Join the parts back into a command string\n            return ' '.join(command_parts)\n    return command.script\n\n# thefuck/rules/mkdir_p.py (module thefuck.rules.mkdir_p) - called by the reproduction test (its result is asserted)\n@sudo_support\ndef match(command, settings):\n    return ('mkdir' in command.script\n            and 'No such file or directory' in command.stderr)\n",
+        "diff": "--- a/thefuck/rules/mkdir_p.py\n+++ b/thefuck/rules/mkdir_p.py\n@@ -10,4 +10,13 @@\n \n @sudo_support\n def get_new_command(command, settings):\n-    return re.sub('^mkdir (.*)', 'mkdir -p \\\\1', command.script)\n+    if 'hdfs dfs -mkdir' in command.script:\n+        # Split the command to replace 'hdfs dfs -mkdir' with 'hdfs dfs -mkdir -p'\n+        command_parts = command.script.split(' ')\n+        # Check if the command starts with 'hdfs dfs -mkdir'\n+        if command_parts[0] == 'hdfs' and command_parts[1] == 'dfs' and command_parts[2] == '-mkdir':\n+            # Replace 'hdfs dfs -mkdir' with 'hdfs dfs -mkdir -p'\n+            command_parts[2] = '-mkdir -p'\n+            # Join the parts back into a command string\n+            return ' '.join(command_parts)\n+    return command.script\n",
+        "raw_llm_output": "Root cause: The `get_new_command` function incorrectly handles the `hdfs dfs` command, leading to the suggestion of the same command as the original.\n\nSolution: Modify the `get_new_command` function to handle `hdfs dfs` commands correctly by checking for the presence of `hdfs dfs -mkdir` and replacing it with `hdfs dfs -mkdir -p`.\n\n```python\n# thefuck/rules/mkdir_p.py (module thefuck.rules.mkdir_p) - called by the reproduction test (its result is asserted)\n@sudo_support\ndef get_new_command(command, settings):\n    if 'hdfs dfs -mkdir' in command.script:\n        # Split the command to replace 'hdfs dfs -mkdir' with 'hdfs dfs -mkdir -p'\n        command_parts = command.script.split(' ')\n        # Check if the command starts with 'hdfs dfs -mkdir'\n        if command_parts[0] == 'hdfs' and command_parts[1] == 'dfs' and command_parts[2] == '-mkdir':\n            # Replace 'hdfs dfs -mkdir' with 'hdfs dfs -mkdir -p'\n            command_parts[2] = '-mkdir -p'\n            # Join the parts back into a command string\n            return ' '.join(command_parts)\n    return command.script\n\n# thefuck/rules/mkdir_p.py (module thefuck.rules.mkdir_p) - called by the reproduction test (its result is asserted)\n@sudo_support\ndef match(command, settings):\n    return ('mkdir' in command.script\n            and 'No such file or directory' in command.stderr)\n```",
+        "kind": "patch",
+        "changed": [
+          "thefuck/rules/mkdir_p.py:get_new_command"
+        ]
+      },
+      "check": {
+        "category": "regression",
+        "accepted": false,
+        "feedback": "Your patch breaks 1 existing test(s) that passed before: FAILED tests/rules/test_mkdir_p.py::test_get_new_command - AssertionError: as.... Keep the existing behaviour and fix only the bug.",
+        "repro_status": "passed",
+        "regressions": [
+          "tests/rules/test_mkdir_p.py::test_get_new_command"
+        ],
+        "output": "....F........                                                            [100%]\n================================== FAILURES ===================================\nE   AssertionError: assert 'mkdir foo/bar/baz' == 'mkdir -p foo/bar/baz'\n      \n      - mkdir -p foo/bar/baz\n      ?      ---\n      + mkdir foo/bar/baz\nC:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_25_patch_1ckcn4fj\\repo\\tests\\rules\\test_mkdir_p.py:21: AssertionError: assert 'mkdir foo/bar/baz' == 'mkdir -p foo/bar/baz'\n=========================== short test summary info ===========================\nFAILED tests/rules/test_mkdir_p.py::test_get_new_command - AssertionError: as...\n1 failed, 12 passed in 0.15s\n\n",
+        "repro_failed": null,
+        "repro_failing": []
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "thefuck/rules/mkdir_p.py",
+      "module": "thefuck.rules.mkdir_p",
+      "name": "get_new_command",
+      "lineno": 11,
+      "end_lineno": 13,
+      "source": "@sudo_support\ndef get_new_command(command, settings):\n    return re.sub('^mkdir (.*)', 'mkdir -p \\\\1', command.script)",
+      "score": 9.5,
+      "why": "called by the reproduction test (its result is asserted)"
+    },
+    {
+      "file": "thefuck/rules/mkdir_p.py",
+      "module": "thefuck.rules.mkdir_p",
+      "name": "match",
+      "lineno": 5,
+      "end_lineno": 8,
+      "source": "@sudo_support\ndef match(command, settings):\n    return ('mkdir' in command.script\n            and 'No such file or directory' in command.stderr)",
+      "score": 8.0,
+      "why": "called by the reproduction test (its result is asserted)"
+    }
+  ],
+  "final_diff": null,
+  "total_time_s": 142.1,
+  "llm_calls": 4,
+  "regression_tests": [
+    "tests/rules/test_mkdir_p.py",
+    "tests/rules/test_switch_lang.py"
+  ],
+  "locations": [],
+  "correct": false,
+  "no_regression": null,
+  "eval_output": null,
+  "repro_from": "full_v2",
+  "repro_valid": true
+}

@@ -1,0 +1,96 @@
+{
+  "bug_id": "ml_quantity",
+  "mode": "full",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom shopcart import Cart, Product\n\ndef test_cart_add_invalid_quantity():\n    cart = Cart()\n    with pytest.raises(ValueError):\n        cart.add(Product(\"P1\", \"Pen\", 20), 0)\n\ndef test_cart_set_quantity_invalid_quantity():\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 20), 3)\n    with pytest.raises(ValueError):\n        cart.set_quantity(\"P1\", -2)\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product\n\ndef test_cart_add_invalid_quantity():\n    cart = Cart()\n    with pytest.raises(ValueError):\n        cart.add(Product(\"P1\", \"Pen\", 20), 0)\n\ndef test_cart_set_quantity_invalid_quantity():\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 20), 3)\n    with pytest.raises(ValueError):\n        cart.set_quantity(\"P1\", -2)\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.8,
+        "output": "F\n================================== FAILURES ===================================\n_______________________ test_cart_add_invalid_quantity ________________________\ntest_reproagent_repro.py:6: in test_cart_add_invalid_quantity\n    with pytest.raises(ValueError):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_cart_add_invalid_quantity - Failed: DID...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.09s",
+        "exception_type": null,
+        "failure_line": "Failed: DID NOT RAISE ValueError",
+        "n_failed": 1,
+        "n_passed": 0,
+        "failing": [
+          "test_cart_add_invalid_quantity"
+        ]
+      },
+      "analysis": {
+        "category": "wrong_failure",
+        "is_reproduction": false,
+        "feedback": "The test failed, but not because of the reported bug: The test does not raise a ValueError as expected.. The report's scenario is: cart.add(product, 0); cart.set_quantity(sku, -2). Build exactly that scenario and assert: cart.add(product, 0) should raise ValueError; cart.set_quantity(sku, -2) should raise ValueError",
+        "llm_judgement": "[slm-judge] The test does not raise a ValueError as expected. (actual: cart.add(Product('P1', 'Pen', 20), 0) adds product with quantity 0)"
+      }
+    },
+    {
+      "test": {
+        "attempt": 2,
+        "code": "import pytest\nfrom shopcart import Cart, Product\n\ndef test_cart_add_invalid_quantity():\n    cart = Cart()\n    with pytest.raises(ValueError, match=\"quantity must be positive\"):\n        cart.add(Product(\"P1\", \"Pen\", 20), 0)\n\ndef test_cart_set_quantity_invalid_quantity():\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 20), 3)\n    with pytest.raises(ValueError, match=\"quantity must be positive\"):\n        cart.set_quantity(\"P1\", -2)\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product\n\ndef test_cart_add_invalid_quantity():\n    cart = Cart()\n    with pytest.raises(ValueError, match=\"quantity must be positive\"):\n        cart.add(Product(\"P1\", \"Pen\", 20), 0)\n\ndef test_cart_set_quantity_invalid_quantity():\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 20), 3)\n    with pytest.raises(ValueError, match=\"quantity must be positive\"):\n        cart.set_quantity(\"P1\", -2)\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 1.06,
+        "output": "F\n================================== FAILURES ===================================\n_______________________ test_cart_add_invalid_quantity ________________________\ntest_reproagent_repro.py:6: in test_cart_add_invalid_quantity\n    with pytest.raises(ValueError, match=\"quantity must be positive\"):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_cart_add_invalid_quantity - Failed: DID...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.09s",
+        "exception_type": null,
+        "failure_line": "Failed: DID NOT RAISE ValueError",
+        "n_failed": 1,
+        "n_passed": 0,
+        "failing": [
+          "test_cart_add_invalid_quantity"
+        ]
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[slm-judge] The test does not raise a ValueError as expected. (actual: cart.add(product, 0) adds product with quantity 0)"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "Cart accepts invalid quantities, leading to incorrect totals",
+    "expected": "cart.add(product, 0) should raise ValueError; cart.set_quantity(sku, -2) should raise ValueError",
+    "observed": "cart.add(product, 0) adds product with quantity 0; cart.set_quantity(sku, -2) sets quantity to -2",
+    "symbols": [
+      "cart",
+      "add",
+      "product",
+      "set_quantity",
+      "sku"
+    ],
+    "files": [
+      "cart.py"
+    ],
+    "example_inputs": [
+      "cart.add(product, 0)",
+      "cart.set_quantity(sku, -2)"
+    ],
+    "failure_kind": "exception",
+    "is_actionable": true
+  },
+  "final_test": "import pytest\nfrom shopcart import Cart, Product\n\ndef test_cart_add_invalid_quantity():\n    cart = Cart()\n    with pytest.raises(ValueError, match=\"quantity must be positive\"):\n        cart.add(Product(\"P1\", \"Pen\", 20), 0)\n\ndef test_cart_set_quantity_invalid_quantity():\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 20), 3)\n    with pytest.raises(ValueError, match=\"quantity must be positive\"):\n        cart.set_quantity(\"P1\", -2)\n",
+  "total_time_s": 90.4,
+  "llm_calls": 5,
+  "fail_to_pass": false,
+  "fixed_version_output": ".F\n================================== FAILURES ===================================\n___________________ test_cart_set_quantity_invalid_quantity ___________________\ntest_reproagent_repro.py:12: in test_cart_set_quantity_invalid_quantity\n    with pytest.raises(ValueError, match=\"quantity must be positive\"):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   AssertionError: Regex pattern did not match.\nE     Expected regex: 'quantity must be positive'\nE     Actual message: 'quantity cannot be negative'\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_cart_set_quantity_invalid_quantity - As...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.08s",
+  "fix": null,
+  "fail_to_pass_semantic": true,
+  "message_checks": [
+    {
+      "expected": "quantity must be positive",
+      "actual": "quantity cannot be negative",
+      "same": true,
+      "by": "slm",
+      "why": "Both messages express the same rule or problem: the quantity must be positive. They are just phrased differently to convey the same meaning."
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "bug_id": "shop_gst",
+  "mode": "fix_no_repro",
+  "status": "not_fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "from decimal import Decimal, ROUND_HALF_UP, ROUND_HALF_EVEN\n\ndef custom_round(value, places=0):\n    \"\"\"Custom rounding function that handles rounding halfway cases.\"\"\"\n    if places == 0:\n        return int(value)\n    factor = Decimal(10) ** places\n    return int(value * factor + Decimal(\"0.5\")) / factor\n\ndef gst(amount) -> Decimal:\n    \"\"\"18% GST rounded half-even to the paisa.\"\"\"\n    return custom_round(Decimal(str(amount)) * GST_RATE * 100) / 100\n",
+        "diff": "--- a/shopcart/pricing.py\n+++ b/shopcart/pricing.py\n@@ -1,5 +1,6 @@\n \"\"\"Pricing rules for the ShopCart demo store (amounts in rupees).\"\"\"\n from decimal import ROUND_HALF_UP, Decimal\n+from decimal import Decimal, ROUND_HALF_UP, ROUND_HALF_EVEN\n \n DISCOUNT_THRESHOLD = 1000      # orders of Rs 1,000 or more get a discount\n DISCOUNT_RATE = Decimal(\"0.10\")\n@@ -37,5 +38,5 @@\n \n \n def gst(amount) -> Decimal:\n-    \"\"\"18% GST rounded half-up to the paisa.\"\"\"\n-    return Decimal(int(Decimal(str(amount)) * GST_RATE * 100)) / 100\n+    \"\"\"18% GST rounded half-even to the paisa.\"\"\"\n+    return custom_round(Decimal(str(amount)) * GST_RATE * 100) / 100\n",
+        "raw_llm_output": "Root cause: The `gst` function is rounding the GST amount to the nearest paisa using `ROUND_HALF_UP`, which can result in a rounding error when the amount is exactly halfway between two paisa values.\n\nTo fix this, we need to ensure that the rounding is done correctly for all cases, including when the amount is exactly halfway between two paisa values. We can achieve this by using a custom rounding function that handles this case appropriately.\n\n```python\nfrom decimal import Decimal, ROUND_HALF_UP, ROUND_HALF_EVEN\n\ndef custom_round(value, places=0):\n    \"\"\"Custom rounding function that handles rounding halfway cases.\"\"\"\n    if places == 0:\n        return int(value)\n    factor = Decimal(10) ** places\n    return int(value * factor + Decimal(\"0.5\")) / factor\n\ndef gst(amount) -> Decimal:\n    \"\"\"18% GST rounded half-even to the paisa.\"\"\"\n    return custom_round(Decimal(str(amount)) * GST_RATE * 100) / 100\n```"
+      },
+      "check": {
+        "category": "regression",
+        "accepted": false,
+        "feedback": "Your patch breaks 2 existing test(s) that passed before: FAILED tests/test_cart.py::test_checkout_large_order_gets_discount - NameErro...; FAILED tests/test_cart.py::test_gst_simple - NameError: name 'custom_round' i.... Keep the existing behaviour and fix only the bug.",
+        "repro_status": null,
+        "regressions": [
+          "tests/test_cart.py::test_checkout_large_order_gets_discount",
+          "tests/test_cart.py::test_gst_simple"
+        ],
+        "output": ".FF                                                                      [100%]\n================================== FAILURES ===================================\nE   NameError: name 'custom_round' is not defined\nC:\\Users\\risha\\AppData\\Local\\Temp\\repro_shop_gst_patch_fxk5s02z\\repo\\shopcart\\pricing.py:42: NameError: name 'custom_round' is not defined\nE   NameError: name 'custom_round' is not defined\nC:\\Users\\risha\\AppData\\Local\\Temp\\repro_shop_gst_patch_fxk5s02z\\repo\\shopcart\\pricing.py:42: NameError: name 'custom_round' is not defined\n=========================== short test summary info ===========================\nFAILED tests/test_cart.py::test_checkout_large_order_gets_discount - NameErro...\nFAILED tests/test_cart.py::test_gst_simple - NameError: name 'custom_round' i...\n2 failed, 1 passed in 0.04s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "gst",
+      "lineno": 39,
+      "end_lineno": 41,
+      "source": "def gst(amount) -> Decimal:\n    \"\"\"18% GST rounded half-up to the paisa.\"\"\"\n    return Decimal(int(Decimal(str(amount)) * GST_RATE * 100)) / 100",
+      "score": 19.0,
+      "why": "named in the bug report"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "money",
+      "lineno": 13,
+      "end_lineno": 14,
+      "source": "def money(x) -> Decimal:\n    return Decimal(str(x)).quantize(Decimal(\"0.01\"), rounding=ROUND_HALF_UP)",
+      "score": 2.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "coupon_rate",
+      "lineno": 32,
+      "end_lineno": 36,
+      "source": "def coupon_rate(code) -> Decimal:\n    \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n    if not code:\n        return Decimal(\"0\")\n    return COUPONS.get(code.strip().upper(), Decimal(\"0\"))",
+      "score": 2.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "shipping_fee",
+      "lineno": 25,
+      "end_lineno": 29,
+      "source": "def shipping_fee(amount) -> Decimal:\n    \"\"\"Flat Rs 50 shipping, free for orders of Rs 500 or more.\"\"\"\n    if Decimal(str(amount)) >= FREE_SHIPPING_THRESHOLD:\n        return money(0)\n    return money(SHIPPING_FEE)",
+      "score": 2.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "bulk_discount",
+      "lineno": 17,
+      "end_lineno": 22,
+      "source": "def bulk_discount(subtotal) -> Decimal:\n    \"\"\"10% discount for orders of Rs 1,000 or more.\"\"\"\n    subtotal = Decimal(str(subtotal))\n    if subtotal >= DISCOUNT_THRESHOLD:\n        return money(subtotal * DISCOUNT_RATE)\n    return money(0)",
+      "score": 2.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.item_count",
+      "lineno": 41,
+      "end_lineno": 42,
+      "source": "    def item_count(self) -> int:\n        return sum(q for _, q in self.items.values())",
+      "score": 0.5,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "GST_RATE",
+      "lineno": 8,
+      "end_lineno": 8,
+      "source": "GST_RATE = Decimal(\"0.18\")",
+      "score": 18.0,
+      "why": "constant read by gst"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "COUPONS",
+      "lineno": 10,
+      "end_lineno": 10,
+      "source": "COUPONS = {\"SAVE10\": Decimal(\"0.10\"), \"FESTIVE20\": Decimal(\"0.20\")}",
+      "score": 1.0,
+      "why": "constant read by coupon_rate"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "FREE_SHIPPING_THRESHOLD",
+      "lineno": 6,
+      "end_lineno": 6,
+      "source": "FREE_SHIPPING_THRESHOLD = 500  # orders of Rs 500 or more ship free",
+      "score": 1.0,
+      "why": "constant read by shipping_fee"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "SHIPPING_FEE",
+      "lineno": 7,
+      "end_lineno": 7,
+      "source": "SHIPPING_FEE = Decimal(\"50\")",
+      "score": 1.0,
+      "why": "constant read by shipping_fee"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "DISCOUNT_THRESHOLD",
+      "lineno": 4,
+      "end_lineno": 4,
+      "source": "DISCOUNT_THRESHOLD = 1000      # orders of Rs 1,000 or more get a discount",
+      "score": 1.0,
+      "why": "constant read by bulk_discount"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "DISCOUNT_RATE",
+      "lineno": 5,
+      "end_lineno": 5,
+      "source": "DISCOUNT_RATE = Decimal(\"0.10\")",
+      "score": 1.0,
+      "why": "constant read by bulk_discount"
+    }
+  ],
+  "final_diff": null,
+  "total_time_s": 34.7,
+  "llm_calls": 1,
+  "regression_tests": [
+    "tests/test_cart.py"
+  ],
+  "correct": false,
+  "no_regression": null,
+  "eval_output": null,
+  "repro_from": "full",
+  "repro_valid": true
+}

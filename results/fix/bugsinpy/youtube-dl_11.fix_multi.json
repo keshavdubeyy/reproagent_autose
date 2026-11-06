@@ -1,0 +1,56 @@
+{
+  "bug_id": "youtube-dl_11",
+  "mode": "fix_multi",
+  "status": "fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "def str_to_int(int_str):\n    \"\"\" A more relaxed version of int_or_none \"\"\"\n    if int_str is None:\n        return None\n    # Remove commas, dots, and plus signs from the string\n    int_str = re.sub(r'[,\\.\\+]', '', str(int_str))\n    return int(int_str)\n",
+        "diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -3521,7 +3521,8 @@\n     \"\"\" A more relaxed version of int_or_none \"\"\"\n     if int_str is None:\n         return None\n-    int_str = re.sub(r'[,\\.\\+]', '', int_str)\n+    # Remove commas, dots, and plus signs from the string\n+    int_str = re.sub(r'[,\\.\\+]', '', str(int_str))\n     return int(int_str)\n \n \n",
+        "raw_llm_output": "Root cause: The `str_to_int` function is attempting to convert an integer to a string using `str(int_str)`, which is unnecessary and causes a TypeError when `int_str` is already an integer.\n\n```python\ndef str_to_int(int_str):\n    \"\"\" A more relaxed version of int_or_none \"\"\"\n    if int_str is None:\n        return None\n    # Remove commas, dots, and plus signs from the string\n    int_str = re.sub(r'[,\\.\\+]', '', str(int_str))\n    return int(int_str)\n```",
+        "kind": "patch",
+        "changed": [
+          "youtube_dl/utils.py:str_to_int"
+        ]
+      },
+      "check": {
+        "category": "plausible",
+        "accepted": true,
+        "feedback": "",
+        "repro_status": "passed",
+        "regressions": [],
+        "output": "................................................................F....... [ 78%]\n....................                                                     [100%]\n================================== FAILURES ===================================\nE   AssertionError: '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc\\\\' != '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc'\n    - \\\\?\\UNC\\ComputerName\\abc\\\n    ?                         -\n    + \\\\?\\UNC\\ComputerName\\abc\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:750: AssertionError: '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc\\\\' != '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc'\n=========================== short test summary info ===========================\nFAILED test/test_utils.py::TestUtil::test_sanitize_path - AssertionError: '\\\\...\n1 failed, 91 passed in 8.13s\n\n",
+        "repro_failed": null,
+        "repro_failing": []
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "str_to_int",
+      "lineno": 3520,
+      "end_lineno": 3525,
+      "source": "def str_to_int(int_str):\n    \"\"\" A more relaxed version of int_or_none \"\"\"\n    if int_str is None:\n        return None\n    int_str = re.sub(r'[,\\.\\+]', '', int_str)\n    return int(int_str)",
+      "score": 22.0,
+      "why": "in the traceback (line 3524)"
+    }
+  ],
+  "final_diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -3521,7 +3521,8 @@\n     \"\"\" A more relaxed version of int_or_none \"\"\"\n     if int_str is None:\n         return None\n-    int_str = re.sub(r'[,\\.\\+]', '', int_str)\n+    # Remove commas, dots, and plus signs from the string\n+    int_str = re.sub(r'[,\\.\\+]', '', str(int_str))\n     return int(int_str)\n \n \n",
+  "total_time_s": 68.3,
+  "llm_calls": 2,
+  "regression_tests": [
+    "test/test_utils.py",
+    "test/test_execution.py"
+  ],
+  "locations": [
+    "youtube_dl/utils.py:str_to_int"
+  ],
+  "correct": true,
+  "no_regression": true,
+  "eval_output": "",
+  "repro_from": "full",
+  "repro_valid": true
+}

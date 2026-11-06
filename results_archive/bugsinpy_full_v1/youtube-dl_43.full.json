@@ -1,0 +1,49 @@
+{
+  "bug_id": "youtube-dl_43",
+  "mode": "full",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import unittest\nfrom youtube_dl.utils import url_basename\n\nclass TestUrlBasename(unittest.TestCase):\n    def test_url_basename_with_deep_path(self):\n        expected = 'trailer.mp4'\n        actual = url_basename('http://media.w3.org/2010/05/sintel/trailer.mp4')\n        self.assertEqual(actual, expected)\n",
+        "raw_llm_output": "```python\nimport unittest\nfrom youtube_dl.utils import url_basename\n\nclass TestUrlBasename(unittest.TestCase):\n    def test_url_basename_with_deep_path(self):\n        expected = 'trailer.mp4'\n        actual = url_basename('http://media.w3.org/2010/05/sintel/trailer.mp4')\n        self.assertEqual(actual, expected)\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 2.6,
+        "output": "F\n================================== FAILURES ===================================\n______________ TestUrlBasename.test_url_basename_with_deep_path _______________\ntest_reproagent_repro.py:8: in test_url_basename_with_deep_path\n    self.assertEqual(actual, expected)\nE   AssertionError: '' != 'trailer.mp4'\nE   + trailer.mp4\n============================== warnings summary ===============================\nyoutube_dl\\utils.py:789\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_43_gbuu6ea6\\repo\\youtube_dl\\utils.py:789: SyntaxWarning: \"\\d\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\d\"? A raw string is also an option.\n    match = re.match('(now|today)(?P<sign>[+-])(?P<time>\\d+)(?P<unit>day|week|month|year)(s)?', date_str)\n\nyoutube_dl\\extractor\\depositfiles.py:42\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_43_gbuu6ea6\\repo\\youtube_dl\\extractor\\depositfiles.py:42: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n    restriction_message = re.sub('\\s+', ' ', mobj.group(1)).strip()\n...\nyoutube_dl\\extractor\\jukebox.py:43\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_43_gbuu6ea6\\repo\\youtube_dl\\extractor\\jukebox.py:43: SyntaxWarning: \"\\/\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\/\"? A raw string is also an option.\n    video_url = unescapeHTML(mobj.group('video_url')).replace('\\/','/')\n\nyoutube_dl\\extractor\\metacafe.py:114\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_43_gbuu6ea6\\repo\\youtube_dl\\extractor\\metacafe.py:114: SyntaxWarning: \"\\w\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\w\"? A raw string is also an option.\n    m_external = re.match('^(\\w{2})-(.*)$', video_id)\n\nyoutube_dl\\extractor\\myvideo.py:169\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_43_gbuu6ea6\\repo\\youtube_dl\\extractor\\myvideo.py:169: SyntaxWarning: \"\\(\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\(\"? A raw string is also an option.\n    video_swfobj = self._search_regex('swfobject.embedSWF\\(\\'(.+?)\\'', webpage, u'swfobj')\n\nyoutube_dl\\extractor\\smotri.py:305\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_43_gbuu6ea6\\repo\\youtube_dl\\extractor\\smotri.py:305: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    u'window\\.broadcast_control\\.addFlashVar\\\\(\\'file\\', \\'([^\\']+)\\'\\\\);',\n\nyoutube_dl\\extractor\\spankwire.py:46\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_43_gbuu6ea6\\repo\\youtube_dl\\extractor\\spankwire.py:46: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    if webpage.find('flashvars\\.encrypted = \"true\"') != -1:\n\nyoutube_dl\\extractor\\stanfordoc.py:67\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_43_gbuu6ea6\\repo\\youtube_dl\\extractor\\stanfordoc.py:67: SyntaxWarning: \"\\?\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\?\"? A raw string is also an option.\n    links = orderedSet(re.findall('<a href=\"(VideoPage.php\\?[^\"]+)\">', coursepage))\n\nyoutube_dl\\extractor\\stanfordoc.py:93\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_43_gbuu6ea6\\repo\\youtube_dl\\extractor\\stanfordoc.py:93: SyntaxWarning: \"\\?\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\?\"? A raw string is also an option.\n    links = orderedSet(re.findall('<a href=\"(CoursePage.php\\?[^\"]+)\">', rootpage))\n\nyoutube_dl\\extractor\\vimeo.py:155\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_43_gbuu6ea6\\repo\\youtube_dl\\extractor\\vimeo.py:155: SyntaxWarning: \"\\w\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\w\"? A raw string is also an option.\n    m_variable_name = re.search('(\\w)\\.video\\.id', webpage)\n\nyoutube_dl\\extractor\\youku.py:37\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_43_gbuu6ea6\\repo\\youtube_dl\\extractor\\youku.py:37: SyntaxWarning: \"\\:\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\:\"? A raw string is also an option.\n    source = list(\"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/\\:._-1234567890\")\n\nyoutube_dl\\extractor\\youtube.py:1881\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_43_gbuu6ea6\\repo\\youtube_dl\\extractor\\youtube.py:1881: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    _VALID_URL = u'https?://www\\.youtube\\.com/feed/history|:ythistory'\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::TestUrlBasename::test_url_basename_with_deep_path\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 15 warnings in 1.85s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError: '' != 'trailer.mp4'"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[slm-judge] The test failed because the expected output 'trailer.mp4' does not match the actual output ''. (actual: )"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "url_basename fails for URLs with deep paths",
+    "expected": "url_basename('http://media.w3.org/2010/05/sintel/trailer.mp4') == 'trailer.mp4'",
+    "observed": "url_basename('http://media.w3.org/2010/05/sintel/trailer.mp4') == ''",
+    "symbols": [
+      "url_basename"
+    ],
+    "files": [
+      "youtube_dl/utils/url_basename.py"
+    ],
+    "example_inputs": [
+      "http://media.w3.org/2010/05/sintel/trailer.mp4"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import unittest\nfrom youtube_dl.utils import url_basename\n\nclass TestUrlBasename(unittest.TestCase):\n    def test_url_basename_with_deep_path(self):\n        expected = 'trailer.mp4'\n        actual = url_basename('http://media.w3.org/2010/05/sintel/trailer.mp4')\n        self.assertEqual(actual, expected)\n",
+  "total_time_s": 71.7,
+  "llm_calls": 3,
+  "fail_to_pass": true,
+  "fixed_version_output": "_43_fixed_igb0br17\\repo\\youtube_dl\\extractor\\stanfordoc.py:93: SyntaxWarning: \"\\?\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\?\"? A raw string is also an option.\n    links = orderedSet(re.findall('<a href=\"(CoursePage.php\\?[^\"]+)\">', rootpage))\n\nyoutube_dl\\extractor\\vimeo.py:155\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_43_fixed_igb0br17\\repo\\youtube_dl\\extractor\\vimeo.py:155: SyntaxWarning: \"\\w\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\w\"? A raw string is also an option.\n    m_variable_name = re.search('(\\w)\\.video\\.id', webpage)\n\nyoutube_dl\\extractor\\youku.py:37\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_43_fixed_igb0br17\\repo\\youtube_dl\\extractor\\youku.py:37: SyntaxWarning: \"\\:\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\:\"? A raw string is also an option.\n    source = list(\"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/\\:._-1234567890\")\n\nyoutube_dl\\extractor\\youtube.py:1881\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_43_fixed_igb0br17\\repo\\youtube_dl\\extractor\\youtube.py:1881: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    _VALID_URL = u'https?://www\\.youtube\\.com/feed/history|:ythistory'\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n1 passed, 15 warnings in 0.92s"
+}

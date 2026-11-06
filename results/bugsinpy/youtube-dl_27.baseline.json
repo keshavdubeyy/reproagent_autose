@@ -1,0 +1,51 @@
+{
+  "bug_id": "youtube-dl_27",
+  "mode": "baseline",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom youtube_dl.utils import parse_dfxp_time_expr\n\ndef test_dfxp_timestamp_with_colon():\n    # Expected output for '00:00:01:100' should be 1.1 seconds\n    expected_seconds = 1.1\n    # Actual output from the function\n    actual_seconds = parse_dfxp_time_expr('00:00:01:100')\n    \n    # Assert that the actual output matches the expected output\n    assert actual_seconds == expected_seconds, f\"Expected {expected_seconds} seconds, but got {actual_seconds} seconds.\"\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom youtube_dl.utils import parse_dfxp_time_expr\n\ndef test_dfxp_timestamp_with_colon():\n    # Expected output for '00:00:01:100' should be 1.1 seconds\n    expected_seconds = 1.1\n    # Actual output from the function\n    actual_seconds = parse_dfxp_time_expr('00:00:01:100')\n    \n    # Assert that the actual output matches the expected output\n    assert actual_seconds == expected_seconds, f\"Expected {expected_seconds} seconds, but got {actual_seconds} seconds.\"\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 5.79,
+        "output": "F\n================================== FAILURES ===================================\n_______________________ test_dfxp_timestamp_with_colon ________________________\ntest_reproagent_repro.py:11: in test_dfxp_timestamp_with_colon\n    assert actual_seconds == expected_seconds, f\"Expected {expected_seconds} seconds, but got {actual_seconds} seconds.\"\nE   AssertionError: Expected 1.1 seconds, but got None seconds.\nE   assert None == 1.1\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_dfxp_timestamp_with_colon - AssertionEr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 5.09s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError: Expected 1.1 seconds, but got None seconds."
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[evidence-match] actual value None is the wrong value the report observed"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "DFXP subtitle timestamps with frame separator are not parsed correctly",
+    "expected": "The function should parse timestamps with a colon before the fraction as seconds",
+    "observed": "The function returns None for timestamps with a colon before the fraction",
+    "symbols": [
+      "parse_dfxp_time_expr"
+    ],
+    "files": [
+      "youtube_dl/utils.py"
+    ],
+    "example_inputs": [
+      "'00:00:01:100'"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import pytest\nfrom youtube_dl.utils import parse_dfxp_time_expr\n\ndef test_dfxp_timestamp_with_colon():\n    # Expected output for '00:00:01:100' should be 1.1 seconds\n    expected_seconds = 1.1\n    # Actual output from the function\n    actual_seconds = parse_dfxp_time_expr('00:00:01:100')\n    \n    # Assert that the actual output matches the expected output\n    assert actual_seconds == expected_seconds, f\"Expected {expected_seconds} seconds, but got {actual_seconds} seconds.\"\n",
+  "total_time_s": 40.9,
+  "llm_calls": 2,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n1 passed in 2.96s",
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

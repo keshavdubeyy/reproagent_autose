@@ -1,0 +1,97 @@
+{
+  "bug_id": "thefuck_32",
+  "mode": "fix_no_repro",
+  "status": "fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "# thefuck/rules/ls_lah.py (module thefuck.rules.ls_lah) - fixed the bug\ndef match(command, settings):\n    return command.script.startswith('ls ') and not ('ls -' in command.script)\n",
+        "diff": "--- a/thefuck/rules/ls_lah.py\n+++ b/thefuck/rules/ls_lah.py\n@@ -1,5 +1,5 @@\n def match(command, settings):\n-    return 'ls' in command.script and not ('ls -' in command.script)\n+    return command.script.startswith('ls ') and not ('ls -' in command.script)\n \n \n def get_new_command(command, settings):\n",
+        "raw_llm_output": "Root cause: The `match` function in `ls_lah.py` incorrectly matches any command containing 'ls', including commands like 'pacman -S binutils'. This is because it checks if 'ls' is in the command script, which is not sufficient to ensure it's the actual 'ls' command.\n\n```python\n# thefuck/rules/ls_lah.py (module thefuck.rules.ls_lah) - fixed the bug\ndef match(command, settings):\n    return command.script.startswith('ls ') and not ('ls -' in command.script)\n```"
+      },
+      "check": {
+        "category": "plausible",
+        "accepted": true,
+        "feedback": "",
+        "repro_status": null,
+        "regressions": [],
+        "output": "....                                                                     [100%]\n4 passed in 0.14s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "thefuck/rules/ls_lah.py",
+      "module": "thefuck.rules.ls_lah",
+      "name": "match",
+      "lineno": 1,
+      "end_lineno": 2,
+      "source": "def match(command, settings):\n    return 'ls' in command.script and not ('ls -' in command.script)",
+      "score": 9.5,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "thefuck/rules/ls_lah.py",
+      "module": "thefuck.rules.ls_lah",
+      "name": "get_new_command",
+      "lineno": 5,
+      "end_lineno": 8,
+      "source": "def get_new_command(command, settings):\n    command = command.script.split(' ')\n    command[0] = 'ls -lah'\n    return ' '.join(command)",
+      "score": 9.5,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "thefuck/rules/git_not_command.py",
+      "module": "thefuck.rules.git_not_command",
+      "name": "match",
+      "lineno": 4,
+      "end_lineno": 7,
+      "source": "def match(command, settings):\n    return ('git' in command.script\n            and \" is not a git command. See 'git --help'.\" in command.stderr\n            and 'Did you mean' in command.stderr)",
+      "score": 5.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "thefuck/rules/composer_not_command.py",
+      "module": "thefuck.rules.composer_not_command",
+      "name": "match",
+      "lineno": 4,
+      "end_lineno": 7,
+      "source": "def match(command, settings):\n    return ('composer' in command.script\n            and ('did you mean this?' in command.stderr.lower()\n                 or 'did you mean one of these?' in command.stderr.lower()))",
+      "score": 5.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "thefuck/rules/git_not_command.py",
+      "module": "thefuck.rules.git_not_command",
+      "name": "get_new_command",
+      "lineno": 10,
+      "end_lineno": 15,
+      "source": "def get_new_command(command, settings):\n    broken_cmd = re.findall(r\"git: '([^']*)' is not a git command\",\n                            command.stderr)[0]\n    new_cmd = re.findall(r'Did you mean[^\\n]*\\n\\s*([^\\n]*)',\n                         command.stderr)[0]\n    return command.script.replace(broken_cmd, new_cmd, 1)",
+      "score": 5.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "thefuck/rules/composer_not_command.py",
+      "module": "thefuck.rules.composer_not_command",
+      "name": "get_new_command",
+      "lineno": 10,
+      "end_lineno": 15,
+      "source": "def get_new_command(command, settings):\n    broken_cmd = re.findall(r\"Command \\\"([^']*)\\\" is not defined\", command.stderr)[0]\n    new_cmd = re.findall(r'Did you mean this\\?[^\\n]*\\n\\s*([^\\n]*)', command.stderr)\n    if not new_cmd:\n        new_cmd = re.findall(r'Did you mean one of these\\?[^\\n]*\\n\\s*([^\\n]*)', command.stderr)\n    return command.script.replace(broken_cmd, new_cmd[0].strip(), 1)",
+      "score": 5.0,
+      "why": "matches the bug report"
+    }
+  ],
+  "final_diff": "--- a/thefuck/rules/ls_lah.py\n+++ b/thefuck/rules/ls_lah.py\n@@ -1,5 +1,5 @@\n def match(command, settings):\n-    return 'ls' in command.script and not ('ls -' in command.script)\n+    return command.script.startswith('ls ') and not ('ls -' in command.script)\n \n \n def get_new_command(command, settings):\n",
+  "total_time_s": 27.0,
+  "llm_calls": 1,
+  "regression_tests": [
+    "tests/rules/test_ls_lah.py",
+    "tests/rules/test_git_not_command.py"
+  ],
+  "correct": true,
+  "no_regression": true,
+  "eval_output": "",
+  "repro_from": "full_v2",
+  "repro_valid": true
+}

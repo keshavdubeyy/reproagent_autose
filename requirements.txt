@@ -1,0 +1,9 @@
+requests>=2.31
+pytest>=8
+# needed only to run the thefuck BugsInPy subjects
+colorama
+six
+decorator
+psutil
+mock
+setuptools<81  # pkg_resources for old thefuck

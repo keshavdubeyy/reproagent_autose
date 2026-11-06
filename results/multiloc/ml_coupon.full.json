@@ -1,0 +1,88 @@
+{
+  "bug_id": "ml_coupon",
+  "mode": "full",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef test_apply_coupon_with_spaces():\n    cart = Cart()\n    assert cart.apply_coupon(' save10 ') == False, \"Expected True for 'save10 '\"\n\ndef test_coupon_computed_on_wrong_amount():\n    cart = Cart()\n    product = Product(sku='prod1', name='Product 1', price=2000)\n    cart.add(product, 1)\n    cart.apply_coupon('SAVE10')\n    assert cart.subtotal() == Decimal('1800'), \"Expected subtotal of Rs 1800\"\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef test_apply_coupon_with_spaces():\n    cart = Cart()\n    assert cart.apply_coupon(' save10 ') == False, \"Expected True for 'save10 '\"\n\ndef test_coupon_computed_on_wrong_amount():\n    cart = Cart()\n    product = Product(sku='prod1', name='Product 1', price=2000)\n    cart.add(product, 1)\n    cart.apply_coupon('SAVE10')\n    assert cart.subtotal() == Decimal('1800'), \"Expected subtotal of Rs 1800\"\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.99,
+        "output": ".F\n================================== FAILURES ===================================\n____________________ test_coupon_computed_on_wrong_amount _____________________\ntest_reproagent_repro.py:14: in test_coupon_computed_on_wrong_amount\n    assert cart.subtotal() == Decimal('1800'), \"Expected subtotal of Rs 1800\"\n                              ^^^^^^^\nE   NameError: name 'Decimal' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_coupon_computed_on_wrong_amount - NameE...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.10s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'Decimal' is not defined",
+        "n_failed": 1,
+        "n_passed": 1,
+        "failing": [
+          "test_coupon_computed_on_wrong_amount"
+        ]
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'Decimal' is not defined. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 2,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst, money\n\ndef test_apply_coupon_with_spaces():\n    cart = Cart()\n    assert cart.apply_coupon(' save10 ') == False, \"Expected True for 'save10 '\"\n\ndef test_coupon_computed_on_wrong_amount():\n    cart = Cart()\n    product = Product(sku='prod1', name='Product 1', price=2000)\n    cart.add(product, 1)\n    cart.apply_coupon('SAVE10')\n    assert cart.subtotal() == money(1800), \"Expected subtotal of Rs 1800\"\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst, money\n\ndef test_apply_coupon_with_spaces():\n    cart = Cart()\n    assert cart.apply_coupon(' save10 ') == False, \"Expected True for 'save10 '\"\n\ndef test_coupon_computed_on_wrong_amount():\n    cart = Cart()\n    product = Product(sku='prod1', name='Product 1', price=2000)\n    cart.add(product, 1)\n    cart.apply_coupon('SAVE10')\n    assert cart.subtotal() == money(1800), \"Expected subtotal of Rs 1800\"\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.81,
+        "output": ".F\n================================== FAILURES ===================================\n____________________ test_coupon_computed_on_wrong_amount _____________________\ntest_reproagent_repro.py:14: in test_coupon_computed_on_wrong_amount\n    assert cart.subtotal() == money(1800), \"Expected subtotal of Rs 1800\"\nE   AssertionError: Expected subtotal of Rs 1800\nE   assert Decimal('2000.00') == Decimal('1800.00')\nE    +  where Decimal('2000.00') = subtotal()\nE    +    where subtotal = <shopcart.cart.Cart object at 0x000001D849296850>.subtotal\nE    +  and   Decimal('1800.00') = money(1800)\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_coupon_computed_on_wrong_amount - Asser...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.09s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError: Expected subtotal of Rs 1800",
+        "n_failed": 1,
+        "n_passed": 1,
+        "failing": [
+          "test_coupon_computed_on_wrong_amount"
+        ]
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[evidence-match] actual value 2000 is the wrong value the report observed"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "Coupon codes with spaces are rejected, and the coupon is computed on the wrong amount.",
+    "expected": "{\"cart.apply_coupon(' save10 ')\": 'True', 'A Rs 2,000 order with coupon SAVE10': 'Rs 180'}",
+    "observed": "{\"cart.apply_coupon(' save10 ')\": 'False', 'A Rs 2,000 order with coupon SAVE10': 'Rs 200'}",
+    "symbols": [
+      "cart",
+      "apply_coupon",
+      "SAVE10",
+      "True",
+      "order"
+    ],
+    "files": [
+      "cart.py"
+    ],
+    "example_inputs": [
+      "cart.apply_coupon(' save10 ')",
+      "A Rs 2,000 order with coupon SAVE10"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst, money\n\ndef test_apply_coupon_with_spaces():\n    cart = Cart()\n    assert cart.apply_coupon(' save10 ') == False, \"Expected True for 'save10 '\"\n\ndef test_coupon_computed_on_wrong_amount():\n    cart = Cart()\n    product = Product(sku='prod1', name='Product 1', price=2000)\n    cart.add(product, 1)\n    cart.apply_coupon('SAVE10')\n    assert cart.subtotal() == money(1800), \"Expected subtotal of Rs 1800\"\n",
+  "total_time_s": 78.2,
+  "llm_calls": 3,
+  "fail_to_pass": false,
+  "fixed_version_output": "F\n================================== FAILURES ===================================\n________________________ test_apply_coupon_with_spaces ________________________\ntest_reproagent_repro.py:7: in test_apply_coupon_with_spaces\n    assert cart.apply_coupon(' save10 ') == False, \"Expected True for 'save10 '\"\nE   AssertionError: Expected True for 'save10 '\nE   assert True == False\nE    +  where True = apply_coupon(' save10 ')\nE    +    where apply_coupon = <shopcart.cart.Cart object at 0x00000241CE45C440>.apply_coupon\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_apply_coupon_with_spaces - AssertionErr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.08s",
+  "fix": null,
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

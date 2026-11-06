@@ -1,0 +1,119 @@
+{
+  "bug_id": "shop_stock",
+  "mode": "full_v2",
+  "verdict": "not_reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef test_checkout_reduces_stock():\n    # Create a cart with a product and add 3 units\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 20), 3)\n    \n    # Perform the checkout\n    bill = checkout(cart)\n    \n    # Assert that the product's stock is reduced by 3 units\n    assert cart.products[\"P1\"].stock == 7\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef test_checkout_reduces_stock():\n    # Create a cart with a product and add 3 units\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 20), 3)\n    \n    # Perform the checkout\n    bill = checkout(cart)\n    \n    # Assert that the product's stock is reduced by 3 units\n    assert cart.products[\"P1\"].stock == 7\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 1.56,
+        "output": "F\n================================== FAILURES ===================================\n_________________________ test_checkout_reduces_stock _________________________\ntest_reproagent_repro.py:14: in test_checkout_reduces_stock\n    assert cart.products[\"P1\"].stock == 7\n           ^^^^^^^^^^^^^\nE   AttributeError: 'Cart' object has no attribute 'products'\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_checkout_reduces_stock - AttributeError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.17s",
+        "exception_type": "AttributeError",
+        "failure_line": "AttributeError: 'Cart' object has no attribute 'products'"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The exception was raised by the test code itself, not by the project: AttributeError: 'Cart' object has no attribute 'products'. Check the function signature and how existing tests call it. `Cart` has no `products`. Its real attributes/methods are: __init__, add, apply_coupon, coupon, item_count, items, remove, set_quantity, subtotal.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 2,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef test_checkout_reduces_stock():\n    # Create a cart with a product and add 3 units\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 20), 3)\n    \n    # Perform the checkout\n    bill = checkout(cart)\n    \n    # Assert that the product's stock is reduced by 3 units\n    assert cart.products[\"P1\"].stock == 7\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef test_checkout_reduces_stock():\n    # Create a cart with a product and add 3 units\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 20), 3)\n    \n    # Perform the checkout\n    bill = checkout(cart)\n    \n    # Assert that the product's stock is reduced by 3 units\n    assert cart.products[\"P1\"].stock == 7\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.89,
+        "output": "F\n================================== FAILURES ===================================\n_________________________ test_checkout_reduces_stock _________________________\ntest_reproagent_repro.py:14: in test_checkout_reduces_stock\n    assert cart.products[\"P1\"].stock == 7\n           ^^^^^^^^^^^^^\nE   AttributeError: 'Cart' object has no attribute 'products'\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_checkout_reduces_stock - AttributeError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.08s",
+        "exception_type": "AttributeError",
+        "failure_line": "AttributeError: 'Cart' object has no attribute 'products'"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The exception was raised by the test code itself, not by the project: AttributeError: 'Cart' object has no attribute 'products'. Check the function signature and how existing tests call it. `Cart` has no `products`. Its real attributes/methods are: __init__, add, apply_coupon, coupon, item_count, items, remove, set_quantity, subtotal.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 3,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef test_checkout_reduces_stock():\n    # Create a cart with a product and add 3 units\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 20), 3)\n    \n    # Perform the checkout\n    bill = checkout(cart)\n    \n    # Assert that the product's stock is reduced by 3 units\n    assert cart.products[\"P1\"].stock == 7\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef test_checkout_reduces_stock():\n    # Create a cart with a product and add 3 units\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 20), 3)\n    \n    # Perform the checkout\n    bill = checkout(cart)\n    \n    # Assert that the product's stock is reduced by 3 units\n    assert cart.products[\"P1\"].stock == 7\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.8,
+        "output": "F\n================================== FAILURES ===================================\n_________________________ test_checkout_reduces_stock _________________________\ntest_reproagent_repro.py:14: in test_checkout_reduces_stock\n    assert cart.products[\"P1\"].stock == 7\n           ^^^^^^^^^^^^^\nE   AttributeError: 'Cart' object has no attribute 'products'\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_checkout_reduces_stock - AttributeError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.10s",
+        "exception_type": "AttributeError",
+        "failure_line": "AttributeError: 'Cart' object has no attribute 'products'"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The exception was raised by the test code itself, not by the project: AttributeError: 'Cart' object has no attribute 'products'. Check the function signature and how existing tests call it. `Cart` has no `products`. Its real attributes/methods are: __init__, add, apply_coupon, coupon, item_count, items, remove, set_quantity, subtotal.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 4,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef test_checkout_reduces_stock():\n    # Create a cart with a product and add 3 units\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 20), 3)\n    \n    # Perform the checkout\n    bill = checkout(cart)\n    \n    # Assert that the product's stock is reduced by 3 units\n    assert cart.products[\"P1\"].stock == 7\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef test_checkout_reduces_stock():\n    # Create a cart with a product and add 3 units\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 20), 3)\n    \n    # Perform the checkout\n    bill = checkout(cart)\n    \n    # Assert that the product's stock is reduced by 3 units\n    assert cart.products[\"P1\"].stock == 7\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 1.21,
+        "output": "F\n================================== FAILURES ===================================\n_________________________ test_checkout_reduces_stock _________________________\ntest_reproagent_repro.py:14: in test_checkout_reduces_stock\n    assert cart.products[\"P1\"].stock == 7\n           ^^^^^^^^^^^^^\nE   AttributeError: 'Cart' object has no attribute 'products'\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_checkout_reduces_stock - AttributeError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.09s",
+        "exception_type": "AttributeError",
+        "failure_line": "AttributeError: 'Cart' object has no attribute 'products'"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The exception was raised by the test code itself, not by the project: AttributeError: 'Cart' object has no attribute 'products'. Check the function signature and how existing tests call it. `Cart` has no `products`. Its real attributes/methods are: __init__, add, apply_coupon, coupon, item_count, items, remove, set_quantity, subtotal.",
+        "llm_judgement": null
+      }
+    }
+  ],
+  "spec": {
+    "summary": "Inventory not reduced correctly after checkout",
+    "expected": "The product's stock should be reduced by 3 units after a customer buys 3 units.",
+    "observed": "The product's stock shows 9 units instead of 7 after the checkout.",
+    "symbols": [
+      "inventory",
+      "stock",
+      "reduce",
+      "buy",
+      "checkout"
+    ],
+    "files": [
+      "inventory.py",
+      "checkout.py"
+    ],
+    "example_inputs": [
+      "product_id=1, quantity=3"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": null,
+  "total_time_s": 165.3,
+  "llm_calls": 8,
+  "fail_to_pass": false,
+  "fixed_version_output": null,
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

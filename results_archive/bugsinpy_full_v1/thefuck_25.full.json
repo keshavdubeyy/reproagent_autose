@@ -1,0 +1,119 @@
+{
+  "bug_id": "thefuck_25",
+  "mode": "full",
+  "verdict": "not_reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import re\nfrom thefuck.rules.mkdir_p import get_new_command, match\n\ndef test_mkdir_p_rule():\n    command = Command('hdfs dfs -mkdir foo/bar/baz', stderr='No such file or directory')\n    expected = 'hdfs dfs -mkdir -p foo/bar/baz'\n    assert get_new_command(command, {}) == expected\n",
+        "raw_llm_output": "```python\nimport re\nfrom thefuck.rules.mkdir_p import get_new_command, match\n\ndef test_mkdir_p_rule():\n    command = Command('hdfs dfs -mkdir foo/bar/baz', stderr='No such file or directory')\n    expected = 'hdfs dfs -mkdir -p foo/bar/baz'\n    assert get_new_command(command, {}) == expected\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.84,
+        "output": "F\n================================== FAILURES ===================================\n______________________________ test_mkdir_p_rule ______________________________\ntest_reproagent_repro.py:5: in test_mkdir_p_rule\n    command = Command('hdfs dfs -mkdir foo/bar/baz', stderr='No such file or directory')\n              ^^^^^^^\nE   NameError: name 'Command' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_mkdir_p_rule - NameError: name 'Command...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.12s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'Command' is not defined"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'Command' is not defined. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 2,
+        "code": "import re\nfrom thefuck.rules.mkdir_p import get_new_command, match\n\ndef test_mkdir_p_rule():\n    command = types.Command('hdfs dfs -mkdir foo/bar/baz', stderr='No such file or directory')\n    expected = 'hdfs dfs -mkdir -p foo/bar/baz'\n    assert get_new_command(command, {}) == expected\n",
+        "raw_llm_output": "```python\nimport re\nfrom thefuck.rules.mkdir_p import get_new_command, match\n\ndef test_mkdir_p_rule():\n    command = types.Command('hdfs dfs -mkdir foo/bar/baz', stderr='No such file or directory')\n    expected = 'hdfs dfs -mkdir -p foo/bar/baz'\n    assert get_new_command(command, {}) == expected\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.85,
+        "output": "F\n================================== FAILURES ===================================\n______________________________ test_mkdir_p_rule ______________________________\ntest_reproagent_repro.py:5: in test_mkdir_p_rule\n    command = types.Command('hdfs dfs -mkdir foo/bar/baz', stderr='No such file or directory')\n              ^^^^^\nE   NameError: name 'types' is not defined. Did you forget to import 'types'?\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_mkdir_p_rule - NameError: name 'types' ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.10s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'types' is not defined. Did you forget to import 'types'?"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'types' is not defined. Did you forget to import 'types'?. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 3,
+        "code": "import re\nfrom thefuck.rules.mkdir_p import get_new_command, match\n\ndef test_mkdir_p_rule():\n    command = types.Command('hdfs dfs -mkdir foo/bar/baz', stderr='No such file or directory')\n    expected = 'hdfs dfs -mkdir -p foo/bar/baz'\n    assert get_new_command(command, {}) == expected\n",
+        "raw_llm_output": "```python\nimport re\nfrom thefuck.rules.mkdir_p import get_new_command, match\n\ndef test_mkdir_p_rule():\n    command = types.Command('hdfs dfs -mkdir foo/bar/baz', stderr='No such file or directory')\n    expected = 'hdfs dfs -mkdir -p foo/bar/baz'\n    assert get_new_command(command, {}) == expected\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.88,
+        "output": "F\n================================== FAILURES ===================================\n______________________________ test_mkdir_p_rule ______________________________\ntest_reproagent_repro.py:5: in test_mkdir_p_rule\n    command = types.Command('hdfs dfs -mkdir foo/bar/baz', stderr='No such file or directory')\n              ^^^^^\nE   NameError: name 'types' is not defined. Did you forget to import 'types'?\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_mkdir_p_rule - NameError: name 'types' ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.10s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'types' is not defined. Did you forget to import 'types'?"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'types' is not defined. Did you forget to import 'types'?. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 4,
+        "code": "import re\nfrom thefuck.rules.mkdir_p import get_new_command, match\n\ndef test_mkdir_p_rule():\n    command = types.Command('hdfs dfs -mkdir foo/bar/baz', stderr='No such file or directory')\n    expected = 'hdfs dfs -mkdir -p foo/bar/baz'\n    assert get_new_command(command, {}) == expected\n",
+        "raw_llm_output": "```python\nimport re\nfrom thefuck.rules.mkdir_p import get_new_command, match\n\ndef test_mkdir_p_rule():\n    command = types.Command('hdfs dfs -mkdir foo/bar/baz', stderr='No such file or directory')\n    expected = 'hdfs dfs -mkdir -p foo/bar/baz'\n    assert get_new_command(command, {}) == expected\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 1.04,
+        "output": "F\n================================== FAILURES ===================================\n______________________________ test_mkdir_p_rule ______________________________\ntest_reproagent_repro.py:5: in test_mkdir_p_rule\n    command = types.Command('hdfs dfs -mkdir foo/bar/baz', stderr='No such file or directory')\n              ^^^^^\nE   NameError: name 'types' is not defined. Did you forget to import 'types'?\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_mkdir_p_rule - NameError: name 'types' ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.09s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'types' is not defined. Did you forget to import 'types'?"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'types' is not defined. Did you forget to import 'types'?. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    }
+  ],
+  "spec": {
+    "summary": "mkdir_p rule does not handle 'hdfs dfs -mkdir' correctly",
+    "expected": "The rule should suggest 'hdfs dfs -mkdir -p foo/bar/baz' for the given command",
+    "observed": "The suggested command is identical to the original",
+    "symbols": [
+      "mkdir_p",
+      "hdfs",
+      "dfs",
+      "mkdir",
+      "foo",
+      "bar",
+      "baz",
+      "rule"
+    ],
+    "files": [
+      "thefuck/rules/mkdir_p.py"
+    ],
+    "example_inputs": [
+      "hdfs dfs -mkdir foo/bar/baz"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": null,
+  "total_time_s": 121.7,
+  "llm_calls": 7,
+  "fail_to_pass": false,
+  "fixed_version_output": null
+}

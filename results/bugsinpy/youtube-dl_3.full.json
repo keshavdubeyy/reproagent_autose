@@ -1,0 +1,114 @@
+{
+  "bug_id": "youtube-dl_3",
+  "mode": "full",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import re\nfrom youtube_dl.utils import unescapeHTML\n\ndef test_unescapeHTML_bare_ampersand():\n    # Expected output: '&a\"'\n    expected_output = '&a\"'\n    # Input string: '&a\"'\n    input_string = '&a\"'\n    # Call the function under test\n    result = unescapeHTML(input_string)\n    # Assert the expected output\n    self.assertEqual(result, expected_output)\n",
+        "raw_llm_output": "```python\nimport re\nfrom youtube_dl.utils import unescapeHTML\n\ndef test_unescapeHTML_bare_ampersand():\n    # Expected output: '&a\"'\n    expected_output = '&a\"'\n    # Input string: '&a\"'\n    input_string = '&a\"'\n    # Call the function under test\n    result = unescapeHTML(input_string)\n    # Assert the expected output\n    self.assertEqual(result, expected_output)\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 6.2,
+        "output": "F\n================================== FAILURES ===================================\n______________________ test_unescapeHTML_bare_ampersand _______________________\ntest_reproagent_repro.py:12: in test_unescapeHTML_bare_ampersand\n    self.assertEqual(result, expected_output)\n    ^^^^\nE   NameError: name 'self' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_unescapeHTML_bare_ampersand - NameError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 5.08s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'self' is not defined"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'self' is not defined. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 2,
+        "code": "import re\nfrom youtube_dl.utils import unescapeHTML\n\ndef test_unescapeHTML_bare_ampersand():\n    # Expected output: '&a\"'\n    expected_output = '&a\"'\n    # Input string: '&a\"'\n    input_string = '&a\"'\n    # Call the function under test\n    result = unescapeHTML(input_string)\n    # Assert the expected output\n    assert result == expected_output\n",
+        "raw_llm_output": "```python\nimport re\nfrom youtube_dl.utils import unescapeHTML\n\ndef test_unescapeHTML_bare_ampersand():\n    # Expected output: '&a\"'\n    expected_output = '&a\"'\n    # Input string: '&a\"'\n    input_string = '&a\"'\n    # Call the function under test\n    result = unescapeHTML(input_string)\n    # Assert the expected output\n    assert result == expected_output\n```"
+      },
+      "execution": {
+        "status": "passed",
+        "exit_code": 0,
+        "duration_s": 1.97,
+        "output": ".                                                                        [100%]\n1 passed in 1.28s",
+        "exception_type": null,
+        "failure_line": null
+      },
+      "analysis": {
+        "category": "test_passed",
+        "is_reproduction": false,
+        "feedback": "The test PASSED, so it did not trigger the bug. Use the exact example input from the report and assert the EXPECTED value stated in the report.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 3,
+        "code": "import re\nfrom youtube_dl.utils import unescapeHTML\n\ndef test_unescapeHTML_bare_ampersand():\n    # Expected output: '&a\"'\n    expected_output = '&a\"'\n    # Input string: '&a\"'\n    input_string = '&a\"'\n    # Call the function under test\n    result = unescapeHTML(input_string)\n    # Assert the expected output\n    assert result == expected_output\n",
+        "raw_llm_output": "```python\nimport re\nfrom youtube_dl.utils import unescapeHTML\n\ndef test_unescapeHTML_bare_ampersand():\n    # Expected output: '&a\"'\n    expected_output = '&a\"'\n    # Input string: '&a\"'\n    input_string = '&a\"'\n    # Call the function under test\n    result = unescapeHTML(input_string)\n    # Assert the expected output\n    assert result == expected_output\n```"
+      },
+      "execution": {
+        "status": "passed",
+        "exit_code": 0,
+        "duration_s": 2.42,
+        "output": ".                                                                        [100%]\n1 passed in 1.52s",
+        "exception_type": null,
+        "failure_line": null
+      },
+      "analysis": {
+        "category": "test_passed",
+        "is_reproduction": false,
+        "feedback": "The test PASSED, so it did not trigger the bug. Use the exact example input from the report and assert the EXPECTED value stated in the report.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 4,
+        "code": "import re\nfrom youtube_dl.utils import unescapeHTML\n\ndef test_unescapeHTML_bare_ampersand():\n    # Expected output: '&a\"'\n    expected_output = '&a\"'\n    # Input string: '&a\"'\n    input_string = '&a&quot;'\n    # Call the function under test\n    result = unescapeHTML(input_string)\n    # Assert the expected output\n    assert result == expected_output\n",
+        "raw_llm_output": "```python\nimport re\nfrom youtube_dl.utils import unescapeHTML\n\ndef test_unescapeHTML_bare_ampersand():\n    # Expected output: '&a\"'\n    expected_output = '&a\"'\n    # Input string: '&a\"'\n    input_string = '&a&quot;'\n    # Call the function under test\n    result = unescapeHTML(input_string)\n    # Assert the expected output\n    assert result == expected_output\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 2.65,
+        "output": "F\n================================== FAILURES ===================================\n______________________ test_unescapeHTML_bare_ampersand _______________________\ntest_reproagent_repro.py:12: in test_unescapeHTML_bare_ampersand\n    assert result == expected_output\nE   assert '&a&quot;' == '&a\"'\nE     \nE     - &a\"\nE     + &a&quot;\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_unescapeHTML_bare_ampersand - assert '&...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 1.74s",
+        "exception_type": "AssertionError",
+        "failure_line": "assert '&a&quot;' == '&a\"'"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[evidence-match] actual value &a&quot; is the wrong value the report observed"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "HTML entity decoding issue in unescapeHTML function",
+    "expected": "The function should decode HTML entities that come after a bare '&' that is not part of an entity.",
+    "observed": "The function does not decode HTML entities that come after a bare '&' that is not part of an entity.",
+    "symbols": [
+      "unescapeHTML"
+    ],
+    "files": [
+      "youtube_dl/utils.py"
+    ],
+    "example_inputs": [
+      "&a\""
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import re\nfrom youtube_dl.utils import unescapeHTML\n\ndef test_unescapeHTML_bare_ampersand():\n    # Expected output: '&a\"'\n    expected_output = '&a\"'\n    # Input string: '&a\"'\n    input_string = '&a&quot;'\n    # Call the function under test\n    result = unescapeHTML(input_string)\n    # Assert the expected output\n    assert result == expected_output\n",
+  "total_time_s": 131.8,
+  "llm_calls": 7,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n1 passed in 5.77s",
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

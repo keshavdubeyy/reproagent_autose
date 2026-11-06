@@ -1,0 +1,115 @@
+{
+  "bug_id": "thefuck_27",
+  "mode": "full",
+  "verdict": "not_reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import thefuck.rules.open\nfrom thefuck import corrector, conf, types\nfrom thefuck.corrector import make_corrected_commands, get_corrected_commands, remove_duplicates\n\ndef test_open_rule():\n    command = Command('xdg-open foo.com', '', '')\n    expected = CorrectedCommand('xdg-open http://foo.com', 'xdg-open http://foo.com')\n    assert corrector.get_corrected_commands(command, conf.settings)[0] == expected\n",
+        "raw_llm_output": "```python\nimport thefuck.rules.open\nfrom thefuck import corrector, conf, types\nfrom thefuck.corrector import make_corrected_commands, get_corrected_commands, remove_duplicates\n\ndef test_open_rule():\n    command = Command('xdg-open foo.com', '', '')\n    expected = CorrectedCommand('xdg-open http://foo.com', 'xdg-open http://foo.com')\n    assert corrector.get_corrected_commands(command, conf.settings)[0] == expected\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.89,
+        "output": "F\n================================== FAILURES ===================================\n_______________________________ test_open_rule ________________________________\ntest_reproagent_repro.py:6: in test_open_rule\n    command = Command('xdg-open foo.com', '', '')\n              ^^^^^^^\nE   NameError: name 'Command' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_open_rule - NameError: name 'Command' i...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.13s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'Command' is not defined"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'Command' is not defined. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 2,
+        "code": "import thefuck.rules.open\nfrom thefuck import corrector, conf, types\nfrom thefuck.corrector import make_corrected_commands, get_corrected_commands, remove_duplicates\n\ndef test_open_rule():\n    command = types.Command('xdg-open foo.com', '', '')\n    expected = CorrectedCommand('xdg-open http://foo.com', 'xdg-open http://foo.com')\n    assert corrector.get_corrected_commands(command, conf.settings)[0] == expected\n",
+        "raw_llm_output": "```python\nimport thefuck.rules.open\nfrom thefuck import corrector, conf, types\nfrom thefuck.corrector import make_corrected_commands, get_corrected_commands, remove_duplicates\n\ndef test_open_rule():\n    command = types.Command('xdg-open foo.com', '', '')\n    expected = CorrectedCommand('xdg-open http://foo.com', 'xdg-open http://foo.com')\n    assert corrector.get_corrected_commands(command, conf.settings)[0] == expected\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 1.02,
+        "output": "F\n================================== FAILURES ===================================\n_______________________________ test_open_rule ________________________________\ntest_reproagent_repro.py:7: in test_open_rule\n    expected = CorrectedCommand('xdg-open http://foo.com', 'xdg-open http://foo.com')\n               ^^^^^^^^^^^^^^^^\nE   NameError: name 'CorrectedCommand' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_open_rule - NameError: name 'CorrectedC...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.10s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'CorrectedCommand' is not defined"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'CorrectedCommand' is not defined. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 3,
+        "code": "import thefuck.rules.open\nfrom thefuck import corrector, conf, types\nfrom thefuck.corrector import make_corrected_commands, get_corrected_commands, remove_duplicates\n\ndef test_open_rule():\n    command = types.Command('xdg-open foo.com', '', '')\n    expected = types.CorrectedCommand('xdg-open http://foo.com', 'xdg-open http://foo.com')\n    assert corrector.get_corrected_commands(command, conf.settings)[0] == expected\n",
+        "raw_llm_output": "```python\nimport thefuck.rules.open\nfrom thefuck import corrector, conf, types\nfrom thefuck.corrector import make_corrected_commands, get_corrected_commands, remove_duplicates\n\ndef test_open_rule():\n    command = types.Command('xdg-open foo.com', '', '')\n    expected = types.CorrectedCommand('xdg-open http://foo.com', 'xdg-open http://foo.com')\n    assert corrector.get_corrected_commands(command, conf.settings)[0] == expected\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.94,
+        "output": "F\n================================== FAILURES ===================================\n_______________________________ test_open_rule ________________________________\ntest_reproagent_repro.py:7: in test_open_rule\n    expected = types.CorrectedCommand('xdg-open http://foo.com', 'xdg-open http://foo.com')\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: CorrectedCommand.__new__() missing 1 required positional argument: 'priority'\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_open_rule - TypeError: CorrectedCommand...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.12s",
+        "exception_type": "TypeError",
+        "failure_line": "TypeError: CorrectedCommand.__new__() missing 1 required positional argument: 'priority'"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The exception was raised by the test code itself, not by the project: TypeError: CorrectedCommand.__new__() missing 1 required positional argument: 'priority'. Check the function signature and how existing tests call it.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 4,
+        "code": "import thefuck.rules.open\nfrom thefuck import corrector, conf, types\nfrom thefuck.corrector import make_corrected_commands, get_corrected_commands, remove_duplicates\n\ndef test_open_rule():\n    command = types.Command('xdg-open foo.com', '', '')\n    expected = types.CorrectedCommand('xdg-open http://foo.com', 'xdg-open http://foo.com', priority=100)\n    assert corrector.get_corrected_commands(command, conf.settings)[0] == expected\n",
+        "raw_llm_output": "```python\nimport thefuck.rules.open\nfrom thefuck import corrector, conf, types\nfrom thefuck.corrector import make_corrected_commands, get_corrected_commands, remove_duplicates\n\ndef test_open_rule():\n    command = types.Command('xdg-open foo.com', '', '')\n    expected = types.CorrectedCommand('xdg-open http://foo.com', 'xdg-open http://foo.com', priority=100)\n    assert corrector.get_corrected_commands(command, conf.settings)[0] == expected\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 1.26,
+        "output": "F\n================================== FAILURES ===================================\n_______________________________ test_open_rule ________________________________\ntest_reproagent_repro.py:8: in test_open_rule\n    assert corrector.get_corrected_commands(command, conf.settings)[0] == expected\n                                                     ^^^^^^^^^^^^^\nE   AttributeError: module 'thefuck.conf' has no attribute 'settings'\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_open_rule - AttributeError: module 'the...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.12s",
+        "exception_type": "AttributeError",
+        "failure_line": "AttributeError: module 'thefuck.conf' has no attribute 'settings'"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The exception was raised by the test code itself, not by the project: AttributeError: module 'thefuck.conf' has no attribute 'settings'. Check the function signature and how existing tests call it.",
+        "llm_judgement": null
+      }
+    }
+  ],
+  "spec": {
+    "summary": "The 'open' rule incorrectly adds 'http://' to URLs without a scheme when using 'xdg-open' or 'gnome-open'.",
+    "expected": "The 'open' rule should correctly handle URLs without a scheme when using 'xdg-open' or 'gnome-open'.",
+    "observed": "The 'open' rule adds 'http://' to URLs without a scheme when using 'xdg-open' or 'gnome-open', resulting in a broken command.",
+    "symbols": [
+      "open",
+      "xdg-open",
+      "gnome-open",
+      "rule"
+    ],
+    "files": [
+      "thefuck/rules/open.py"
+    ],
+    "example_inputs": [
+      "xdg-open foo.com"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": null,
+  "total_time_s": 116.7,
+  "llm_calls": 5,
+  "fail_to_pass": false,
+  "fixed_version_output": null
+}

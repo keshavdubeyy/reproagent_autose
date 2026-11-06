@@ -1,0 +1,100 @@
+{
+  "bug_id": "youtube-dl_11",
+  "mode": "fix_no_repro",
+  "status": "not_fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "# youtube_dl/utils.py (module youtube_dl.utils) - modified\ndef str_to_int(int_str):\n    \"\"\" A more relaxed version of int_or_none \"\"\"\n    if int_str is None:\n        return None\n    try:\n        return int(int_str)\n    except ValueError:\n        return None\n",
+        "diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -3521,8 +3521,10 @@\n     \"\"\" A more relaxed version of int_or_none \"\"\"\n     if int_str is None:\n         return None\n-    int_str = re.sub(r'[,\\.\\+]', '', int_str)\n-    return int(int_str)\n+    try:\n+        return int(int_str)\n+    except ValueError:\n+        return None\n \n \n def float_or_none(v, scale=1, invscale=1, default=None):\n",
+        "raw_llm_output": "Root cause: The `str_to_int` function does not handle integers correctly when passed as a string. It attempts to remove commas, periods, and plus signs from the string, which is unnecessary for integers and causes a TypeError when an integer is passed directly.\n\nFix:\n```python\n# youtube_dl/utils.py (module youtube_dl.utils) - modified\ndef str_to_int(int_str):\n    \"\"\" A more relaxed version of int_or_none \"\"\"\n    if int_str is None:\n        return None\n    try:\n        return int(int_str)\n    except ValueError:\n        return None\n```"
+      },
+      "check": {
+        "category": "regression",
+        "accepted": false,
+        "feedback": "Your patch breaks 2 existing test(s) that passed before: FAILED test/test_utils.py::TestUtil::test_parse_count - AssertionError: None ...; FAILED test/test_utils.py::TestUtil::test_str_to_int - AssertionError: None !.... Keep the existing behaviour and fix only the bug.",
+        "repro_status": null,
+        "regressions": [
+          "test/test_utils.py::TestUtil::test_parse_count",
+          "test/test_utils.py::TestUtil::test_str_to_int"
+        ],
+        "output": "..............................................F.................F...F... [ 78%]\n....................                                                     [100%]\n================================== FAILURES ===================================\nE   AssertionError: None != 1000\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:918: AssertionError: None != 1000\nE   AssertionError: '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc\\\\' != '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc'\n    - \\\\?\\UNC\\ComputerName\\abc\\\n    ?                         -\n    + \\\\?\\UNC\\ComputerName\\abc\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:750: AssertionError: '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc\\\\' != '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc'\nE   AssertionError: None != 123456\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:918: AssertionError: None != 123456\n=========================== short test summary info ===========================\nFAILED test/test_utils.py::TestUtil::test_parse_count - AssertionError: None ...\nFAILED test/test_utils.py::TestUtil::test_sanitize_path - AssertionError: '\\\\...\nFAILED test/test_utils.py::TestUtil::test_str_to_int - AssertionError: None !...\n3 failed, 89 passed in 10.56s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "str_to_int",
+      "lineno": 3520,
+      "end_lineno": 3525,
+      "source": "def str_to_int(int_str):\n    \"\"\" A more relaxed version of int_or_none \"\"\"\n    if int_str is None:\n        return None\n    int_str = re.sub(r'[,\\.\\+]', '', int_str)\n    return int(int_str)",
+      "score": 26.0,
+      "why": "named in the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "str_or_none",
+      "lineno": 3516,
+      "end_lineno": 3517,
+      "source": "def str_or_none(v, default=None):\n    return default if v is None else compat_str(v)",
+      "score": 9.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "args_to_str",
+      "lineno": 4059,
+      "end_lineno": 4061,
+      "source": "def args_to_str(args):\n    # Get a short string representation for a subprocess command\n    return ' '.join(compat_shlex_quote(a) for a in args)",
+      "score": 9.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "encode_compat_str",
+      "lineno": 3926,
+      "end_lineno": 3927,
+      "source": "def encode_compat_str(string, encoding=preferredencoding(), errors='strict'):\n    return string if isinstance(string, compat_str) else compat_str(string, encoding, errors)",
+      "score": 9.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "match_str",
+      "lineno": 4289,
+      "end_lineno": 4293,
+      "source": "def match_str(filter_str, dct):\n    \"\"\" Filter a dictionary with a simple string syntax. Returns True (=passes filter) or false \"\"\"\n\n    return all(\n        _match_one(filter_part, dct) for filter_part in filter_str.split('&'))",
+      "score": 9.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "error_to_compat_str",
+      "lineno": 4064,
+      "end_lineno": 4070,
+      "source": "def error_to_compat_str(err):\n    err_str = str(err)\n    # On python 2 error byte string must be decoded with proper\n    # encoding rather than ascii\n    if sys.version_info[0] < 3:\n        err_str = err_str.decode(preferredencoding())\n    return err_str",
+      "score": 9.0,
+      "why": "matches the bug report"
+    }
+  ],
+  "final_diff": null,
+  "total_time_s": 34.2,
+  "llm_calls": 1,
+  "regression_tests": [
+    "test/test_utils.py",
+    "test/test_execution.py"
+  ],
+  "correct": false,
+  "no_regression": null,
+  "eval_output": null,
+  "repro_from": "full",
+  "repro_valid": true
+}

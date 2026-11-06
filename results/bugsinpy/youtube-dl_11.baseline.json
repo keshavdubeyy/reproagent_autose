@@ -1,0 +1,51 @@
+{
+  "bug_id": "youtube-dl_11",
+  "mode": "baseline",
+  "verdict": "not_reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import sys\nsys.path.append('/path/to/your/project')  # Adjust the path as necessary\nfrom youtube_dl.utils import str_to_int\n\ndef test_str_to_int_crash():\n    with pytest.raises(TypeError):\n        str_to_int(523)\n",
+        "raw_llm_output": "```python\nimport sys\nsys.path.append('/path/to/your/project')  # Adjust the path as necessary\nfrom youtube_dl.utils import str_to_int\n\ndef test_str_to_int_crash():\n    with pytest.raises(TypeError):\n        str_to_int(523)\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 7.03,
+        "output": "F\n================================== FAILURES ===================================\n____________________________ test_str_to_int_crash ____________________________\ntest_reproagent_repro.py:6: in test_str_to_int_crash\n    with pytest.raises(TypeError):\n         ^^^^^^\nE   NameError: name 'pytest' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_str_to_int_crash - NameError: name 'pyt...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 6.32s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'pytest' is not defined"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'pytest' is not defined. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    }
+  ],
+  "spec": {
+    "summary": "str_to_int crashes when given an integer",
+    "expected": "str_to_int(523) == 523",
+    "observed": "str_to_int(523) raises a TypeError",
+    "symbols": [
+      "str_to_int"
+    ],
+    "files": [
+      "youtube_dl/utils.py"
+    ],
+    "example_inputs": [
+      "523"
+    ],
+    "failure_kind": "exception",
+    "is_actionable": true
+  },
+  "final_test": null,
+  "total_time_s": 31.4,
+  "llm_calls": 2,
+  "fail_to_pass": false,
+  "fixed_version_output": null,
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

@@ -1,0 +1,47 @@
+{
+  "bug_id": "thefuck_32",
+  "mode": "fix_single",
+  "status": "not_fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "# thefuck/rules/ls_lah.py (module thefuck.rules.ls_lah) - called by the reproduction test (its result is asserted)\ndef match(command, settings):\n    return 'ls' in command.script and not ('ls -' in command.script and 'ls' in command.script)\n",
+        "diff": "--- a/thefuck/rules/ls_lah.py\n+++ b/thefuck/rules/ls_lah.py\n@@ -1,5 +1,5 @@\n def match(command, settings):\n-    return 'ls' in command.script and not ('ls -' in command.script)\n+    return 'ls' in command.script and not ('ls -' in command.script and 'ls' in command.script)\n \n \n def get_new_command(command, settings):\n",
+        "raw_llm_output": "Root cause: The `match` function incorrectly checks if the command script contains 'ls' and does not exclude 'ls -'. This causes the function to return `True` for commands like 'pacman -S binutils', which contains 'ls'.\n\n```python\n# thefuck/rules/ls_lah.py (module thefuck.rules.ls_lah) - called by the reproduction test (its result is asserted)\ndef match(command, settings):\n    return 'ls' in command.script and not ('ls -' in command.script and 'ls' in command.script)\n```"
+      },
+      "check": {
+        "category": "repro_still_fails",
+        "accepted": false,
+        "feedback": "After your patch the reproduction test still fails: AssertionError: assert True is False. The root cause is not fixed yet (or your change broke the code path).",
+        "repro_status": "failed",
+        "regressions": [],
+        "output": "F\n================================== FAILURES ===================================\n_________________________ test_ls_lah_rule_matches_ls _________________________\ntest_reproagent_repro.py:7: in test_ls_lah_rule_matches_ls\n    assert match(command, {}) is False\nE   AssertionError: assert True is False\nE    +  where True = match(Command(script='pacman -S binutils', stdout='', stderr='error message'), {})\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_ls_lah_rule_matches_ls - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.09s"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "thefuck/rules/ls_lah.py",
+      "module": "thefuck.rules.ls_lah",
+      "name": "match",
+      "lineno": 1,
+      "end_lineno": 2,
+      "source": "def match(command, settings):\n    return 'ls' in command.script and not ('ls -' in command.script)",
+      "score": 9.5,
+      "why": "called by the reproduction test (its result is asserted)"
+    }
+  ],
+  "final_diff": null,
+  "total_time_s": 16.8,
+  "llm_calls": 1,
+  "regression_tests": [
+    "tests/rules/test_ls_lah.py",
+    "tests/rules/test_switch_lang.py"
+  ],
+  "correct": false,
+  "no_regression": null,
+  "eval_output": null,
+  "repro_from": "full_v2",
+  "repro_valid": true
+}

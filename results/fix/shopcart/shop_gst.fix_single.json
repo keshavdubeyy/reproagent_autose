@@ -1,0 +1,56 @@
+{
+  "bug_id": "shop_gst",
+  "mode": "fix_single",
+  "status": "not_fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "# shopcart/pricing.py (module shopcart.pricing) - called by the reproduction test (its result is asserted)\ndef gst(amount) -> Decimal:\n    \"\"\"18% GST rounded half-up to the paisa.\"\"\"\n    return Decimal(amount) * GST_RATE * 100).quantize(Decimal(\"0.01\"), rounding=ROUND_HALF_UP) / 100\n\n# shopcart/pricing.py (module shopcart.pricing) - constant read by gst\nGST_RATE = Decimal(\"0.18\")\n",
+        "diff": "",
+        "raw_llm_output": "Root cause: The `gst` function is rounding the GST amount to the nearest paisa using `Decimal(int(...))`, which truncates the decimal part instead of rounding it. This results in a loss of precision for amounts that are not exactly divisible by 100.\n\nTo fix this, we need to use the `Decimal` method `quantize` with a rounding mode that rounds half-up. Here's the updated code:\n\n```python\n# shopcart/pricing.py (module shopcart.pricing) - called by the reproduction test (its result is asserted)\ndef gst(amount) -> Decimal:\n    \"\"\"18% GST rounded half-up to the paisa.\"\"\"\n    return Decimal(amount) * GST_RATE * 100).quantize(Decimal(\"0.01\"), rounding=ROUND_HALF_UP) / 100\n\n# shopcart/pricing.py (module shopcart.pricing) - constant read by gst\nGST_RATE = Decimal(\"0.18\")\n```"
+      },
+      "check": {
+        "category": "not_applicable",
+        "accepted": false,
+        "feedback": "Your code block is not valid Python (unmatched ')', line 3).",
+        "repro_status": null,
+        "regressions": [],
+        "output": ""
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "gst",
+      "lineno": 39,
+      "end_lineno": 41,
+      "source": "def gst(amount) -> Decimal:\n    \"\"\"18% GST rounded half-up to the paisa.\"\"\"\n    return Decimal(int(Decimal(str(amount)) * GST_RATE * 100)) / 100",
+      "score": 13.5,
+      "why": "called by the reproduction test (its result is asserted)"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "GST_RATE",
+      "lineno": 8,
+      "end_lineno": 8,
+      "source": "GST_RATE = Decimal(\"0.18\")",
+      "score": 12.5,
+      "why": "constant read by gst"
+    }
+  ],
+  "final_diff": null,
+  "total_time_s": 23.5,
+  "llm_calls": 1,
+  "regression_tests": [
+    "tests/test_cart.py"
+  ],
+  "correct": false,
+  "no_regression": null,
+  "eval_output": null,
+  "repro_from": "full",
+  "repro_valid": true
+}

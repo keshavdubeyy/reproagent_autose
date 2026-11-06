@@ -1,0 +1,51 @@
+{
+  "bug_id": "youtube-dl_3",
+  "mode": "baseline",
+  "verdict": "not_reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import youtube_dl.utils\n\ndef test_unescape_html_bare_ampersand():\n    input_string = '&a\"'\n    expected_output = '&a\"'\n    actual_output = youtube_dl.utils.unescapeHTML(input_string)\n    \n    assert actual_output == expected_output, f\"Expected {expected_output}, but got {actual_output}\"\n",
+        "raw_llm_output": "```python\nimport youtube_dl.utils\n\ndef test_unescape_html_bare_ampersand():\n    input_string = '&a\"'\n    expected_output = '&a\"'\n    actual_output = youtube_dl.utils.unescapeHTML(input_string)\n    \n    assert actual_output == expected_output, f\"Expected {expected_output}, but got {actual_output}\"\n```"
+      },
+      "execution": {
+        "status": "passed",
+        "exit_code": 0,
+        "duration_s": 7.31,
+        "output": ".                                                                        [100%]\n1 passed in 6.59s",
+        "exception_type": null,
+        "failure_line": null
+      },
+      "analysis": {
+        "category": "test_passed",
+        "is_reproduction": false,
+        "feedback": "The test PASSED, so it did not trigger the bug. Use the exact example input from the report and assert the EXPECTED value stated in the report.",
+        "llm_judgement": null
+      }
+    }
+  ],
+  "spec": {
+    "summary": "HTML entity decoding issue in unescapeHTML function",
+    "expected": "The function should decode HTML entities that come after a bare '&' that is not part of an entity.",
+    "observed": "The function does not decode HTML entities that come after a bare '&' that is not part of an entity.",
+    "symbols": [
+      "unescapeHTML"
+    ],
+    "files": [
+      "youtube_dl/utils.py"
+    ],
+    "example_inputs": [
+      "&a\""
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": null,
+  "total_time_s": 34.7,
+  "llm_calls": 2,
+  "fail_to_pass": false,
+  "fixed_version_output": null,
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

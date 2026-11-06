@@ -1,0 +1,76 @@
+{
+  "bug_id": "shop_coupon",
+  "mode": "fix_full",
+  "status": "fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "from decimal import Decimal\n\n# shopcart/pricing.py (module shopcart.pricing) - called by Cart.apply_coupon\ndef coupon_rate(code) -> Decimal:\n    \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n    if not code:\n        return Decimal(\"0\")\n    # Convert to uppercase and strip spaces\n    code = code.upper().strip()\n    return COUPONS.get(code, Decimal(\"0\"))\n",
+        "diff": "--- a/shopcart/pricing.py\n+++ b/shopcart/pricing.py\n@@ -1,5 +1,6 @@\n \"\"\"Pricing rules for the ShopCart demo store (amounts in rupees).\"\"\"\n from decimal import ROUND_HALF_UP, Decimal\n+from decimal import Decimal\n \n DISCOUNT_THRESHOLD = 1000      # orders of Rs 1,000 or more get a discount\n DISCOUNT_RATE = Decimal(\"0.10\")\n@@ -33,7 +34,9 @@\n     \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n     if not code:\n         return Decimal(\"0\")\n-    return COUPONS.get(code.strip(), Decimal(\"0\"))\n+    # Convert to uppercase and strip spaces\n+    code = code.upper().strip()\n+    return COUPONS.get(code, Decimal(\"0\"))\n \n \n def gst(amount) -> Decimal:\n",
+        "raw_llm_output": "Root cause: The `coupon_rate` function is case-sensitive and does not ignore surrounding spaces, which is why 'save10' is not accepted as a valid coupon code.\n\nFix:\n```python\nfrom decimal import Decimal\n\n# shopcart/pricing.py (module shopcart.pricing) - called by Cart.apply_coupon\ndef coupon_rate(code) -> Decimal:\n    \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n    if not code:\n        return Decimal(\"0\")\n    # Convert to uppercase and strip spaces\n    code = code.upper().strip()\n    return COUPONS.get(code, Decimal(\"0\"))\n```"
+      },
+      "check": {
+        "category": "plausible",
+        "accepted": true,
+        "feedback": "",
+        "repro_status": "passed",
+        "regressions": [],
+        "output": "...                                                                      [100%]\n3 passed in 0.02s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.apply_coupon",
+      "lineno": 47,
+      "end_lineno": 51,
+      "source": "    def apply_coupon(self, code: str) -> bool:\n        if coupon_rate(code) > 0:\n            self.coupon = code\n            return True\n        return False",
+      "score": 16.5,
+      "why": "method called by the reproduction test (its result is asserted)"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "coupon_rate",
+      "lineno": 32,
+      "end_lineno": 36,
+      "source": "def coupon_rate(code) -> Decimal:\n    \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n    if not code:\n        return Decimal(\"0\")\n    return COUPONS.get(code.strip(), Decimal(\"0\"))",
+      "score": 7.5,
+      "why": "called by Cart.apply_coupon"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.__init__",
+      "lineno": 16,
+      "end_lineno": 18,
+      "source": "    def __init__(self):\n        self.items = {}          # sku -> [product, quantity]\n        self.coupon = None",
+      "score": 3.5,
+      "why": "called by the reproduction test"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "COUPONS",
+      "lineno": 10,
+      "end_lineno": 10,
+      "source": "COUPONS = {\"SAVE10\": Decimal(\"0.10\"), \"FESTIVE20\": Decimal(\"0.20\")}",
+      "score": 6.5,
+      "why": "constant read by coupon_rate"
+    }
+  ],
+  "final_diff": "--- a/shopcart/pricing.py\n+++ b/shopcart/pricing.py\n@@ -1,5 +1,6 @@\n \"\"\"Pricing rules for the ShopCart demo store (amounts in rupees).\"\"\"\n from decimal import ROUND_HALF_UP, Decimal\n+from decimal import Decimal\n \n DISCOUNT_THRESHOLD = 1000      # orders of Rs 1,000 or more get a discount\n DISCOUNT_RATE = Decimal(\"0.10\")\n@@ -33,7 +34,9 @@\n     \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n     if not code:\n         return Decimal(\"0\")\n-    return COUPONS.get(code.strip(), Decimal(\"0\"))\n+    # Convert to uppercase and strip spaces\n+    code = code.upper().strip()\n+    return COUPONS.get(code, Decimal(\"0\"))\n \n \n def gst(amount) -> Decimal:\n",
+  "total_time_s": 26.5,
+  "llm_calls": 1,
+  "regression_tests": [
+    "tests/test_cart.py"
+  ],
+  "correct": true,
+  "no_regression": true,
+  "eval_output": "",
+  "repro_from": "full",
+  "repro_valid": true
+}

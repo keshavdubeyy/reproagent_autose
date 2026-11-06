@@ -1,0 +1,115 @@
+{
+  "bug_id": "shop_gst",
+  "mode": "full_v2",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom shopcart.pricing import gst\n\ndef test_gst_rounding():\n    assert gst(12.25) == Decimal(\"2.21\")\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart.pricing import gst\n\ndef test_gst_rounding():\n    assert gst(12.25) == Decimal(\"2.21\")\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.92,
+        "output": "F\n================================== FAILURES ===================================\n______________________________ test_gst_rounding ______________________________\ntest_reproagent_repro.py:5: in test_gst_rounding\n    assert gst(12.25) == Decimal(\"2.21\")\n                         ^^^^^^^\nE   NameError: name 'Decimal' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_gst_rounding - NameError: name 'Decimal...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.10s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'Decimal' is not defined"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'Decimal' is not defined. Fix imports/names using the module paths and examples shown. `Decimal` does not exist in this project; do not use it.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 2,
+        "code": "import pytest\nfrom shopcart.pricing import gst\n\ndef test_gst_rounding():\n    assert gst(12.25) == Decimal(\"2.21\")\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart.pricing import gst\n\ndef test_gst_rounding():\n    assert gst(12.25) == Decimal(\"2.21\")\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 1.18,
+        "output": "F\n================================== FAILURES ===================================\n______________________________ test_gst_rounding ______________________________\ntest_reproagent_repro.py:5: in test_gst_rounding\n    assert gst(12.25) == Decimal(\"2.21\")\n                         ^^^^^^^\nE   NameError: name 'Decimal' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_gst_rounding - NameError: name 'Decimal...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.13s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'Decimal' is not defined"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'Decimal' is not defined. Fix imports/names using the module paths and examples shown. `Decimal` does not exist in this project; do not use it.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 3,
+        "code": "import pytest\nfrom shopcart.pricing import gst\n\ndef test_gst_rounding():\n    assert gst(12.25) == Decimal(\"2.21\")\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart.pricing import gst\n\ndef test_gst_rounding():\n    assert gst(12.25) == Decimal(\"2.21\")\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 1.13,
+        "output": "F\n================================== FAILURES ===================================\n______________________________ test_gst_rounding ______________________________\ntest_reproagent_repro.py:5: in test_gst_rounding\n    assert gst(12.25) == Decimal(\"2.21\")\n                         ^^^^^^^\nE   NameError: name 'Decimal' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_gst_rounding - NameError: name 'Decimal...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.09s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'Decimal' is not defined"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'Decimal' is not defined. Fix imports/names using the module paths and examples shown. `Decimal` does not exist in this project; do not use it.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 4,
+        "code": "import pytest\nfrom shopcart.pricing import gst\n\ndef test_gst_rounding():\n    assert gst(12.25) == 2.205\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart.pricing import gst\n\ndef test_gst_rounding():\n    assert gst(12.25) == 2.205\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.89,
+        "output": "F\n================================== FAILURES ===================================\n______________________________ test_gst_rounding ______________________________\ntest_reproagent_repro.py:5: in test_gst_rounding\n    assert gst(12.25) == 2.205\nE   AssertionError: assert Decimal('2.2') == 2.205\nE    +  where Decimal('2.2') = gst(12.25)\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_gst_rounding - AssertionError: assert D...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.15s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError: assert Decimal('2.2') == 2.205"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[evidence-match] actual value 2.2 is the wrong value the report observed"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "GST calculation is off by one paisa",
+    "expected": "GST should round to Rs 2.21 for a taxable amount of Rs 12.25",
+    "observed": "GST shown is Rs 2.20",
+    "symbols": [
+      "GST",
+      "gst"
+    ],
+    "files": [
+      "shopcart.pricing.py"
+    ],
+    "example_inputs": [
+      "12.25"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import pytest\nfrom shopcart.pricing import gst\n\ndef test_gst_rounding():\n    assert gst(12.25) == 2.205\n",
+  "total_time_s": 93.9,
+  "llm_calls": 8,
+  "fail_to_pass": false,
+  "fixed_version_output": "F\n================================== FAILURES ===================================\n______________________________ test_gst_rounding ______________________________\ntest_reproagent_repro.py:5: in test_gst_rounding\n    assert gst(12.25) == 2.205\nE   AssertionError: assert Decimal('2.21') == 2.205\nE    +  where Decimal('2.21') = gst(12.25)\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_gst_rounding - AssertionError: assert D...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.09s",
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

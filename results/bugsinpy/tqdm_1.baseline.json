@@ -1,0 +1,55 @@
+{
+  "bug_id": "tqdm_1",
+  "mode": "baseline",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom tqdm.contrib import tenumerate\n\ndef test_tenumerate_start():\n    expected_output = [(10, 'a'), (11, 'b')]\n    actual_output = list(tenumerate(['a', 'b'], start=10))\n    assert actual_output == expected_output\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom tqdm.contrib import tenumerate\n\ndef test_tenumerate_start():\n    expected_output = [(10, 'a'), (11, 'b')]\n    actual_output = list(tenumerate(['a', 'b'], start=10))\n    assert actual_output == expected_output\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 2.42,
+        "output": "F\n================================== FAILURES ===================================\n____________________________ test_tenumerate_start ____________________________\ntest_reproagent_repro.py:6: in test_tenumerate_start\n    actual_output = list(tenumerate(['a', 'b'], start=10))\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntqdm\\contrib\\__init__.py:41: in tenumerate\n    return enumerate(tqdm_class(iterable, start, **tqdm_kwargs))\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntqdm\\std.py:1026: in __init__\n    self.refresh(lock_args=self.lock_args)\ntqdm\\std.py:1311: in refresh\n    self.display()\ntqdm\\std.py:1435: in display\n    self.sp(self.__repr__() if msg is None else msg)\n            ^^^^^^^^^^^^^^^\ntqdm\\std.py:1065: in __repr__\n    return self.format_meter(**self.format_dict)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntqdm\\std.py:423: in format_meter\n    bool_prefix_colon_already = (prefix[-2:] == \": \")\n                                 ^^^^^^^^^^^\nE   TypeError: 'int' object is not subscriptable\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_tenumerate_start - TypeError: 'int' obj...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 1.06s",
+        "exception_type": "TypeError",
+        "failure_line": "TypeError: 'int' object is not subscriptable"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[slm-judge] The test fails because the code produced an unexpected error, not because the project code shows the wrong behavior described in the report. (actual: TypeError: 'int' object is not subscriptable)"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "tqdm.contrib.tenumerate does not respect the start argument",
+    "expected": "list(tenumerate(['a','b'], start=10)) should return [(10,'a'), (11,'b')]",
+    "observed": "list(tqenumerate(['a','b'], start=10)) returns [(0,'a'), (1,'b')]",
+    "symbols": [
+      "tenumerate",
+      "enumerate",
+      "iterable",
+      "start"
+    ],
+    "files": [
+      "tqdm/contrib/tenumerate.py"
+    ],
+    "example_inputs": [
+      "['a','b']",
+      "10"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import pytest\nfrom tqdm.contrib import tenumerate\n\ndef test_tenumerate_start():\n    expected_output = [(10, 'a'), (11, 'b')]\n    actual_output = list(tenumerate(['a', 'b'], start=10))\n    assert actual_output == expected_output\n",
+  "total_time_s": 50.0,
+  "llm_calls": 3,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n1 passed in 0.19s",
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

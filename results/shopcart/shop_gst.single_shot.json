@@ -1,0 +1,52 @@
+{
+  "bug_id": "shop_gst",
+  "mode": "single_shot",
+  "verdict": "not_reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom shopcart.pricing import gst\n\ndef test_gst_rounding():\n    assert gst(12.25) == Decimal(\"2.21\")\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart.pricing import gst\n\ndef test_gst_rounding():\n    assert gst(12.25) == Decimal(\"2.21\")\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.97,
+        "output": "F\n================================== FAILURES ===================================\n______________________________ test_gst_rounding ______________________________\ntest_reproagent_repro.py:5: in test_gst_rounding\n    assert gst(12.25) == Decimal(\"2.21\")\n                         ^^^^^^^\nE   NameError: name 'Decimal' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_gst_rounding - NameError: name 'Decimal...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.10s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'Decimal' is not defined"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'Decimal' is not defined. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    }
+  ],
+  "spec": {
+    "summary": "GST calculation is off by one paisa",
+    "expected": "GST should round to Rs 2.21 for a taxable amount of Rs 12.25",
+    "observed": "GST shown is Rs 2.20",
+    "symbols": [
+      "GST",
+      "gst"
+    ],
+    "files": [
+      "shopcart.pricing.py"
+    ],
+    "example_inputs": [
+      "12.25"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": null,
+  "total_time_s": 29.5,
+  "llm_calls": 2,
+  "fail_to_pass": false,
+  "fixed_version_output": null,
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

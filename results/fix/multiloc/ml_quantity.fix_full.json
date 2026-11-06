@@ -1,0 +1,125 @@
+{
+  "bug_id": "ml_quantity",
+  "mode": "fix_full",
+  "status": "not_fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "class Cart:\n    def set_quantity(self, sku: str, quantity: int) -> None:\n        \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n        if quantity == 0:\n            self.items.pop(sku, None)\n            return\n        self.items[sku][1] = quantity\n",
+        "diff": "",
+        "raw_llm_output": "Root cause: The `Cart.set_quantity` method does not handle the case where the quantity is zero correctly. It should remove the item from the cart when the quantity is zero, but it does not.\n\n```python\nclass Cart:\n    def set_quantity(self, sku: str, quantity: int) -> None:\n        \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n        if quantity == 0:\n            self.items.pop(sku, None)\n            return\n        self.items[sku][1] = quantity\n```",
+        "kind": "patch",
+        "changed": []
+      },
+      "check": {
+        "category": "not_applicable",
+        "accepted": false,
+        "feedback": "Your code is identical to the current Cart.set_quantity, so it changes nothing and the bug is still there.",
+        "repro_status": null,
+        "regressions": [],
+        "output": "",
+        "repro_failed": null,
+        "repro_failing": []
+      }
+    },
+    {
+      "patch": {
+        "attempt": 2,
+        "code": "class Cart:\n    def set_quantity(self, sku: str, quantity: int) -> None:\n        \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n        if quantity == 0:\n            if sku in self.items:\n                self.items.pop(sku)\n            return\n        self.items[sku][1] = quantity\n",
+        "diff": "--- a/shopcart/cart.py\n+++ b/shopcart/cart.py\n@@ -28,7 +28,8 @@\n     def set_quantity(self, sku: str, quantity: int) -> None:\n         \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n         if quantity == 0:\n-            self.items.pop(sku, None)\n+            if sku in self.items:\n+                self.items.pop(sku)\n             return\n         self.items[sku][1] = quantity\n \n",
+        "raw_llm_output": "Root cause: The `set_quantity` method was incorrectly handling the case where the quantity was set to 0. It was removing the item from the cart without checking if the item actually existed in the cart.\n\n```python\nclass Cart:\n    def set_quantity(self, sku: str, quantity: int) -> None:\n        \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n        if quantity == 0:\n            if sku in self.items:\n                self.items.pop(sku)\n            return\n        self.items[sku][1] = quantity\n```",
+        "kind": "patch",
+        "changed": []
+      },
+      "check": {
+        "category": "repro_still_fails",
+        "accepted": false,
+        "feedback": "After your patch the reproduction test still fails: Failed: DID NOT RAISE ValueError. The root cause is not fixed yet (or your change broke the code path).",
+        "repro_status": "failed",
+        "regressions": [],
+        "output": "F\n================================== FAILURES ===================================\n_______________________ test_cart_add_invalid_quantity ________________________\ntest_reproagent_repro.py:6: in test_cart_add_invalid_quantity\n    with pytest.raises(ValueError, match=\"quantity must be positive\"):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_cart_add_invalid_quantity - Failed: DID...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.09s",
+        "repro_failed": 1,
+        "repro_failing": [
+          "test_cart_add_invalid_quantity"
+        ]
+      }
+    },
+    {
+      "patch": {
+        "attempt": 3,
+        "code": "class Cart:\n    def set_quantity(self, sku: str, quantity: int) -> None:\n        \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n        if quantity == 0:\n            if sku in self.items:\n                self.items.pop(sku)\n            else:\n                raise ValueError(\"quantity must be positive\")\n            return\n        self.items[sku][1] = quantity\n",
+        "diff": "--- a/shopcart/cart.py\n+++ b/shopcart/cart.py\n@@ -28,7 +28,10 @@\n     def set_quantity(self, sku: str, quantity: int) -> None:\n         \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n         if quantity == 0:\n-            self.items.pop(sku, None)\n+            if sku in self.items:\n+                self.items.pop(sku)\n+            else:\n+                raise ValueError(\"quantity must be positive\")\n             return\n         self.items[sku][1] = quantity\n \n",
+        "raw_llm_output": "Root cause: The `set_quantity` method was incorrectly handling the case where the quantity was set to 0. It was not raising a `ValueError` for this case.\n\n```python\nclass Cart:\n    def set_quantity(self, sku: str, quantity: int) -> None:\n        \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n        if quantity == 0:\n            if sku in self.items:\n                self.items.pop(sku)\n            else:\n                raise ValueError(\"quantity must be positive\")\n            return\n        self.items[sku][1] = quantity\n```",
+        "kind": "patch",
+        "changed": []
+      },
+      "check": {
+        "category": "repro_still_fails",
+        "accepted": false,
+        "feedback": "After your patch the reproduction test still fails: Failed: DID NOT RAISE ValueError. The root cause is not fixed yet (or your change broke the code path).",
+        "repro_status": "failed",
+        "regressions": [],
+        "output": "F\n================================== FAILURES ===================================\n_______________________ test_cart_add_invalid_quantity ________________________\ntest_reproagent_repro.py:6: in test_cart_add_invalid_quantity\n    with pytest.raises(ValueError, match=\"quantity must be positive\"):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_cart_add_invalid_quantity - Failed: DID...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.09s",
+        "repro_failed": 1,
+        "repro_failing": [
+          "test_cart_add_invalid_quantity"
+        ]
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.add",
+      "lineno": 20,
+      "end_lineno": 26,
+      "source": "    def add(self, product: Product, quantity: int = 1) -> None:\n        if quantity < 0:\n            raise ValueError(\"quantity must be positive\")\n        if product.sku in self.items:\n            self.items[product.sku][1] += quantity\n        else:\n            self.items[product.sku] = [product, quantity]",
+      "score": 19.0,
+      "why": "method called by the reproduction test"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.set_quantity",
+      "lineno": 28,
+      "end_lineno": 33,
+      "source": "    def set_quantity(self, sku: str, quantity: int) -> None:\n        \"\"\"Change the quantity of an item; a quantity of 0 removes the item.\"\"\"\n        if quantity == 0:\n            self.items.pop(sku, None)\n            return\n        self.items[sku][1] = quantity",
+      "score": 16.5,
+      "why": "method called by the reproduction test (its result is asserted)"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.__init__",
+      "lineno": 16,
+      "end_lineno": 18,
+      "source": "    def __init__(self):\n        self.items = {}          # sku -> [product, quantity]\n        self.coupon = None",
+      "score": 5.5,
+      "why": "called by the reproduction test"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Product.__init__",
+      "lineno": 8,
+      "end_lineno": 12,
+      "source": "    def __init__(self, sku: str, name: str, price, stock: int = 100):\n        self.sku = sku\n        self.name = name\n        self.price = Decimal(str(price))\n        self.stock = stock",
+      "score": 5.5,
+      "why": "called by the reproduction test"
+    }
+  ],
+  "final_diff": null,
+  "total_time_s": 59.2,
+  "llm_calls": 3,
+  "regression_tests": [
+    "tests/test_cart.py"
+  ],
+  "locations": [],
+  "correct": false,
+  "no_regression": null,
+  "eval_output": null,
+  "repro_from": "full",
+  "repro_valid": false
+}

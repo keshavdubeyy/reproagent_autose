@@ -1,0 +1,55 @@
+{
+  "bug_id": "shop_discount",
+  "mode": "full",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import DISCOUNT_THRESHOLD, DISCOUNT_RATE\n\ndef test_discount_not_applied_for_orders_below_1000():\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 800))\n    bill = checkout(cart)\n    assert bill[\"discount\"] == 0, \"Discount should not be applied for orders below Rs 1,000\"\n    assert bill[\"subtotal\"] == 800, \"Subtotal should remain Rs 800\"\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import DISCOUNT_THRESHOLD, DISCOUNT_RATE\n\ndef test_discount_not_applied_for_orders_below_1000():\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 800))\n    bill = checkout(cart)\n    assert bill[\"discount\"] == 0, \"Discount should not be applied for orders below Rs 1,000\"\n    assert bill[\"subtotal\"] == 800, \"Subtotal should remain Rs 800\"\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 1.45,
+        "output": "F\n================================== FAILURES ===================================\n_______________ test_discount_not_applied_for_orders_below_1000 _______________\ntest_reproagent_repro.py:9: in test_discount_not_applied_for_orders_below_1000\n    assert bill[\"discount\"] == 0, \"Discount should not be applied for orders below Rs 1,000\"\nE   AssertionError: Discount should not be applied for orders below Rs 1,000\nE   assert Decimal('80.00') == 0\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_discount_not_applied_for_orders_below_1000\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.14s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError: Discount should not be applied for orders below Rs 1,000"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[evidence-match] actual value 80 is the wrong value the report observed"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "Discount is incorrectly applied to orders below Rs 1,000",
+    "expected": "orders below Rs 1,000 should not receive a discount; the discount should be 0 and the amount before tax should remain Rs 800",
+    "observed": "the application applies a 10% discount (Rs 80) and the discounted amount is Rs 720",
+    "symbols": [
+      "calculate_discount",
+      "apply_discount",
+      "calculate_total",
+      "discount"
+    ],
+    "files": [
+      "checkout.py",
+      "discount_calculator.py"
+    ],
+    "example_inputs": [
+      "[{'name': 'Product A', 'price': 800}]"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import DISCOUNT_THRESHOLD, DISCOUNT_RATE\n\ndef test_discount_not_applied_for_orders_below_1000():\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 800))\n    bill = checkout(cart)\n    assert bill[\"discount\"] == 0, \"Discount should not be applied for orders below Rs 1,000\"\n    assert bill[\"subtotal\"] == 800, \"Subtotal should remain Rs 800\"\n",
+  "total_time_s": 62.6,
+  "llm_calls": 2,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n1 passed in 0.02s",
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

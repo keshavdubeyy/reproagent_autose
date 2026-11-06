@@ -1,0 +1,60 @@
+{
+  "bug_id": "ml_boundaries",
+  "mode": "full",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom shopcart.pricing import bulk_discount, shipping_fee\nfrom decimal import Decimal\n\n# Constants from the report\nDISCOUNT_THRESHOLD = Decimal('1000')\nSHIPPING_FEE = Decimal('50')\nFREE_SHIPPING_THRESHOLD = Decimal('500')\n\ndef test_bulk_discount():\n    order_amount = 1000\n    expected_discount = 100\n    actual_discount = bulk_discount(order_amount)\n    assert actual_discount == expected_discount, f\"Expected discount {expected_discount}, got {actual_discount}\"\n\ndef test_shipping_fee():\n    order_amount = 500\n    expected_shipping_fee = 0\n    actual_shipping_fee = shipping_fee(order_amount)\n    assert actual_shipping_fee == expected_shipping_fee, f\"Expected shipping fee {expected_shipping_fee}, got {actual_shipping_fee}\"\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart.pricing import bulk_discount, shipping_fee\nfrom decimal import Decimal\n\n# Constants from the report\nDISCOUNT_THRESHOLD = Decimal('1000')\nSHIPPING_FEE = Decimal('50')\nFREE_SHIPPING_THRESHOLD = Decimal('500')\n\ndef test_bulk_discount():\n    order_amount = 1000\n    expected_discount = 100\n    actual_discount = bulk_discount(order_amount)\n    assert actual_discount == expected_discount, f\"Expected discount {expected_discount}, got {actual_discount}\"\n\ndef test_shipping_fee():\n    order_amount = 500\n    expected_shipping_fee = 0\n    actual_shipping_fee = shipping_fee(order_amount)\n    assert actual_shipping_fee == expected_shipping_fee, f\"Expected shipping fee {expected_shipping_fee}, got {actual_shipping_fee}\"\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 1.02,
+        "output": "F\n================================== FAILURES ===================================\n_____________________________ test_bulk_discount ______________________________\ntest_reproagent_repro.py:14: in test_bulk_discount\n    assert actual_discount == expected_discount, f\"Expected discount {expected_discount}, got {actual_discount}\"\nE   AssertionError: Expected discount 100, got 0.00\nE   assert Decimal('0.00') == 100\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_bulk_discount - AssertionError: Expecte...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.12s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError: Expected discount 100, got 0.00",
+        "n_failed": 1,
+        "n_passed": 0,
+        "failing": [
+          "test_bulk_discount"
+        ]
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[slm-judge] The test is failing because the bulk_discount function is returning 0.00 instead of 100, which is the expected discount for an order of exactly Rs 1,000. (actual: 0.00)"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "Discount and free shipping limits are incorrectly applied in the order calculation.",
+    "expected": "{'discount': 100, 'shipping_fee': 0}",
+    "observed": "{'discount': 0, 'shipping_fee': 50}",
+    "symbols": [
+      "calculate_discount",
+      "calculate_shipping_fee",
+      "shipping"
+    ],
+    "files": [
+      "order_calculator.py"
+    ],
+    "example_inputs": [
+      "{'order_amount': 1000, 'expected_discount': 100, 'actual_discount': 0}",
+      "{'order_amount': 500, 'expected_shipping_fee': 0, 'actual_shipping_fee': 50}"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import pytest\nfrom shopcart.pricing import bulk_discount, shipping_fee\nfrom decimal import Decimal\n\n# Constants from the report\nDISCOUNT_THRESHOLD = Decimal('1000')\nSHIPPING_FEE = Decimal('50')\nFREE_SHIPPING_THRESHOLD = Decimal('500')\n\ndef test_bulk_discount():\n    order_amount = 1000\n    expected_discount = 100\n    actual_discount = bulk_discount(order_amount)\n    assert actual_discount == expected_discount, f\"Expected discount {expected_discount}, got {actual_discount}\"\n\ndef test_shipping_fee():\n    order_amount = 500\n    expected_shipping_fee = 0\n    actual_shipping_fee = shipping_fee(order_amount)\n    assert actual_shipping_fee == expected_shipping_fee, f\"Expected shipping fee {expected_shipping_fee}, got {actual_shipping_fee}\"\n",
+  "total_time_s": 91.3,
+  "llm_calls": 3,
+  "fail_to_pass": true,
+  "fixed_version_output": "..                                                                       [100%]\n2 passed in 0.02s",
+  "fix": null,
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

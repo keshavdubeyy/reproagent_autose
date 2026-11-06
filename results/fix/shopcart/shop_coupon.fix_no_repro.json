@@ -1,0 +1,106 @@
+{
+  "bug_id": "shop_coupon",
+  "mode": "fix_no_repro",
+  "status": "fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "# shopcart/pricing.py (module shopcart.pricing) - updated coupon_rate function\ndef coupon_rate(code) -> Decimal:\n    \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n    if not code:\n        return Decimal(\"0\")\n    return COUPONS.get(code.upper(), Decimal(\"0\"))\n",
+        "diff": "--- a/shopcart/pricing.py\n+++ b/shopcart/pricing.py\n@@ -33,7 +33,7 @@\n     \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n     if not code:\n         return Decimal(\"0\")\n-    return COUPONS.get(code.strip(), Decimal(\"0\"))\n+    return COUPONS.get(code.upper(), Decimal(\"0\"))\n \n \n def gst(amount) -> Decimal:\n",
+        "raw_llm_output": "Root cause: The `coupon_rate` function is stripping leading and trailing spaces from the coupon code before checking it against the `COUPONS` dictionary. This results in 'save10' being treated as 'save10' but 'SAVE10' as 'SAVE10'.\n\n```python\n# shopcart/pricing.py (module shopcart.pricing) - updated coupon_rate function\ndef coupon_rate(code) -> Decimal:\n    \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n    if not code:\n        return Decimal(\"0\")\n    return COUPONS.get(code.upper(), Decimal(\"0\"))\n```"
+      },
+      "check": {
+        "category": "plausible",
+        "accepted": true,
+        "feedback": "",
+        "repro_status": null,
+        "regressions": [],
+        "output": "...                                                                      [100%]\n3 passed in 0.03s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.apply_coupon",
+      "lineno": 47,
+      "end_lineno": 51,
+      "source": "    def apply_coupon(self, code: str) -> bool:\n        if coupon_rate(code) > 0:\n            self.coupon = code\n            return True\n        return False",
+      "score": 27.0,
+      "why": "named in the bug report"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "coupon_rate",
+      "lineno": 32,
+      "end_lineno": 36,
+      "source": "def coupon_rate(code) -> Decimal:\n    \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n    if not code:\n        return Decimal(\"0\")\n    return COUPONS.get(code.strip(), Decimal(\"0\"))",
+      "score": 12.8,
+      "why": "called by Cart.apply_coupon"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.item_count",
+      "lineno": 41,
+      "end_lineno": 42,
+      "source": "    def item_count(self) -> int:\n        return sum(q for _, q in self.items.values())",
+      "score": 7.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.subtotal",
+      "lineno": 44,
+      "end_lineno": 45,
+      "source": "    def subtotal(self) -> Decimal:\n        return money(sum((p.price * q for p, q in self.items.values()), Decimal(\"0\")))",
+      "score": 7.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.remove",
+      "lineno": 37,
+      "end_lineno": 39,
+      "source": "    def remove(self, sku: str) -> bool:\n        \"\"\"Remove an item. Returns False if it was not in the cart.\"\"\"\n        return self.items.pop(sku, None) is not None",
+      "score": 7.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "money",
+      "lineno": 13,
+      "end_lineno": 14,
+      "source": "def money(x) -> Decimal:\n    return Decimal(str(x)).quantize(Decimal(\"0.01\"), rounding=ROUND_HALF_UP)",
+      "score": 2.8,
+      "why": "called by Cart.subtotal"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "COUPONS",
+      "lineno": 10,
+      "end_lineno": 10,
+      "source": "COUPONS = {\"SAVE10\": Decimal(\"0.10\"), \"FESTIVE20\": Decimal(\"0.20\")}",
+      "score": 11.8,
+      "why": "constant read by coupon_rate"
+    }
+  ],
+  "final_diff": "--- a/shopcart/pricing.py\n+++ b/shopcart/pricing.py\n@@ -33,7 +33,7 @@\n     \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n     if not code:\n         return Decimal(\"0\")\n-    return COUPONS.get(code.strip(), Decimal(\"0\"))\n+    return COUPONS.get(code.upper(), Decimal(\"0\"))\n \n \n def gst(amount) -> Decimal:\n",
+  "total_time_s": 22.1,
+  "llm_calls": 1,
+  "regression_tests": [
+    "tests/test_cart.py"
+  ],
+  "correct": false,
+  "no_regression": true,
+  "eval_output": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\n    assert coupon_rate('save10') == Decimal('0.10') and coupon_rate(' Festive20 ') == Decimal('0.20')\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+  "repro_from": "full",
+  "repro_valid": true
+}

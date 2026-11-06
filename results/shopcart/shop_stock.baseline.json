@@ -1,0 +1,56 @@
+{
+  "bug_id": "shop_stock",
+  "mode": "baseline",
+  "verdict": "not_reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom your_project_path import inventory_system\n\ndef test_inventory_not_reduced_correctly():\n    # Arrange\n    initial_stock = 10\n    product_id = 1\n    quantity = 3\n\n    # Act\n    inventory_system.checkout(product_id, quantity)\n\n    # Assert\n    assert inventory_system.get_stock(product_id) == 7\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom your_project_path import inventory_system\n\ndef test_inventory_not_reduced_correctly():\n    # Arrange\n    initial_stock = 10\n    product_id = 1\n    quantity = 3\n\n    # Act\n    inventory_system.checkout(product_id, quantity)\n\n    # Assert\n    assert inventory_system.get_stock(product_id) == 7\n```"
+      },
+      "execution": {
+        "status": "collection_error",
+        "exit_code": 2,
+        "duration_s": 0.81,
+        "output": "=================================== ERRORS ====================================\n__________________ ERROR collecting test_reproagent_repro.py __________________\nImportError while importing test module 'C:\\Users\\risha\\AppData\\Local\\Temp\\repro_shop_stock_0dnonduk\\repo\\test_reproagent_repro.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\Program Files\\Python314\\Lib\\importlib\\__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_reproagent_repro.py:2: in <module>\n    from your_project_path import inventory_system\nE   ModuleNotFoundError: No module named 'your_project_path'\n=========================== short test summary info ===========================\nERROR test_reproagent_repro.py\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.17s",
+        "exception_type": "ModuleNotFoundError",
+        "failure_line": "ModuleNotFoundError: No module named 'your_project_path'"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: ModuleNotFoundError: No module named 'your_project_path'. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    }
+  ],
+  "spec": {
+    "summary": "Inventory not reduced correctly after checkout",
+    "expected": "The product's stock should be reduced by 3 units after a customer buys 3 units.",
+    "observed": "The product's stock shows 9 units instead of 7 after the checkout.",
+    "symbols": [
+      "inventory",
+      "stock",
+      "reduce",
+      "buy",
+      "checkout"
+    ],
+    "files": [
+      "inventory.py",
+      "checkout.py"
+    ],
+    "example_inputs": [
+      "product_id=1, quantity=3"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": null,
+  "total_time_s": 28.3,
+  "llm_calls": 2,
+  "fail_to_pass": false,
+  "fixed_version_output": null,
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

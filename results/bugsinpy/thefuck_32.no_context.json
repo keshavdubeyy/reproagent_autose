@@ -1,0 +1,117 @@
+{
+  "bug_id": "thefuck_32",
+  "mode": "no_context",
+  "verdict": "not_reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import thefuck.rules.ls_lah as ls_lah\nfrom thefuck.shells import Shell\n\ndef test_ls_lah():\n    assert ls_lah.match(Shell(), 'pacman -S binutils') == None\n",
+        "raw_llm_output": "```python\nimport thefuck.rules.ls_lah as ls_lah\nfrom thefuck.shells import Shell\n\ndef test_ls_lah():\n    assert ls_lah.match(Shell(), 'pacman -S binutils') == None\n```"
+      },
+      "execution": {
+        "status": "collection_error",
+        "exit_code": 2,
+        "duration_s": 1.24,
+        "output": "=================================== ERRORS ====================================\n__________________ ERROR collecting test_reproagent_repro.py __________________\nImportError while importing test module 'C:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_32_o9ufapb3\\repo\\test_reproagent_repro.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\Program Files\\Python314\\Lib\\importlib\\__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_reproagent_repro.py:2: in <module>\n    from thefuck.shells import Shell\nE   ImportError: cannot import name 'Shell' from 'thefuck.shells' (C:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_32_o9ufapb3\\repo\\thefuck\\shells.py). Did you mean: 'shells'?\n=========================== short test summary info ===========================\nERROR test_reproagent_repro.py\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.21s",
+        "exception_type": "ImportError",
+        "failure_line": "ImportError: cannot import name 'Shell' from 'thefuck.shells' (C:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_32_o9ufapb3\\repo\\thefuck\\shells.py). Did you mean: 'shells'?"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: ImportError: cannot import name 'Shell' from 'thefuck.shells' (C:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_32_o9ufapb3\\repo\\thefuck\\shells.py). Did you mean: 'shells'?. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 2,
+        "code": "import thefuck.rules.ls_lah as ls_lah\nfrom thefuck.shells import Shell\n\ndef test_ls_lah():\n    assert ls_lah.match(Shell(), 'ls') == 'ls'\n",
+        "raw_llm_output": "```python\nimport thefuck.rules.ls_lah as ls_lah\nfrom thefuck.shells import Shell\n\ndef test_ls_lah():\n    assert ls_lah.match(Shell(), 'ls') == 'ls'\n```"
+      },
+      "execution": {
+        "status": "collection_error",
+        "exit_code": 2,
+        "duration_s": 0.92,
+        "output": "=================================== ERRORS ====================================\n__________________ ERROR collecting test_reproagent_repro.py __________________\nImportError while importing test module 'C:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_32_o9ufapb3\\repo\\test_reproagent_repro.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\Program Files\\Python314\\Lib\\importlib\\__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_reproagent_repro.py:2: in <module>\n    from thefuck.shells import Shell\nE   ImportError: cannot import name 'Shell' from 'thefuck.shells' (C:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_32_o9ufapb3\\repo\\thefuck\\shells.py). Did you mean: 'shells'?\n=========================== short test summary info ===========================\nERROR test_reproagent_repro.py\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.19s",
+        "exception_type": "ImportError",
+        "failure_line": "ImportError: cannot import name 'Shell' from 'thefuck.shells' (C:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_32_o9ufapb3\\repo\\thefuck\\shells.py). Did you mean: 'shells'?"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: ImportError: cannot import name 'Shell' from 'thefuck.shells' (C:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_32_o9ufapb3\\repo\\thefuck\\shells.py). Did you mean: 'shells'?. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 3,
+        "code": "import thefuck.rules.ls_lah as ls_lah\nfrom thefuck.shells import Shell\n\ndef test_ls_lah():\n    assert ls_lah.match(Shell(), 'pacman -S binutils') is None\n",
+        "raw_llm_output": "```python\nimport thefuck.rules.ls_lah as ls_lah\nfrom thefuck.shells import Shell\n\ndef test_ls_lah():\n    assert ls_lah.match(Shell(), 'pacman -S binutils') is None\n```"
+      },
+      "execution": {
+        "status": "collection_error",
+        "exit_code": 2,
+        "duration_s": 0.83,
+        "output": "=================================== ERRORS ====================================\n__________________ ERROR collecting test_reproagent_repro.py __________________\nImportError while importing test module 'C:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_32_o9ufapb3\\repo\\test_reproagent_repro.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\Program Files\\Python314\\Lib\\importlib\\__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_reproagent_repro.py:2: in <module>\n    from thefuck.shells import Shell\nE   ImportError: cannot import name 'Shell' from 'thefuck.shells' (C:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_32_o9ufapb3\\repo\\thefuck\\shells.py). Did you mean: 'shells'?\n=========================== short test summary info ===========================\nERROR test_reproagent_repro.py\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.18s",
+        "exception_type": "ImportError",
+        "failure_line": "ImportError: cannot import name 'Shell' from 'thefuck.shells' (C:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_32_o9ufapb3\\repo\\thefuck\\shells.py). Did you mean: 'shells'?"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: ImportError: cannot import name 'Shell' from 'thefuck.shells' (C:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_32_o9ufapb3\\repo\\thefuck\\shells.py). Did you mean: 'shells'?. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 4,
+        "code": "```python\nimport thefuck.rules.ls_lah as ls_lah\nfrom thefuck.shells import Shell\n\ndef test_ls_lah():\n    assert ls_lah.match(Shell(), 'ls') is not None\n    assert ls_lah.match(Shell(), 'ls -l') is not None\n    assert ls_lah.match(Shell(), 'ls -a') is not None\n    assert ls_lah.match(Shell(), 'ls -la') is not None\n    assert ls_lah.match(Shell(), 'ls -la /path/to/directory') is not None\n    assert ls_lah.match(Shell(), 'ls -la --color=auto') is not None\n    assert ls_lah.match(Shell(), 'ls -la --group-directories-first') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-style=full-iso') is not None\n    assert ls_lah.match(Shell(), 'ls -la --human-readable') is not None\n    assert ls_lah.match(Shell(), 'ls -la --sort=time') is not None\n    assert ls_lah.match(Shell(), 'ls -la --sort=version') is not None\n    assert ls_lah.match(Shell(), 'ls -la --sort=size') is not None\n    assert ls_lah.match(Shell(), 'ls -la --show-control-chars') is not None\n    assert ls_lah.match(Shell(), 'ls -la --sort=extension') is not None\n    assert ls_lah.match(Shell(), 'ls -la --sort=group') is not None\n    assert ls_lah.match(Shell(), 'ls -la --sort=owner') is not None\n    assert ls_lah.match(Shell(), 'ls -la --sort=date') is not None\n    assert ls_lah.match(Shell(), 'ls -la --sort=name') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S.%N') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %p') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %Z') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V %W') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V %W %G') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V %W %G %g') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V %W %G %g %n') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V %W %G %g %n %e') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V %W %G %g %n %e %E') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V %W %G %g %n %e %E %F') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V %W %G\n",
+        "raw_llm_output": "```python\nimport thefuck.rules.ls_lah as ls_lah\nfrom thefuck.shells import Shell\n\ndef test_ls_lah():\n    assert ls_lah.match(Shell(), 'ls') is not None\n    assert ls_lah.match(Shell(), 'ls -l') is not None\n    assert ls_lah.match(Shell(), 'ls -a') is not None\n    assert ls_lah.match(Shell(), 'ls -la') is not None\n    assert ls_lah.match(Shell(), 'ls -la /path/to/directory') is not None\n    assert ls_lah.match(Shell(), 'ls -la --color=auto') is not None\n    assert ls_lah.match(Shell(), 'ls -la --group-directories-first') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-style=full-iso') is not None\n    assert ls_lah.match(Shell(), 'ls -la --human-readable') is not None\n    assert ls_lah.match(Shell(), 'ls -la --sort=time') is not None\n    assert ls_lah.match(Shell(), 'ls -la --sort=version') is not None\n    assert ls_lah.match(Shell(), 'ls -la --sort=size') is not None\n    assert ls_lah.match(Shell(), 'ls -la --show-control-chars') is not None\n    assert ls_lah.match(Shell(), 'ls -la --sort=extension') is not None\n    assert ls_lah.match(Shell(), 'ls -la --sort=group') is not None\n    assert ls_lah.match(Shell(), 'ls -la --sort=owner') is not None\n    assert ls_lah.match(Shell(), 'ls -la --sort=date') is not None\n    assert ls_lah.match(Shell(), 'ls -la --sort=name') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S.%N') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %p') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %Z') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V %W') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V %W %G') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V %W %G %g') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V %W %G %g %n') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V %W %G %g %n %e') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V %W %G %g %n %e %E') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V %W %G %g %n %e %E %F') is not None\n    assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V %W %G"
+      },
+      "execution": {
+        "status": "collection_error",
+        "exit_code": 2,
+        "duration_s": 1.45,
+        "output": "=================================== ERRORS ====================================\n__________________ ERROR collecting test_reproagent_repro.py __________________\nC:\\Users\\risha\\Desktop\\Autose_project\\.venv\\Lib\\site-packages\\_pytest\\python.py:528: in importtestmodule\n    mod = import_path(\nC:\\Users\\risha\\Desktop\\Autose_project\\.venv\\Lib\\site-packages\\_pytest\\pathlib.py:640: in import_path\n    importlib.import_module(module_name)\nC:\\Program Files\\Python314\\Lib\\importlib\\__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<frozen importlib._bootstrap>:1406: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1371: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1342: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:938: in _load_unlocked\n    ???\nC:\\Users\\risha\\Desktop\\Autose_project\\.venv\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:176: in exec_module\n    source_hash, co = _rewrite_test(fn, self.config)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nC:\\Users\\risha\\Desktop\\Autose_project\\.venv\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:339: in _rewrite_test\n    tree = ast.parse(source, filename=strfn)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nC:\\Program Files\\Python314\\Lib\\ast.py:46: in parse\n    return compile(source, filename, mode, flags,\nE     File \"C:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_32_o9ufapb3\\repo\\test_reproagent_repro.py\", line 46\nE       assert ls_lah.match(Shell(), 'ls -la --time-format=%Y-%m-%d %H:%M:%S %z %Z %s %N %e %E %F %T %u %U %V %W %G\nE                                    ^\nE   SyntaxError: unterminated string literal (detected at line 46)\n=========================== short test summary info ===========================\nERROR test_reproagent_repro.py\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.32s",
+        "exception_type": "SyntaxError",
+        "failure_line": "File \"C:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_32_o9ufapb3\\repo\\test_reproagent_repro.py\", line 46"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: File \"C:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_32_o9ufapb3\\repo\\test_reproagent_repro.py\", line 46. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    }
+  ],
+  "spec": {
+    "summary": "ls_lah rule incorrectly matches non-ls commands",
+    "expected": "The ls_lah rule should only match the actual 'ls' command.",
+    "observed": "The rule incorrectly matches 'pacman -S binutils' because it contains 'ls'.",
+    "symbols": [
+      "ls",
+      "ls_lah",
+      "py",
+      "rule"
+    ],
+    "files": [
+      "thefuck/rules/ls_lah.py"
+    ],
+    "example_inputs": [
+      "pacman -S binutils"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": null,
+  "total_time_s": 248.0,
+  "llm_calls": 6,
+  "fail_to_pass": false,
+  "fixed_version_output": null,
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

@@ -1,0 +1,55 @@
+{
+  "bug_id": "shop_discount",
+  "mode": "baseline",
+  "verdict": "not_reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom your_module import calculate_discounted_amount  # Adjust the import path as needed\n\ndef test_discount_not_applied_to_orders_below_1000():\n    # Given\n    order_items = [{'price': 800}]\n    \n    # When\n    discounted_amount = calculate_discounted_amount(order_items)\n    \n    # Then\n    assert discounted_amount == 800, \"The discount should not be applied to orders below Rs 1,000\"\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom your_module import calculate_discounted_amount  # Adjust the import path as needed\n\ndef test_discount_not_applied_to_orders_below_1000():\n    # Given\n    order_items = [{'price': 800}]\n    \n    # When\n    discounted_amount = calculate_discounted_amount(order_items)\n    \n    # Then\n    assert discounted_amount == 800, \"The discount should not be applied to orders below Rs 1,000\"\n```"
+      },
+      "execution": {
+        "status": "collection_error",
+        "exit_code": 2,
+        "duration_s": 1.3,
+        "output": "=================================== ERRORS ====================================\n__________________ ERROR collecting test_reproagent_repro.py __________________\nImportError while importing test module 'C:\\Users\\risha\\AppData\\Local\\Temp\\repro_shop_discount_hkzbwzjw\\repo\\test_reproagent_repro.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\Program Files\\Python314\\Lib\\importlib\\__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_reproagent_repro.py:2: in <module>\n    from your_module import calculate_discounted_amount  # Adjust the import path as needed\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   ModuleNotFoundError: No module named 'your_module'\n=========================== short test summary info ===========================\nERROR test_reproagent_repro.py\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.20s",
+        "exception_type": "ModuleNotFoundError",
+        "failure_line": "ModuleNotFoundError: No module named 'your_module'"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: ModuleNotFoundError: No module named 'your_module'. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    }
+  ],
+  "spec": {
+    "summary": "Discount is incorrectly applied to orders below Rs 1,000",
+    "expected": "orders below Rs 1,000 should not receive a discount; the discount should be 0 and the amount before tax should remain Rs 800",
+    "observed": "the application applies a 10% discount (Rs 80) and the discounted amount is Rs 720",
+    "symbols": [
+      "calculate_discount",
+      "apply_discount",
+      "order_total",
+      "discount"
+    ],
+    "files": [
+      "checkout.py",
+      "discount_calculator.py"
+    ],
+    "example_inputs": [
+      "[{'price': 800}]"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": null,
+  "total_time_s": 54.4,
+  "llm_calls": 2,
+  "fail_to_pass": false,
+  "fixed_version_output": null,
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

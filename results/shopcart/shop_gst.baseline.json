@@ -1,0 +1,52 @@
+{
+  "bug_id": "shop_gst",
+  "mode": "baseline",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import shopcart.pricing\n\ndef test_gst_rounding():\n    # Given a taxable amount of Rs 12.25\n    taxable_amount = 12.25\n    \n    # Calculate the GST\n    gst = shopcart.pricing.gst(taxable_amount)\n    \n    # Expected GST should round to Rs 2.21\n    expected_gst = round(12.25 * 0.18, 2)\n    \n    # Assert the calculated GST matches the expected GST\n    assert gst == expected_gst, f\"Expected GST to be Rs {expected_gst}, but got Rs {gst}\"\n",
+        "raw_llm_output": "```python\nimport shopcart.pricing\n\ndef test_gst_rounding():\n    # Given a taxable amount of Rs 12.25\n    taxable_amount = 12.25\n    \n    # Calculate the GST\n    gst = shopcart.pricing.gst(taxable_amount)\n    \n    # Expected GST should round to Rs 2.21\n    expected_gst = round(12.25 * 0.18, 2)\n    \n    # Assert the calculated GST matches the expected GST\n    assert gst == expected_gst, f\"Expected GST to be Rs {expected_gst}, but got Rs {gst}\"\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 6.02,
+        "output": "F\n================================== FAILURES ===================================\n______________________________ test_gst_rounding ______________________________\ntest_reproagent_repro.py:14: in test_gst_rounding\n    assert gst == expected_gst, f\"Expected GST to be Rs {expected_gst}, but got Rs {gst}\"\nE   AssertionError: Expected GST to be Rs 2.21, but got Rs 2.2\nE   assert Decimal('2.2') == 2.21\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_gst_rounding - AssertionError: Expected...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.12s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError: Expected GST to be Rs 2.21, but got Rs 2.2"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[evidence-match] actual value 2.2 is the wrong value the report observed"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "GST calculation is off by one paisa",
+    "expected": "GST should round to Rs 2.21 for a taxable amount of Rs 12.25",
+    "observed": "GST shown is Rs 2.20",
+    "symbols": [
+      "GST",
+      "gst"
+    ],
+    "files": [
+      "shopcart.pricing.py"
+    ],
+    "example_inputs": [
+      "12.25"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import shopcart.pricing\n\ndef test_gst_rounding():\n    # Given a taxable amount of Rs 12.25\n    taxable_amount = 12.25\n    \n    # Calculate the GST\n    gst = shopcart.pricing.gst(taxable_amount)\n    \n    # Expected GST should round to Rs 2.21\n    expected_gst = round(12.25 * 0.18, 2)\n    \n    # Assert the calculated GST matches the expected GST\n    assert gst == expected_gst, f\"Expected GST to be Rs {expected_gst}, but got Rs {gst}\"\n",
+  "total_time_s": 47.7,
+  "llm_calls": 2,
+  "fail_to_pass": false,
+  "fixed_version_output": "F\n================================== FAILURES ===================================\n______________________________ test_gst_rounding ______________________________\ntest_reproagent_repro.py:14: in test_gst_rounding\n    assert gst == expected_gst, f\"Expected GST to be Rs {expected_gst}, but got Rs {gst}\"\nE   AssertionError: Expected GST to be Rs 2.21, but got Rs 2.21\nE   assert Decimal('2.21') == 2.21\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_gst_rounding - AssertionError: Expected...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.10s",
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

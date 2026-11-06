@@ -1,0 +1,98 @@
+{
+  "bug_id": "thefuck_31",
+  "mode": "full",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom thefuck.rules.git_diff_staged import get_new_command, match\n\ndef test_git_diff_staged():\n    command = Command('git diff foo')\n    assert match(command, {})\n    assert get_new_command(command, {}) == 'git diff --staged foo'\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom thefuck.rules.git_diff_staged import get_new_command, match\n\ndef test_git_diff_staged():\n    command = Command('git diff foo')\n    assert match(command, {})\n    assert get_new_command(command, {}) == 'git diff --staged foo'\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.97,
+        "output": "F\n================================== FAILURES ===================================\n____________________________ test_git_diff_staged _____________________________\ntest_reproagent_repro.py:5: in test_git_diff_staged\n    command = Command('git diff foo')\n              ^^^^^^^\nE   NameError: name 'Command' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_git_diff_staged - NameError: name 'Comm...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.13s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'Command' is not defined"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'Command' is not defined. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 2,
+        "code": "import pytest\nfrom thefuck.rules.git_diff_staged import get_new_command, match\nfrom thefuck.utils import Command\n\ndef test_git_diff_staged():\n    command = Command('git diff foo')\n    assert match(command, {})\n    assert get_new_command(command, {}) == 'git diff --staged foo'\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom thefuck.rules.git_diff_staged import get_new_command, match\nfrom thefuck.utils import Command\n\ndef test_git_diff_staged():\n    command = Command('git diff foo')\n    assert match(command, {})\n    assert get_new_command(command, {}) == 'git diff --staged foo'\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.81,
+        "output": "F\n================================== FAILURES ===================================\n____________________________ test_git_diff_staged _____________________________\ntest_reproagent_repro.py:6: in test_git_diff_staged\n    command = Command('git diff foo')\n              ^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: Command.__new__() missing 2 required positional arguments: 'stdout' and 'stderr'\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_git_diff_staged - TypeError: Command.__...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.09s",
+        "exception_type": "TypeError",
+        "failure_line": "TypeError: Command.__new__() missing 2 required positional arguments: 'stdout' and 'stderr'"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The exception was raised by the test code itself, not by the project: TypeError: Command.__new__() missing 2 required positional arguments: 'stdout' and 'stderr'. Check the function signature and how existing tests call it.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 3,
+        "code": "import pytest\nfrom thefuck.rules.git_diff_staged import get_new_command, match\nfrom thefuck.utils import Command\n\ndef test_git_diff_staged():\n    command = Command('git diff foo', stdout='', stderr='')\n    assert match(command, {})\n    assert get_new_command(command, {}) == 'git diff --staged foo'\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom thefuck.rules.git_diff_staged import get_new_command, match\nfrom thefuck.utils import Command\n\ndef test_git_diff_staged():\n    command = Command('git diff foo', stdout='', stderr='')\n    assert match(command, {})\n    assert get_new_command(command, {}) == 'git diff --staged foo'\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.79,
+        "output": "F\n================================== FAILURES ===================================\n____________________________ test_git_diff_staged _____________________________\ntest_reproagent_repro.py:8: in test_git_diff_staged\n    assert get_new_command(command, {}) == 'git diff --staged foo'\nE   AssertionError: assert 'git diff foo --staged' == 'git diff --staged foo'\nE     \nE     - git diff --staged foo\nE     ?                  ----\nE     + git diff foo --staged\nE     ?         ++++\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_git_diff_staged - AssertionError: asser...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError: assert 'git diff foo --staged' == 'git diff --staged foo'"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[evidence-match] actual value git diff foo --staged is the wrong value the report observed"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "git_diff_staged incorrectly adds --staged to the wrong part of the command",
+    "expected": "git diff --staged foo",
+    "observed": "git diff foo --staged",
+    "symbols": [
+      "git_diff_staged",
+      "git",
+      "diff",
+      "foo",
+      "--staged",
+      "rule"
+    ],
+    "files": [
+      "thefuck/rules/git_diff_staged.py"
+    ],
+    "example_inputs": [
+      "git diff foo"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import pytest\nfrom thefuck.rules.git_diff_staged import get_new_command, match\nfrom thefuck.utils import Command\n\ndef test_git_diff_staged():\n    command = Command('git diff foo', stdout='', stderr='')\n    assert match(command, {})\n    assert get_new_command(command, {}) == 'git diff --staged foo'\n",
+  "total_time_s": 67.2,
+  "llm_calls": 4,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n1 passed in 0.05s",
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

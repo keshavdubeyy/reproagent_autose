@@ -1,0 +1,50 @@
+{
+  "bug_id": "youtube-dl_11",
+  "mode": "fix_single",
+  "status": "not_fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "def str_to_int(int_str):\n    \"\"\" A more relaxed version of int_or_none \"\"\"\n    if int_str is None:\n        return None\n    return int_str\n",
+        "diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -3521,8 +3521,7 @@\n     \"\"\" A more relaxed version of int_or_none \"\"\"\n     if int_str is None:\n         return None\n-    int_str = re.sub(r'[,\\.\\+]', '', int_str)\n-    return int(int_str)\n+    return int_str\n \n \n def float_or_none(v, scale=1, invscale=1, default=None):\n",
+        "raw_llm_output": "Root cause: The `str_to_int` function attempts to convert an integer to a string using `str(int_str)`, which is unnecessary and causes a `TypeError` when `int_str` is already an integer. The function should directly return `int_str` if it is already an integer.\n\n```python\ndef str_to_int(int_str):\n    \"\"\" A more relaxed version of int_or_none \"\"\"\n    if int_str is None:\n        return None\n    return int_str\n```"
+      },
+      "check": {
+        "category": "regression",
+        "accepted": false,
+        "feedback": "Your patch breaks 2 existing test(s) that passed before: FAILED test/test_utils.py::TestUtil::test_parse_count - AssertionError: '0' != 0; FAILED test/test_utils.py::TestUtil::test_str_to_int - AssertionError: '123,4.... Keep the existing behaviour and fix only the bug.",
+        "repro_status": "passed",
+        "regressions": [
+          "test/test_utils.py::TestUtil::test_parse_count",
+          "test/test_utils.py::TestUtil::test_str_to_int"
+        ],
+        "output": "..............................................F.................F...F... [ 78%]\n....................                                                     [100%]\n================================== FAILURES ===================================\nE   AssertionError: '0' != 0\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:918: AssertionError: '0' != 0\nE   AssertionError: '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc\\\\' != '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc'\n    - \\\\?\\UNC\\ComputerName\\abc\\\n    ?                         -\n    + \\\\?\\UNC\\ComputerName\\abc\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:750: AssertionError: '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc\\\\' != '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc'\nE   AssertionError: '123,456' != 123456\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:918: AssertionError: '123,456' != 123456\n=========================== short test summary info ===========================\nFAILED test/test_utils.py::TestUtil::test_parse_count - AssertionError: '0' != 0\nFAILED test/test_utils.py::TestUtil::test_sanitize_path - AssertionError: '\\\\...\nFAILED test/test_utils.py::TestUtil::test_str_to_int - AssertionError: '123,4...\n3 failed, 89 passed in 8.16s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "str_to_int",
+      "lineno": 3520,
+      "end_lineno": 3525,
+      "source": "def str_to_int(int_str):\n    \"\"\" A more relaxed version of int_or_none \"\"\"\n    if int_str is None:\n        return None\n    int_str = re.sub(r'[,\\.\\+]', '', int_str)\n    return int(int_str)",
+      "score": 22.0,
+      "why": "in the traceback (line 3524)"
+    }
+  ],
+  "final_diff": null,
+  "total_time_s": 30.2,
+  "llm_calls": 1,
+  "regression_tests": [
+    "test/test_utils.py",
+    "test/test_execution.py"
+  ],
+  "correct": false,
+  "no_regression": null,
+  "eval_output": null,
+  "repro_from": "full",
+  "repro_valid": true
+}

@@ -1,0 +1,49 @@
+{
+  "bug_id": "youtube-dl_13",
+  "mode": "fix_single",
+  "status": "not_fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "from urllib.parse import urljoin, urlparse\n\ndef urljoin(base, path):\n    if not isinstance(path, compat_str) or not path:\n        return None\n    if re.match(r'^(?:https?:)?//', path):\n        return path\n    if base:\n        base_url = urlparse(base)\n        if base_url.scheme:\n            return urljoin(base, path)\n    return path\n",
+        "diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -67,6 +67,7 @@\n     ProxyType,\n     sockssocket,\n )\n+from urllib.parse import urljoin, urlparse\n \n \n def register_socks_protocols():\n@@ -1864,18 +1865,15 @@\n \n \n def urljoin(base, path):\n-    if isinstance(path, bytes):\n-        path = path.decode('utf-8')\n     if not isinstance(path, compat_str) or not path:\n         return None\n     if re.match(r'^(?:https?:)?//', path):\n         return path\n-    if isinstance(base, bytes):\n-        base = base.decode('utf-8')\n-    if not isinstance(base, compat_str) or not re.match(\n-            r'^(?:https?:)?//', base):\n-        return None\n-    return compat_urlparse.urljoin(base, path)\n+    if base:\n+        base_url = urlparse(base)\n+        if base_url.scheme:\n+            return urljoin(base, path)\n+    return path\n \n \n class HEADRequest(compat_urllib_request.Request):\n",
+        "raw_llm_output": "Root cause: The `urljoin` function is incorrectly handling URLs with non-http schemes. It attempts to decode the path and base URLs, which can lead to errors if the URLs are not properly encoded.\n\nFix:\n```python\nfrom urllib.parse import urljoin, urlparse\n\ndef urljoin(base, path):\n    if not isinstance(path, compat_str) or not path:\n        return None\n    if re.match(r'^(?:https?:)?//', path):\n        return path\n    if base:\n        base_url = urlparse(base)\n        if base_url.scheme:\n            return urljoin(base, path)\n    return path\n```"
+      },
+      "check": {
+        "category": "regression",
+        "accepted": false,
+        "feedback": "Your patch breaks 1 existing test(s) that passed before: FAILED test/test_utils.py::TestUtil::test_urljoin - RecursionError: maximum r.... Keep the existing behaviour and fix only the bug.",
+        "repro_status": "passed",
+        "regressions": [
+          "test/test_utils.py::TestUtil::test_urljoin"
+        ],
+        "output": "...........................................................F............ [ 87%]\n..F.......                                                               [100%]\n================================== FAILURES ===================================\nE   AssertionError: '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc\\\\' != '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc'\n    - \\\\?\\UNC\\ComputerName\\abc\\\n    ?                         -\n    + \\\\?\\UNC\\ComputerName\\abc\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:750: AssertionError: '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc\\\\' != '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc'\nE   RecursionError: maximum recursion depth exceeded\n!!! Recursion detected (same locals & position)\nC:\\Program Files\\Python314\\Lib\\urllib\\parse.py:522: RecursionError: maximum recursion depth exceeded\n=========================== short test summary info ===========================\nFAILED test/test_utils.py::TestUtil::test_sanitize_path - AssertionError: '\\\\...\nFAILED test/test_utils.py::TestUtil::test_urljoin - RecursionError: maximum r...\n2 failed, 80 passed in 1.75s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "urljoin",
+      "lineno": 1866,
+      "end_lineno": 1878,
+      "source": "def urljoin(base, path):\n    if isinstance(path, bytes):\n        path = path.decode('utf-8')\n    if not isinstance(path, compat_str) or not path:\n        return None\n    if re.match(r'^(?:https?:)?//', path):\n        return path\n    if isinstance(base, bytes):\n        base = base.decode('utf-8')\n    if not isinstance(base, compat_str) or not re.match(\n            r'^(?:https?:)?//', base):\n        return None\n    return compat_urlparse.urljoin(base, path)",
+      "score": 9.5,
+      "why": "called by the reproduction test"
+    }
+  ],
+  "final_diff": null,
+  "total_time_s": 28.0,
+  "llm_calls": 1,
+  "regression_tests": [
+    "test/test_utils.py",
+    "test/test_YoutubeDLCookieJar.py"
+  ],
+  "correct": false,
+  "no_regression": null,
+  "eval_output": null,
+  "repro_from": "full",
+  "repro_valid": true
+}

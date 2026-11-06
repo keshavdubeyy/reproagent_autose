@@ -1,0 +1,64 @@
+{
+  "bug_id": "ml_shipping",
+  "mode": "full",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst, shipping_fee\n\n@pytest.mark.parametrize(\"amount\", [300, 520])\ndef test_shipping_charge(amount):\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 20), 3)\n    cart.add(Product(\"TV\", \"Television\", amount))\n    cart.apply_coupon(\"SAVE10\")\n    total = checkout(cart)\n    assert shipping_fee(total) == Decimal(\"50\"), \"Shipping charge should be Rs 50\"\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst, shipping_fee\n\n@pytest.mark.parametrize(\"amount\", [300, 520])\ndef test_shipping_charge(amount):\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 20), 3)\n    cart.add(Product(\"TV\", \"Television\", amount))\n    cart.apply_coupon(\"SAVE10\")\n    total = checkout(cart)\n    assert shipping_fee(total) == Decimal(\"50\"), \"Shipping charge should be Rs 50\"\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 1.01,
+        "output": "F\n================================== FAILURES ===================================\n__________________________ test_shipping_charge[300] __________________________\ntest_reproagent_repro.py:12: in test_shipping_charge\n    assert shipping_fee(total) == Decimal(\"50\"), \"Shipping charge should be Rs 50\"\n           ^^^^^^^^^^^^^^^^^^^\nshopcart\\pricing.py:27: in shipping_fee\n    if Decimal(str(amount)) >= FREE_SHIPPING_THRESHOLD:\n       ^^^^^^^^^^^^^^^^^^^^\nE   decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_shipping_charge[300] - decimal.InvalidO...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.10s",
+        "exception_type": null,
+        "failure_line": "decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]",
+        "n_failed": 1,
+        "n_passed": 0,
+        "failing": [
+          "test_shipping_charge"
+        ]
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[slm-judge] The test failed because the code produced an invalid operation when trying to convert the amount to a decimal. (actual: decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>])"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "Shipping charges are incorrectly calculated for orders below Rs 500.",
+    "expected": "Rs 50 for orders of Rs 500 or more, and Rs 40 for orders below Rs 500.",
+    "observed": "Rs 0 for orders of Rs 520 after a coupon, which should be charged Rs 50.",
+    "symbols": [
+      "shipping",
+      "Rs",
+      "order",
+      "amount",
+      "coupon",
+      "payable",
+      "free"
+    ],
+    "files": [
+      "shipping.py"
+    ],
+    "example_inputs": [
+      "300",
+      "520"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst, shipping_fee\n\n@pytest.mark.parametrize(\"amount\", [300, 520])\ndef test_shipping_charge(amount):\n    cart = Cart()\n    cart.add(Product(\"P1\", \"Pen\", 20), 3)\n    cart.add(Product(\"TV\", \"Television\", amount))\n    cart.apply_coupon(\"SAVE10\")\n    total = checkout(cart)\n    assert shipping_fee(total) == Decimal(\"50\"), \"Shipping charge should be Rs 50\"\n",
+  "total_time_s": 61.6,
+  "llm_calls": 3,
+  "fail_to_pass": false,
+  "fixed_version_output": "F\n================================== FAILURES ===================================\n__________________________ test_shipping_charge[300] __________________________\ntest_reproagent_repro.py:12: in test_shipping_charge\n    assert shipping_fee(total) == Decimal(\"50\"), \"Shipping charge should be Rs 50\"\n           ^^^^^^^^^^^^^^^^^^^\nshopcart\\pricing.py:27: in shipping_fee\n    if Decimal(str(amount)) >= FREE_SHIPPING_THRESHOLD:\n       ^^^^^^^^^^^^^^^^^^^^\nE   decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_shipping_charge[300] - decimal.InvalidO...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.09s",
+  "fix": null,
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

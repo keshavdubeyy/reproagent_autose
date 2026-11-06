@@ -1,0 +1,107 @@
+{
+  "bug_id": "youtube-dl_17",
+  "mode": "fix_no_repro",
+  "status": "fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "def cli_bool_option(params, command_option, param, true_value='true', false_value='false', separator=None):\n    param = params.get(param, False)  # Default to False if param is missing\n    assert isinstance(param, bool)\n    if separator:\n        return [command_option + separator + (true_value if param else false_value)]\n    return [command_option, true_value if param else false_value]\n",
+        "diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -2732,7 +2732,7 @@\n \n \n def cli_bool_option(params, command_option, param, true_value='true', false_value='false', separator=None):\n-    param = params.get(param)\n+    param = params.get(param, False)  # Default to False if param is missing\n     assert isinstance(param, bool)\n     if separator:\n         return [command_option + separator + (true_value if param else false_value)]\n",
+        "raw_llm_output": "Root cause: The `cli_bool_option` function does not handle the case where the `param` key is missing from the `params` dictionary, leading to an assertion error.\n\n```python\ndef cli_bool_option(params, command_option, param, true_value='true', false_value='false', separator=None):\n    param = params.get(param, False)  # Default to False if param is missing\n    assert isinstance(param, bool)\n    if separator:\n        return [command_option + separator + (true_value if param else false_value)]\n    return [command_option, true_value if param else false_value]\n```"
+      },
+      "check": {
+        "category": "plausible",
+        "accepted": true,
+        "feedback": "",
+        "repro_status": null,
+        "regressions": [],
+        "output": "C\\\\ComputerName\\\\abc'\nE   AssertionError: b'C:\\\\Users\\\\risha\\\\AppData\\\\Local\\\\Temp\\\\repro_youtube-dl_17_patch_r5004x19\\\\repo\\\\youtube_dl\\\\extractor\\\\megaphone.py:21: SyntaxWarning: \"\\\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\\\\\.\"? A raw string is also an option.\\r\\n  \\'thumbnail\\': \\'re:^https://.*\\\\.png.*$\\',\\r\\nC:\\\\Users\\\\risha\\\\AppData\\\\Local\\\\Temp\\\\repro_youtube-dl_17_patch_r5004x19\\\\repo\\\\youtube_dl\\\\extractor\\\\pandatv.py:39: SyntaxWarning: \"is not\" with \\'int\\' literal. Did you mean \"!=\"?\\r\\n  if error_code is not 0:\\r\\n' is not false\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:756: AssertionError: b'C:\\\\Users\\\\risha\\\\AppData\\\\Local\\\\Temp\\\\repro_youtube-dl_17_patch_r5004x19\\\\repo\\\\youtube_dl\\\\extractor\\\\megaphone.py:21: SyntaxWarning: \"\\\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\\\\\.\"? A raw string is also an option.\\r\\n  \\'thumbnail\\': \\'re:^https://.*\\\\.png.*$\\',\\r\\nC:\\\\Users\\\\risha\\\\AppData\\\\Local\\\\Temp\\\\repro_youtube-dl_17_patch_r5004x19\\\\repo\\\\youtube_dl\\\\extractor\\\\pandatv.py:39: SyntaxWarning: \"is not\" with \\'int\\' literal. Did you mean \"!=\"?\\r\\n  if error_code is not 0:\\r\\n' is not false\n=========================== short test summary info ===========================\nFAILED test/test_utils.py::TestUtil::test_sanitize_path - AssertionError: '\\\\...\nFAILED test/test_execution.py::TestExecution::test_cmdline_umlauts - Assertio...\n2 failed, 78 passed in 10.21s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "cli_bool_option",
+      "lineno": 2734,
+      "end_lineno": 2739,
+      "source": "def cli_bool_option(params, command_option, param, true_value='true', false_value='false', separator=None):\n    param = params.get(param)\n    assert isinstance(param, bool)\n    if separator:\n        return [command_option + separator + (true_value if param else false_value)]\n    return [command_option, true_value if param else false_value]",
+      "score": 24.0,
+      "why": "named in the bug report"
+    },
+    {
+      "file": "youtube_dl/downloader/external.py",
+      "module": "youtube_dl.downloader.external",
+      "name": "list_external_downloaders",
+      "lineno": 338,
+      "end_lineno": 339,
+      "source": "def list_external_downloaders():\n    return sorted(_BY_NAME.keys())",
+      "score": 7.5,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/downloader/external.py",
+      "module": "youtube_dl.downloader.external",
+      "name": "get_external_downloader",
+      "lineno": 342,
+      "end_lineno": 347,
+      "source": "def get_external_downloader(external_downloader):\n    \"\"\" Given the name of the executable, see whether we support the given\n        downloader . \"\"\"\n    # Drop .exe extension on Windows\n    bn = os.path.splitext(os.path.basename(external_downloader))[0]\n    return _BY_NAME[bn]",
+      "score": 7.5,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "cli_valueless_option",
+      "lineno": 2742,
+      "end_lineno": 2744,
+      "source": "def cli_valueless_option(params, command_option, param, expected_value=True):\n    param = params.get(param)\n    return [command_option] if param == expected_value else []",
+      "score": 7.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "cli_option",
+      "lineno": 2727,
+      "end_lineno": 2731,
+      "source": "def cli_option(params, command_option, param):\n    param = params.get(param)\n    if param:\n        param = compat_str(param)\n    return [command_option, param] if param is not None else []",
+      "score": 7.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/downloader/external.py",
+      "module": "youtube_dl.downloader.external",
+      "name": "ExternalFD._bool_option",
+      "lineno": 83,
+      "end_lineno": 84,
+      "source": "    def _bool_option(self, command_option, param, true_value='true', false_value='false', separator=None):\n        return cli_bool_option(self.params, command_option, param, true_value, false_value, separator)",
+      "score": 7.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/downloader/external.py",
+      "module": "youtube_dl.downloader.external",
+      "name": "_BY_NAME",
+      "lineno": 331,
+      "end_lineno": 335,
+      "source": "_BY_NAME = dict(\n    (klass.get_basename(), klass)\n    for name, klass in globals().items()\n    if name.endswith('FD') and name != 'ExternalFD'\n)",
+      "score": 6.5,
+      "why": "constant read by list_external_downloaders"
+    }
+  ],
+  "final_diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -2732,7 +2732,7 @@\n \n \n def cli_bool_option(params, command_option, param, true_value='true', false_value='false', separator=None):\n-    param = params.get(param)\n+    param = params.get(param, False)  # Default to False if param is missing\n     assert isinstance(param, bool)\n     if separator:\n         return [command_option + separator + (true_value if param else false_value)]\n",
+  "total_time_s": 37.3,
+  "llm_calls": 1,
+  "regression_tests": [
+    "test/test_utils.py",
+    "test/test_execution.py"
+  ],
+  "correct": false,
+  "no_regression": true,
+  "eval_output": "C:\\Users\\risha\\AppData\\Local\\Temp\\repro_oracle_x7zhfwra\\repo\\youtube_dl\\extractor\\megaphone.py:21: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n  'thumbnail': 're:^https://.*\\.png.*$',\nC:\\Users\\risha\\AppData\\Local\\Temp\\repro_oracle_x7zhfwra\\repo\\youtube_dl\\extractor\\pandatv.py:39: SyntaxWarning: \"is not\" with 'int' literal. Did you mean \"!=\"?\n  if error_code is not 0:\nTraceback (most recent call last):\n  File \"<string>\", line 2, in <module>\n    assert cli_bool_option({}, '--check-certificate', 'nocheckcertificate') == []\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+  "repro_from": "full",
+  "repro_valid": true
+}

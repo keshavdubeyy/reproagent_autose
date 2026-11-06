@@ -1,0 +1,104 @@
+{
+  "bug_id": "youtube-dl_13",
+  "mode": "fix_multi",
+  "status": "not_fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "from urllib.parse import urljoin, urlparse\n\ndef urljoin(base, path):\n    if not isinstance(path, compat_str) or not path:\n        return None\n    if re.match(r'^(?:https?:)?//', path):\n        return path\n    if base:\n        parsed_base = urlparse(base)\n        if parsed_base.scheme:\n            return urljoin(base, path)\n    return urljoin(None, path)\n",
+        "diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -67,6 +67,7 @@\n     ProxyType,\n     sockssocket,\n )\n+from urllib.parse import urljoin, urlparse\n \n \n def register_socks_protocols():\n@@ -1864,18 +1865,15 @@\n \n \n def urljoin(base, path):\n-    if isinstance(path, bytes):\n-        path = path.decode('utf-8')\n     if not isinstance(path, compat_str) or not path:\n         return None\n     if re.match(r'^(?:https?:)?//', path):\n         return path\n-    if isinstance(base, bytes):\n-        base = base.decode('utf-8')\n-    if not isinstance(base, compat_str) or not re.match(\n-            r'^(?:https?:)?//', base):\n-        return None\n-    return compat_urlparse.urljoin(base, path)\n+    if base:\n+        parsed_base = urlparse(base)\n+        if parsed_base.scheme:\n+            return urljoin(base, path)\n+    return urljoin(None, path)\n \n \n class HEADRequest(compat_urllib_request.Request):\n",
+        "raw_llm_output": "Root cause: The `urljoin` function incorrectly handles URLs with non-http schemes by attempting to decode them as bytes, which leads to incorrect behavior when the URL is already an absolute URL.\n\nFix:\n```python\nfrom urllib.parse import urljoin, urlparse\n\ndef urljoin(base, path):\n    if not isinstance(path, compat_str) or not path:\n        return None\n    if re.match(r'^(?:https?:)?//', path):\n        return path\n    if base:\n        parsed_base = urlparse(base)\n        if parsed_base.scheme:\n            return urljoin(base, path)\n    return urljoin(None, path)\n```",
+        "kind": "patch",
+        "changed": [
+          "youtube_dl/utils.py:urljoin"
+        ]
+      },
+      "check": {
+        "category": "repro_still_fails",
+        "accepted": false,
+        "feedback": "After your patch the reproduction test still fails: RecursionError: maximum recursion depth exceeded. The root cause is not fixed yet (or your change broke the code path).",
+        "repro_status": "failed",
+        "regressions": [],
+        "output": "F                                                                        [100%]\n================================== FAILURES ===================================\n________________________ TestUrljoin.test_urljoin_rtmp ________________________\ntest_reproagent_repro.py:6: in test_urljoin_rtmp\n    self.assertEqual(urljoin(None, 'rtmp://foo.de'), 'rtmp://foo.de')\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nyoutube_dl\\utils.py:1876: in urljoin\n    return urljoin(None, path)\n           ^^^^^^^^^^^^^^^^^^^\nyoutube_dl\\utils.py:1876: in urljoin\n    return urljoin(None, path)\n           ^^^^^^^^^^^^^^^^^^^\nE   RecursionError: maximum recursion depth exceeded\n!!! Recursion detected (same locals & position)\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::TestUrljoin::test_urljoin_rtmp - RecursionEr...\n1 failed in 5.09s",
+        "repro_failed": 1,
+        "repro_failing": [
+          "TestUrljoin"
+        ]
+      }
+    },
+    {
+      "patch": {
+        "attempt": 2,
+        "code": "from urllib.parse import urljoin\n\ndef urljoin(base, path):\n    if not isinstance(path, compat_str) or not path:\n        return None\n    if re.match(r'^(?:https?:)?//', path):\n        return path\n    return urljoin(None, path)\n",
+        "diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -67,6 +67,7 @@\n     ProxyType,\n     sockssocket,\n )\n+from urllib.parse import urljoin\n \n \n def register_socks_protocols():\n@@ -1864,18 +1865,11 @@\n \n \n def urljoin(base, path):\n-    if isinstance(path, bytes):\n-        path = path.decode('utf-8')\n     if not isinstance(path, compat_str) or not path:\n         return None\n     if re.match(r'^(?:https?:)?//', path):\n         return path\n-    if isinstance(base, bytes):\n-        base = base.decode('utf-8')\n-    if not isinstance(base, compat_str) or not re.match(\n-            r'^(?:https?:)?//', base):\n-        return None\n-    return compat_urlparse.urljoin(base, path)\n+    return urljoin(None, path)\n \n \n class HEADRequest(compat_urllib_request.Request):\n",
+        "raw_llm_output": "Root cause: The issue arises because the `urljoin` function attempts to parse the `base` URL and check its scheme, which causes a recursion error when the `base` is `None`. The function should directly return the `path` if the `base` is `None` or if the `path` is an absolute URL.\n\n```python\nfrom urllib.parse import urljoin\n\ndef urljoin(base, path):\n    if not isinstance(path, compat_str) or not path:\n        return None\n    if re.match(r'^(?:https?:)?//', path):\n        return path\n    return urljoin(None, path)\n```",
+        "kind": "patch",
+        "changed": [
+          "youtube_dl/utils.py:urljoin"
+        ]
+      },
+      "check": {
+        "category": "repro_still_fails",
+        "accepted": false,
+        "feedback": "After your patch the reproduction test still fails: RecursionError: maximum recursion depth exceeded. The root cause is not fixed yet (or your change broke the code path).",
+        "repro_status": "failed",
+        "regressions": [],
+        "output": "F                                                                        [100%]\n================================== FAILURES ===================================\n________________________ TestUrljoin.test_urljoin_rtmp ________________________\ntest_reproagent_repro.py:6: in test_urljoin_rtmp\n    self.assertEqual(urljoin(None, 'rtmp://foo.de'), 'rtmp://foo.de')\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nyoutube_dl\\utils.py:1872: in urljoin\n    return urljoin(None, path)\n           ^^^^^^^^^^^^^^^^^^^\nyoutube_dl\\utils.py:1872: in urljoin\n    return urljoin(None, path)\n           ^^^^^^^^^^^^^^^^^^^\nE   RecursionError: maximum recursion depth exceeded\n!!! Recursion detected (same locals & position)\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::TestUrljoin::test_urljoin_rtmp - RecursionEr...\n1 failed in 5.05s",
+        "repro_failed": 1,
+        "repro_failing": [
+          "TestUrljoin"
+        ]
+      }
+    },
+    {
+      "patch": {
+        "attempt": 3,
+        "code": "from urllib.parse import urljoin\n\ndef urljoin(base, path):\n    if not isinstance(path, compat_str) or not path:\n        return None\n    if re.match(r'^(?:https?:)?//', path):\n        return path\n    if base is None:\n        return path\n    return urljoin(base, path)\n",
+        "diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -67,6 +67,7 @@\n     ProxyType,\n     sockssocket,\n )\n+from urllib.parse import urljoin\n \n \n def register_socks_protocols():\n@@ -1864,18 +1865,13 @@\n \n \n def urljoin(base, path):\n-    if isinstance(path, bytes):\n-        path = path.decode('utf-8')\n     if not isinstance(path, compat_str) or not path:\n         return None\n     if re.match(r'^(?:https?:)?//', path):\n         return path\n-    if isinstance(base, bytes):\n-        base = base.decode('utf-8')\n-    if not isinstance(base, compat_str) or not re.match(\n-            r'^(?:https?:)?//', base):\n-        return None\n-    return compat_urlparse.urljoin(base, path)\n+    if base is None:\n+        return path\n+    return urljoin(base, path)\n \n \n class HEADRequest(compat_urllib_request.Request):\n",
+        "raw_llm_output": "Root cause: The `urljoin` function was incorrectly handling the case where the `base` is `None` and the `path` is an absolute URL. The previous patch was attempting to call `urljoin(None, path)`, which caused a recursion error because `urljoin` would keep calling itself indefinitely.\n\nTo fix this, we need to ensure that `urljoin` only attempts to join the `base` and `path` when both are strings and the `base` is not `None`. This can be achieved by adding a check to see if `base` is `None` before attempting to join it with `path`.\n\nHere is the corrected code:\n\n```python\nfrom urllib.parse import urljoin\n\ndef urljoin(base, path):\n    if not isinstance(path, compat_str) or not path:\n        return None\n    if re.match(r'^(?:https?:)?//', path):\n        return path\n    if base is None:\n        return path\n    return urljoin(base, path)\n```\n\nThis change ensures that `urljoin` only attempts to join the `base` and `path` when both are strings and the `base` is not `None`, thus preventing the recursion error.",
+        "kind": "patch",
+        "changed": [
+          "youtube_dl/utils.py:urljoin"
+        ]
+      },
+      "check": {
+        "category": "regression",
+        "accepted": false,
+        "feedback": "Your patch breaks 1 existing test(s) that passed before: FAILED test/test_utils.py::TestUtil::test_urljoin - RecursionError: maximum r.... Keep the existing behaviour and fix only the bug.",
+        "repro_status": "passed",
+        "regressions": [
+          "test/test_utils.py::TestUtil::test_urljoin"
+        ],
+        "output": "...........................................................F............ [ 87%]\n..F.......                                                               [100%]\n================================== FAILURES ===================================\nE   AssertionError: '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc\\\\' != '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc'\n    - \\\\?\\UNC\\ComputerName\\abc\\\n    ?                         -\n    + \\\\?\\UNC\\ComputerName\\abc\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:750: AssertionError: '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc\\\\' != '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc'\nE   RecursionError: maximum recursion depth exceeded\n!!! Recursion detected (same locals & position)\nC:\\Program Files\\Python314\\Lib\\re\\__init__.py:167: RecursionError: maximum recursion depth exceeded\n=========================== short test summary info ===========================\nFAILED test/test_utils.py::TestUtil::test_sanitize_path - AssertionError: '\\\\...\nFAILED test/test_utils.py::TestUtil::test_urljoin - RecursionError: maximum r...\n2 failed, 80 passed in 1.53s\n\n",
+        "repro_failed": null,
+        "repro_failing": []
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "urljoin",
+      "lineno": 1866,
+      "end_lineno": 1878,
+      "source": "def urljoin(base, path):\n    if isinstance(path, bytes):\n        path = path.decode('utf-8')\n    if not isinstance(path, compat_str) or not path:\n        return None\n    if re.match(r'^(?:https?:)?//', path):\n        return path\n    if isinstance(base, bytes):\n        base = base.decode('utf-8')\n    if not isinstance(base, compat_str) or not re.match(\n            r'^(?:https?:)?//', base):\n        return None\n    return compat_urlparse.urljoin(base, path)",
+      "score": 9.5,
+      "why": "called by the reproduction test"
+    }
+  ],
+  "final_diff": null,
+  "total_time_s": 105.4,
+  "llm_calls": 3,
+  "regression_tests": [
+    "test/test_utils.py",
+    "test/test_YoutubeDLCookieJar.py"
+  ],
+  "locations": [],
+  "correct": false,
+  "no_regression": null,
+  "eval_output": null,
+  "repro_from": "full",
+  "repro_valid": true
+}

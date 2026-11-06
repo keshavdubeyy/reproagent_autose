@@ -1,0 +1,54 @@
+{
+  "bug_id": "youtube-dl_17",
+  "mode": "baseline",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import sys\nsys.path.append('path_to_your_project_root')  # Adjust the path as necessary\n\nfrom youtube_dl.utils import cli_bool_option\n\ndef test_cli_bool_option_missing_param():\n    expected = []\n    result = cli_bool_option({}, '--check-certificate', 'nocheckcertificate')\n    assert result == expected, f\"Expected {expected}, but got {result}\"\n",
+        "raw_llm_output": "```python\nimport sys\nsys.path.append('path_to_your_project_root')  # Adjust the path as necessary\n\nfrom youtube_dl.utils import cli_bool_option\n\ndef test_cli_bool_option_missing_param():\n    expected = []\n    result = cli_bool_option({}, '--check-certificate', 'nocheckcertificate')\n    assert result == expected, f\"Expected {expected}, but got {result}\"\n```\n\nReplace `'path_to_your_project_root'` with the actual path to your project's root directory."
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 5.58,
+        "output": "F\n================================== FAILURES ===================================\n_____________________ test_cli_bool_option_missing_param ______________________\ntest_reproagent_repro.py:8: in test_cli_bool_option_missing_param\n    result = cli_bool_option({}, '--check-certificate', 'nocheckcertificate')\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nyoutube_dl\\utils.py:2736: in cli_bool_option\n    assert isinstance(param, bool)\n           ^^^^^^^^^^^^^^^^^^^^^^^\nE   AssertionError\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_cli_bool_option_missing_param - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 4.80s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[slm-judge] The test failed because the function `cli_bool_option` is raising an `AssertionError` when the `param` key is missing from the dict, which contradicts the expected behavior described in the bug report. (actual: AssertionError: assert isinstance(param, bool))"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "cli_bool_option crashes when the option is not set",
+    "expected": "The function should return an empty list when the param key is missing from the dict.",
+    "observed": "The function raises an exception when the param key is missing from the dict.",
+    "symbols": [
+      "cli_bool_option",
+      "params",
+      "command_option",
+      "param"
+    ],
+    "files": [
+      "youtube_dl/utils/cli_bool_option.py"
+    ],
+    "example_inputs": [
+      "cli_bool_option({}, '--check-certificate', 'nocheckcertificate')"
+    ],
+    "failure_kind": "exception",
+    "is_actionable": true
+  },
+  "final_test": "import sys\nsys.path.append('path_to_your_project_root')  # Adjust the path as necessary\n\nfrom youtube_dl.utils import cli_bool_option\n\ndef test_cli_bool_option_missing_param():\n    expected = []\n    result = cli_bool_option({}, '--check-certificate', 'nocheckcertificate')\n    assert result == expected, f\"Expected {expected}, but got {result}\"\n",
+  "total_time_s": 50.8,
+  "llm_calls": 3,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n1 passed in 4.33s",
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

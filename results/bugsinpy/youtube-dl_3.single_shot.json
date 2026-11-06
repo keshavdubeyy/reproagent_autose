@@ -1,0 +1,51 @@
+{
+  "bug_id": "youtube-dl_3",
+  "mode": "single_shot",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import unittest\nfrom youtube_dl.utils import unescapeHTML\n\nclass TestUnescapeHTML(unittest.TestCase):\n    def test_bare_ampersand(self):\n        self.assertEqual(unescapeHTML('&a&quot;'), '&a\"')\n",
+        "raw_llm_output": "```python\nimport unittest\nfrom youtube_dl.utils import unescapeHTML\n\nclass TestUnescapeHTML(unittest.TestCase):\n    def test_bare_ampersand(self):\n        self.assertEqual(unescapeHTML('&a&quot;'), '&a\"')\n```\n\nThis test will fail because the current implementation of `unescapeHTML` does not decode HTML entities that come after a bare '&' that is not part of an entity. The expected output is '&a\"', but the actual output is '&a&quot;'."
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 6.22,
+        "output": "F\n================================== FAILURES ===================================\n____________________ TestUnescapeHTML.test_bare_ampersand _____________________\ntest_reproagent_repro.py:6: in test_bare_ampersand\n    self.assertEqual(unescapeHTML('&a&quot;'), '&a\"')\nE   AssertionError: '&a&quot;' != '&a\"'\nE   - &a&quot;\nE   + &a\"\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::TestUnescapeHTML::test_bare_ampersand - Asse...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 5.34s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError: '&a&quot;' != '&a\"'"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[slm-judge] The test fails because the expected output is '&a\"' but the actual output is '&a&quot;' which is the same as the expected output. The test itself is correct and the function behaves as expected. (actual: &a&quot;)"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "HTML entity decoding issue in unescapeHTML function",
+    "expected": "The function should decode HTML entities that come after a bare '&' that is not part of an entity.",
+    "observed": "The function does not decode HTML entities that come after a bare '&' that is not part of an entity.",
+    "symbols": [
+      "unescapeHTML"
+    ],
+    "files": [
+      "youtube_dl/utils.py"
+    ],
+    "example_inputs": [
+      "&a\""
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import unittest\nfrom youtube_dl.utils import unescapeHTML\n\nclass TestUnescapeHTML(unittest.TestCase):\n    def test_bare_ampersand(self):\n        self.assertEqual(unescapeHTML('&a&quot;'), '&a\"')\n",
+  "total_time_s": 70.0,
+  "llm_calls": 3,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n1 passed in 4.40s",
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

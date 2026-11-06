@@ -1,0 +1,47 @@
+{
+  "bug_id": "youtube-dl_17",
+  "mode": "fix_full",
+  "status": "fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "# youtube_dl/utils.py (module youtube_dl.utils) - in the traceback (line 2736)\ndef cli_bool_option(params, command_option, param, true_value='true', false_value='false', separator=None):\n    param = params.get(param)\n    if param is None:\n        return []\n    assert isinstance(param, bool)\n    if separator:\n        return [command_option + separator + (true_value if param else false_value)]\n    return [command_option, true_value if param else false_value]\n",
+        "diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -2733,6 +2733,8 @@\n \n def cli_bool_option(params, command_option, param, true_value='true', false_value='false', separator=None):\n     param = params.get(param)\n+    if param is None:\n+        return []\n     assert isinstance(param, bool)\n     if separator:\n         return [command_option + separator + (true_value if param else false_value)]\n",
+        "raw_llm_output": "Root cause: The `cli_bool_option` function raises an `AssertionError` when the `param` key is missing from the `params` dictionary because it attempts to convert the `param` value to a boolean using `isinstance(param, bool)`, which fails when `param` is `None`.\n\nTo fix this, we need to handle the case where `param` is `None` by returning an empty list. Here's the updated code:\n\n```python\n# youtube_dl/utils.py (module youtube_dl.utils) - in the traceback (line 2736)\ndef cli_bool_option(params, command_option, param, true_value='true', false_value='false', separator=None):\n    param = params.get(param)\n    if param is None:\n        return []\n    assert isinstance(param, bool)\n    if separator:\n        return [command_option + separator + (true_value if param else false_value)]\n    return [command_option, true_value if param else false_value]\n```"
+      },
+      "check": {
+        "category": "plausible",
+        "accepted": true,
+        "feedback": "",
+        "repro_status": "passed",
+        "regressions": [],
+        "output": "NC\\\\ComputerName\\\\abc'\nE   AssertionError: b'C:\\\\Users\\\\risha\\\\AppData\\\\Local\\\\Temp\\\\repro_youtube-dl_17_patch_r54ahs4e\\\\repo\\\\youtube_dl\\\\extractor\\\\megaphone.py:21: SyntaxWarning: \"\\\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\\\\\.\"? A raw string is also an option.\\r\\n  \\'thumbnail\\': \\'re:^https://.*\\\\.png.*$\\',\\r\\nC:\\\\Users\\\\risha\\\\AppData\\\\Local\\\\Temp\\\\repro_youtube-dl_17_patch_r54ahs4e\\\\repo\\\\youtube_dl\\\\extractor\\\\pandatv.py:39: SyntaxWarning: \"is not\" with \\'int\\' literal. Did you mean \"!=\"?\\r\\n  if error_code is not 0:\\r\\n' is not false\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:756: AssertionError: b'C:\\\\Users\\\\risha\\\\AppData\\\\Local\\\\Temp\\\\repro_youtube-dl_17_patch_r54ahs4e\\\\repo\\\\youtube_dl\\\\extractor\\\\megaphone.py:21: SyntaxWarning: \"\\\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\\\\\.\"? A raw string is also an option.\\r\\n  \\'thumbnail\\': \\'re:^https://.*\\\\.png.*$\\',\\r\\nC:\\\\Users\\\\risha\\\\AppData\\\\Local\\\\Temp\\\\repro_youtube-dl_17_patch_r54ahs4e\\\\repo\\\\youtube_dl\\\\extractor\\\\pandatv.py:39: SyntaxWarning: \"is not\" with \\'int\\' literal. Did you mean \"!=\"?\\r\\n  if error_code is not 0:\\r\\n' is not false\n=========================== short test summary info ===========================\nFAILED test/test_utils.py::TestUtil::test_sanitize_path - AssertionError: '\\\\...\nFAILED test/test_execution.py::TestExecution::test_cmdline_umlauts - Assertio...\n2 failed, 78 passed in 7.22s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "cli_bool_option",
+      "lineno": 2734,
+      "end_lineno": 2739,
+      "source": "def cli_bool_option(params, command_option, param, true_value='true', false_value='false', separator=None):\n    param = params.get(param)\n    assert isinstance(param, bool)\n    if separator:\n        return [command_option + separator + (true_value if param else false_value)]\n    return [command_option, true_value if param else false_value]",
+      "score": 27.5,
+      "why": "in the traceback (line 2736)"
+    }
+  ],
+  "final_diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -2733,6 +2733,8 @@\n \n def cli_bool_option(params, command_option, param, true_value='true', false_value='false', separator=None):\n     param = params.get(param)\n+    if param is None:\n+        return []\n     assert isinstance(param, bool)\n     if separator:\n         return [command_option + separator + (true_value if param else false_value)]\n",
+  "total_time_s": 57.1,
+  "llm_calls": 1,
+  "regression_tests": [
+    "test/test_utils.py",
+    "test/test_execution.py"
+  ],
+  "correct": true,
+  "no_regression": true,
+  "eval_output": "C:\\Users\\risha\\AppData\\Local\\Temp\\repro_oracle_fw03fnc5\\repo\\youtube_dl\\extractor\\megaphone.py:21: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n  'thumbnail': 're:^https://.*\\.png.*$',\nC:\\Users\\risha\\AppData\\Local\\Temp\\repro_oracle_fw03fnc5\\repo\\youtube_dl\\extractor\\pandatv.py:39: SyntaxWarning: \"is not\" with 'int' literal. Did you mean \"!=\"?\n  if error_code is not 0:\n",
+  "repro_from": "full",
+  "repro_valid": true
+}

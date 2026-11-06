@@ -1,0 +1,156 @@
+{
+  "bug_id": "shop_shipping",
+  "mode": "fix_no_repro",
+  "status": "fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "# shopcart/pricing.py (module shopcart.pricing) - updated shipping_fee\ndef shipping_fee(amount) -> Decimal:\n    \"\"\"Flat Rs 50 shipping, free for orders of Rs 500 or more.\"\"\"\n    if Decimal(str(amount)) >= FREE_SHIPPING_THRESHOLD:\n        return money(0)\n    return money(SHIPPING_FEE)\n",
+        "diff": "--- a/shopcart/pricing.py\n+++ b/shopcart/pricing.py\n@@ -24,7 +24,7 @@\n \n def shipping_fee(amount) -> Decimal:\n     \"\"\"Flat Rs 50 shipping, free for orders of Rs 500 or more.\"\"\"\n-    if Decimal(str(amount)) > FREE_SHIPPING_THRESHOLD:\n+    if Decimal(str(amount)) >= FREE_SHIPPING_THRESHOLD:\n         return money(0)\n     return money(SHIPPING_FEE)\n \n",
+        "raw_llm_output": "Root cause: The `shipping_fee` function incorrectly returns a non-zero shipping fee for orders of exactly Rs 500, which violates the policy of free shipping for orders of Rs 500 or more.\n\n```python\n# shopcart/pricing.py (module shopcart.pricing) - updated shipping_fee\ndef shipping_fee(amount) -> Decimal:\n    \"\"\"Flat Rs 50 shipping, free for orders of Rs 500 or more.\"\"\"\n    if Decimal(str(amount)) >= FREE_SHIPPING_THRESHOLD:\n        return money(0)\n    return money(SHIPPING_FEE)\n```"
+      },
+      "check": {
+        "category": "plausible",
+        "accepted": true,
+        "feedback": "",
+        "repro_status": null,
+        "regressions": [],
+        "output": "...                                                                      [100%]\n3 passed in 0.03s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "shipping_fee",
+      "lineno": 25,
+      "end_lineno": 29,
+      "source": "def shipping_fee(amount) -> Decimal:\n    \"\"\"Flat Rs 50 shipping, free for orders of Rs 500 or more.\"\"\"\n    if Decimal(str(amount)) > FREE_SHIPPING_THRESHOLD:\n        return money(0)\n    return money(SHIPPING_FEE)",
+      "score": 20.0,
+      "why": "named in the bug report"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "money",
+      "lineno": 13,
+      "end_lineno": 14,
+      "source": "def money(x) -> Decimal:\n    return Decimal(str(x)).quantize(Decimal(\"0.01\"), rounding=ROUND_HALF_UP)",
+      "score": 8.5,
+      "why": "called by shipping_fee"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "checkout",
+      "lineno": 54,
+      "end_lineno": 73,
+      "source": "def checkout(cart: Cart) -> dict:\n    \"\"\"Compute the final bill. Raises ValueError for an empty cart.\"\"\"\n    if not cart.items:\n        raise ValueError(\"cart is empty\")\n    subtotal = cart.subtotal()\n    discount = bulk_discount(subtotal)\n    coupon = money((subtotal - discount) * coupon_rate(cart.coupon))\n    taxable = subtotal - discount - coupon\n    tax = gst(taxable)\n    ship = shipping_fee(taxable)\n    for product, qty in cart.items.values():\n        if qty > product.stock:\n            raise ValueError(f\"not enough stock for {product.sku}\")\n    for product, qty in cart.items.values():\n        product.stock -= qty\n    return {\n        \"subtotal\": subtotal, \"discount\": discount, \"coupon\": coupon, \"tax\": tax,\n        \"shipping\": ship, \"total\": money(taxable + tax + ship),\n        \"average_item_price\": money(subtotal / cart.item_count()),\n    }",
+      "score": 3.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "bulk_discount",
+      "lineno": 17,
+      "end_lineno": 22,
+      "source": "def bulk_discount(subtotal) -> Decimal:\n    \"\"\"10% discount for orders of Rs 1,000 or more.\"\"\"\n    subtotal = Decimal(str(subtotal))\n    if subtotal >= DISCOUNT_THRESHOLD:\n        return money(subtotal * DISCOUNT_RATE)\n    return money(0)",
+      "score": 2.5,
+      "why": "called by checkout"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "gst",
+      "lineno": 39,
+      "end_lineno": 41,
+      "source": "def gst(amount) -> Decimal:\n    \"\"\"18% GST rounded half-up to the paisa.\"\"\"\n    return money(Decimal(str(amount)) * GST_RATE)",
+      "score": 2.5,
+      "why": "called by checkout"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "coupon_rate",
+      "lineno": 32,
+      "end_lineno": 36,
+      "source": "def coupon_rate(code) -> Decimal:\n    \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n    if not code:\n        return Decimal(\"0\")\n    return COUPONS.get(code.strip().upper(), Decimal(\"0\"))",
+      "score": 2.5,
+      "why": "called by checkout"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "FREE_SHIPPING_THRESHOLD",
+      "lineno": 6,
+      "end_lineno": 6,
+      "source": "FREE_SHIPPING_THRESHOLD = 500  # orders of Rs 500 or more ship free",
+      "score": 19.0,
+      "why": "constant read by shipping_fee"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "SHIPPING_FEE",
+      "lineno": 7,
+      "end_lineno": 7,
+      "source": "SHIPPING_FEE = Decimal(\"50\")",
+      "score": 19.0,
+      "why": "constant read by shipping_fee"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "DISCOUNT_THRESHOLD",
+      "lineno": 4,
+      "end_lineno": 4,
+      "source": "DISCOUNT_THRESHOLD = 1000      # orders of Rs 1,000 or more get a discount",
+      "score": 1.5,
+      "why": "constant read by bulk_discount"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "DISCOUNT_RATE",
+      "lineno": 5,
+      "end_lineno": 5,
+      "source": "DISCOUNT_RATE = Decimal(\"0.10\")",
+      "score": 1.5,
+      "why": "constant read by bulk_discount"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "GST_RATE",
+      "lineno": 8,
+      "end_lineno": 8,
+      "source": "GST_RATE = Decimal(\"0.18\")",
+      "score": 1.5,
+      "why": "constant read by gst"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "COUPONS",
+      "lineno": 10,
+      "end_lineno": 10,
+      "source": "COUPONS = {\"SAVE10\": Decimal(\"0.10\"), \"FESTIVE20\": Decimal(\"0.20\")}",
+      "score": 1.5,
+      "why": "constant read by coupon_rate"
+    }
+  ],
+  "final_diff": "--- a/shopcart/pricing.py\n+++ b/shopcart/pricing.py\n@@ -24,7 +24,7 @@\n \n def shipping_fee(amount) -> Decimal:\n     \"\"\"Flat Rs 50 shipping, free for orders of Rs 500 or more.\"\"\"\n-    if Decimal(str(amount)) > FREE_SHIPPING_THRESHOLD:\n+    if Decimal(str(amount)) >= FREE_SHIPPING_THRESHOLD:\n         return money(0)\n     return money(SHIPPING_FEE)\n \n",
+  "total_time_s": 26.9,
+  "llm_calls": 1,
+  "regression_tests": [
+    "tests/test_cart.py"
+  ],
+  "correct": true,
+  "no_regression": true,
+  "eval_output": "",
+  "repro_from": "full",
+  "repro_valid": false
+}

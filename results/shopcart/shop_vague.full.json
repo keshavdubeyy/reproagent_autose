@@ -1,0 +1,23 @@
+{
+  "bug_id": "shop_vague",
+  "mode": "full",
+  "verdict": "needs_more_information",
+  "attempts": [],
+  "spec": {
+    "summary": "Website doesn't work properly sometimes",
+    "expected": "Website should work consistently",
+    "observed": "Website doesn't work properly sometimes",
+    "symbols": [],
+    "files": [],
+    "example_inputs": [],
+    "failure_kind": "other",
+    "is_actionable": false
+  },
+  "final_test": null,
+  "total_time_s": 11.0,
+  "llm_calls": 1,
+  "fail_to_pass": null,
+  "fixed_version_output": null,
+  "fail_to_pass_semantic": null,
+  "message_checks": []
+}

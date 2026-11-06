@@ -1,0 +1,54 @@
+{
+  "bug_id": "shop_coupon",
+  "mode": "baseline",
+  "verdict": "not_reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import sys\nsys.path.append('/path/to/project/root')  # Update with the actual path to your project\n\nfrom your_module import Cart\n\ndef test_coupon_case_insensitivity():\n    cart = Cart()\n    # Create a product with a price that totals Rs 800\n    product = Product(price=800)\n    cart.add_product(product)\n    \n    # Apply the coupon 'save10' and expect it to be rejected\n    assert cart.apply_coupon('save10') == False, \"Coupon 'save10' should be rejected\"\n    \n    # Apply the coupon 'SAVE10' and expect it to be accepted\n    assert cart.apply_coupon('SAVE10') == True, \"Coupon 'SAVE10' should be accepted\"\n",
+        "raw_llm_output": "```python\nimport sys\nsys.path.append('/path/to/project/root')  # Update with the actual path to your project\n\nfrom your_module import Cart\n\ndef test_coupon_case_insensitivity():\n    cart = Cart()\n    # Create a product with a price that totals Rs 800\n    product = Product(price=800)\n    cart.add_product(product)\n    \n    # Apply the coupon 'save10' and expect it to be rejected\n    assert cart.apply_coupon('save10') == False, \"Coupon 'save10' should be rejected\"\n    \n    # Apply the coupon 'SAVE10' and expect it to be accepted\n    assert cart.apply_coupon('SAVE10') == True, \"Coupon 'SAVE10' should be accepted\"\n```"
+      },
+      "execution": {
+        "status": "collection_error",
+        "exit_code": 2,
+        "duration_s": 1.33,
+        "output": "=================================== ERRORS ====================================\n__________________ ERROR collecting test_reproagent_repro.py __________________\nImportError while importing test module 'C:\\Users\\risha\\AppData\\Local\\Temp\\repro_shop_coupon_0f6ogvqi\\repo\\test_reproagent_repro.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\Program Files\\Python314\\Lib\\importlib\\__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_reproagent_repro.py:4: in <module>\n    from your_module import Cart\nE   ModuleNotFoundError: No module named 'your_module'\n=========================== short test summary info ===========================\nERROR test_reproagent_repro.py\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.20s",
+        "exception_type": "ModuleNotFoundError",
+        "failure_line": "ModuleNotFoundError: No module named 'your_module'"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: ModuleNotFoundError: No module named 'your_module'. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    }
+  ],
+  "spec": {
+    "summary": "Coupon code 'save10' is rejected when typed in lowercase, while 'SAVE10' works, indicating a case-insensitivity issue.",
+    "expected": "Coupon codes should be case-insensitive, allowing 'save10' to be accepted.",
+    "observed": "Cart.apply_coupon('save10') returns False, while Cart.apply_coupon('SAVE10') returns True.",
+    "symbols": [
+      "Cart",
+      "apply_coupon",
+      "rejected"
+    ],
+    "files": [
+      "cart.py"
+    ],
+    "example_inputs": [
+      "save10",
+      "SAVE10"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": null,
+  "total_time_s": 48.7,
+  "llm_calls": 2,
+  "fail_to_pass": false,
+  "fixed_version_output": null,
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

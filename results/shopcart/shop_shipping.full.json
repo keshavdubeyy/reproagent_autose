@@ -1,0 +1,75 @@
+{
+  "bug_id": "shop_shipping",
+  "mode": "full",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef test_free_shipping_for_500():\n    cart = Cart()\n    cart.add(Product(\"product1\", 100, 10), 1)\n    cart.add(Product(\"product2\", 200, 5), 1)\n    cart.add(Product(\"product3\", 300, 3), 1)\n    cart.add(Product(\"product4\", 400, 2), 1)\n    cart.add(Product(\"product5\", 500, 1), 1)\n\n    bill = checkout(cart)\n    assert bill[\"shipping\"] == money(0)\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef test_free_shipping_for_500():\n    cart = Cart()\n    cart.add(Product(\"product1\", 100, 10), 1)\n    cart.add(Product(\"product2\", 200, 5), 1)\n    cart.add(Product(\"product3\", 300, 3), 1)\n    cart.add(Product(\"product4\", 400, 2), 1)\n    cart.add(Product(\"product5\", 500, 1), 1)\n\n    bill = checkout(cart)\n    assert bill[\"shipping\"] == money(0)\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.84,
+        "output": "F\n================================== FAILURES ===================================\n_________________________ test_free_shipping_for_500 __________________________\ntest_reproagent_repro.py:14: in test_free_shipping_for_500\n    assert bill[\"shipping\"] == money(0)\n                               ^^^^^\nE   NameError: name 'money' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_free_shipping_for_500 - NameError: name...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.10s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'money' is not defined"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'money' is not defined. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 2,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst, money\n\ndef test_free_shipping_for_500():\n    cart = Cart()\n    cart.add(Product(\"product1\", 100, 10), 1)\n    cart.add(Product(\"product2\", 200, 5), 1)\n    cart.add(Product(\"product3\", 300, 3), 1)\n    cart.add(Product(\"product4\", 400, 2), 1)\n    cart.add(Product(\"product5\", 500, 1), 1)\n\n    bill = checkout(cart)\n    assert bill[\"shipping\"] == money(0)\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst, money\n\ndef test_free_shipping_for_500():\n    cart = Cart()\n    cart.add(Product(\"product1\", 100, 10), 1)\n    cart.add(Product(\"product2\", 200, 5), 1)\n    cart.add(Product(\"product3\", 300, 3), 1)\n    cart.add(Product(\"product4\", 400, 2), 1)\n    cart.add(Product(\"product5\", 500, 1), 1)\n\n    bill = checkout(cart)\n    assert bill[\"shipping\"] == money(0)\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.84,
+        "output": "F\n================================== FAILURES ===================================\n_________________________ test_free_shipping_for_500 __________________________\ntest_reproagent_repro.py:14: in test_free_shipping_for_500\n    assert bill[\"shipping\"] == money(0)\nE   AssertionError: assert Decimal('50.00') == Decimal('0.00')\nE    +  where Decimal('0.00') = money(0)\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_free_shipping_for_500 - AssertionError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.08s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError: assert Decimal('50.00') == Decimal('0.00')"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[evidence-match] actual value 50 is the wrong value the report observed"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "Shipping charged on Rs 500 orders despite free shipping policy",
+    "expected": "Free shipping for orders of Rs 500 or more",
+    "observed": "Rs 50 shipping fee charged for an Rs 500 order",
+    "symbols": [
+      "shipping_fee",
+      "free_shipping",
+      "order_amount"
+    ],
+    "files": [
+      "checkout.py",
+      "shipping.py"
+    ],
+    "example_inputs": [
+      "order_amount=500"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst, money\n\ndef test_free_shipping_for_500():\n    cart = Cart()\n    cart.add(Product(\"product1\", 100, 10), 1)\n    cart.add(Product(\"product2\", 200, 5), 1)\n    cart.add(Product(\"product3\", 300, 3), 1)\n    cart.add(Product(\"product4\", 400, 2), 1)\n    cart.add(Product(\"product5\", 500, 1), 1)\n\n    bill = checkout(cart)\n    assert bill[\"shipping\"] == money(0)\n",
+  "total_time_s": 75.2,
+  "llm_calls": 3,
+  "fail_to_pass": false,
+  "fixed_version_output": "F\n================================== FAILURES ===================================\n_________________________ test_free_shipping_for_500 __________________________\ntest_reproagent_repro.py:14: in test_free_shipping_for_500\n    assert bill[\"shipping\"] == money(0)\nE   AssertionError: assert Decimal('50.00') == Decimal('0.00')\nE    +  where Decimal('0.00') = money(0)\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_free_shipping_for_500 - AssertionError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.08s",
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

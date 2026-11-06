@@ -1,0 +1,51 @@
+{
+  "bug_id": "youtube-dl_13",
+  "mode": "no_context",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import youtube_dl.utils\n\ndef test_urljoin_mangles_absolute_urls_with_non_http_schemes():\n    expected = 'rtmp://foo.de'\n    result = youtube_dl.utils.urljoin(None, 'rtmp://foo.de')\n    assert result == expected, f\"Expected {expected}, but got {result}\"\n",
+        "raw_llm_output": "```python\nimport youtube_dl.utils\n\ndef test_urljoin_mangles_absolute_urls_with_non_http_schemes():\n    expected = 'rtmp://foo.de'\n    result = youtube_dl.utils.urljoin(None, 'rtmp://foo.de')\n    assert result == expected, f\"Expected {expected}, but got {result}\"\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 5.84,
+        "output": "F\n================================== FAILURES ===================================\n__________ test_urljoin_mangles_absolute_urls_with_non_http_schemes ___________\ntest_reproagent_repro.py:6: in test_urljoin_mangles_absolute_urls_with_non_http_schemes\n    assert result == expected, f\"Expected {expected}, but got {result}\"\nE   AssertionError: Expected rtmp://foo.de, but got None\nE   assert None == 'rtmp://foo.de'\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_urljoin_mangles_absolute_urls_with_non_http_schemes\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 5.09s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError: Expected rtmp://foo.de, but got None"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[evidence-match] actual value None is the wrong value the report observed"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "urljoin mishandles non-http schemes",
+    "expected": "urljoin(None, 'rtmp://foo.de') should return 'rtmp://foo.de'",
+    "observed": "urljoin(None, 'rtmp://foo.de') returns None",
+    "symbols": [
+      "urljoin"
+    ],
+    "files": [
+      "youtube_dl/utils/urljoin.py"
+    ],
+    "example_inputs": [
+      "None, 'rtmp://foo.de'"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import youtube_dl.utils\n\ndef test_urljoin_mangles_absolute_urls_with_non_http_schemes():\n    expected = 'rtmp://foo.de'\n    result = youtube_dl.utils.urljoin(None, 'rtmp://foo.de')\n    assert result == expected, f\"Expected {expected}, but got {result}\"\n",
+  "total_time_s": 33.3,
+  "llm_calls": 2,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n1 passed in 4.58s",
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

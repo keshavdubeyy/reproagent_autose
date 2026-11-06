@@ -1,0 +1,107 @@
+{
+  "bug_id": "youtube-dl_27",
+  "mode": "fix_no_repro",
+  "status": "fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "# youtube_dl/utils.py (module youtube_dl.utils) - updated function\ndef parse_dfxp_time_expr(time_expr):\n    if not time_expr:\n        return\n\n    mobj = re.match(r'^(?P<time_offset>\\d+(?:\\.\\d+)?)s?$', time_expr)\n    if mobj:\n        return float(mobj.group('time_offset'))\n\n    mobj = re.match(r'^(\\d+):(\\d\\d):(\\d\\d(?:\\.\\d+)?)$', time_expr)\n    if mobj:\n        hours = int(mobj.group(1))\n        minutes = int(mobj.group(2))\n        seconds = float(mobj.group(3))\n        return hours * 3600 + minutes * 60 + seconds\n\n# youtube_dl/utils.py (module youtube_dl.utils) - constant read by parse_age_limit\nUS_RATINGS = {\n    'G': 0,\n    'PG': 10,\n    'PG-13': 13,\n    'R': 16,\n    'NC': 18,\n}\n",
+        "diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -1984,7 +1984,10 @@\n \n     mobj = re.match(r'^(\\d+):(\\d\\d):(\\d\\d(?:\\.\\d+)?)$', time_expr)\n     if mobj:\n-        return 3600 * int(mobj.group(1)) + 60 * int(mobj.group(2)) + float(mobj.group(3))\n+        hours = int(mobj.group(1))\n+        minutes = int(mobj.group(2))\n+        seconds = float(mobj.group(3))\n+        return hours * 3600 + minutes * 60 + seconds\n \n \n def srt_subtitles_timecode(seconds):\n",
+        "raw_llm_output": "Root cause: The `parse_dfxp_time_expr` function does not handle timestamps with a colon before the fraction correctly. It expects a dot as the separator for the fraction, but it should handle a colon as well.\n\n```python\n# youtube_dl/utils.py (module youtube_dl.utils) - updated function\ndef parse_dfxp_time_expr(time_expr):\n    if not time_expr:\n        return\n\n    mobj = re.match(r'^(?P<time_offset>\\d+(?:\\.\\d+)?)s?$', time_expr)\n    if mobj:\n        return float(mobj.group('time_offset'))\n\n    mobj = re.match(r'^(\\d+):(\\d\\d):(\\d\\d(?:\\.\\d+)?)$', time_expr)\n    if mobj:\n        hours = int(mobj.group(1))\n        minutes = int(mobj.group(2))\n        seconds = float(mobj.group(3))\n        return hours * 3600 + minutes * 60 + seconds\n\n# youtube_dl/utils.py (module youtube_dl.utils) - constant read by parse_age_limit\nUS_RATINGS = {\n    'G': 0,\n    'PG': 10,\n    'PG-13': 13,\n    'R': 16,\n    'NC': 18,\n}\n```"
+      },
+      "check": {
+        "category": "plausible",
+        "accepted": true,
+        "feedback": "",
+        "repro_status": null,
+        "regressions": [],
+        "output": "\\\\repo\\\\youtube_dl\\\\extractor\\\\youporn.py:46: SyntaxWarning: \"\\\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\\\\\.\"? A raw string is also an option.\\r\\n  \\'thumbnail\\': \\'re:^https?://.*\\\\.jpg$\\',\\r\\nC:\\\\Users\\\\risha\\\\AppData\\\\Local\\\\Temp\\\\repro_youtube-dl_27_patch_xeolq1f3\\\\repo\\\\youtube_dl\\\\extractor\\\\yourupload.py:22: SyntaxWarning: \"\\\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\\\\\.\"? A raw string is also an option.\\r\\n  \\'thumbnail\\': \\'re:^https?://.*\\\\.jpe?g\\',\\r\\nC:\\\\Users\\\\risha\\\\AppData\\\\Local\\\\Temp\\\\repro_youtube-dl_27_patch_xeolq1f3\\\\repo\\\\youtube_dl\\\\extractor\\\\zapiks.py:27: SyntaxWarning: \"\\\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\\\\\.\"? A raw string is also an option.\\r\\n  \\'thumbnail\\': \\'re:^https?://.*\\\\.jpg$\\',\\r\\nC:\\\\Users\\\\risha\\\\AppData\\\\Local\\\\Temp\\\\repro_youtube-dl_27_patch_xeolq1f3\\\\repo\\\\youtube_dl\\\\extractor\\\\zingmp3.py:71: SyntaxWarning: \"\\\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\\\\\.\"? A raw string is also an option.\\r\\n  \\'thumbnail\\': \\'re:^https?://.*\\\\.jpg$\\',\\r\\n' is not false\n=========================== short test summary info ===========================\nFAILED test/test_utils.py::TestUtil::test_sanitize_path - AssertionError: '\\\\...\nFAILED test/test_execution.py::TestExecution::test_cmdline_umlauts - Assertio...\n2 failed, 54 passed in 7.87s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "parse_dfxp_time_expr",
+      "lineno": 1977,
+      "end_lineno": 1987,
+      "source": "def parse_dfxp_time_expr(time_expr):\n    if not time_expr:\n        return\n\n    mobj = re.match(r'^(?P<time_offset>\\d+(?:\\.\\d+)?)s?$', time_expr)\n    if mobj:\n        return float(mobj.group('time_offset'))\n\n    mobj = re.match(r'^(\\d+):(\\d\\d):(\\d\\d(?:\\.\\d+)?)$', time_expr)\n    if mobj:\n        return 3600 * int(mobj.group(1)) + 60 * int(mobj.group(2)) + float(mobj.group(3))",
+      "score": 32.0,
+      "why": "named in the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "str_or_none",
+      "lineno": 1442,
+      "end_lineno": 1443,
+      "source": "def str_or_none(v, default=None):\n    return default if v is None else compat_str(v)",
+      "score": 9.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "subtitles_filename",
+      "lineno": 962,
+      "end_lineno": 963,
+      "source": "def subtitles_filename(filename, sub_lang, sub_format):\n    return filename.rsplit('.', 1)[0] + '.' + sub_lang + '.' + sub_format",
+      "score": 9.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "srt_subtitles_timecode",
+      "lineno": 1990,
+      "end_lineno": 1991,
+      "source": "def srt_subtitles_timecode(seconds):\n    return '%02d:%02d:%02d,%03d' % (seconds / 3600, (seconds % 3600) / 60, seconds % 60, (seconds % 1) * 1000)",
+      "score": 9.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "parse_age_limit",
+      "lineno": 1724,
+      "end_lineno": 1728,
+      "source": "def parse_age_limit(s):\n    if s is None:\n        return None\n    m = re.match(r'^(?P<age>\\d{1,2})\\+?$', s)\n    return int(m.group('age')) if m else US_RATINGS.get(s, None)",
+      "score": 9.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "float_or_none",
+      "lineno": 1454,
+      "end_lineno": 1460,
+      "source": "def float_or_none(v, scale=1, invscale=1, default=None):\n    if v is None:\n        return default\n    try:\n        return float(v) * invscale / scale\n    except ValueError:\n        return default",
+      "score": 9.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "US_RATINGS",
+      "lineno": 1715,
+      "end_lineno": 1721,
+      "source": "US_RATINGS = {\n    'G': 0,\n    'PG': 10,\n    'PG-13': 13,\n    'R': 16,\n    'NC': 18,\n}",
+      "score": 8.0,
+      "why": "constant read by parse_age_limit"
+    }
+  ],
+  "final_diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -1984,7 +1984,10 @@\n \n     mobj = re.match(r'^(\\d+):(\\d\\d):(\\d\\d(?:\\.\\d+)?)$', time_expr)\n     if mobj:\n-        return 3600 * int(mobj.group(1)) + 60 * int(mobj.group(2)) + float(mobj.group(3))\n+        hours = int(mobj.group(1))\n+        minutes = int(mobj.group(2))\n+        seconds = float(mobj.group(3))\n+        return hours * 3600 + minutes * 60 + seconds\n \n \n def srt_subtitles_timecode(seconds):\n",
+  "total_time_s": 60.7,
+  "llm_calls": 1,
+  "regression_tests": [
+    "test/test_utils.py",
+    "test/test_execution.py"
+  ],
+  "correct": false,
+  "no_regression": true,
+  "eval_output": "bnail': 're:^https?://.*\\.jpe?g',\nC:\\Users\\risha\\AppData\\Local\\Temp\\repro_oracle_h2b_9ji3\\repo\\youtube_dl\\extractor\\zapiks.py:27: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n  'thumbnail': 're:^https?://.*\\.jpg$',\nC:\\Users\\risha\\AppData\\Local\\Temp\\repro_oracle_h2b_9ji3\\repo\\youtube_dl\\extractor\\zingmp3.py:71: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n  'thumbnail': 're:^https?://.*\\.jpg$',\nTraceback (most recent call last):\n  File \"<string>\", line 2, in <module>\n    assert parse_dfxp_time_expr('00:00:01:100') == 1.1\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+  "repro_from": "full",
+  "repro_valid": true
+}

@@ -1,0 +1,67 @@
+{
+  "bug_id": "tqdm_1",
+  "mode": "fix_no_repro",
+  "status": "fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "# tqdm/contrib/__init__.py (module tqdm.contrib)\ndef tenumerate(iterable, start=0, total=None, tqdm_class=tqdm_auto,\n               **tqdm_kwargs):\n    \"\"\"\n    Equivalent of `numpy.ndenumerate` or builtin `enumerate`.\n\n    Parameters\n    ----------\n    tqdm_class  : [default: tqdm.auto.tqdm].\n    \"\"\"\n    try:\n        import numpy as np\n    except ImportError:\n        pass\n    else:\n        if isinstance(iterable, np.ndarray):\n            return tqdm_class(np.ndenumerate(iterable, start=start),\n                              total=total or len(iterable), **tqdm_kwargs)\n    return enumerate(tqdm_class(iterable, start, **tqdm_kwargs))\n",
+        "diff": "--- a/tqdm/contrib/__init__.py\n+++ b/tqdm/contrib/__init__.py\n@@ -36,7 +36,7 @@\n         pass\n     else:\n         if isinstance(iterable, np.ndarray):\n-            return tqdm_class(np.ndenumerate(iterable),\n+            return tqdm_class(np.ndenumerate(iterable, start=start),\n                               total=total or len(iterable), **tqdm_kwargs)\n     return enumerate(tqdm_class(iterable, start, **tqdm_kwargs))\n \n",
+        "raw_llm_output": "Root cause: The `tqdm.contrib.tenumerate` function does not correctly handle the `start` argument when `iterable` is a NumPy array. This is because `np.ndenumerate` does not support the `start` argument, and `tqdm.contrib.tenumerate` incorrectly passes the `start` argument to `enumerate` instead of `np.ndenumerate`.\n\n```python\n# tqdm/contrib/__init__.py (module tqdm.contrib)\ndef tenumerate(iterable, start=0, total=None, tqdm_class=tqdm_auto,\n               **tqdm_kwargs):\n    \"\"\"\n    Equivalent of `numpy.ndenumerate` or builtin `enumerate`.\n\n    Parameters\n    ----------\n    tqdm_class  : [default: tqdm.auto.tqdm].\n    \"\"\"\n    try:\n        import numpy as np\n    except ImportError:\n        pass\n    else:\n        if isinstance(iterable, np.ndarray):\n            return tqdm_class(np.ndenumerate(iterable, start=start),\n                              total=total or len(iterable), **tqdm_kwargs)\n    return enumerate(tqdm_class(iterable, start, **tqdm_kwargs))\n```"
+      },
+      "check": {
+        "category": "plausible",
+        "accepted": true,
+        "feedback": "",
+        "repro_status": null,
+        "regressions": [],
+        "output": "rting test module 'C:\\Users\\risha\\AppData\\Local\\Temp\\repro_tqdm_1_patch_nx2zfaqn\\repo\\tqdm\\tests\\tests_contrib.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\Program Files\\Python314\\Lib\\importlib\\__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntqdm\\tests\\tests_contrib.py:6: in <module>\n    from tests_tqdm import with_setup, pretest, posttest, SkipTest, StringIO, \\\ntqdm\\tests\\tests_tqdm.py:9: in <module>\n    from nose import with_setup\nE   ModuleNotFoundError: No module named 'nose'\n__________________ ERROR collecting tqdm/tests/tests_tqdm.py __________________\nImportError while importing test module 'C:\\Users\\risha\\AppData\\Local\\Temp\\repro_tqdm_1_patch_nx2zfaqn\\repo\\tqdm\\tests\\tests_tqdm.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\Program Files\\Python314\\Lib\\importlib\\__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntqdm\\tests\\tests_tqdm.py:9: in <module>\n    from nose import with_setup\nE   ModuleNotFoundError: No module named 'nose'\n=========================== short test summary info ===========================\nERROR tqdm/tests/tests_contrib.py\nERROR tqdm/tests/tests_tqdm.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!\n2 errors in 0.96s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "tqdm/contrib/__init__.py",
+      "module": "tqdm.contrib",
+      "name": "tenumerate",
+      "lineno": 24,
+      "end_lineno": 41,
+      "source": "def tenumerate(iterable, start=0, total=None, tqdm_class=tqdm_auto,\n               **tqdm_kwargs):\n    \"\"\"\n    Equivalent of `numpy.ndenumerate` or builtin `enumerate`.\n\n    Parameters\n    ----------\n    tqdm_class  : [default: tqdm.auto.tqdm].\n    \"\"\"\n    try:\n        import numpy as np\n    except ImportError:\n        pass\n    else:\n        if isinstance(iterable, np.ndarray):\n            return tqdm_class(np.ndenumerate(iterable),\n                              total=total or len(iterable), **tqdm_kwargs)\n    return enumerate(tqdm_class(iterable, start, **tqdm_kwargs))",
+      "score": 18.0,
+      "why": "named in the bug report"
+    },
+    {
+      "file": "tqdm/__init__.py",
+      "module": "tqdm",
+      "name": "tqdm_notebook",
+      "lineno": 21,
+      "end_lineno": 28,
+      "source": "def tqdm_notebook(*args, **kwargs):  # pragma: no cover\n    \"\"\"See tqdm.notebook.tqdm for full documentation\"\"\"\n    from .notebook import tqdm as _tqdm_notebook\n    from warnings import warn\n    warn(\"This function will be removed in tqdm==5.0.0\\n\"\n         \"Please use `tqdm.notebook.tqdm` instead of `tqdm.tqdm_notebook`\",\n         TqdmDeprecationWarning, stacklevel=2)\n    return _tqdm_notebook(*args, **kwargs)",
+      "score": 3.5,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "tqdm/_tqdm_pandas.py",
+      "module": "tqdm._tqdm_pandas",
+      "name": "tqdm_pandas",
+      "lineno": 7,
+      "end_lineno": 46,
+      "source": "def tqdm_pandas(tclass, *targs, **tkwargs):\n    \"\"\"\n    Registers the given `tqdm` instance with\n    `pandas.core.groupby.DataFrameGroupBy.progress_apply`.\n    It will even close() the `tqdm` instance upon completion.\n\n    Parameters\n    ----------\n    tclass  : tqdm class you want to use (eg, tqdm, tqdm_notebook, etc)\n    targs and tkwargs  : arguments for the tqdm instance\n\n    Examples\n    --------\n    >>> import pandas as pd\n    >>> import numpy as np\n    >>> from tqdm import tqdm, tqdm_pandas\n    >>>\n    >>> df = pd.DataFrame(np.random.randint(0, 100, (100000, 6)))\n    >>> tqdm_pandas(tqdm, leave=True)  # can use tqdm_gui, optional kwargs, etc\n    >>> # Now you can use `progress_apply` instead of `apply`\n    >>> df.groupby(0).progress_apply(lambda x: x**2)\n\n    References\n    ----------\n    https://stackoverflow.com/questions/18603270/\n    progress-indicator-during-pandas-operations-python\n    \"\"\"\n    from tqdm import TqdmDeprecationWarning\n\n    if isinstance(tclass, type) or (getattr(tclass, '__name__', '').startswith(\n            'tqdm_')):  # delayed adapter case\n        TqdmDeprecationWarning(\"\"\"\\\nPlease use `tqdm.pandas(...)` instead of `tqdm_pandas(tqdm, ...)`.\n\"\"\", fp_write=getattr(tkwargs.get('file', None), 'write', sys.stderr.write))\n        tclass.pandas(*targs, **tkwargs)\n    else:\n        TqdmDeprecationWarning(\"\"\"\\\nPlease use `tqdm.pandas(...)` instead of `tqdm_pandas(tqdm(...))`.\n\"\"\", fp_write=getattr(tclass.fp, 'write', sys.stderr.write))\n        type(tclass).pandas(deprecated_t=tclass)",
+      "score": 3.5,
+      "why": "matches the bug report"
+    }
+  ],
+  "final_diff": "--- a/tqdm/contrib/__init__.py\n+++ b/tqdm/contrib/__init__.py\n@@ -36,7 +36,7 @@\n         pass\n     else:\n         if isinstance(iterable, np.ndarray):\n-            return tqdm_class(np.ndenumerate(iterable),\n+            return tqdm_class(np.ndenumerate(iterable, start=start),\n                               total=total or len(iterable), **tqdm_kwargs)\n     return enumerate(tqdm_class(iterable, start, **tqdm_kwargs))\n \n",
+  "total_time_s": 49.2,
+  "llm_calls": 1,
+  "regression_tests": [
+    "tqdm/tests/tests_contrib.py",
+    "tqdm/tests/tests_tqdm.py"
+  ],
+  "correct": false,
+  "no_regression": true,
+  "eval_output": "back (most recent call last):\n  File \"C:\\Users\\risha\\AppData\\Local\\Temp\\repro_oracle_sy6202zh\\repo\\tqdm\\std.py\", line 1062, in __del__\n    self.close()\n  File \"C:\\Users\\risha\\AppData\\Local\\Temp\\repro_oracle_sy6202zh\\repo\\tqdm\\std.py\", line 1268, in close\n    self.display(pos=0)\n  File \"C:\\Users\\risha\\AppData\\Local\\Temp\\repro_oracle_sy6202zh\\repo\\tqdm\\std.py\", line 1435, in display\n    self.sp(self.__repr__() if msg is None else msg)\n  File \"C:\\Users\\risha\\AppData\\Local\\Temp\\repro_oracle_sy6202zh\\repo\\tqdm\\std.py\", line 1065, in __repr__\n    return self.format_meter(**self.format_dict)\n  File \"C:\\Users\\risha\\AppData\\Local\\Temp\\repro_oracle_sy6202zh\\repo\\tqdm\\std.py\", line 423, in format_meter\n    bool_prefix_colon_already = (prefix[-2:] == \": \")\nTypeError: 'int' object is not subscriptable\n",
+  "repro_from": "full",
+  "repro_valid": true
+}

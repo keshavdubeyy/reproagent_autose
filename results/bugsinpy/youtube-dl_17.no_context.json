@@ -1,0 +1,96 @@
+{
+  "bug_id": "youtube-dl_17",
+  "mode": "no_context",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import sys\nsys.path.append('path/to/project/root')  # Update with the actual path to your project\n\nimport youtube_dl.utils\n\ndef test_cli_bool_option_missing_param():\n    params = {}\n    command_option = '--check-certificate'\n    param = 'nocheckcertificate'\n    \n    with pytest.raises(youtube_dl.utils.OptionError):\n        youtube_dl.utils.cli_bool_option(params, command_option, param)\n",
+        "raw_llm_output": "```python\nimport sys\nsys.path.append('path/to/project/root')  # Update with the actual path to your project\n\nimport youtube_dl.utils\n\ndef test_cli_bool_option_missing_param():\n    params = {}\n    command_option = '--check-certificate'\n    param = 'nocheckcertificate'\n    \n    with pytest.raises(youtube_dl.utils.OptionError):\n        youtube_dl.utils.cli_bool_option(params, command_option, param)\n```\n\nThis test will fail because the `cli_bool_option` function raises an `OptionError` when the `param` key is missing from the `params` dictionary. After fixing the bug, this test should pass."
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 5.31,
+        "output": "F\n================================== FAILURES ===================================\n_____________________ test_cli_bool_option_missing_param ______________________\ntest_reproagent_repro.py:11: in test_cli_bool_option_missing_param\n    with pytest.raises(youtube_dl.utils.OptionError):\n         ^^^^^^\nE   NameError: name 'pytest' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_cli_bool_option_missing_param - NameErr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 4.57s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'pytest' is not defined"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'pytest' is not defined. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 2,
+        "code": "F\n================================== FAILURES ===================================\n_____________________ test_cli_bool_option_missing_param ______________________\ntest_reproagent_repro.py:11: in test_cli_bool_option_missing_param\n    with pytest.raises(youtube_dl.utils.OptionError):\n         ^^^^^^\nE   NameError: name 'pytest' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_cli_bool_option_missing_param - NameErr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 4.57s\n",
+        "raw_llm_output": "```python\nimport sys\nsys.path.append('path/to/project/root')  # Update with the actual path to your project\n\nimport youtube_dl.utils\n\ndef test_cli_bool_option_missing_param():\n    params = {}\n    command_option = '--check-certificate'\n    param = 'nocheckcertificate'\n    \n    with pytest.raises(youtube_dl.utils.OptionError):\n        youtube_dl.utils.cli_bool_option(params, command_option, param)\n```\n\nExecution result: failed\n```\nF\n================================== FAILURES ===================================\n_____________________ test_cli_bool_option_missing_param ______________________\ntest_reproagent_repro.py:11: in test_cli_bool_option_missing_param\n    with pytest.raises(youtube_dl.utils.OptionError):\n         ^^^^^^\nE   NameError: name 'pytest' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_cli_bool_option_missing_param - NameErr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 4.57s\n```\n\nProblem: The test could not run because of a mistake in the test itself: NameError: name 'pytest' is not defined. Fix imports/names using the module paths and examples shown.\nWrite a DIFFERENT, improved test that fixes this problem."
+      },
+      "execution": {
+        "status": "collection_error",
+        "exit_code": 2,
+        "duration_s": 0.85,
+        "output": "=================================== ERRORS ====================================\n__________________ ERROR collecting test_reproagent_repro.py __________________\nC:\\Users\\risha\\Desktop\\Autose_project\\.venv\\Lib\\site-packages\\_pytest\\python.py:528: in importtestmodule\n    mod = import_path(\nC:\\Users\\risha\\Desktop\\Autose_project\\.venv\\Lib\\site-packages\\_pytest\\pathlib.py:640: in import_path\n    importlib.import_module(module_name)\nC:\\Program Files\\Python314\\Lib\\importlib\\__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<frozen importlib._bootstrap>:1406: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1371: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1342: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:938: in _load_unlocked\n    ???\nC:\\Users\\risha\\Desktop\\Autose_project\\.venv\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:176: in exec_module\n    source_hash, co = _rewrite_test(fn, self.config)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nC:\\Users\\risha\\Desktop\\Autose_project\\.venv\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py:339: in _rewrite_test\n    tree = ast.parse(source, filename=strfn)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nC:\\Program Files\\Python314\\Lib\\ast.py:46: in parse\n    return compile(source, filename, mode, flags,\nE     File \"C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_17_041wdhqs\\repo\\test_reproagent_repro.py\", line 11\nE       1 failed in 4.57s\nE                      ^\nE   SyntaxError: invalid decimal literal\n=========================== short test summary info ===========================\nERROR test_reproagent_repro.py\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.23s",
+        "exception_type": "SyntaxError",
+        "failure_line": "File \"C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_17_041wdhqs\\repo\\test_reproagent_repro.py\", line 11"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: File \"C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_17_041wdhqs\\repo\\test_reproagent_repro.py\", line 11. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 3,
+        "code": "import pytest\nfrom youtube_dl.utils import cli_bool_option\n\ndef test_cli_bool_option_missing_param():\n    expected = []\n    result = cli_bool_option({}, '--check-certificate', 'nocheckcertificate')\n    assert result == expected, f\"Expected {expected}, but got {result}\"\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom youtube_dl.utils import cli_bool_option\n\ndef test_cli_bool_option_missing_param():\n    expected = []\n    result = cli_bool_option({}, '--check-certificate', 'nocheckcertificate')\n    assert result == expected, f\"Expected {expected}, but got {result}\"\n```\n\nThis test uses the correct import statement for `cli_bool_option` and directly asserts the expected behavior of the function when the param key is missing from the dict."
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 2.25,
+        "output": "F\n================================== FAILURES ===================================\n_____________________ test_cli_bool_option_missing_param ______________________\ntest_reproagent_repro.py:6: in test_cli_bool_option_missing_param\n    result = cli_bool_option({}, '--check-certificate', 'nocheckcertificate')\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nyoutube_dl\\utils.py:2736: in cli_bool_option\n    assert isinstance(param, bool)\n           ^^^^^^^^^^^^^^^^^^^^^^^\nE   AssertionError\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_cli_bool_option_missing_param - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 1.53s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[slm-judge] The test failed because the code produced an AssertionError instead of an empty list when the param key is missing from the dict. (actual: AssertionError)"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "cli_bool_option crashes when the option is not set",
+    "expected": "The function should return an empty list when the param key is missing from the dict.",
+    "observed": "The function raises an exception when the param key is missing from the dict.",
+    "symbols": [
+      "cli_bool_option",
+      "params",
+      "command_option",
+      "param"
+    ],
+    "files": [
+      "youtube_dl/utils/cli_bool_option.py"
+    ],
+    "example_inputs": [
+      "cli_bool_option({}, '--check-certificate', 'nocheckcertificate')"
+    ],
+    "failure_kind": "exception",
+    "is_actionable": true
+  },
+  "final_test": "import pytest\nfrom youtube_dl.utils import cli_bool_option\n\ndef test_cli_bool_option_missing_param():\n    expected = []\n    result = cli_bool_option({}, '--check-certificate', 'nocheckcertificate')\n    assert result == expected, f\"Expected {expected}, but got {result}\"\n",
+  "total_time_s": 107.7,
+  "llm_calls": 5,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n1 passed in 4.28s",
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

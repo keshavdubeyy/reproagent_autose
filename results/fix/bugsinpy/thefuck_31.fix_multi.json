@@ -1,0 +1,110 @@
+{
+  "bug_id": "thefuck_31",
+  "mode": "fix_multi",
+  "status": "not_fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "# thefuck/rules/git_diff_staged.py (module thefuck.rules.git_diff_staged) - called by the reproduction test (its result is asserted)\n@utils.git_support\ndef get_new_command(command, settings):\n    return '{} --staged'.format(command.script)\n\n# thefuck/rules/git_diff_staged.py (module thefuck.rules.git_diff_staged) - called by the reproduction test (its result is asserted)\n@utils.git_support\ndef match(command, settings):\n    return ('git' in command.script and\n            'diff' in command.script and\n            '--staged' not in command.script)\n",
+        "diff": "",
+        "raw_llm_output": "Root cause: The `get_new_command` function is incorrectly appending `--staged` to the command script, which results in the suggestion being incorrect.\n\n```python\n# thefuck/rules/git_diff_staged.py (module thefuck.rules.git_diff_staged) - called by the reproduction test (its result is asserted)\n@utils.git_support\ndef get_new_command(command, settings):\n    return '{} --staged'.format(command.script)\n\n# thefuck/rules/git_diff_staged.py (module thefuck.rules.git_diff_staged) - called by the reproduction test (its result is asserted)\n@utils.git_support\ndef match(command, settings):\n    return ('git' in command.script and\n            'diff' in command.script and\n            '--staged' not in command.script)\n```",
+        "kind": "patch",
+        "changed": []
+      },
+      "check": {
+        "category": "not_applicable",
+        "accepted": false,
+        "feedback": "Your code is identical to the current get_new_command, match, so it changes nothing and the bug is still there.",
+        "repro_status": null,
+        "regressions": [],
+        "output": "",
+        "repro_failed": null,
+        "repro_failing": []
+      }
+    },
+    {
+      "patch": {
+        "attempt": 2,
+        "code": "# thefuck/rules/git_diff_staged.py (module thefuck.rules.git_diff_staged) - called by the reproduction test (its result is asserted)\n@utils.git_support\ndef get_new_command(command, settings):\n    return 'git diff --staged {}'.format(command.script)\n\n# thefuck/rules/git_diff_staged.py (module thefuck.rules.git_diff_staged) - called by the reproduction test (its result is asserted)\n@utils.git_support\ndef match(command, settings):\n    return ('git' in command.script and\n            'diff' in command.script and\n            '--staged' not in command.script)\n",
+        "diff": "--- a/thefuck/rules/git_diff_staged.py\n+++ b/thefuck/rules/git_diff_staged.py\n@@ -10,4 +10,4 @@\n \n @utils.git_support\n def get_new_command(command, settings):\n-    return '{} --staged'.format(command.script)\n+    return 'git diff --staged {}'.format(command.script)\n",
+        "raw_llm_output": "Root cause: The `get_new_command` function was incorrectly formatting the command by adding `--staged` before the command script, instead of after it.\n\n```python\n# thefuck/rules/git_diff_staged.py (module thefuck.rules.git_diff_staged) - called by the reproduction test (its result is asserted)\n@utils.git_support\ndef get_new_command(command, settings):\n    return 'git diff --staged {}'.format(command.script)\n\n# thefuck/rules/git_diff_staged.py (module thefuck.rules.git_diff_staged) - called by the reproduction test (its result is asserted)\n@utils.git_support\ndef match(command, settings):\n    return ('git' in command.script and\n            'diff' in command.script and\n            '--staged' not in command.script)\n```",
+        "kind": "patch",
+        "changed": [
+          "thefuck/rules/git_diff_staged.py:get_new_command"
+        ]
+      },
+      "check": {
+        "category": "repro_still_fails",
+        "accepted": false,
+        "feedback": "After your patch the reproduction test still fails: AssertionError: assert 'git diff --s... git diff foo' == 'git diff --staged foo'. The root cause is not fixed yet (or your change broke the code path).",
+        "repro_status": "failed",
+        "regressions": [],
+        "output": "F                                                                        [100%]\n================================== FAILURES ===================================\n____________________________ test_git_diff_staged _____________________________\ntest_reproagent_repro.py:8: in test_git_diff_staged\n    assert get_new_command(command, {}) == 'git diff --staged foo'\nE   AssertionError: assert 'git diff --s... git diff foo' == 'git diff --staged foo'\nE     \nE     - git diff --staged foo\nE     + git diff --staged git diff foo\nE     ?                   +++++++++\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_git_diff_staged - AssertionError: asser...\n1 failed in 0.11s",
+        "repro_failed": 1,
+        "repro_failing": [
+          "test_git_diff_staged"
+        ]
+      }
+    },
+    {
+      "patch": {
+        "attempt": 3,
+        "code": "# thefuck/rules/git_diff_staged.py (module thefuck.rules.git_diff_staged) - called by the reproduction test (its result is asserted)\n@utils.git_support\ndef get_new_command(command, settings):\n    if '--staged' not in command.script:\n        return '{} --staged'.format(command.script)\n    else:\n        return command.script\n\n# thefuck/rules/git_diff_staged.py (module thefuck.rules.git_diff_staged) - called by the reproduction test (its result is asserted)\n@utils.git_support\ndef match(command, settings):\n    return ('git' in command.script and\n            'diff' in command.script and\n            '--staged' not in command.script)\n",
+        "diff": "--- a/thefuck/rules/git_diff_staged.py\n+++ b/thefuck/rules/git_diff_staged.py\n@@ -10,4 +10,7 @@\n \n @utils.git_support\n def get_new_command(command, settings):\n-    return '{} --staged'.format(command.script)\n+    if '--staged' not in command.script:\n+        return '{} --staged'.format(command.script)\n+    else:\n+        return command.script\n",
+        "raw_llm_output": "Root cause: The `get_new_command` function incorrectly appends `--staged` to the script. This results in the suggestion being `git diff foo --staged`, but the expected suggestion is `git diff --staged foo`.\n\nTo fix this, we need to ensure that `--staged` is only appended if it is not already present in the command script.\n\n```python\n# thefuck/rules/git_diff_staged.py (module thefuck.rules.git_diff_staged) - called by the reproduction test (its result is asserted)\n@utils.git_support\ndef get_new_command(command, settings):\n    if '--staged' not in command.script:\n        return '{} --staged'.format(command.script)\n    else:\n        return command.script\n\n# thefuck/rules/git_diff_staged.py (module thefuck.rules.git_diff_staged) - called by the reproduction test (its result is asserted)\n@utils.git_support\ndef match(command, settings):\n    return ('git' in command.script and\n            'diff' in command.script and\n            '--staged' not in command.script)\n```",
+        "kind": "patch",
+        "changed": [
+          "thefuck/rules/git_diff_staged.py:get_new_command"
+        ]
+      },
+      "check": {
+        "category": "repro_still_fails",
+        "accepted": false,
+        "feedback": "After your patch the reproduction test still fails: AssertionError: assert 'git diff foo --staged' == 'git diff --staged foo'. The root cause is not fixed yet (or your change broke the code path).",
+        "repro_status": "failed",
+        "regressions": [],
+        "output": "F                                                                        [100%]\n================================== FAILURES ===================================\n____________________________ test_git_diff_staged _____________________________\ntest_reproagent_repro.py:8: in test_git_diff_staged\n    assert get_new_command(command, {}) == 'git diff --staged foo'\nE   AssertionError: assert 'git diff foo --staged' == 'git diff --staged foo'\nE     \nE     - git diff --staged foo\nE     ?                  ----\nE     + git diff foo --staged\nE     ?         ++++\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_git_diff_staged - AssertionError: asser...\n1 failed in 0.10s",
+        "repro_failed": 1,
+        "repro_failing": [
+          "test_git_diff_staged"
+        ]
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "thefuck/rules/git_diff_staged.py",
+      "module": "thefuck.rules.git_diff_staged",
+      "name": "get_new_command",
+      "lineno": 11,
+      "end_lineno": 13,
+      "source": "@utils.git_support\ndef get_new_command(command, settings):\n    return '{} --staged'.format(command.script)",
+      "score": 9.5,
+      "why": "called by the reproduction test (its result is asserted)"
+    },
+    {
+      "file": "thefuck/rules/git_diff_staged.py",
+      "module": "thefuck.rules.git_diff_staged",
+      "name": "match",
+      "lineno": 4,
+      "end_lineno": 8,
+      "source": "@utils.git_support\ndef match(command, settings):\n    return ('git' in command.script and\n            'diff' in command.script and\n            '--staged' not in command.script)",
+      "score": 8.0,
+      "why": "called by the reproduction test (its result is asserted)"
+    }
+  ],
+  "final_diff": null,
+  "total_time_s": 99.4,
+  "llm_calls": 4,
+  "regression_tests": [
+    "tests/rules/test_git_diff_staged.py",
+    "tests/rules/test_switch_lang.py"
+  ],
+  "locations": [],
+  "correct": false,
+  "no_regression": null,
+  "eval_output": null,
+  "repro_from": "full",
+  "repro_valid": true
+}

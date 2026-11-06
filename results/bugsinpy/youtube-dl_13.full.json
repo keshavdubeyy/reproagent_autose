@@ -1,0 +1,51 @@
+{
+  "bug_id": "youtube-dl_13",
+  "mode": "full",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import unittest\nfrom youtube_dl.utils import urljoin\n\nclass TestUrljoin(unittest.TestCase):\n    def test_urljoin_rtmp(self):\n        self.assertEqual(urljoin(None, 'rtmp://foo.de'), 'rtmp://foo.de')\n\nif __name__ == '__main__':\n    unittest.main()\n",
+        "raw_llm_output": "```python\nimport unittest\nfrom youtube_dl.utils import urljoin\n\nclass TestUrljoin(unittest.TestCase):\n    def test_urljoin_rtmp(self):\n        self.assertEqual(urljoin(None, 'rtmp://foo.de'), 'rtmp://foo.de')\n\nif __name__ == '__main__':\n    unittest.main()\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 6.78,
+        "output": "F\n================================== FAILURES ===================================\n________________________ TestUrljoin.test_urljoin_rtmp ________________________\ntest_reproagent_repro.py:6: in test_urljoin_rtmp\n    self.assertEqual(urljoin(None, 'rtmp://foo.de'), 'rtmp://foo.de')\nE   AssertionError: None != 'rtmp://foo.de'\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::TestUrljoin::test_urljoin_rtmp - AssertionEr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 5.86s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError: None != 'rtmp://foo.de'"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[slm-judge] The test is failing because the code produced 'None' instead of the expected 'rtmp://foo.de'. (actual: None)"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "urljoin mishandles non-http schemes",
+    "expected": "urljoin(None, 'rtmp://foo.de') should return 'rtmp://foo.de'",
+    "observed": "urljoin(None, 'rtmp://foo.de') returns None",
+    "symbols": [
+      "urljoin"
+    ],
+    "files": [
+      "youtube_dl/utils/urljoin.py"
+    ],
+    "example_inputs": [
+      "None, 'rtmp://foo.de'"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import unittest\nfrom youtube_dl.utils import urljoin\n\nclass TestUrljoin(unittest.TestCase):\n    def test_urljoin_rtmp(self):\n        self.assertEqual(urljoin(None, 'rtmp://foo.de'), 'rtmp://foo.de')\n\nif __name__ == '__main__':\n    unittest.main()\n",
+  "total_time_s": 59.5,
+  "llm_calls": 3,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n1 passed in 5.34s",
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

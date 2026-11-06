@@ -1,0 +1,51 @@
+{
+  "bug_id": "shop_remove_missing",
+  "mode": "single_shot",
+  "verdict": "not_reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom shopcart.cart import Cart\n\ndef test_remove_twice_crashes():\n    cart = Cart()\n    cart.add(Product(\"item1\", price=100))\n    cart.remove(\"item1\")\n    with pytest.raises(KeyError):\n        cart.remove(\"item1\")\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart.cart import Cart\n\ndef test_remove_twice_crashes():\n    cart = Cart()\n    cart.add(Product(\"item1\", price=100))\n    cart.remove(\"item1\")\n    with pytest.raises(KeyError):\n        cart.remove(\"item1\")\n```\n\nThis test reproduces the bug by adding an item to the cart, removing it once, and then attempting to remove it again, which causes a KeyError."
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 1.15,
+        "output": "F\n================================== FAILURES ===================================\n__________________________ test_remove_twice_crashes __________________________\ntest_reproagent_repro.py:6: in test_remove_twice_crashes\n    cart.add(Product(\"item1\", price=100))\n             ^^^^^^^\nE   NameError: name 'Product' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_remove_twice_crashes - NameError: name ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.09s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'Product' is not defined"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'Product' is not defined. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    }
+  ],
+  "spec": {
+    "summary": "Double-clicking the remove button sends two remove requests, causing a KeyError in the second request.",
+    "expected": "The cart.remove method should return False when the item is not in the cart, and the second remove request should not crash.",
+    "observed": "The second remove request crashes with a KeyError.",
+    "symbols": [
+      "remove"
+    ],
+    "files": [
+      "cart.py"
+    ],
+    "example_inputs": [
+      "cart.remove('item1')"
+    ],
+    "failure_kind": "exception",
+    "is_actionable": true
+  },
+  "final_test": null,
+  "total_time_s": 38.0,
+  "llm_calls": 2,
+  "fail_to_pass": false,
+  "fixed_version_output": null,
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

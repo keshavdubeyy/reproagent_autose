@@ -1,0 +1,53 @@
+{
+  "bug_id": "shop_empty_checkout",
+  "mode": "single_shot",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom shopcart import Cart, checkout\n\ndef test_checkout_empty_cart():\n    cart = Cart()\n    with pytest.raises(ValueError, match=r\"cart is empty\"):\n        checkout(cart)\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, checkout\n\ndef test_checkout_empty_cart():\n    cart = Cart()\n    with pytest.raises(ValueError, match=r\"cart is empty\"):\n        checkout(cart)\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.79,
+        "output": "F\n================================== FAILURES ===================================\n__________________________ test_checkout_empty_cart ___________________________\ntest_reproagent_repro.py:7: in test_checkout_empty_cart\n    checkout(cart)\nshopcart\\cart.py:70: in checkout\n    \"average_item_price\": money(subtotal / cart.item_count()),\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   decimal.InvalidOperation: [<class 'decimal.DivisionUndefined'>]\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_checkout_empty_cart - decimal.InvalidOp...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.09s",
+        "exception_type": null,
+        "failure_line": "decimal.InvalidOperation: [<class 'decimal.DivisionUndefined'>]"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[slm-judge] The test fails because the code produces an unexpected error (decimal.InvalidOperation) instead of the expected ValueError. (actual: decimal.InvalidOperation: [<class 'decimal.DivisionUndefined'>])"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "Checkout of an empty cart crashes with an obscure error",
+    "expected": "Reject checkout with an empty cart with a clear ValueError saying the cart is empty",
+    "observed": "Server crashes with a decimal InvalidOperation / division error",
+    "symbols": [
+      "ValueError",
+      "InvalidOperation"
+    ],
+    "files": [
+      "cart.py",
+      "checkout.py"
+    ],
+    "example_inputs": [
+      "cart = Cart()"
+    ],
+    "failure_kind": "exception",
+    "is_actionable": true
+  },
+  "final_test": "import pytest\nfrom shopcart import Cart, checkout\n\ndef test_checkout_empty_cart():\n    cart = Cart()\n    with pytest.raises(ValueError, match=r\"cart is empty\"):\n        checkout(cart)\n",
+  "total_time_s": 40.7,
+  "llm_calls": 3,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n1 passed in 0.02s",
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

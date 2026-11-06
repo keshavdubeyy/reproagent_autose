@@ -1,0 +1,75 @@
+{
+  "bug_id": "shop_coupon",
+  "mode": "full_v2",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\n@pytest.mark.parametrize(\"coupon_code\", [\"save10\", \"SAVE10\"])\ndef test_apply_coupon(coupon_code):\n    cart = Cart()\n    result = cart.apply_coupon(coupon_code)\n    assert result == (coupon_code == \"SAVE10\"), f\"Expected {coupon_code} to be accepted, but got {result}\"\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\n@pytest.mark.parametrize(\"coupon_code\", [\"save10\", \"SAVE10\"])\ndef test_apply_coupon(coupon_code):\n    cart = Cart()\n    result = cart.apply_coupon(coupon_code)\n    assert result == (coupon_code == \"SAVE10\"), f\"Expected {coupon_code} to be accepted, but got {result}\"\n```"
+      },
+      "execution": {
+        "status": "passed",
+        "exit_code": 0,
+        "duration_s": 0.87,
+        "output": "..                                                                       [100%]\n2 passed in 0.07s",
+        "exception_type": null,
+        "failure_line": null
+      },
+      "analysis": {
+        "category": "test_passed",
+        "is_reproduction": false,
+        "feedback": "The test PASSED, so it did not trigger the bug. Use the exact example input from the report and assert the EXPECTED value stated in the report.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 2,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef coupon_rate(code: str) -> Decimal:\n    # Placeholder for the actual coupon rate calculation logic\n    if code.lower() == \"save10\":\n        return Decimal(\"0.10\")\n    return Decimal(\"0.00\")\n\n@pytest.mark.parametrize(\"coupon_code\", [\"save10\", \"SAVE10\"])\ndef test_apply_coupon(coupon_code):\n    cart = Cart()\n    result = cart.apply_coupon(coupon_code)\n    assert result == (coupon_code.lower() == \"save10\"), f\"Expected {coupon_code} to be accepted, but got {result}\"\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef coupon_rate(code: str) -> Decimal:\n    # Placeholder for the actual coupon rate calculation logic\n    if code.lower() == \"save10\":\n        return Decimal(\"0.10\")\n    return Decimal(\"0.00\")\n\n@pytest.mark.parametrize(\"coupon_code\", [\"save10\", \"SAVE10\"])\ndef test_apply_coupon(coupon_code):\n    cart = Cart()\n    result = cart.apply_coupon(coupon_code)\n    assert result == (coupon_code.lower() == \"save10\"), f\"Expected {coupon_code} to be accepted, but got {result}\"\n```\n\nIn this reproduction test, the `coupon_rate` function is mocked to return a non-zero value for \"SAVE10\" and zero for \"save10\". The test checks that the `apply_coupon` method returns `True` for \"SAVE10\" and `False` for \"save10\", which is the expected behavior based on the bug report."
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.76,
+        "output": "F\n================================== FAILURES ===================================\n__________________________ test_apply_coupon[save10] __________________________\ntest_reproagent_repro.py:15: in test_apply_coupon\n    assert result == (coupon_code.lower() == \"save10\"), f\"Expected {coupon_code} to be accepted, but got {result}\"\nE   AssertionError: Expected save10 to be accepted, but got False\nE   assert False == ('save10' == 'save10'\nE     \nE       save10)\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_apply_coupon[save10] - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.09s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError: Expected save10 to be accepted, but got False"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[slm-judge] The test failed because the expected result was True, but the actual result was False. (actual: False)"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "Coupon code 'save10' is rejected when typed in lowercase, while 'SAVE10' works, indicating a case-insensitivity issue.",
+    "expected": "Coupon codes should be case-insensitive, allowing 'save10' to be accepted.",
+    "observed": "Cart.apply_coupon('save10') returns False, while Cart.apply_coupon('SAVE10') returns True.",
+    "symbols": [
+      "Cart",
+      "apply_coupon",
+      "rejected"
+    ],
+    "files": [
+      "cart.py"
+    ],
+    "example_inputs": [
+      "save10",
+      "SAVE10"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef coupon_rate(code: str) -> Decimal:\n    # Placeholder for the actual coupon rate calculation logic\n    if code.lower() == \"save10\":\n        return Decimal(\"0.10\")\n    return Decimal(\"0.00\")\n\n@pytest.mark.parametrize(\"coupon_code\", [\"save10\", \"SAVE10\"])\ndef test_apply_coupon(coupon_code):\n    cart = Cart()\n    result = cart.apply_coupon(coupon_code)\n    assert result == (coupon_code.lower() == \"save10\"), f\"Expected {coupon_code} to be accepted, but got {result}\"\n",
+  "total_time_s": 86.1,
+  "llm_calls": 4,
+  "fail_to_pass": true,
+  "fixed_version_output": "..                                                                       [100%]\n2 passed in 0.02s",
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

@@ -1,0 +1,157 @@
+{
+  "bug_id": "ml_coupon",
+  "mode": "fix_full",
+  "status": "not_fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "from decimal import Decimal, ROUND_HALF_UP\n\n# shopcart/pricing.py (module shopcart.pricing) - called by Cart.apply_coupon\ndef coupon_rate(code) -> Decimal:\n    \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n    if not code:\n        return Decimal(\"0\")\n    code = code.strip().upper()\n    return COUPONS.get(code, Decimal(\"0\"))\n",
+        "diff": "--- a/shopcart/pricing.py\n+++ b/shopcart/pricing.py\n@@ -1,5 +1,6 @@\n \"\"\"Pricing rules for the ShopCart demo store (amounts in rupees).\"\"\"\n from decimal import ROUND_HALF_UP, Decimal\n+from decimal import Decimal, ROUND_HALF_UP\n \n DISCOUNT_THRESHOLD = 1000      # orders of Rs 1,000 or more get a discount\n DISCOUNT_RATE = Decimal(\"0.10\")\n@@ -33,7 +34,8 @@\n     \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n     if not code:\n         return Decimal(\"0\")\n-    return COUPONS.get(code.upper(), Decimal(\"0\"))\n+    code = code.strip().upper()\n+    return COUPONS.get(code, Decimal(\"0\"))\n \n \n def gst(amount) -> Decimal:\n",
+        "raw_llm_output": "Root cause: The `coupon_rate` function is not correctly handling coupon codes with spaces and is incorrectly computing the coupon amount on the original price before the bulk discount.\n\n```python\nfrom decimal import Decimal, ROUND_HALF_UP\n\n# shopcart/pricing.py (module shopcart.pricing) - called by Cart.apply_coupon\ndef coupon_rate(code) -> Decimal:\n    \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n    if not code:\n        return Decimal(\"0\")\n    code = code.strip().upper()\n    return COUPONS.get(code, Decimal(\"0\"))\n```",
+        "kind": "patch",
+        "changed": []
+      },
+      "check": {
+        "category": "repro_still_fails",
+        "accepted": false,
+        "feedback": "After your patch the reproduction test still fails: AssertionError: Expected True for 'save10 '. The root cause is not fixed yet (or your change broke the code path).",
+        "repro_status": "failed",
+        "regressions": [],
+        "output": "F\n================================== FAILURES ===================================\n________________________ test_apply_coupon_with_spaces ________________________\ntest_reproagent_repro.py:7: in test_apply_coupon_with_spaces\n    assert cart.apply_coupon(' save10 ') == False, \"Expected True for 'save10 '\"\nE   AssertionError: Expected True for 'save10 '\nE   assert True == False\nE    +  where True = apply_coupon(' save10 ')\nE    +    where apply_coupon = <shopcart.cart.Cart object at 0x000001C65612C440>.apply_coupon\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_apply_coupon_with_spaces - AssertionErr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.10s",
+        "repro_failed": 1,
+        "repro_failing": [
+          "test_apply_coupon_with_spaces"
+        ]
+      }
+    },
+    {
+      "patch": {
+        "attempt": 2,
+        "code": "from decimal import Decimal, ROUND_HALF_UP\n\n# shopcart/pricing.py (module shopcart.pricing) - called by Cart.apply_coupon\ndef coupon_rate(code) -> Decimal:\n    \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n    if not code:\n        return Decimal(\"0\")\n    code = code.strip().upper()\n    return COUPONS.get(code, Decimal(\"0\"))\n\n# shopcart/cart.py (module shopcart.cart) - method called by the reproduction test\nclass Cart:  # other members omitted\n    def apply_coupon(self, code: str) -> bool:\n        rate = coupon_rate(code)\n        if rate > 0:\n            self.coupon = code\n            return True\n        return False\n",
+        "diff": "--- a/shopcart/pricing.py\n+++ b/shopcart/pricing.py\n@@ -1,5 +1,6 @@\n \"\"\"Pricing rules for the ShopCart demo store (amounts in rupees).\"\"\"\n from decimal import ROUND_HALF_UP, Decimal\n+from decimal import Decimal, ROUND_HALF_UP\n \n DISCOUNT_THRESHOLD = 1000      # orders of Rs 1,000 or more get a discount\n DISCOUNT_RATE = Decimal(\"0.10\")\n@@ -33,7 +34,8 @@\n     \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n     if not code:\n         return Decimal(\"0\")\n-    return COUPONS.get(code.upper(), Decimal(\"0\"))\n+    code = code.strip().upper()\n+    return COUPONS.get(code, Decimal(\"0\"))\n \n \n def gst(amount) -> Decimal:\n\n--- a/shopcart/cart.py\n+++ b/shopcart/cart.py\n@@ -45,7 +45,8 @@\n         return money(sum((p.price * q for p, q in self.items.values()), Decimal(\"0\")))\n \n     def apply_coupon(self, code: str) -> bool:\n-        if coupon_rate(code) > 0:\n+        rate = coupon_rate(code)\n+        if rate > 0:\n             self.coupon = code\n             return True\n         return False\n",
+        "raw_llm_output": "Root cause: The `apply_coupon` method in the `Cart` class is not checking if the coupon rate is greater than zero before applying it. This can happen if the coupon is not found in the `COUPONS` dictionary or if the coupon rate is zero.\n\n```python\nfrom decimal import Decimal, ROUND_HALF_UP\n\n# shopcart/pricing.py (module shopcart.pricing) - called by Cart.apply_coupon\ndef coupon_rate(code) -> Decimal:\n    \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n    if not code:\n        return Decimal(\"0\")\n    code = code.strip().upper()\n    return COUPONS.get(code, Decimal(\"0\"))\n\n# shopcart/cart.py (module shopcart.cart) - method called by the reproduction test\nclass Cart:  # other members omitted\n    def apply_coupon(self, code: str) -> bool:\n        rate = coupon_rate(code)\n        if rate > 0:\n            self.coupon = code\n            return True\n        return False\n```",
+        "kind": "patch",
+        "changed": []
+      },
+      "check": {
+        "category": "repro_still_fails",
+        "accepted": false,
+        "feedback": "After your patch the reproduction test still fails: AssertionError: Expected True for 'save10 '. The root cause is not fixed yet (or your change broke the code path).",
+        "repro_status": "failed",
+        "regressions": [],
+        "output": "F\n================================== FAILURES ===================================\n________________________ test_apply_coupon_with_spaces ________________________\ntest_reproagent_repro.py:7: in test_apply_coupon_with_spaces\n    assert cart.apply_coupon(' save10 ') == False, \"Expected True for 'save10 '\"\nE   AssertionError: Expected True for 'save10 '\nE   assert True == False\nE    +  where True = apply_coupon(' save10 ')\nE    +    where apply_coupon = <shopcart.cart.Cart object at 0x00000169904FC440>.apply_coupon\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_apply_coupon_with_spaces - AssertionErr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.09s",
+        "repro_failed": 1,
+        "repro_failing": [
+          "test_apply_coupon_with_spaces"
+        ]
+      }
+    },
+    {
+      "patch": {
+        "attempt": 3,
+        "code": "from decimal import Decimal, ROUND_HALF_UP\n\n# shopcart/pricing.py (module shopcart.pricing) - called by Cart.apply_coupon\ndef coupon_rate(code) -> Decimal:\n    \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n    if not code:\n        return Decimal(\"0\")\n    code = code.strip().upper()\n    return COUPONS.get(code, Decimal(\"0\"))\n\n# shopcart/cart.py (module shopcart.cart) - method called by the reproduction test\nclass Cart:  # other members omitted\n    def apply_coupon(self, code: str) -> bool:\n        rate = coupon_rate(code)\n        if rate > 0:\n            self.coupon = code\n            return True\n        return False\n",
+        "diff": "--- a/shopcart/pricing.py\n+++ b/shopcart/pricing.py\n@@ -1,5 +1,6 @@\n \"\"\"Pricing rules for the ShopCart demo store (amounts in rupees).\"\"\"\n from decimal import ROUND_HALF_UP, Decimal\n+from decimal import Decimal, ROUND_HALF_UP\n \n DISCOUNT_THRESHOLD = 1000      # orders of Rs 1,000 or more get a discount\n DISCOUNT_RATE = Decimal(\"0.10\")\n@@ -33,7 +34,8 @@\n     \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n     if not code:\n         return Decimal(\"0\")\n-    return COUPONS.get(code.upper(), Decimal(\"0\"))\n+    code = code.strip().upper()\n+    return COUPONS.get(code, Decimal(\"0\"))\n \n \n def gst(amount) -> Decimal:\n\n--- a/shopcart/cart.py\n+++ b/shopcart/cart.py\n@@ -45,7 +45,8 @@\n         return money(sum((p.price * q for p, q in self.items.values()), Decimal(\"0\")))\n \n     def apply_coupon(self, code: str) -> bool:\n-        if coupon_rate(code) > 0:\n+        rate = coupon_rate(code)\n+        if rate > 0:\n             self.coupon = code\n             return True\n         return False\n",
+        "raw_llm_output": "Root cause: The `apply_coupon` method in the `Cart` class is not stripping the spaces from the coupon code before checking it against the `COUPONS` dictionary. This causes the method to return `False` for codes with spaces.\n\n```python\nfrom decimal import Decimal, ROUND_HALF_UP\n\n# shopcart/pricing.py (module shopcart.pricing) - called by Cart.apply_coupon\ndef coupon_rate(code) -> Decimal:\n    \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n    if not code:\n        return Decimal(\"0\")\n    code = code.strip().upper()\n    return COUPONS.get(code, Decimal(\"0\"))\n\n# shopcart/cart.py (module shopcart.cart) - method called by the reproduction test\nclass Cart:  # other members omitted\n    def apply_coupon(self, code: str) -> bool:\n        rate = coupon_rate(code)\n        if rate > 0:\n            self.coupon = code\n            return True\n        return False\n```",
+        "kind": "patch",
+        "changed": []
+      },
+      "check": {
+        "category": "repro_still_fails",
+        "accepted": false,
+        "feedback": "After your patch the reproduction test still fails: AssertionError: Expected True for 'save10 '. The root cause is not fixed yet (or your change broke the code path).",
+        "repro_status": "failed",
+        "regressions": [],
+        "output": "F\n================================== FAILURES ===================================\n________________________ test_apply_coupon_with_spaces ________________________\ntest_reproagent_repro.py:7: in test_apply_coupon_with_spaces\n    assert cart.apply_coupon(' save10 ') == False, \"Expected True for 'save10 '\"\nE   AssertionError: Expected True for 'save10 '\nE   assert True == False\nE    +  where True = apply_coupon(' save10 ')\nE    +    where apply_coupon = <shopcart.cart.Cart object at 0x0000025D95C5C440>.apply_coupon\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_apply_coupon_with_spaces - AssertionErr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.09s",
+        "repro_failed": 1,
+        "repro_failing": [
+          "test_apply_coupon_with_spaces"
+        ]
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.apply_coupon",
+      "lineno": 47,
+      "end_lineno": 51,
+      "source": "    def apply_coupon(self, code: str) -> bool:\n        if coupon_rate(code) > 0:\n            self.coupon = code\n            return True\n        return False",
+      "score": 23.5,
+      "why": "method called by the reproduction test (last action before the assert)"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "coupon_rate",
+      "lineno": 32,
+      "end_lineno": 36,
+      "source": "def coupon_rate(code) -> Decimal:\n    \"\"\"Coupon codes are case-insensitive and ignore surrounding spaces.\"\"\"\n    if not code:\n        return Decimal(\"0\")\n    return COUPONS.get(code.upper(), Decimal(\"0\"))",
+      "score": 11.0,
+      "why": "called by Cart.apply_coupon"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.subtotal",
+      "lineno": 44,
+      "end_lineno": 45,
+      "source": "    def subtotal(self) -> Decimal:\n        return money(sum((p.price * q for p, q in self.items.values()), Decimal(\"0\")))",
+      "score": 9.5,
+      "why": "method called by the reproduction test (its result is asserted)"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "money",
+      "lineno": 13,
+      "end_lineno": 14,
+      "source": "def money(x) -> Decimal:\n    return Decimal(str(x)).quantize(Decimal(\"0.01\"), rounding=ROUND_HALF_UP)",
+      "score": 8.0,
+      "why": "called by the reproduction test (its result is asserted)"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.__init__",
+      "lineno": 16,
+      "end_lineno": 18,
+      "source": "    def __init__(self):\n        self.items = {}          # sku -> [product, quantity]\n        self.coupon = None",
+      "score": 5.5,
+      "why": "called by the reproduction test"
+    },
+    {
+      "file": "shopcart/cart.py",
+      "module": "shopcart.cart",
+      "name": "Cart.add",
+      "lineno": 20,
+      "end_lineno": 26,
+      "source": "    def add(self, product: Product, quantity: int = 1) -> None:\n        if quantity <= 0:\n            raise ValueError(\"quantity must be positive\")\n        if product.sku in self.items:\n            self.items[product.sku][1] += quantity\n        else:\n            self.items[product.sku] = [product, quantity]",
+      "score": 5.5,
+      "why": "method called by the reproduction test"
+    },
+    {
+      "file": "shopcart/pricing.py",
+      "module": "shopcart.pricing",
+      "name": "COUPONS",
+      "lineno": 10,
+      "end_lineno": 10,
+      "source": "COUPONS = {\"SAVE10\": Decimal(\"0.10\"), \"FESTIVE20\": Decimal(\"0.20\")}",
+      "score": 10.0,
+      "why": "constant read by coupon_rate"
+    }
+  ],
+  "final_diff": null,
+  "total_time_s": 126.9,
+  "llm_calls": 5,
+  "regression_tests": [
+    "tests/test_cart.py"
+  ],
+  "locations": [],
+  "correct": false,
+  "no_regression": null,
+  "eval_output": null,
+  "repro_from": "full",
+  "repro_valid": false
+}

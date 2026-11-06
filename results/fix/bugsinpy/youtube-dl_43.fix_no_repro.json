@@ -1,0 +1,97 @@
+{
+  "bug_id": "youtube-dl_43",
+  "mode": "fix_no_repro",
+  "status": "fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "import re\n\n# youtube_dl/utils.py (module youtube_dl.utils) - matches the bug report\ndef url_basename(url):\n    m = re.match(r'(?:https?:|)//[^/]+/(?:[^/?#]+/)*([^/?#]+)/?(?:[?#]|$)', url)\n    if not m:\n        return u''\n    return m.group(1)\n",
+        "diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -1087,7 +1087,7 @@\n \n \n def url_basename(url):\n-    m = re.match(r'(?:https?:|)//[^/]+/(?:[^/?#]+/)?([^/?#]+)/?(?:[?#]|$)', url)\n+    m = re.match(r'(?:https?:|)//[^/]+/(?:[^/?#]+/)*([^/?#]+)/?(?:[?#]|$)', url)\n     if not m:\n         return u''\n     return m.group(1)\n",
+        "raw_llm_output": "Root cause: The `url_basename` function in `youtube_dl/utils.py` is not correctly handling URLs with multiple directories in the path. It uses a regular expression to extract the last part of the URL, but it does not correctly handle cases where there are multiple directories.\n\nFix:\n```python\nimport re\n\n# youtube_dl/utils.py (module youtube_dl.utils) - matches the bug report\ndef url_basename(url):\n    m = re.match(r'(?:https?:|)//[^/]+/(?:[^/?#]+/)*([^/?#]+)/?(?:[?#]|$)', url)\n    if not m:\n        return u''\n    return m.group(1)\n```"
+      },
+      "check": {
+        "category": "plausible",
+        "accepted": true,
+        "feedback": "",
+        "repro_status": null,
+        "regressions": [],
+        "output": ".................F                                                       [100%]\n================================== FAILURES ===================================\nE   urllib.error.HTTPError: HTTP Error 404: Not Found\nC:\\Program Files\\Python314\\Lib\\urllib\\request.py:611: urllib.error.HTTPError: HTTP Error 404: Not Found\n=========================== short test summary info ===========================\nFAILED test/test_youtube_signature.py::TestSignature::test_signature_swf_vflg5GhxU\n1 failed, 17 passed in 5.04s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "url_basename",
+      "lineno": 1089,
+      "end_lineno": 1093,
+      "source": "def url_basename(url):\n    m = re.match(r'(?:https?:|)//[^/]+/(?:[^/?#]+/)?([^/?#]+)/?(?:[?#]|$)', url)\n    if not m:\n        return u''\n    return m.group(1)",
+      "score": 21.0,
+      "why": "named in the bug report"
+    },
+    {
+      "file": "youtube_dl/extractor/ooyala.py",
+      "module": "youtube_dl.extractor.ooyala",
+      "name": "OoyalaIE._url_for_embed_code",
+      "lineno": 21,
+      "end_lineno": 23,
+      "source": "    @staticmethod\n    def _url_for_embed_code(embed_code):\n        return 'http://player.ooyala.com/player.js?embedCode=%s' % embed_code",
+      "score": 6.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/extractor/tudou.py",
+      "module": "youtube_dl.extractor.tudou",
+      "name": "TudouIE._url_for_id",
+      "lineno": 30,
+      "end_lineno": 36,
+      "source": "    def _url_for_id(self, id, quality = None):\n        info_url = \"http://v2.tudou.com/f?id=\"+str(id)\n        if quality:\n            info_url += '&hd' + quality\n        webpage = self._download_webpage(info_url, id, \"Opening the info webpage\")\n        final_url = self._html_search_regex('>(.+?)</f>',webpage, 'video url')\n        return final_url",
+      "score": 6.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "smuggle_url",
+      "lineno": 999,
+      "end_lineno": 1004,
+      "source": "def smuggle_url(url, data):\n    \"\"\" Pass additional data in a URL for internal use. \"\"\"\n\n    sdata = compat_urllib_parse.urlencode(\n        {u'__youtubedl_smuggle': json.dumps(data)})\n    return url + u'#' + sdata",
+      "score": 4.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "unsmuggle_url",
+      "lineno": 1007,
+      "end_lineno": 1013,
+      "source": "def unsmuggle_url(smug_url):\n    if not '#__youtubedl_smuggle' in smug_url:\n        return smug_url, None\n    url, _, sdata = smug_url.rpartition(u'#')\n    jsond = compat_parse_qs(sdata)[u'__youtubedl_smuggle'][0]\n    data = json.loads(jsond)\n    return url, data",
+      "score": 4.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "xpath_with_ns",
+      "lineno": 239,
+      "end_lineno": 248,
+      "source": "def xpath_with_ns(path, ns_map):\n    components = [c.split(':') for c in path.split('/')]\n    replaced = []\n    for c in components:\n        if len(c) == 1:\n            replaced.append(c[0])\n        else:\n            ns, tag = c\n            replaced.append('{%s}%s' % (ns_map[ns], tag))\n    return '/'.join(replaced)",
+      "score": 4.0,
+      "why": "matches the bug report"
+    }
+  ],
+  "final_diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -1087,7 +1087,7 @@\n \n \n def url_basename(url):\n-    m = re.match(r'(?:https?:|)//[^/]+/(?:[^/?#]+/)?([^/?#]+)/?(?:[?#]|$)', url)\n+    m = re.match(r'(?:https?:|)//[^/]+/(?:[^/?#]+/)*([^/?#]+)/?(?:[?#]|$)', url)\n     if not m:\n         return u''\n     return m.group(1)\n",
+  "total_time_s": 39.1,
+  "llm_calls": 1,
+  "regression_tests": [
+    "test/test_utils.py",
+    "test/test_youtube_signature.py"
+  ],
+  "correct": true,
+  "no_regression": true,
+  "eval_output": " Such sequences will not work in the future. Did you mean \"\\\\w\"? A raw string is also an option.\n  m_variable_name = re.search('(\\w)\\.video\\.id', webpage)\nC:\\Users\\risha\\AppData\\Local\\Temp\\repro_oracle_vo36b8i2\\repo\\youtube_dl\\extractor\\youku.py:37: SyntaxWarning: \"\\:\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\:\"? A raw string is also an option.\n  source = list(\"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/\\:._-1234567890\")\nC:\\Users\\risha\\AppData\\Local\\Temp\\repro_oracle_vo36b8i2\\repo\\youtube_dl\\extractor\\youtube.py:1881: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n  _VALID_URL = u'https?://www\\.youtube\\.com/feed/history|:ythistory'\n",
+  "repro_from": "full",
+  "repro_valid": true
+}

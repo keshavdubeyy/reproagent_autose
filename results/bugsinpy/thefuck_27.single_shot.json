@@ -1,0 +1,54 @@
+{
+  "bug_id": "thefuck_27",
+  "mode": "single_shot",
+  "verdict": "not_reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import thefuck.rules.open\nfrom thefuck import corrector, conf, types\nfrom thefuck.corrector import make_corrected_commands, get_corrected_commands, remove_duplicates\n\ndef test_open_rule_with_xdg_open():\n    command = Command('xdg-open foo.com')\n    expected_command = CorrectedCommand('xdg-open http://foo.com', command)\n    assert make_corrected_commands([command], conf, types.Environment()).pop() == expected_command\n",
+        "raw_llm_output": "```python\nimport thefuck.rules.open\nfrom thefuck import corrector, conf, types\nfrom thefuck.corrector import make_corrected_commands, get_corrected_commands, remove_duplicates\n\ndef test_open_rule_with_xdg_open():\n    command = Command('xdg-open foo.com')\n    expected_command = CorrectedCommand('xdg-open http://foo.com', command)\n    assert make_corrected_commands([command], conf, types.Environment()).pop() == expected_command\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.83,
+        "output": "F\n================================== FAILURES ===================================\n________________________ test_open_rule_with_xdg_open _________________________\ntest_reproagent_repro.py:6: in test_open_rule_with_xdg_open\n    command = Command('xdg-open foo.com')\n              ^^^^^^^\nE   NameError: name 'Command' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_open_rule_with_xdg_open - NameError: na...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.12s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'Command' is not defined"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'Command' is not defined. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    }
+  ],
+  "spec": {
+    "summary": "The 'open' rule incorrectly adds 'http://' to URLs without a scheme when using 'xdg-open' or 'gnome-open'.",
+    "expected": "The 'open' rule should correctly handle URLs without a scheme when using 'xdg-open' or 'gnome-open'.",
+    "observed": "The 'open' rule adds 'http://' to URLs without a scheme when using 'xdg-open' or 'gnome-open', resulting in a broken command.",
+    "symbols": [
+      "open",
+      "xdg-open",
+      "gnome-open",
+      "rule"
+    ],
+    "files": [
+      "thefuck/rules/open.py"
+    ],
+    "example_inputs": [
+      "xdg-open foo.com"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": null,
+  "total_time_s": 43.0,
+  "llm_calls": 2,
+  "fail_to_pass": false,
+  "fixed_version_output": null,
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

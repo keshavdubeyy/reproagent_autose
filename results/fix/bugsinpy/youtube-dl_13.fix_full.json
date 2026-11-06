@@ -1,0 +1,85 @@
+{
+  "bug_id": "youtube-dl_13",
+  "mode": "fix_full",
+  "status": "not_fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "import re\nfrom urllib.parse import urlparse, urlunparse\n\ndef urljoin(base, path):\n    if isinstance(path, bytes):\n        path = path.decode('utf-8')\n    if not isinstance(path, str) or not path:\n        return None\n    if re.match(r'^(?:https?:)?//', path):\n        return path\n    if isinstance(base, bytes):\n        base = base.decode('utf-8')\n    if not isinstance(base, str) or not re.match(r'^(?:https?:)?//', base):\n        return path\n    # Check if the path is already an absolute URL\n    parsed_path = urlparse(path)\n    if parsed_path.scheme and parsed_path.netloc:\n        return path\n    # Check if the base is an absolute URL\n    parsed_base = urlparse(base)\n    if parsed_base.scheme and parsed_base.netloc:\n        return urlunparse(parsed_base._replace(path=path))\n    return urlunparse(parsed_base._replace(path=path))\n",
+        "diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -67,6 +67,7 @@\n     ProxyType,\n     sockssocket,\n )\n+from urllib.parse import urlparse, urlunparse\n \n \n def register_socks_protocols():\n@@ -1866,16 +1867,23 @@\n def urljoin(base, path):\n     if isinstance(path, bytes):\n         path = path.decode('utf-8')\n-    if not isinstance(path, compat_str) or not path:\n+    if not isinstance(path, str) or not path:\n         return None\n     if re.match(r'^(?:https?:)?//', path):\n         return path\n     if isinstance(base, bytes):\n         base = base.decode('utf-8')\n-    if not isinstance(base, compat_str) or not re.match(\n-            r'^(?:https?:)?//', base):\n-        return None\n-    return compat_urlparse.urljoin(base, path)\n+    if not isinstance(base, str) or not re.match(r'^(?:https?:)?//', base):\n+        return path\n+    # Check if the path is already an absolute URL\n+    parsed_path = urlparse(path)\n+    if parsed_path.scheme and parsed_path.netloc:\n+        return path\n+    # Check if the base is an absolute URL\n+    parsed_base = urlparse(base)\n+    if parsed_base.scheme and parsed_base.netloc:\n+        return urlunparse(parsed_base._replace(path=path))\n+    return urlunparse(parsed_base._replace(path=path))\n \n \n class HEADRequest(compat_urllib_request.Request):\n",
+        "raw_llm_output": "Root cause: The `urljoin` function is incorrectly handling URLs with non-http schemes. The function assumes that if the base URL is not an HTTP or HTTPS URL, it should return `None`. However, it should return the second argument untouched if it is already an absolute URL.\n\nHere's the fixed version of the `urljoin` function:\n\n```python\nimport re\nfrom urllib.parse import urlparse, urlunparse\n\ndef urljoin(base, path):\n    if isinstance(path, bytes):\n        path = path.decode('utf-8')\n    if not isinstance(path, str) or not path:\n        return None\n    if re.match(r'^(?:https?:)?//', path):\n        return path\n    if isinstance(base, bytes):\n        base = base.decode('utf-8')\n    if not isinstance(base, str) or not re.match(r'^(?:https?:)?//', base):\n        return path\n    # Check if the path is already an absolute URL\n    parsed_path = urlparse(path)\n    if parsed_path.scheme and parsed_path.netloc:\n        return path\n    # Check if the base is an absolute URL\n    parsed_base = urlparse(base)\n    if parsed_base.scheme and parsed_base.netloc:\n        return urlunparse(parsed_base._replace(path=path))\n    return urlunparse(parsed_base._replace(path=path))\n```\n\nThis fix ensures that if the path is already an absolute URL, it is returned unchanged, and if the base is an absolute URL, it is used to construct the final URL."
+      },
+      "check": {
+        "category": "regression",
+        "accepted": false,
+        "feedback": "Your patch breaks 1 existing test(s) that passed before: FAILED test/test_utils.py::TestUtil::test_urljoin - AssertionError: 'http://f.... Keep the existing behaviour and fix only the bug.",
+        "repro_status": "passed",
+        "regressions": [
+          "test/test_utils.py::TestUtil::test_urljoin"
+        ],
+        "output": "...........................................................F............ [ 87%]\n..F.......                                                               [100%]\n================================== FAILURES ===================================\nE   AssertionError: '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc\\\\' != '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc'\n    - \\\\?\\UNC\\ComputerName\\abc\\\n    ?                         -\n    + \\\\?\\UNC\\ComputerName\\abc\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:750: AssertionError: '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc\\\\' != '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc'\nE   AssertionError: 'http://foo.de/.././../d.txt' != 'http://foo.de/d.txt'\n    - http://foo.de/.././../d.txt\n    ?               --------\n    + http://foo.de/d.txt\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:750: AssertionError: 'http://foo.de/.././../d.txt' != 'http://foo.de/d.txt'\n=========================== short test summary info ===========================\nFAILED test/test_utils.py::TestUtil::test_sanitize_path - AssertionError: '\\\\...\nFAILED test/test_utils.py::TestUtil::test_urljoin - AssertionError: 'http://f...\n2 failed, 80 passed in 1.86s\n\n"
+      }
+    },
+    {
+      "patch": {
+        "attempt": 2,
+        "code": "import re\nfrom urllib.parse import urlparse, urlunparse\n\ndef urljoin(base, path):\n    if isinstance(path, bytes):\n        path = path.decode('utf-8')\n    if not isinstance(path, str) or not path:\n        return None\n    if re.match(r'^(?:https?:)?//', path):\n        return path\n    if isinstance(base, bytes):\n        base = base.decode('utf-8')\n    if not isinstance(base, str) or not re.match(r'^(?:https?:)?//', base):\n        return path\n    # Check if the path is already an absolute URL\n    parsed_path = urlparse(path)\n    if parsed_path.scheme and parsed_path.netloc:\n        return path\n    # Check if the base is an absolute URL\n    parsed_base = urlparse(base)\n    if parsed_base.scheme and parsed_base.netloc:\n        return urlunparse(parsed_base._replace(path=path))\n    # If neither is absolute, join them\n    return urlunparse(parsed_base._replace(path=path))\n",
+        "diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -67,6 +67,7 @@\n     ProxyType,\n     sockssocket,\n )\n+from urllib.parse import urlparse, urlunparse\n \n \n def register_socks_protocols():\n@@ -1866,16 +1867,24 @@\n def urljoin(base, path):\n     if isinstance(path, bytes):\n         path = path.decode('utf-8')\n-    if not isinstance(path, compat_str) or not path:\n+    if not isinstance(path, str) or not path:\n         return None\n     if re.match(r'^(?:https?:)?//', path):\n         return path\n     if isinstance(base, bytes):\n         base = base.decode('utf-8')\n-    if not isinstance(base, compat_str) or not re.match(\n-            r'^(?:https?:)?//', base):\n-        return None\n-    return compat_urlparse.urljoin(base, path)\n+    if not isinstance(base, str) or not re.match(r'^(?:https?:)?//', base):\n+        return path\n+    # Check if the path is already an absolute URL\n+    parsed_path = urlparse(path)\n+    if parsed_path.scheme and parsed_path.netloc:\n+        return path\n+    # Check if the base is an absolute URL\n+    parsed_base = urlparse(base)\n+    if parsed_base.scheme and parsed_base.netloc:\n+        return urlunparse(parsed_base._replace(path=path))\n+    # If neither is absolute, join them\n+    return urlunparse(parsed_base._replace(path=path))\n \n \n class HEADRequest(compat_urllib_request.Request):\n",
+        "raw_llm_output": "Root cause: The bug was caused by the incorrect handling of absolute URLs in the `urljoin` function. The function incorrectly returned `None` when the path is already an absolute URL, which is not the expected behavior.\n\nTo fix this, we need to ensure that the function returns the path untouched if it is already an absolute URL. We can achieve this by checking the scheme and netloc of the path and base URLs before joining them.\n\nHere is the corrected version of the `urljoin` function:\n\n```python\nimport re\nfrom urllib.parse import urlparse, urlunparse\n\ndef urljoin(base, path):\n    if isinstance(path, bytes):\n        path = path.decode('utf-8')\n    if not isinstance(path, str) or not path:\n        return None\n    if re.match(r'^(?:https?:)?//', path):\n        return path\n    if isinstance(base, bytes):\n        base = base.decode('utf-8')\n    if not isinstance(base, str) or not re.match(r'^(?:https?:)?//', base):\n        return path\n    # Check if the path is already an absolute URL\n    parsed_path = urlparse(path)\n    if parsed_path.scheme and parsed_path.netloc:\n        return path\n    # Check if the base is an absolute URL\n    parsed_base = urlparse(base)\n    if parsed_base.scheme and parsed_base.netloc:\n        return urlunparse(parsed_base._replace(path=path))\n    # If neither is absolute, join them\n    return urlunparse(parsed_base._replace(path=path))\n```\n\nThis patch ensures that the function returns the path untouched if it is already an absolute URL, while still correctly joining the base and path when they are not absolute."
+      },
+      "check": {
+        "category": "regression",
+        "accepted": false,
+        "feedback": "Your patch breaks 1 existing test(s) that passed before: FAILED test/test_utils.py::TestUtil::test_urljoin - AssertionError: 'http://f.... Keep the existing behaviour and fix only the bug.",
+        "repro_status": "passed",
+        "regressions": [
+          "test/test_utils.py::TestUtil::test_urljoin"
+        ],
+        "output": "...........................................................F............ [ 87%]\n..F.......                                                               [100%]\n================================== FAILURES ===================================\nE   AssertionError: '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc\\\\' != '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc'\n    - \\\\?\\UNC\\ComputerName\\abc\\\n    ?                         -\n    + \\\\?\\UNC\\ComputerName\\abc\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:750: AssertionError: '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc\\\\' != '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc'\nE   AssertionError: 'http://foo.de/.././../d.txt' != 'http://foo.de/d.txt'\n    - http://foo.de/.././../d.txt\n    ?               --------\n    + http://foo.de/d.txt\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:750: AssertionError: 'http://foo.de/.././../d.txt' != 'http://foo.de/d.txt'\n=========================== short test summary info ===========================\nFAILED test/test_utils.py::TestUtil::test_sanitize_path - AssertionError: '\\\\...\nFAILED test/test_utils.py::TestUtil::test_urljoin - AssertionError: 'http://f...\n2 failed, 80 passed in 1.76s\n\n"
+      }
+    },
+    {
+      "patch": {
+        "attempt": 3,
+        "code": "import re\nfrom urllib.parse import urlparse, urlunparse\n\ndef urljoin(base, path):\n    if isinstance(path, bytes):\n        path = path.decode('utf-8')\n    if not isinstance(path, str) or not path:\n        return None\n    # Check if the path is already an absolute URL\n    parsed_path = urlparse(path)\n    if parsed_path.scheme and parsed_path.netloc:\n        return path\n    # If the path is not absolute, check the base\n    if isinstance(base, bytes):\n        base = base.decode('utf-8')\n    if not isinstance(base, str) or not re.match(r'^(?:https?:)?//', base):\n        return None\n    # If the base is also not absolute, join them\n    return urlunparse(parsed_base._replace(path=path))\n",
+        "diff": "--- a/youtube_dl/utils.py\n+++ b/youtube_dl/utils.py\n@@ -67,6 +67,7 @@\n     ProxyType,\n     sockssocket,\n )\n+from urllib.parse import urlparse, urlunparse\n \n \n def register_socks_protocols():\n@@ -1866,16 +1867,19 @@\n def urljoin(base, path):\n     if isinstance(path, bytes):\n         path = path.decode('utf-8')\n-    if not isinstance(path, compat_str) or not path:\n+    if not isinstance(path, str) or not path:\n         return None\n-    if re.match(r'^(?:https?:)?//', path):\n+    # Check if the path is already an absolute URL\n+    parsed_path = urlparse(path)\n+    if parsed_path.scheme and parsed_path.netloc:\n         return path\n+    # If the path is not absolute, check the base\n     if isinstance(base, bytes):\n         base = base.decode('utf-8')\n-    if not isinstance(base, compat_str) or not re.match(\n-            r'^(?:https?:)?//', base):\n+    if not isinstance(base, str) or not re.match(r'^(?:https?:)?//', base):\n         return None\n-    return compat_urlparse.urljoin(base, path)\n+    # If the base is also not absolute, join them\n+    return urlunparse(parsed_base._replace(path=path))\n \n \n class HEADRequest(compat_urllib_request.Request):\n",
+        "raw_llm_output": "Root cause: The bug was caused by the incorrect handling of absolute URLs with non-http schemes. The previous patch incorrectly checked the scheme and netloc of the base and path separately, which led to incorrect behavior when the path was already an absolute URL.\n\nTo fix this, we need to ensure that the path is checked for absoluteity before the base is checked. This way, if the path is already an absolute URL, it will be returned as is, without any modifications.\n\nHere's the corrected version of the `urljoin` function:\n\n```python\nimport re\nfrom urllib.parse import urlparse, urlunparse\n\ndef urljoin(base, path):\n    if isinstance(path, bytes):\n        path = path.decode('utf-8')\n    if not isinstance(path, str) or not path:\n        return None\n    # Check if the path is already an absolute URL\n    parsed_path = urlparse(path)\n    if parsed_path.scheme and parsed_path.netloc:\n        return path\n    # If the path is not absolute, check the base\n    if isinstance(base, bytes):\n        base = base.decode('utf-8')\n    if not isinstance(base, str) or not re.match(r'^(?:https?:)?//', base):\n        return None\n    # If the base is also not absolute, join them\n    return urlunparse(parsed_base._replace(path=path))\n```\n\nThis change ensures that the function correctly handles absolute URLs with non-http schemes and retains the existing behavior for other cases."
+      },
+      "check": {
+        "category": "regression",
+        "accepted": false,
+        "feedback": "Your patch breaks 1 existing test(s) that passed before: FAILED test/test_utils.py::TestUtil::test_urljoin - NameError: name 'parsed_b.... Keep the existing behaviour and fix only the bug.",
+        "repro_status": "passed",
+        "regressions": [
+          "test/test_utils.py::TestUtil::test_urljoin"
+        ],
+        "output": "...........................................................F............ [ 87%]\n..F.......                                                               [100%]\n================================== FAILURES ===================================\nE   AssertionError: '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc\\\\' != '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc'\n    - \\\\?\\UNC\\ComputerName\\abc\\\n    ?                         -\n    + \\\\?\\UNC\\ComputerName\\abc\nC:\\Program Files\\Python314\\Lib\\unittest\\case.py:750: AssertionError: '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc\\\\' != '\\\\\\\\?\\\\UNC\\\\ComputerName\\\\abc'\nE   NameError: name 'parsed_base' is not defined\nC:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_13_patch_p1ryt5by\\repo\\youtube_dl\\utils.py:1882: NameError: name 'parsed_base' is not defined\n=========================== short test summary info ===========================\nFAILED test/test_utils.py::TestUtil::test_sanitize_path - AssertionError: '\\\\...\nFAILED test/test_utils.py::TestUtil::test_urljoin - NameError: name 'parsed_b...\n2 failed, 80 passed in 1.76s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "youtube_dl/utils.py",
+      "module": "youtube_dl.utils",
+      "name": "urljoin",
+      "lineno": 1866,
+      "end_lineno": 1878,
+      "source": "def urljoin(base, path):\n    if isinstance(path, bytes):\n        path = path.decode('utf-8')\n    if not isinstance(path, compat_str) or not path:\n        return None\n    if re.match(r'^(?:https?:)?//', path):\n        return path\n    if isinstance(base, bytes):\n        base = base.decode('utf-8')\n    if not isinstance(base, compat_str) or not re.match(\n            r'^(?:https?:)?//', base):\n        return None\n    return compat_urlparse.urljoin(base, path)",
+      "score": 9.5,
+      "why": "called by the reproduction test"
+    }
+  ],
+  "final_diff": null,
+  "total_time_s": 180.2,
+  "llm_calls": 3,
+  "regression_tests": [
+    "test/test_utils.py",
+    "test/test_YoutubeDLCookieJar.py"
+  ],
+  "correct": false,
+  "no_regression": null,
+  "eval_output": null,
+  "repro_from": "full",
+  "repro_valid": true
+}

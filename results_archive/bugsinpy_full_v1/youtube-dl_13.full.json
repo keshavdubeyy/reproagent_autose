@@ -1,0 +1,49 @@
+{
+  "bug_id": "youtube-dl_13",
+  "mode": "full",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import unittest\nfrom youtube_dl.utils import urljoin\n\nclass TestUrljoin(unittest.TestCase):\n    def test_urljoin_rtmp_scheme(self):\n        expected = 'rtmp://foo.de'\n        result = urljoin(None, 'rtmp://foo.de')\n        self.assertEqual(result, expected)\n",
+        "raw_llm_output": "```python\nimport unittest\nfrom youtube_dl.utils import urljoin\n\nclass TestUrljoin(unittest.TestCase):\n    def test_urljoin_rtmp_scheme(self):\n        expected = 'rtmp://foo.de'\n        result = urljoin(None, 'rtmp://foo.de')\n        self.assertEqual(result, expected)\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 8.83,
+        "output": "F\n================================== FAILURES ===================================\n____________________ TestUrljoin.test_urljoin_rtmp_scheme _____________________\ntest_reproagent_repro.py:8: in test_urljoin_rtmp_scheme\n    self.assertEqual(result, expected)\nE   AssertionError: None != 'rtmp://foo.de'\n============================== warnings summary ===============================\nyoutube_dl\\extractor\\pandatv.py:39\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_13_u_bcsgv5\\repo\\youtube_dl\\extractor\\pandatv.py:39: SyntaxWarning: \"is not\" with 'int' literal. Did you mean \"!=\"?\n    if error_code is not 0:\n\nyoutube_dl\\extractor\\tvnow.py:216\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_13_u_bcsgv5\\repo\\youtube_dl\\extractor\\tvnow.py:216: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    (?:www\\.)?tvnow\\.(?:de|at|ch)/\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::TestUrljoin::test_urljoin_rtmp_scheme - Asse...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 2 warnings in 7.50s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError: None != 'rtmp://foo.de'"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[slm-judge] The test failed because the code produced 'None' instead of the expected 'rtmp://foo.de'. (actual: None)"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "urljoin mishandles non-http schemes",
+    "expected": "urljoin(None, 'rtmp://foo.de') should return 'rtmp://foo.de'",
+    "observed": "urljoin(None, 'rtmp://foo.de') returns None",
+    "symbols": [
+      "urljoin"
+    ],
+    "files": [
+      "youtube_dl/utils/urljoin.py"
+    ],
+    "example_inputs": [
+      "None, 'rtmp://foo.de'"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import unittest\nfrom youtube_dl.utils import urljoin\n\nclass TestUrljoin(unittest.TestCase):\n    def test_urljoin_rtmp_scheme(self):\n        expected = 'rtmp://foo.de'\n        result = urljoin(None, 'rtmp://foo.de')\n        self.assertEqual(result, expected)\n",
+  "total_time_s": 71.0,
+  "llm_calls": 3,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n============================== warnings summary ===============================\nyoutube_dl\\extractor\\pandatv.py:39\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_13_fixed_ggc9_kul\\repo\\youtube_dl\\extractor\\pandatv.py:39: SyntaxWarning: \"is not\" with 'int' literal. Did you mean \"!=\"?\n    if error_code is not 0:\n\nyoutube_dl\\extractor\\tvnow.py:216\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_13_fixed_ggc9_kul\\repo\\youtube_dl\\extractor\\tvnow.py:216: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    (?:www\\.)?tvnow\\.(?:de|at|ch)/\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n1 passed, 2 warnings in 6.50s"
+}

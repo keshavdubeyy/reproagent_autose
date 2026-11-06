@@ -1,0 +1,12 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Generated benchmark trees (rebuilt by scripts/fetch_bugsinpy.py and benchmarks/*/build.py)
+benchmarks/*/work/
+
+# Local logs and tooling
+*.log
+.claude/

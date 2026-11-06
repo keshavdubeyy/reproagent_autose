@@ -1,0 +1,97 @@
+{
+  "bug_id": "thefuck_31",
+  "mode": "fix_no_repro",
+  "status": "fixed",
+  "attempts": [
+    {
+      "patch": {
+        "attempt": 1,
+        "code": "# thefuck/rules/git_diff_staged.py (module thefuck.rules.git_diff_staged) - matches the bug report\n@utils.git_support\ndef get_new_command(command, settings):\n    return '{}'.format(command.script)\n",
+        "diff": "--- a/thefuck/rules/git_diff_staged.py\n+++ b/thefuck/rules/git_diff_staged.py\n@@ -10,4 +10,4 @@\n \n @utils.git_support\n def get_new_command(command, settings):\n-    return '{} --staged'.format(command.script)\n+    return '{}'.format(command.script)\n",
+        "raw_llm_output": "Root cause: The `get_new_command` function in `thefuck/rules/git_diff_staged.py` incorrectly appends `--staged` to the command, which is not the intended behavior for the `git diff` command.\n\n```python\n# thefuck/rules/git_diff_staged.py (module thefuck.rules.git_diff_staged) - matches the bug report\n@utils.git_support\ndef get_new_command(command, settings):\n    return '{}'.format(command.script)\n```"
+      },
+      "check": {
+        "category": "plausible",
+        "accepted": true,
+        "feedback": "",
+        "repro_status": null,
+        "regressions": [],
+        "output": ".....F..                                                                 [100%]\n================================== FAILURES ===================================\nE   AssertionError: assert 'git diff' == 'git diff --staged'\n      \n      - git diff --staged\n      + git diff\nC:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_31_patch_n8v9xcof\\repo\\tests\\rules\\test_git_diff_staged.py:23: AssertionError: assert 'git diff' == 'git diff --staged'\n=========================== short test summary info ===========================\nFAILED tests/rules/test_git_diff_staged.py::test_get_new_command[command0-git diff --staged]\n1 failed, 7 passed in 0.16s\n\n"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "file": "thefuck/rules/git_diff_staged.py",
+      "module": "thefuck.rules.git_diff_staged",
+      "name": "get_new_command",
+      "lineno": 11,
+      "end_lineno": 13,
+      "source": "@utils.git_support\ndef get_new_command(command, settings):\n    return '{} --staged'.format(command.script)",
+      "score": 10.5,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "thefuck/rules/git_diff_staged.py",
+      "module": "thefuck.rules.git_diff_staged",
+      "name": "match",
+      "lineno": 4,
+      "end_lineno": 8,
+      "source": "@utils.git_support\ndef match(command, settings):\n    return ('git' in command.script and\n            'diff' in command.script and\n            '--staged' not in command.script)",
+      "score": 7.5,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "thefuck/rules/git_not_command.py",
+      "module": "thefuck.rules.git_not_command",
+      "name": "get_new_command",
+      "lineno": 21,
+      "end_lineno": 27,
+      "source": "@git_support\ndef get_new_command(command, settings):\n    broken_cmd = re.findall(r\"git: '([^']*)' is not a git command\",\n                            command.stderr)[0]\n    new_cmd = get_closest(broken_cmd,\n                          _get_all_git_matched_commands(command.stderr))\n    return command.script.replace(broken_cmd, new_cmd, 1)",
+      "score": 5.0,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "thefuck/rules/python_command.py",
+      "module": "thefuck.rules.python_command",
+      "name": "get_new_command",
+      "lineno": 16,
+      "end_lineno": 18,
+      "source": "@sudo_support\ndef get_new_command(command, settings):\n    return 'python ' + command.script",
+      "score": 4.5,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "thefuck/rules/git_branch_delete.py",
+      "module": "thefuck.rules.git_branch_delete",
+      "name": "get_new_command",
+      "lineno": 10,
+      "end_lineno": 12,
+      "source": "@utils.git_support\ndef get_new_command(command, settings):\n    return command.script.replace('-d', '-D')",
+      "score": 4.5,
+      "why": "matches the bug report"
+    },
+    {
+      "file": "thefuck/rules/git_push.py",
+      "module": "thefuck.rules.git_push",
+      "name": "get_new_command",
+      "lineno": 11,
+      "end_lineno": 13,
+      "source": "@utils.git_support\ndef get_new_command(command, settings):\n    return command.stderr.split('\\n')[-3].strip()",
+      "score": 4.5,
+      "why": "matches the bug report"
+    }
+  ],
+  "final_diff": "--- a/thefuck/rules/git_diff_staged.py\n+++ b/thefuck/rules/git_diff_staged.py\n@@ -10,4 +10,4 @@\n \n @utils.git_support\n def get_new_command(command, settings):\n-    return '{} --staged'.format(command.script)\n+    return '{}'.format(command.script)\n",
+  "total_time_s": 25.8,
+  "llm_calls": 1,
+  "regression_tests": [
+    "tests/rules/test_git_diff_staged.py",
+    "tests/rules/test_git_not_command.py"
+  ],
+  "correct": false,
+  "no_regression": true,
+  "eval_output": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\n    assert get_new_command(Command(script='git diff foo'), None) == 'git diff --staged foo'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+  "repro_from": "full",
+  "repro_valid": true
+}

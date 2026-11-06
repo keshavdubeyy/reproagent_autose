@@ -1,0 +1,54 @@
+{
+  "bug_id": "youtube-dl_17",
+  "mode": "full_v2",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom youtube_dl.utils import cli_bool_option\n\ndef test_cli_bool_option_missing_key():\n    params = {}\n    command_option = '--check-certificate'\n    param = 'nocheckcertificate'\n    expected_result = []\n\n    result = cli_bool_option(params, command_option, param)\n    assert result == expected_result, f\"Expected {expected_result}, but got {result}\"\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom youtube_dl.utils import cli_bool_option\n\ndef test_cli_bool_option_missing_key():\n    params = {}\n    command_option = '--check-certificate'\n    param = 'nocheckcertificate'\n    expected_result = []\n\n    result = cli_bool_option(params, command_option, param)\n    assert result == expected_result, f\"Expected {expected_result}, but got {result}\"\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 7.87,
+        "output": "F\n================================== FAILURES ===================================\n______________________ test_cli_bool_option_missing_key _______________________\ntest_reproagent_repro.py:10: in test_cli_bool_option_missing_key\n    result = cli_bool_option(params, command_option, param)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nyoutube_dl\\utils.py:2736: in cli_bool_option\n    assert isinstance(param, bool)\n           ^^^^^^^^^^^^^^^^^^^^^^^\nE   AssertionError\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_cli_bool_option_missing_key - Assertion...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 6.89s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[slm-judge] The test failed because the code produced an unexpected result. (actual: AssertionError: Expected False, but got True)"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "cli_bool_option crashes when the option is not set",
+    "expected": "The function should return an empty list when the param key is missing from the dict.",
+    "observed": "The function raises an exception when the param key is missing from the dict.",
+    "symbols": [
+      "cli_bool_option",
+      "params",
+      "command_option",
+      "param"
+    ],
+    "files": [
+      "youtube_dl/utils/cli_bool_option.py"
+    ],
+    "example_inputs": [
+      "cli_bool_option({}, '--check-certificate', 'nocheckcertificate')"
+    ],
+    "failure_kind": "exception",
+    "is_actionable": true
+  },
+  "final_test": "import pytest\nfrom youtube_dl.utils import cli_bool_option\n\ndef test_cli_bool_option_missing_key():\n    params = {}\n    command_option = '--check-certificate'\n    param = 'nocheckcertificate'\n    expected_result = []\n\n    result = cli_bool_option(params, command_option, param)\n    assert result == expected_result, f\"Expected {expected_result}, but got {result}\"\n",
+  "total_time_s": 54.8,
+  "llm_calls": 3,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n1 passed in 6.22s",
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

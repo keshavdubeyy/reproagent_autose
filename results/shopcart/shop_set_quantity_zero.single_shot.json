@@ -1,0 +1,52 @@
+{
+  "bug_id": "shop_set_quantity_zero",
+  "mode": "single_shot",
+  "verdict": "not_reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\n@pytest.mark.parametrize(\"item_id, quantity\", [\n    (\"item1\", 0)\n])\ndef test_set_quantity_to_zero_removes_item(item_id, quantity):\n    cart = Cart()\n    cart.add(Product(\"item1\", price=100), quantity=1)\n    cart.set_quantity(item_id, quantity)\n    assert cart.item_count() == 0\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\n@pytest.mark.parametrize(\"item_id, quantity\", [\n    (\"item1\", 0)\n])\ndef test_set_quantity_to_zero_removes_item(item_id, quantity):\n    cart = Cart()\n    cart.add(Product(\"item1\", price=100), quantity=1)\n    cart.set_quantity(item_id, quantity)\n    assert cart.item_count() == 0\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 0.92,
+        "output": "F\n================================== FAILURES ===================================\n_______________ test_set_quantity_to_zero_removes_item[item1-0] _______________\ntest_reproagent_repro.py:10: in test_set_quantity_to_zero_removes_item\n    cart.add(Product(\"item1\", price=100), quantity=1)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: Product.__init__() missing 1 required positional argument: 'name'\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_set_quantity_to_zero_removes_item[item1-0]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.10s",
+        "exception_type": "TypeError",
+        "failure_line": "TypeError: Product.__init__() missing 1 required positional argument: 'name'"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The exception was raised by the test code itself, not by the project: TypeError: Product.__init__() missing 1 required positional argument: 'name'. Check the function signature and how existing tests call it.",
+        "llm_judgement": null
+      }
+    }
+  ],
+  "spec": {
+    "summary": "Setting item quantity to 0 does not remove the item from the cart",
+    "expected": "Setting an item's quantity to 0 should remove it from the cart",
+    "observed": "The item stays in the cart with quantity 0 and still shows up in the order",
+    "symbols": [
+      "set_quantity",
+      "cart"
+    ],
+    "files": [
+      "cart.py"
+    ],
+    "example_inputs": [
+      "Cart.set_quantity(item_id, 0)"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": null,
+  "total_time_s": 36.3,
+  "llm_calls": 2,
+  "fail_to_pass": false,
+  "fixed_version_output": null,
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

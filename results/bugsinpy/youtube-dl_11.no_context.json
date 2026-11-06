@@ -1,0 +1,93 @@
+{
+  "bug_id": "youtube-dl_11",
+  "mode": "no_context",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import sys\nsys.path.append('/path/to/your/project')  # Adjust the path as necessary\nfrom youtube_dl.utils import str_to_int\n\ndef test_str_to_int_crash():\n    with pytest.raises(TypeError):\n        str_to_int(523)\n",
+        "raw_llm_output": "```python\nimport sys\nsys.path.append('/path/to/your/project')  # Adjust the path as necessary\nfrom youtube_dl.utils import str_to_int\n\ndef test_str_to_int_crash():\n    with pytest.raises(TypeError):\n        str_to_int(523)\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 7.06,
+        "output": "F\n================================== FAILURES ===================================\n____________________________ test_str_to_int_crash ____________________________\ntest_reproagent_repro.py:6: in test_str_to_int_crash\n    with pytest.raises(TypeError):\n         ^^^^^^\nE   NameError: name 'pytest' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_str_to_int_crash - NameError: name 'pyt...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 6.30s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'pytest' is not defined"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'pytest' is not defined. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 2,
+        "code": "import sys\nsys.path.append('/path/to/your/project')  # Adjust the path as necessary\nfrom youtube_dl.utils import str_to_int\nimport pytest\n\ndef test_str_to_int_crash():\n    with pytest.raises(TypeError):\n        str_to_int(523)\n",
+        "raw_llm_output": "```python\nimport sys\nsys.path.append('/path/to/your/project')  # Adjust the path as necessary\nfrom youtube_dl.utils import str_to_int\nimport pytest\n\ndef test_str_to_int_crash():\n    with pytest.raises(TypeError):\n        str_to_int(523)\n```"
+      },
+      "execution": {
+        "status": "passed",
+        "exit_code": 0,
+        "duration_s": 2.19,
+        "output": ".                                                                        [100%]\n1 passed in 1.42s",
+        "exception_type": null,
+        "failure_line": null
+      },
+      "analysis": {
+        "category": "test_passed",
+        "is_reproduction": false,
+        "feedback": "The test PASSED, so it did not trigger the bug. Use the exact example input from the report and assert the EXPECTED value stated in the report.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 3,
+        "code": "import sys\nsys.path.append('/path/to/your/project')  # Adjust the path as necessary\nfrom youtube_dl.utils import str_to_int\nimport pytest\n\ndef test_str_to_int_crash():\n    # Assert that str_to_int(523) returns 523\n    assert str_to_int(523) == 523\n",
+        "raw_llm_output": "```python\nimport sys\nsys.path.append('/path/to/your/project')  # Adjust the path as necessary\nfrom youtube_dl.utils import str_to_int\nimport pytest\n\ndef test_str_to_int_crash():\n    with pytest.raises(TypeError):\n        str_to_int(523)\n```\n\n### Expected Behavior\n`str_to_int(523)` should return `523`.\n\n### Actual Behavior\n`str_to_int(523)` raises a `TypeError`.\n\n### Reproduction Test\n\n```python\nimport sys\nsys.path.append('/path/to/your/project')  # Adjust the path as necessary\nfrom youtube_dl.utils import str_to_int\nimport pytest\n\ndef test_str_to_int_crash():\n    # Assert that str_to_int(523) returns 523\n    assert str_to_int(523) == 523\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 2.45,
+        "output": "F\n================================== FAILURES ===================================\n____________________________ test_str_to_int_crash ____________________________\ntest_reproagent_repro.py:8: in test_str_to_int_crash\n    assert str_to_int(523) == 523\n           ^^^^^^^^^^^^^^^\nyoutube_dl\\utils.py:3524: in str_to_int\n    int_str = re.sub(r'[,\\.\\+]', '', int_str)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nC:\\Program Files\\Python314\\Lib\\re\\__init__.py:208: in sub\n    return _compile(pattern, flags).sub(repl, string, count)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: expected string or bytes-like object, got 'int'\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_str_to_int_crash - TypeError: expected ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 1.72s",
+        "exception_type": "TypeError",
+        "failure_line": "TypeError: expected string or bytes-like object, got 'int'"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[evidence-match] project raised TypeError, as the report describes"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "str_to_int crashes when given an integer",
+    "expected": "str_to_int(523) == 523",
+    "observed": "str_to_int(523) raises a TypeError",
+    "symbols": [
+      "str_to_int"
+    ],
+    "files": [
+      "youtube_dl/utils.py"
+    ],
+    "example_inputs": [
+      "523"
+    ],
+    "failure_kind": "exception",
+    "is_actionable": true
+  },
+  "final_test": "import sys\nsys.path.append('/path/to/your/project')  # Adjust the path as necessary\nfrom youtube_dl.utils import str_to_int\nimport pytest\n\ndef test_str_to_int_crash():\n    # Assert that str_to_int(523) returns 523\n    assert str_to_int(523) == 523\n",
+  "total_time_s": 71.5,
+  "llm_calls": 4,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n1 passed in 4.43s",
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

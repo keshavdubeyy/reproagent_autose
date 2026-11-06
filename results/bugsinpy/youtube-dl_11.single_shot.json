@@ -1,0 +1,51 @@
+{
+  "bug_id": "youtube-dl_11",
+  "mode": "single_shot",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import unittest\nfrom youtube_dl.utils import str_to_int\n\nclass TestStrToInt(unittest.TestCase):\n    def test_str_to_int_with_int(self):\n        self.assertEqual(str_to_int(523), 523)\n\nif __name__ == '__main__':\n    unittest.main()\n",
+        "raw_llm_output": "```python\nimport unittest\nfrom youtube_dl.utils import str_to_int\n\nclass TestStrToInt(unittest.TestCase):\n    def test_str_to_int_with_int(self):\n        self.assertEqual(str_to_int(523), 523)\n\nif __name__ == '__main__':\n    unittest.main()\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 5.91,
+        "output": "F\n================================== FAILURES ===================================\n____________________ TestStrToInt.test_str_to_int_with_int ____________________\ntest_reproagent_repro.py:6: in test_str_to_int_with_int\n    self.assertEqual(str_to_int(523), 523)\n                     ^^^^^^^^^^^^^^^\nyoutube_dl\\utils.py:3524: in str_to_int\n    int_str = re.sub(r'[,\\.\\+]', '', int_str)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nC:\\Program Files\\Python314\\Lib\\re\\__init__.py:208: in sub\n    return _compile(pattern, flags).sub(repl, string, count)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: expected string or bytes-like object, got 'int'\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::TestStrToInt::test_str_to_int_with_int - Typ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 4.95s",
+        "exception_type": "TypeError",
+        "failure_line": "TypeError: expected string or bytes-like object, got 'int'"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[evidence-match] project raised TypeError, as the report describes"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "str_to_int crashes when given an integer",
+    "expected": "str_to_int(523) == 523",
+    "observed": "str_to_int(523) raises a TypeError",
+    "symbols": [
+      "str_to_int"
+    ],
+    "files": [
+      "youtube_dl/utils.py"
+    ],
+    "example_inputs": [
+      "523"
+    ],
+    "failure_kind": "exception",
+    "is_actionable": true
+  },
+  "final_test": "import unittest\nfrom youtube_dl.utils import str_to_int\n\nclass TestStrToInt(unittest.TestCase):\n    def test_str_to_int_with_int(self):\n        self.assertEqual(str_to_int(523), 523)\n\nif __name__ == '__main__':\n    unittest.main()\n",
+  "total_time_s": 45.0,
+  "llm_calls": 2,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n1 passed in 4.76s",
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

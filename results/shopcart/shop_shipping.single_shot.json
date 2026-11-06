@@ -1,0 +1,54 @@
+{
+  "bug_id": "shop_shipping",
+  "mode": "single_shot",
+  "verdict": "not_reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef test_free_shipping_for_500_order():\n    product = Product(\"test_product\", 100, 10)\n    cart = Cart()\n    cart.add_item(product, 5)\n    bill = checkout(cart)\n    assert bill[\"shipping\"] == money(0), \"Expected free shipping for Rs 500 order\"\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom shopcart import Cart, Product, checkout\nfrom shopcart.pricing import gst\n\ndef test_free_shipping_for_500_order():\n    product = Product(\"test_product\", 100, 10)\n    cart = Cart()\n    cart.add_item(product, 5)\n    bill = checkout(cart)\n    assert bill[\"shipping\"] == money(0), \"Expected free shipping for Rs 500 order\"\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 1.24,
+        "output": "F\n================================== FAILURES ===================================\n______________________ test_free_shipping_for_500_order _______________________\ntest_reproagent_repro.py:8: in test_free_shipping_for_500_order\n    cart.add_item(product, 5)\n    ^^^^^^^^^^^^^\nE   AttributeError: 'Cart' object has no attribute 'add_item'\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_free_shipping_for_500_order - Attribute...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.10s",
+        "exception_type": "AttributeError",
+        "failure_line": "AttributeError: 'Cart' object has no attribute 'add_item'"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The exception was raised by the test code itself, not by the project: AttributeError: 'Cart' object has no attribute 'add_item'. Check the function signature and how existing tests call it.",
+        "llm_judgement": null
+      }
+    }
+  ],
+  "spec": {
+    "summary": "Shipping charged on Rs 500 orders despite free shipping policy",
+    "expected": "Free shipping for orders of Rs 500 or more",
+    "observed": "Rs 50 shipping fee charged for an Rs 500 order",
+    "symbols": [
+      "shipping_fee",
+      "free_shipping",
+      "order_amount"
+    ],
+    "files": [
+      "checkout.py",
+      "shipping.py"
+    ],
+    "example_inputs": [
+      "order_amount=500"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": null,
+  "total_time_s": 45.8,
+  "llm_calls": 2,
+  "fail_to_pass": false,
+  "fixed_version_output": null,
+  "fail_to_pass_semantic": false,
+  "message_checks": []
+}

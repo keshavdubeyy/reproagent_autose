@@ -1,0 +1,51 @@
+{
+  "bug_id": "youtube-dl_43",
+  "mode": "no_context",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import youtube_dl.utils\n\ndef test_url_basename():\n    expected = 'trailer.mp4'\n    actual = youtube_dl.utils.url_basename('http://media.w3.org/2010/05/sintel/trailer.mp4')\n    assert actual == expected\n",
+        "raw_llm_output": "```python\nimport youtube_dl.utils\n\ndef test_url_basename():\n    expected = 'trailer.mp4'\n    actual = youtube_dl.utils.url_basename('http://media.w3.org/2010/05/sintel/trailer.mp4')\n    assert actual == expected\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 2.28,
+        "output": "F\n================================== FAILURES ===================================\n______________________________ test_url_basename ______________________________\ntest_reproagent_repro.py:6: in test_url_basename\n    assert actual == expected\nE   AssertionError: assert '' == 'trailer.mp4'\nE     \nE     - trailer.mp4\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_url_basename - AssertionError: assert '...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 1.57s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError: assert '' == 'trailer.mp4'"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[slm-judge] The test failed because the expected output 'trailer.mp4' does not match the actual output ''. (actual: )"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "url_basename fails for URLs with deep paths",
+    "expected": "url_basename('http://media.w3.org/2010/05/sintel/trailer.mp4') == 'trailer.mp4'",
+    "observed": "url_basename('http://media.w3.org/2010/05/sintel/trailer.mp4') == ''",
+    "symbols": [
+      "url_basename"
+    ],
+    "files": [
+      "youtube_dl/utils/url_basename.py"
+    ],
+    "example_inputs": [
+      "http://media.w3.org/2010/05/sintel/trailer.mp4"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import youtube_dl.utils\n\ndef test_url_basename():\n    expected = 'trailer.mp4'\n    actual = youtube_dl.utils.url_basename('http://media.w3.org/2010/05/sintel/trailer.mp4')\n    assert actual == expected\n",
+  "total_time_s": 39.7,
+  "llm_calls": 3,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n1 passed in 0.87s",
+  "fail_to_pass_semantic": true,
+  "message_checks": []
+}

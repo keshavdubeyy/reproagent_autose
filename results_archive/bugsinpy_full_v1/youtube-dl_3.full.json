@@ -1,0 +1,49 @@
+{
+  "bug_id": "youtube-dl_3",
+  "mode": "full",
+  "verdict": "reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import unittest\nfrom youtube_dl.utils import unescapeHTML\n\nclass TestUnescapeHTML(unittest.TestCase):\n    def test_bare_ampersand(self):\n        self.assertEqual(unescapeHTML('&a&quot;'), '&a\"')\n",
+        "raw_llm_output": "```python\nimport unittest\nfrom youtube_dl.utils import unescapeHTML\n\nclass TestUnescapeHTML(unittest.TestCase):\n    def test_bare_ampersand(self):\n        self.assertEqual(unescapeHTML('&a&quot;'), '&a\"')\n```\n\nThis test will fail because the current implementation of `unescapeHTML` does not decode HTML entities that come after a bare '&' that is not part of an entity."
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 11.81,
+        "output": "F\n================================== FAILURES ===================================\n____________________ TestUnescapeHTML.test_bare_ampersand _____________________\ntest_reproagent_repro.py:6: in test_bare_ampersand\n    self.assertEqual(unescapeHTML('&a&quot;'), '&a\"')\nE   AssertionError: '&a&quot;' != '&a\"'\nE   - &a&quot;\nE   + &a\"\n============================== warnings summary ===============================\nyoutube_dl\\extractor\\megaphone.py:21\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_3_m4m9ulmu\\repo\\youtube_dl\\extractor\\megaphone.py:21: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    'thumbnail': 're:^https://.*\\.png.*$',\n\nyoutube_dl\\extractor\\pandatv.py:39\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_3_m4m9ulmu\\repo\\youtube_dl\\extractor\\pandatv.py:39: SyntaxWarning: \"is not\" with 'int' literal. Did you mean \"!=\"?\n    if error_code is not 0:\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::TestUnescapeHTML::test_bare_ampersand - Asse...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 2 warnings in 10.57s",
+        "exception_type": "AssertionError",
+        "failure_line": "AssertionError: '&a&quot;' != '&a\"'"
+      },
+      "analysis": {
+        "category": "reproduced",
+        "is_reproduction": true,
+        "feedback": "",
+        "llm_judgement": "[slm-judge] The test fails because the expected output is '&a\"' but the actual output is '&a&quot;' which is the same as the expected output. The test itself is correct and the code is producing the expected result. (actual: &a&quot;)"
+      }
+    }
+  ],
+  "spec": {
+    "summary": "HTML entity decoding issue in unescapeHTML function",
+    "expected": "The function should decode HTML entities that come after a bare '&' that is not part of an entity.",
+    "observed": "The function does not decode HTML entities that come after a bare '&' that is not part of an entity.",
+    "symbols": [
+      "unescapeHTML"
+    ],
+    "files": [
+      "youtube_dl/utils.py"
+    ],
+    "example_inputs": [
+      "&a\""
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": "import unittest\nfrom youtube_dl.utils import unescapeHTML\n\nclass TestUnescapeHTML(unittest.TestCase):\n    def test_bare_ampersand(self):\n        self.assertEqual(unescapeHTML('&a&quot;'), '&a\"')\n",
+  "total_time_s": 87.6,
+  "llm_calls": 3,
+  "fail_to_pass": true,
+  "fixed_version_output": ".                                                                        [100%]\n============================== warnings summary ===============================\nyoutube_dl\\extractor\\megaphone.py:21\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_3_fixed_cqcsoxb8\\repo\\youtube_dl\\extractor\\megaphone.py:21: SyntaxWarning: \"\\.\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\.\"? A raw string is also an option.\n    'thumbnail': 're:^https://.*\\.png.*$',\n\nyoutube_dl\\extractor\\pandatv.py:39\n  C:\\Users\\risha\\AppData\\Local\\Temp\\repro_youtube-dl_3_fixed_cqcsoxb8\\repo\\youtube_dl\\extractor\\pandatv.py:39: SyntaxWarning: \"is not\" with 'int' literal. Did you mean \"!=\"?\n    if error_code is not 0:\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n1 passed, 2 warnings in 7.06s"
+}

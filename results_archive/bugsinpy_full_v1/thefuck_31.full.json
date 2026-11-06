@@ -1,0 +1,117 @@
+{
+  "bug_id": "thefuck_31",
+  "mode": "full",
+  "verdict": "not_reproduced",
+  "attempts": [
+    {
+      "test": {
+        "attempt": 1,
+        "code": "import pytest\nfrom thefuck.rules.git_diff_staged import get_new_command, match\n\ndef test_git_diff_staged():\n    command = Command('git diff foo')\n    assert match(command, {})\n    assert get_new_command(command, {}) == 'git diff --staged foo'\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom thefuck.rules.git_diff_staged import get_new_command, match\n\ndef test_git_diff_staged():\n    command = Command('git diff foo')\n    assert match(command, {})\n    assert get_new_command(command, {}) == 'git diff --staged foo'\n```"
+      },
+      "execution": {
+        "status": "failed",
+        "exit_code": 1,
+        "duration_s": 1.09,
+        "output": "F\n================================== FAILURES ===================================\n____________________________ test_git_diff_staged _____________________________\ntest_reproagent_repro.py:5: in test_git_diff_staged\n    command = Command('git diff foo')\n              ^^^^^^^\nE   NameError: name 'Command' is not defined\n=========================== short test summary info ===========================\nFAILED test_reproagent_repro.py::test_git_diff_staged - NameError: name 'Comm...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.17s",
+        "exception_type": "NameError",
+        "failure_line": "NameError: name 'Command' is not defined"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: NameError: name 'Command' is not defined. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 2,
+        "code": "import pytest\nfrom thefuck.rules.git_diff_staged import get_new_command, match\nfrom thefuck.commands import Command\n\ndef test_git_diff_staged():\n    command = Command('git diff foo')\n    assert match(command, {})\n    assert get_new_command(command, {}) == 'git diff --staged foo'\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom thefuck.rules.git_diff_staged import get_new_command, match\nfrom thefuck.commands import Command\n\ndef test_git_diff_staged():\n    command = Command('git diff foo')\n    assert match(command, {})\n    assert get_new_command(command, {}) == 'git diff --staged foo'\n```"
+      },
+      "execution": {
+        "status": "collection_error",
+        "exit_code": 2,
+        "duration_s": 1.19,
+        "output": "=================================== ERRORS ====================================\n__________________ ERROR collecting test_reproagent_repro.py __________________\nImportError while importing test module 'C:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_31_x2uamxpr\\repo\\test_reproagent_repro.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\Program Files\\Python314\\Lib\\importlib\\__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_reproagent_repro.py:3: in <module>\n    from thefuck.commands import Command\nE   ModuleNotFoundError: No module named 'thefuck.commands'\n=========================== short test summary info ===========================\nERROR test_reproagent_repro.py\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.24s",
+        "exception_type": "ModuleNotFoundError",
+        "failure_line": "ModuleNotFoundError: No module named 'thefuck.commands'"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: ModuleNotFoundError: No module named 'thefuck.commands'. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 3,
+        "code": "import pytest\nfrom thefuck.rules.git_diff_staged import get_new_command, match\nfrom thefuck.commands import Command\n\ndef test_git_diff_staged():\n    command = Command('git diff foo')\n    assert match(command, {})\n    assert get_new_command(command, {}) == 'git diff --staged foo'\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom thefuck.rules.git_diff_staged import get_new_command, match\nfrom thefuck.commands import Command\n\ndef test_git_diff_staged():\n    command = Command('git diff foo')\n    assert match(command, {})\n    assert get_new_command(command, {}) == 'git diff --staged foo'\n```"
+      },
+      "execution": {
+        "status": "collection_error",
+        "exit_code": 2,
+        "duration_s": 1.0,
+        "output": "=================================== ERRORS ====================================\n__________________ ERROR collecting test_reproagent_repro.py __________________\nImportError while importing test module 'C:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_31_x2uamxpr\\repo\\test_reproagent_repro.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\Program Files\\Python314\\Lib\\importlib\\__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_reproagent_repro.py:3: in <module>\n    from thefuck.commands import Command\nE   ModuleNotFoundError: No module named 'thefuck.commands'\n=========================== short test summary info ===========================\nERROR test_reproagent_repro.py\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.18s",
+        "exception_type": "ModuleNotFoundError",
+        "failure_line": "ModuleNotFoundError: No module named 'thefuck.commands'"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: ModuleNotFoundError: No module named 'thefuck.commands'. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    },
+    {
+      "test": {
+        "attempt": 4,
+        "code": "import pytest\nfrom thefuck.rules.git_diff_staged import get_new_command, match\nfrom thefuck.commands import Command\n\ndef test_git_diff_staged():\n    command = Command('git diff foo')\n    assert match(command, {})\n    assert get_new_command(command, {}) == 'git diff --staged foo'\n",
+        "raw_llm_output": "```python\nimport pytest\nfrom thefuck.rules.git_diff_staged import get_new_command, match\nfrom thefuck.commands import Command\n\ndef test_git_diff_staged():\n    command = Command('git diff foo')\n    assert match(command, {})\n    assert get_new_command(command, {}) == 'git diff --staged foo'\n```"
+      },
+      "execution": {
+        "status": "collection_error",
+        "exit_code": 2,
+        "duration_s": 1.04,
+        "output": "=================================== ERRORS ====================================\n__________________ ERROR collecting test_reproagent_repro.py __________________\nImportError while importing test module 'C:\\Users\\risha\\AppData\\Local\\Temp\\repro_thefuck_31_x2uamxpr\\repo\\test_reproagent_repro.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\Program Files\\Python314\\Lib\\importlib\\__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntest_reproagent_repro.py:3: in <module>\n    from thefuck.commands import Command\nE   ModuleNotFoundError: No module named 'thefuck.commands'\n=========================== short test summary info ===========================\nERROR test_reproagent_repro.py\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.19s",
+        "exception_type": "ModuleNotFoundError",
+        "failure_line": "ModuleNotFoundError: No module named 'thefuck.commands'"
+      },
+      "analysis": {
+        "category": "invalid_test",
+        "is_reproduction": false,
+        "feedback": "The test could not run because of a mistake in the test itself: ModuleNotFoundError: No module named 'thefuck.commands'. Fix imports/names using the module paths and examples shown.",
+        "llm_judgement": null
+      }
+    }
+  ],
+  "spec": {
+    "summary": "git_diff_staged incorrectly adds --staged to the wrong part of the command",
+    "expected": "git diff --staged foo",
+    "observed": "git diff foo --staged",
+    "symbols": [
+      "git_diff_staged",
+      "git",
+      "diff",
+      "foo",
+      "--staged",
+      "rule"
+    ],
+    "files": [
+      "thefuck/rules/git_diff_staged.py"
+    ],
+    "example_inputs": [
+      "git diff foo"
+    ],
+    "failure_kind": "wrong_value",
+    "is_actionable": true
+  },
+  "final_test": null,
+  "total_time_s": 116.4,
+  "llm_calls": 7,
+  "fail_to_pass": false,
+  "fixed_version_output": null
+}
