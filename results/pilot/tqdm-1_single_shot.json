@@ -1,0 +1,35 @@
+{
+  "bug_id": "tqdm-1",
+  "mode": "single_shot",
+  "status": "not_reproduced",
+  "repro_valid": false,
+  "fail_to_pass": null,
+  "fix_status": "skipped",
+  "regression_free": null,
+  "gt_pass": null,
+  "repro_attempts": 1,
+  "fix_attempts": 0,
+  "test_code": "from tqdm.contrib.tenumerate import tenumerate\n\ndef test_tenumerate_start_argument():\n    result = list(tenumerate(['a', 'b', 'c'], start=42))\n    expected = [(42, 'a'), (43, 'b'), (44, 'c')]\n    assert result == expected, f\"Expected {expected}, but got {result}\"\n",
+  "patch": "",
+  "explanation": "",
+  "evidence": "\n==================================== ERRORS ====================================\n_____________________ ERROR collecting test_repro_agent.py _____________________\nImportError while importing test module '/private/var/folders/_h/4klsm9z96dj554kth27x2ctw0000gn/T/reproagent_6jinhlaj/buggy/test_repro_agent.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\ntest_repro_agent.py:1: in <module>\n    from tqdm.contrib.tenumerate import tenumerate\nE   ModuleNotFoundError: No module named 'tqdm.contrib.tenumerate'\n=========================== short test summary info ============================\nERROR test_repro_agent.py\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.36s\n",
+  "seconds": 28.3,
+  "llm": {
+    "calls": 1,
+    "prompt_tokens": 680,
+    "completion_tokens": 82,
+    "seconds": 26.666836977005005
+  },
+  "trace": [
+    {
+      "kind": "oneshot",
+      "content": "from tqdm.contrib.tenumerate import tenumerate\n\ndef test_tenumerate_start_argument():\n    result = list(tenumerate(['a', 'b', 'c'], start=42))\n    expected = [(42, 'a'), (43, 'b'), (44, 'c')]\n    assert result == expected, f\"Expected {expected}, but got {result}\"\n"
+    },
+    {
+      "kind": "verify_repro",
+      "attempt": 1,
+      "ok": false,
+      "why": "pytest exit code 2 (not a test failure)"
+    }
+  ]
+}
