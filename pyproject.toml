@@ -1,0 +1,21 @@
+[project]
+name = "reproagent"
+version = "0.1.0"
+description = "Local-SLM agent that reproduces reported Python bugs as failing tests and then fixes them"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Keshav Dubey" }, { name = "Rishabh Singh" }, { name = "Aasritha Kalluri" }]
+requires-python = ">=3.11"
+dependencies = ["pytest>=8"]
+
+[project.scripts]
+reproagent = "reproagent.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools]
+packages = ["reproagent"]
+
+[tool.setuptools.package-data]
+reproagent = ["static/*.html"]
