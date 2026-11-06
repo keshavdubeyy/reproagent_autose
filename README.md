@@ -2,134 +2,91 @@
 
 **A local small-language-model agent that turns a written bug report into a failing reproduction test, then fixes the bug and verifies the fix.**
 
-Course project for **CS6.403 Autonomous Software Engineering** (IIIT Hyderabad, Monsoon 2026, Prof. Karthik Vaidhyanathan).
+CS6.403 Autonomous Software Engineering (IIIT Hyderabad, Monsoon 2026). Team: Keshav Dubey, Rishabh Singh, Aasritha Kalluri.
 
-| Team member | Role |
+> Scope change after the proposal review: the reviewer asked that the harness also **fix** the bug.
+> A verified reproduction test now feeds a Fix stage, and that stage counts as successful only when
+> the harness has checked the result (see [ADR-0005](docs/adr/0005-add-fix-stage.md)).
+
+## Documentation
+| Doc | What it covers |
 |---|---|
-| Keshav Dubey | |
-| Rishabh Singh | |
-| Aasritha Kalluri | |
+| [docs/design-overview.md](docs/design-overview.md) | How we planned the agent, where AI is / isn't used, lecture concepts mapped to code |
+| [docs/architecture.md](docs/architecture.md) | Layers, end-to-end flow, agent loop, state machine, classes, safety (diagrams) |
+| [docs/spec.md](docs/spec.md) | Requirements in EARS form |
+| [docs/product-flows.md](docs/product-flows.md) | UI flows |
+| [docs/adr/](docs/adr/) | Architecture decision records 0001–0005 |
+| [docs/status.md](docs/status.md) | What's done, what's left, challenges |
 
-> **Status:** code is being added in reviewed pull requests by the team. See [Project status](#project-status).
+## Requirements
+- macOS/Linux, Python ≥ 3.11, [uv](https://github.com/astral-sh/uv), [Ollama](https://ollama.com) with `qwen3:8b` (~5 GB).
+- Benchmarks only: `python3.8` available for the BugsInPy per-bug environments (`benchmarks/setup_bugsinpy.py`).
 
----
-
-## For evaluators: 5-minute path
-
-1. **Read** [`docs/design-overview.md`](docs/design-overview.md). It explains how we planned the agent, where AI is and isn't used, and which course concept each part implements.
-2. **See the architecture** in [`docs/architecture.md`](docs/architecture.md): the layers, the end-to-end flow, the agent loop and the state machine.
-3. **Run the demo** on a toy bug, without the benchmark:
-   ```bash
-   make setup && make test && make demo
-   ```
-4. **Open the chat UI** with `make ui`, then go to http://127.0.0.1:8765.
-5. **Check the results**: run `make summary` to print the evaluation tables from `results/`.
-
----
-
-## What it does
+## Pipeline
 
 ```
 bug report + repo
       │
       ▼
- 🤖 Understand   report → structured bug (title, observed, expected, steps, missing)
-      │  🧑 user confirms
-      ▼
- 🤖 Reproduce    explore code, write a pytest test, run it
-      │  ⚙️ harness: test must FAIL on buggy code for a real reason
-      ▼
- 🤖 Fix          edit source code (tests are read-only)
-      │  ⚙️ harness: repro test PASSES and no previously passing test breaks
-      ▼
- 🧑 Apply        write the test and patch into the repo (only after approval)
+┌──────────────┐  tools: list_files, search_code, read_file, write_test, run_test
+│ 1. Reproduce │──► harness check: test FAILS on buggy code for a valid reason
+└──────┬───────┘     (not ImportError / SyntaxError / collection error); retry with feedback
+       │ valid repro test
+       ▼
+┌──────────────┐  tools: read tools + replace_lines / edit_file, run_test (test is read-only)
+│ 2. Fix       │──► harness check: repro test PASSES and the existing suite still passes;
+└──────┬───────┘     otherwise revert and retry with feedback
+       ▼
+  report (.md + .json): status, test, pytest evidence, patch, attempts, time, tokens
 ```
 
-🤖 = local LLM (`qwen3:8b` via Ollama) · ⚙️ = deterministic code · 🧑 = human
-
-**Key design choice:** *agent = model + harness*. The model never judges its own success; pytest and the harness do. Nothing leaves your machine.
-
-## Requirements
-
-| Need | Version | Why |
-|---|---|---|
-| macOS or Linux | | |
-| Python | ≥ 3.11 | runs the agent |
-| [uv](https://github.com/astral-sh/uv) | any | creates the virtual environment |
-| [Ollama](https://ollama.com) | any, running | local model server |
-| `qwen3:8b` | ~5 GB | `ollama pull qwen3:8b` |
-| Python 3.8 | benchmarks only | the BugsInPy projects need old Python |
-
-The demo runs comfortably on a 16 GB Apple Silicon laptop. One bug takes about 1.5 to 14 minutes.
+Evaluation oracle: where a known-fixed version exists, the generated test must **pass on the fixed version** (fail-to-pass).
 
 ## Quick start
 
 ```bash
-git clone https://github.com/keshavdubeyy/reproagent_autose.git
-cd reproagent_autose
 ollama pull qwen3:8b
-make setup        # venv + install
-make test         # unit tests, no LLM needed
-make demo         # reproduce + fix the toy median bug
-make ui           # chat UI at http://127.0.0.1:8765
+uv venv && uv pip install -e .
+.venv/bin/python -m pytest                     # harness unit tests (no LLM)
+.venv/bin/python -m reproagent run --repo examples/toy_calc \
+    --report examples/toy_calc/ISSUE.md --fixed-repo examples/toy_calc_fixed
+.venv/bin/python -m reproagent eval --dataset benchmarks/dataset.json --modes full,single_shot,desc_only
 ```
 
-Reproduce the evaluation:
+### Chat UI
+
 ```bash
-make bench        # build BugsInPy repos + per-bug Python 3.8 envs (~175 MB, git-ignored)
-make eval         # all bugs × modes: full, single_shot, desc_only
-make summary      # tables used in the report
+.venv/bin/python -m reproagent.ui        # then open http://127.0.0.1:8765
 ```
+A local, chat-style app (flows in [docs/product-flows.md](docs/product-flows.md)):
+1. **Connect** a repository folder. The interpreter is auto-detected and a health check runs. You can also pick a benchmark bug.
+2. **Describe the bug**: type it, paste a GitHub issue link, or attach a `.md`/`.txt` report.
+3. **Confirm** the agent's structured understanding, or edit it.
+4. **Reproduce**: steps stream live. You get a failing test as evidence, then choose **Fix it**, **Save test** or **Stop**.
+5. **Fix**: the patch is verified against the reproduction test and the existing suite. Then **Apply to repository** (after a confirm step), **Download patch** or **Discard**. If the fix fails, use **Retry with a hint**.
+
+Sessions persist in `results/sessions/`. The **Evaluation** page shows the benchmark results.
+
+Modes (for the hypotheses):
+- `full`: an agent loop with code tools and execution feedback.
+- `single_shot`: one generation from the report plus the file list, with no feedback. Baseline for H2.
+- `desc_only`: one generation from the report alone. Baseline for H1.
 
 ## Repository layout
-
 ```
-reproagent/      the agent: llm, agent loop, workspace sandbox, pipeline, sessions, CLI, UI
-tests/           unit tests (no LLM needed)
-examples/        toy bug, buggy + fixed versions
-benchmarks/      BugsInPy dataset, bug reports, setup + summary scripts
-results/         evaluation outputs
-docs/            design overview, architecture, spec (EARS), ADRs, product flows, status
-report/          course reports (ACM LaTeX)
+reproagent/            the agent (stdlib + pytest only)
+  llm.py               Ollama client, token/time accounting
+  agent.py             generic ReAct tool loop with step budget and trace
+  workspace.py         sandbox copy, path-confined tools, pytest runner
+  pipeline.py          Reproduce + Fix stages, harness checks, oracle
+  session.py           chat sessions: intake, state machine, Apply
+  cli.py, ui.py        command line and local web server
+  static/index.html    chat UI
+tests/                 unit tests (no LLM needed)
+examples/              toy bug (buggy + fixed) for demos and tests
+benchmarks/            BugsInPy dataset, bug reports, setup + summary scripts
+results/               pilot evaluation JSON and a demo run
+docs/                  design overview, architecture, spec, ADRs, flows, status
+report/                mid-submission report (ACM LaTeX)
+Makefile               make setup | test | ui | demo | bench | eval | summary
 ```
-
-## Documentation
-
-| Doc | What it covers |
-|---|---|
-| [design-overview.md](docs/design-overview.md) | How we planned the agent, AI vs. non-AI parts, course concepts mapped to code |
-| [architecture.md](docs/architecture.md) | Diagrams: components, flow, agent loop, states, classes, safety |
-| [spec.md](docs/spec.md) | Requirements in EARS form |
-| [adr/](docs/adr/) | Architecture decision records |
-| [product-flows.md](docs/product-flows.md) | Chat UI flows |
-| [status.md](docs/status.md) | What's done, what's left, challenges |
-
-## Evaluation
-
-- **Benchmark:** a toy bug plus 8 BugsInPy bugs (tqdm, thefuck, httpie), each with a hand-written report.
-- **Modes:**
-  - `full`: the agent loop with tools and retries.
-  - `single_shot`: one generation from the report plus the file list.
-  - `desc_only`: one generation from the report alone.
-- **Metrics:**
-  - Harness-valid reproduction.
-  - Fail-to-pass: the test fails on the buggy version and passes on the fixed version.
-  - Fix accepted by the harness.
-  - Fix passes the developers' own test.
-  - LLM calls, tokens and wall time.
-
-## Project status
-
-- [x] Proposal accepted. The reviewer asked us to also fix the bug.
-- [x] Mid-submission progress report
-- [ ] Code and docs merged into `main` through PRs
-- [ ] Full evaluation (27 runs, 3 seeds)
-- [ ] Final report, demo and viva
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md). In short: one branch per change, a pull request with one reviewer, and `make test` must pass.
-
-## License
-
-[MIT](LICENSE)
