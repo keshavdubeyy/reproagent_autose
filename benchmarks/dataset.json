@@ -1,0 +1,72 @@
+[
+  {
+    "id": "toy_median",
+    "repo": "../examples/toy_calc",
+    "report": "../examples/toy_calc/ISSUE.md",
+    "fixed_repo": "../examples/toy_calc_fixed"
+  },
+  {
+    "id": "tqdm-1",
+    "repo": "repos/tqdm-1/buggy",
+    "fixed_repo": "repos/tqdm-1/fixed",
+    "report": "reports/tqdm-1.md",
+    "python": "envs/tqdm-1/bin/python",
+    "gt_test": "tqdm/tests/tests_contrib.py::test_enumerate"
+  },
+  {
+    "id": "tqdm-3",
+    "repo": "repos/tqdm-3/buggy",
+    "fixed_repo": "repos/tqdm-3/fixed",
+    "report": "reports/tqdm-3.md",
+    "python": "envs/tqdm-3/bin/python",
+    "gt_test": "tqdm/tests/tests_tqdm.py::test_bool"
+  },
+  {
+    "id": "tqdm-4",
+    "repo": "repos/tqdm-4/buggy",
+    "fixed_repo": "repos/tqdm-4/fixed",
+    "report": "reports/tqdm-4.md",
+    "python": "envs/tqdm-4/bin/python",
+    "gt_test": "tqdm/tests/tests_tqdm.py::test_nototal"
+  },
+  {
+    "id": "tqdm-7",
+    "repo": "repos/tqdm-7/buggy",
+    "fixed_repo": "repos/tqdm-7/fixed",
+    "report": "reports/tqdm-7.md",
+    "python": "envs/tqdm-7/bin/python",
+    "gt_test": "tqdm/tests/tests_main.py::test_main"
+  },
+  {
+    "id": "tqdm-9",
+    "repo": "repos/tqdm-9/buggy",
+    "fixed_repo": "repos/tqdm-9/fixed",
+    "report": "reports/tqdm-9.md",
+    "python": "envs/tqdm-9/bin/python",
+    "gt_test": "tqdm/tests/tests_tqdm.py::test_update"
+  },
+  {
+    "id": "thefuck-1",
+    "repo": "repos/thefuck-1/buggy",
+    "fixed_repo": "repos/thefuck-1/fixed",
+    "report": "reports/thefuck-1.md",
+    "python": "envs/thefuck-1/bin/python",
+    "gt_test": "tests/rules/test_pip_unknown_command.py::test_get_new_command"
+  },
+  {
+    "id": "thefuck-2",
+    "repo": "repos/thefuck-2/buggy",
+    "fixed_repo": "repos/thefuck-2/fixed",
+    "report": "reports/thefuck-2.md",
+    "python": "envs/thefuck-2/bin/python",
+    "gt_test": "tests/test_utils.py::test_get_all_executables_pathsep"
+  },
+  {
+    "id": "httpie-5",
+    "repo": "repos/httpie-5/buggy",
+    "fixed_repo": "repos/httpie-5/fixed",
+    "report": "reports/httpie-5.md",
+    "python": "envs/httpie-5/bin/python",
+    "gt_test": "tests/tests.py::TestItemParsing::test_escape_longsep"
+  }
+]
