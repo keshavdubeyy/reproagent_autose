@@ -1,0 +1,132 @@
+{
+  "bug_id": "toy_median",
+  "mode": "full",
+  "status": "reproduced",
+  "repro_valid": true,
+  "fail_to_pass": true,
+  "fix_status": "fixed",
+  "regression_free": true,
+  "gt_pass": null,
+  "repro_attempts": 1,
+  "fix_attempts": 1,
+  "test_code": "from calc.stats import median\ntest_data = [\n    ([1, 2, 3, 4], 2.5),\n    ([3, 1, 2], 2),\n    ([5], 5),\n]\n\ndef test_median():\n    for values, expected in test_data:\n        result = median(values)\n        assert result == expected, f\"Failed for {values}: expected {expected}, got {result}\"",
+  "patch": "--- a/calc/stats.py\n+++ b/calc/stats.py\n@@ -10,4 +10,4 @@\n     mid = n // 2\n     if n % 2 == 1:\n         return s[mid]\n-    return s[mid]\n+    return (s[mid - 1] + s[mid]) / 2\n",
+  "explanation": "The test failed with the expected error, confirming the bug in the median function for even-length lists.\nFix: Fixed the median function to correctly calculate the median for even-length lists by averaging the two middle elements. The code now passes the reproduction test.",
+  "evidence": "F\n=================================== FAILURES ===================================\n_________________________________ test_median __________________________________\n\n    def test_median():\n        for values, expected in test_data:\n            result = median(values)\n>           assert result == expected, f\"Failed for {values}: expected {expected}, got {result}\"\nE           AssertionError: Failed for [1, 2, 3, 4]: expected 2.5, got 3\nE           assert 3 == 2.5\n\ntests/test_repro_agent.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_repro_agent.py::test_median - AssertionError: Failed for [1...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.02s\n",
+  "seconds": 88.7,
+  "llm": {
+    "calls": 11,
+    "prompt_tokens": 10880,
+    "completion_tokens": 534,
+    "seconds": 85.09914493560791
+  },
+  "trace": [
+    {
+      "kind": "tool",
+      "name": "search_code",
+      "args": {
+        "pattern": "median\\("
+      },
+      "result": "calc/stats.py:6: def median(values):\ntests/test_stats.py:9: assert median([3, 1, 2]) == 2"
+    },
+    {
+      "kind": "tool",
+      "name": "read_file",
+      "args": {
+        "path": "calc/stats.py",
+        "start": "5",
+        "end": "15"
+      },
+      "result": "   5 \n   6 def median(values):\n   7     \"\"\"Median of a list of numbers.\"\"\"\n   8     s = sorted(values)\n   9     n = len(s)\n  10     mid = n // 2\n  11     if n % 2 == 1:\n  12         return s[mid]\n  13     return s[mid]"
+    },
+    {
+      "kind": "tool",
+      "name": "write_test",
+      "args": {
+        "content": "from calc.stats import median\ntest_data = [\n    ([1, 2, 3, 4], 2.5),\n    ([3, 1, 2], 2),\n    ([5], 5),\n]\n\ndef test_median():\n    for values, expected in test_data:\n        result = median(values)\n        assert result == expected, f\"Failed for {values}: expected {expected}, got {result}\""
+      },
+      "result": "wrote tests/test_repro_agent.py"
+    },
+    {
+      "kind": "tool",
+      "name": "run_test",
+      "args": {
+        "path": "tests/test_repro_agent.py"
+      },
+      "result": "exit=1\nF\n=================================== FAILURES ===================================\n_________________________________ test_median __________________________________\n\n    def test_median():\n        for values, expected in test_data:\n            result = median(values)\n>           assert result == expected, f\"Failed for {values}: expected {expected}, got {result}\"\nE           AssertionError: Failed for [1, 2, 3, 4]: expected 2.5, got 3\nE           assert 3 == 2.5\n\ntests/test_repro_agent.py:11: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_repro_agent.py::test_median - AssertionError: Failed for [1...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.02s\n"
+    },
+    {
+      "kind": "finish",
+      "args": {
+        "status": "reproduced",
+        "explanation": "The test failed with the expected error, confirming the bug in the median function for even-length lists."
+      }
+    },
+    {
+      "kind": "verify_repro",
+      "attempt": 1,
+      "ok": true,
+      "why": "test fails with an assertion/exception on buggy code"
+    },
+    {
+      "kind": "baseline_failures",
+      "n": 0
+    },
+    {
+      "kind": "tool",
+      "name": "list_files",
+      "args": {
+        "subdir": "."
+      },
+      "result": "calc/__init__.py\ncalc/stats.py\ntests/test_repro_agent.py\ntests/test_stats.py"
+    },
+    {
+      "kind": "tool",
+      "name": "read_file",
+      "args": {
+        "end": "100",
+        "path": "calc/stats.py",
+        "start": "1"
+      },
+      "result": "   1 def mean(values):\n   2     \"\"\"Arithmetic mean. Raises ValueError on empty input.\"\"\"\n   3     return sum(values) / len(values)\n   4 \n   5 \n   6 def median(values):\n   7     \"\"\"Median of a list of numbers.\"\"\"\n   8     s = sorted(values)\n   9     n = len(s)\n  10     mid = n // 2\n  11     if n % 2 == 1:\n  12         return s[mid]\n  13     return s[mid]"
+    },
+    {
+      "kind": "tool",
+      "name": "edit_file",
+      "args": {
+        "new": "    return (s[mid - 1] + s[mid]) / 2",
+        "old": "    return s[mid]",
+        "path": "calc/stats.py"
+      },
+      "result": "ERROR: `old` must occur exactly once in calc/stats.py (found 2)"
+    },
+    {
+      "kind": "tool",
+      "name": "replace_lines",
+      "args": {
+        "end": "13",
+        "new": "    if n % 2 == 1:\n        return s[mid]\n    return (s[mid - 1] + s[mid]) / 2",
+        "path": "calc/stats.py",
+        "start": "11"
+      },
+      "result": "edited calc/stats.py; now:\n   8     s = sorted(values)\n   9     n = len(s)\n  10     mid = n // 2\n  11     if n % 2 == 1:\n  12         return s[mid]\n  13     return (s[mid - 1] + s[mid]) / 2"
+    },
+    {
+      "kind": "tool",
+      "name": "run_test",
+      "args": {},
+      "result": "exit=0\n.                                                                        [100%]\n1 passed in 0.00s\n"
+    },
+    {
+      "kind": "finish",
+      "args": {
+        "explanation": "Fixed the median function to correctly calculate the median for even-length lists by averaging the two middle elements. The code now passes the reproduction test."
+      }
+    },
+    {
+      "kind": "verify_fix",
+      "attempt": 1,
+      "ok": true
+    }
+  ]
+}

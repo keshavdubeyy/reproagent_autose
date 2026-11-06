@@ -1,0 +1,35 @@
+{
+  "bug_id": "tqdm-4",
+  "mode": "single_shot",
+  "status": "not_reproduced",
+  "repro_valid": false,
+  "fail_to_pass": null,
+  "fix_status": "skipped",
+  "regression_free": null,
+  "gt_pass": null,
+  "repro_attempts": 1,
+  "fix_attempts": 0,
+  "test_code": "import pytest\nfrom tqdm import tqdm\n\ndef test_type_error_with_unit_scale_and_unknown_length():\n    with pytest.raises(TypeError):\n        for i in tqdm((i for i in range(10)), unit_scale=10):\n            pass\n",
+  "patch": "",
+  "explanation": "",
+  "evidence": ".                                                                        [100%]\n1 passed in 0.06s\n",
+  "seconds": 17.0,
+  "llm": {
+    "calls": 1,
+    "prompt_tokens": 547,
+    "completion_tokens": 54,
+    "seconds": 15.194457054138184
+  },
+  "trace": [
+    {
+      "kind": "oneshot",
+      "content": "import pytest\nfrom tqdm import tqdm\n\ndef test_type_error_with_unit_scale_and_unknown_length():\n    with pytest.raises(TypeError):\n        for i in tqdm((i for i in range(10)), unit_scale=10):\n            pass\n"
+    },
+    {
+      "kind": "verify_repro",
+      "attempt": 1,
+      "ok": false,
+      "why": "test passed on buggy code (bug not triggered)"
+    }
+  ]
+}
