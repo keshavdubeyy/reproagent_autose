@@ -1,0 +1,2112 @@
+{
+  "benchmark": "SWE-bench Lite",
+  "total_bugs": 300,
+  "checked": 300,
+  "counts": {
+    "GOLD_FAILS": 5,
+    "VALID": 295
+  },
+  "rule": "VALID = hidden tests fail on buggy code and pass with the real fix",
+  "bugs": {
+    "astropy__astropy-12907": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "13/13",
+      "note": null
+    },
+    "astropy__astropy-14182": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "9/9",
+      "note": null
+    },
+    "astropy__astropy-14365": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "8/8",
+      "note": null
+    },
+    "astropy__astropy-14995": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "179/179",
+      "note": null
+    },
+    "astropy__astropy-6938": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "11/11",
+      "note": null
+    },
+    "astropy__astropy-7746": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "56/56",
+      "note": null
+    },
+    "django__django-10914": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "98/98",
+      "note": null
+    },
+    "django__django-10924": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "1/1",
+      "note": null
+    },
+    "django__django-11001": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "118/118",
+      "note": null
+    },
+    "django__django-11019": {
+      "status": "VALID",
+      "no_patch_f2p": "0/16",
+      "gold_f2p": "16/16",
+      "gold_p2p": "58/58",
+      "note": null
+    },
+    "django__django-11039": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "88/88",
+      "note": null
+    },
+    "django__django-11049": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "8/8",
+      "note": null
+    },
+    "django__django-11099": {
+      "status": "VALID",
+      "no_patch_f2p": "1/3",
+      "gold_f2p": "3/3",
+      "gold_p2p": "19/19",
+      "note": null
+    },
+    "django__django-11133": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "64/64",
+      "note": null
+    },
+    "django__django-11179": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "40/40",
+      "note": null
+    },
+    "django__django-11283": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "8/8",
+      "note": null
+    },
+    "django__django-11422": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "46/46",
+      "note": null
+    },
+    "django__django-11564": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "174/174",
+      "note": null
+    },
+    "django__django-11583": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "50/50",
+      "note": null
+    },
+    "django__django-11620": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "66/66",
+      "note": null
+    },
+    "django__django-11630": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "16/16",
+      "note": null
+    },
+    "django__django-11742": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "43/43",
+      "note": null
+    },
+    "django__django-11797": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "38/38",
+      "note": null
+    },
+    "django__django-11815": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "44/44",
+      "note": null
+    },
+    "django__django-11848": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "43/43",
+      "note": null
+    },
+    "django__django-11905": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "38/38",
+      "note": null
+    },
+    "django__django-11910": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "110/110",
+      "note": null
+    },
+    "django__django-11964": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "15/15",
+      "note": null
+    },
+    "django__django-11999": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "30/30",
+      "note": null
+    },
+    "django__django-12113": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "0/0",
+      "note": null
+    },
+    "django__django-12125": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "45/45",
+      "note": null
+    },
+    "django__django-12184": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "25/25",
+      "note": null
+    },
+    "django__django-12284": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "31/31",
+      "note": null
+    },
+    "django__django-12286": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "7/7",
+      "note": null
+    },
+    "django__django-12308": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "20/20",
+      "note": null
+    },
+    "django__django-12453": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "5/5",
+      "note": null
+    },
+    "django__django-12470": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "33/33",
+      "note": null
+    },
+    "django__django-12497": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "82/82",
+      "note": null
+    },
+    "django__django-12589": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "66/66",
+      "note": null
+    },
+    "django__django-12700": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "77/77",
+      "note": null
+    },
+    "django__django-12708": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "101/101",
+      "note": null
+    },
+    "django__django-12747": {
+      "status": "VALID",
+      "no_patch_f2p": "0/3",
+      "gold_f2p": "3/3",
+      "gold_p2p": "49/49",
+      "note": null
+    },
+    "django__django-12856": {
+      "status": "VALID",
+      "no_patch_f2p": "0/3",
+      "gold_f2p": "3/3",
+      "gold_p2p": "78/78",
+      "note": null
+    },
+    "django__django-12908": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "25/25",
+      "note": null
+    },
+    "django__django-12915": {
+      "status": "VALID",
+      "no_patch_f2p": "0/3",
+      "gold_f2p": "3/3",
+      "gold_p2p": "8/8",
+      "note": null
+    },
+    "django__django-12983": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "15/15",
+      "note": null
+    },
+    "django__django-13028": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "276/276",
+      "note": null
+    },
+    "django__django-13033": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "26/26",
+      "note": null
+    },
+    "django__django-13158": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "29/29",
+      "note": null
+    },
+    "django__django-13220": {
+      "status": "VALID",
+      "no_patch_f2p": "0/4",
+      "gold_f2p": "4/4",
+      "gold_p2p": "1/1",
+      "note": null
+    },
+    "django__django-13230": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "23/23",
+      "note": null
+    },
+    "django__django-13265": {
+      "status": "VALID",
+      "no_patch_f2p": "0/4",
+      "gold_f2p": "4/4",
+      "gold_p2p": "119/119",
+      "note": null
+    },
+    "django__django-13315": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "146/146",
+      "note": null
+    },
+    "django__django-13321": {
+      "status": "VALID",
+      "no_patch_f2p": "337/355",
+      "gold_f2p": "355/355",
+      "gold_p2p": "0/0",
+      "note": null
+    },
+    "django__django-13401": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "32/32",
+      "note": null
+    },
+    "django__django-13447": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "5/5",
+      "note": null
+    },
+    "django__django-13448": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "7/7",
+      "note": null
+    },
+    "django__django-13551": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "56/56",
+      "note": null
+    },
+    "django__django-13590": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "145/145",
+      "note": null
+    },
+    "django__django-13658": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "181/181",
+      "note": null
+    },
+    "django__django-13660": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "6/6",
+      "note": null
+    },
+    "django__django-13710": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "62/62",
+      "note": null
+    },
+    "django__django-13757": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "76/76",
+      "note": null
+    },
+    "django__django-13768": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "18/18",
+      "note": null
+    },
+    "django__django-13925": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "24/24",
+      "note": null
+    },
+    "django__django-13933": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "19/19",
+      "note": null
+    },
+    "django__django-13964": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "36/36",
+      "note": null
+    },
+    "django__django-14016": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "13/13",
+      "note": null
+    },
+    "django__django-14017": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "147/147",
+      "note": null
+    },
+    "django__django-14155": {
+      "status": "VALID",
+      "no_patch_f2p": "0/3",
+      "gold_f2p": "3/3",
+      "gold_p2p": "89/89",
+      "note": null
+    },
+    "django__django-14238": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "39/39",
+      "note": null
+    },
+    "django__django-14382": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "188/188",
+      "note": null
+    },
+    "django__django-14411": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "83/83",
+      "note": null
+    },
+    "django__django-14534": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "118/118",
+      "note": null
+    },
+    "django__django-14580": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "49/49",
+      "note": null
+    },
+    "django__django-14608": {
+      "status": "VALID",
+      "no_patch_f2p": "0/4",
+      "gold_f2p": "4/4",
+      "gold_p2p": "394/394",
+      "note": null
+    },
+    "django__django-14667": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "29/29",
+      "note": null
+    },
+    "django__django-14672": {
+      "status": "VALID",
+      "no_patch_f2p": "0/168",
+      "gold_f2p": "168/168",
+      "gold_p2p": "0/0",
+      "note": "no parseable test output"
+    },
+    "django__django-14730": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "119/119",
+      "note": null
+    },
+    "django__django-14752": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "15/15",
+      "note": null
+    },
+    "django__django-14787": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "20/20",
+      "note": null
+    },
+    "django__django-14855": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "325/325",
+      "note": null
+    },
+    "django__django-14915": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "23/23",
+      "note": null
+    },
+    "django__django-14997": {
+      "status": "VALID",
+      "no_patch_f2p": "0/3",
+      "gold_f2p": "3/3",
+      "gold_p2p": "144/144",
+      "note": null
+    },
+    "django__django-14999": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "113/113",
+      "note": null
+    },
+    "django__django-15061": {
+      "status": "VALID",
+      "no_patch_f2p": "0/3",
+      "gold_f2p": "3/3",
+      "gold_p2p": "14/14",
+      "note": null
+    },
+    "django__django-15202": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "6/6",
+      "note": null
+    },
+    "django__django-15213": {
+      "status": "VALID",
+      "no_patch_f2p": "0/3",
+      "gold_f2p": "3/3",
+      "gold_p2p": "71/71",
+      "note": null
+    },
+    "django__django-15252": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "34/34",
+      "note": null
+    },
+    "django__django-15320": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "160/160",
+      "note": null
+    },
+    "django__django-15347": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "29/29",
+      "note": null
+    },
+    "django__django-15388": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "9/9",
+      "note": null
+    },
+    "django__django-15400": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "62/62",
+      "note": null
+    },
+    "django__django-15498": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "25/25",
+      "note": null
+    },
+    "django__django-15695": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "123/123",
+      "note": null
+    },
+    "django__django-15738": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "139/139",
+      "note": null
+    },
+    "django__django-15781": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "43/43",
+      "note": null
+    },
+    "django__django-15789": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "17/17",
+      "note": null
+    },
+    "django__django-15790": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "12/12",
+      "note": null
+    },
+    "django__django-15814": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "29/29",
+      "note": null
+    },
+    "django__django-15819": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "18/18",
+      "note": null
+    },
+    "django__django-15851": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "8/8",
+      "note": null
+    },
+    "django__django-15902": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "112/112",
+      "note": null
+    },
+    "django__django-15996": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "51/51",
+      "note": null
+    },
+    "django__django-16041": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "113/113",
+      "note": null
+    },
+    "django__django-16046": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "6/6",
+      "note": null
+    },
+    "django__django-16139": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "86/86",
+      "note": null
+    },
+    "django__django-16229": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "21/21",
+      "note": null
+    },
+    "django__django-16255": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "36/36",
+      "note": null
+    },
+    "django__django-16379": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "362/362",
+      "note": null
+    },
+    "django__django-16400": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "63/63",
+      "note": null
+    },
+    "django__django-16408": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "18/18",
+      "note": null
+    },
+    "django__django-16527": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "6/6",
+      "note": null
+    },
+    "django__django-16595": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "37/37",
+      "note": null
+    },
+    "django__django-16816": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "123/123",
+      "note": null
+    },
+    "django__django-16820": {
+      "status": "VALID",
+      "no_patch_f2p": "0/7",
+      "gold_f2p": "7/7",
+      "gold_p2p": "203/203",
+      "note": null
+    },
+    "django__django-16873": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "12/12",
+      "note": null
+    },
+    "django__django-16910": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "36/36",
+      "note": null
+    },
+    "django__django-17051": {
+      "status": "VALID",
+      "no_patch_f2p": "0/5",
+      "gold_f2p": "5/5",
+      "gold_p2p": "39/39",
+      "note": null
+    },
+    "django__django-17087": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "53/53",
+      "note": null
+    },
+    "matplotlib__matplotlib-18869": {
+      "status": "VALID",
+      "no_patch_f2p": "0/4",
+      "gold_f2p": "4/4",
+      "gold_p2p": "3/3",
+      "note": null
+    },
+    "matplotlib__matplotlib-22711": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "91/91",
+      "note": null
+    },
+    "matplotlib__matplotlib-22835": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "24/24",
+      "note": null
+    },
+    "matplotlib__matplotlib-23299": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "192/192",
+      "note": null
+    },
+    "matplotlib__matplotlib-23314": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "862/862",
+      "note": null
+    },
+    "matplotlib__matplotlib-23476": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "104/104",
+      "note": null
+    },
+    "matplotlib__matplotlib-23562": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "136/136",
+      "note": null
+    },
+    "matplotlib__matplotlib-23563": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "136/136",
+      "note": null
+    },
+    "matplotlib__matplotlib-23913": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "101/101",
+      "note": null
+    },
+    "matplotlib__matplotlib-23964": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "16/16",
+      "note": null
+    },
+    "matplotlib__matplotlib-23987": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "43/43",
+      "note": null
+    },
+    "matplotlib__matplotlib-24149": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "767/767",
+      "note": null
+    },
+    "matplotlib__matplotlib-24265": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "16/16",
+      "note": null
+    },
+    "matplotlib__matplotlib-24334": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "770/770",
+      "note": null
+    },
+    "matplotlib__matplotlib-24970": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "253/253",
+      "note": null
+    },
+    "matplotlib__matplotlib-25079": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "253/253",
+      "note": null
+    },
+    "matplotlib__matplotlib-25311": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "181/181",
+      "note": null
+    },
+    "matplotlib__matplotlib-25332": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "181/181",
+      "note": null
+    },
+    "matplotlib__matplotlib-25433": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "55/55",
+      "note": null
+    },
+    "matplotlib__matplotlib-25442": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "275/275",
+      "note": null
+    },
+    "matplotlib__matplotlib-25498": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "69/69",
+      "note": null
+    },
+    "matplotlib__matplotlib-26011": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "817/817",
+      "note": null
+    },
+    "matplotlib__matplotlib-26020": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "48/48",
+      "note": null
+    },
+    "mwaskom__seaborn-2848": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "50/50",
+      "note": null
+    },
+    "mwaskom__seaborn-3010": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "2/2",
+      "note": null
+    },
+    "mwaskom__seaborn-3190": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "84/84",
+      "note": null
+    },
+    "mwaskom__seaborn-3407": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "120/120",
+      "note": null
+    },
+    "pallets__flask-4045": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "50/50",
+      "note": null
+    },
+    "pallets__flask-4992": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "18/18",
+      "note": null
+    },
+    "pallets__flask-5063": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "54/54",
+      "note": null
+    },
+    "psf__requests-1963": {
+      "status": "GOLD_FAILS",
+      "no_patch_f2p": "6/7",
+      "gold_f2p": "7/7",
+      "gold_p2p": "110/112",
+      "note": null
+    },
+    "psf__requests-2148": {
+      "status": "GOLD_FAILS",
+      "no_patch_f2p": "8/10",
+      "gold_f2p": "9/10",
+      "gold_p2p": "118/118",
+      "note": null
+    },
+    "psf__requests-2317": {
+      "status": "GOLD_FAILS",
+      "no_patch_f2p": "6/8",
+      "gold_f2p": "7/8",
+      "gold_p2p": "129/133",
+      "note": null
+    },
+    "psf__requests-2674": {
+      "status": "GOLD_FAILS",
+      "no_patch_f2p": "11/12",
+      "gold_f2p": "11/12",
+      "gold_p2p": "140/142",
+      "note": null
+    },
+    "psf__requests-3362": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "75/75",
+      "note": null
+    },
+    "psf__requests-863": {
+      "status": "GOLD_FAILS",
+      "no_patch_f2p": "4/4",
+      "gold_f2p": "4/4",
+      "gold_p2p": "59/60",
+      "note": null
+    },
+    "pydata__xarray-3364": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "110/110",
+      "note": null
+    },
+    "pydata__xarray-4094": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "862/862",
+      "note": null
+    },
+    "pydata__xarray-4248": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "18/18",
+      "note": null
+    },
+    "pydata__xarray-4493": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "1689/1689",
+      "note": null
+    },
+    "pydata__xarray-5131": {
+      "status": "VALID",
+      "no_patch_f2p": "0/10",
+      "gold_f2p": "10/10",
+      "gold_p2p": "24/24",
+      "note": null
+    },
+    "pylint-dev__pylint-5859": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "10/10",
+      "note": null
+    },
+    "pylint-dev__pylint-6506": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "6/6",
+      "note": null
+    },
+    "pylint-dev__pylint-7080": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "120/120",
+      "note": null
+    },
+    "pylint-dev__pylint-7114": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "56/56",
+      "note": null
+    },
+    "pylint-dev__pylint-7228": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "10/10",
+      "note": null
+    },
+    "pylint-dev__pylint-7993": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "10/10",
+      "note": null
+    },
+    "pytest-dev__pytest-11143": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "114/114",
+      "note": null
+    },
+    "pytest-dev__pytest-11148": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "129/129",
+      "note": null
+    },
+    "pytest-dev__pytest-5103": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "64/64",
+      "note": null
+    },
+    "pytest-dev__pytest-5221": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "170/170",
+      "note": null
+    },
+    "pytest-dev__pytest-5227": {
+      "status": "VALID",
+      "no_patch_f2p": "0/3",
+      "gold_f2p": "3/3",
+      "gold_p2p": "34/34",
+      "note": null
+    },
+    "pytest-dev__pytest-5413": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "92/92",
+      "note": null
+    },
+    "pytest-dev__pytest-5495": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "86/86",
+      "note": null
+    },
+    "pytest-dev__pytest-5692": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "68/68",
+      "note": null
+    },
+    "pytest-dev__pytest-6116": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "69/69",
+      "note": null
+    },
+    "pytest-dev__pytest-7168": {
+      "status": "VALID",
+      "no_patch_f2p": "0/11",
+      "gold_f2p": "11/11",
+      "gold_p2p": "0/0",
+      "note": "no parseable test output"
+    },
+    "pytest-dev__pytest-7220": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "11/11",
+      "note": null
+    },
+    "pytest-dev__pytest-7373": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "81/81",
+      "note": null
+    },
+    "pytest-dev__pytest-7432": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "77/77",
+      "note": null
+    },
+    "pytest-dev__pytest-7490": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "78/78",
+      "note": null
+    },
+    "pytest-dev__pytest-8365": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "32/32",
+      "note": null
+    },
+    "pytest-dev__pytest-8906": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "84/84",
+      "note": null
+    },
+    "pytest-dev__pytest-9359": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "54/54",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-10297": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "28/28",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-10508": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "18/18",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-10949": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "42/42",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-11040": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "44/44",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-11281": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "43/43",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-12471": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "53/53",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-13142": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "54/54",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-13241": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "54/54",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-13439": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "40/40",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-13496": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "19/19",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-13497": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "7/7",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-13584": {
+      "status": "VALID",
+      "no_patch_f2p": "0/6",
+      "gold_f2p": "6/6",
+      "gold_p2p": "3/3",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-13779": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "18/18",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-14087": {
+      "status": "VALID",
+      "no_patch_f2p": "0/3",
+      "gold_f2p": "3/3",
+      "gold_p2p": "172/172",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-14092": {
+      "status": "VALID",
+      "no_patch_f2p": "0/3",
+      "gold_f2p": "3/3",
+      "gold_p2p": "212/212",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-14894": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "85/85",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-14983": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "105/105",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-15512": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "9/9",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-15535": {
+      "status": "VALID",
+      "no_patch_f2p": "0/8",
+      "gold_f2p": "8/8",
+      "gold_p2p": "52/52",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-25500": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "45/45",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-25570": {
+      "status": "VALID",
+      "no_patch_f2p": "0/3",
+      "gold_f2p": "3/3",
+      "gold_p2p": "184/184",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-25638": {
+      "status": "VALID",
+      "no_patch_f2p": "0/10",
+      "gold_f2p": "10/10",
+      "gold_p2p": "194/194",
+      "note": null
+    },
+    "scikit-learn__scikit-learn-25747": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "14/14",
+      "note": null
+    },
+    "sphinx-doc__sphinx-10325": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "5/5",
+      "note": null
+    },
+    "sphinx-doc__sphinx-10451": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "80/80",
+      "note": null
+    },
+    "sphinx-doc__sphinx-11445": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "8/8",
+      "note": null
+    },
+    "sphinx-doc__sphinx-7686": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "15/15",
+      "note": null
+    },
+    "sphinx-doc__sphinx-7738": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "30/30",
+      "note": null
+    },
+    "sphinx-doc__sphinx-7975": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "7/7",
+      "note": null
+    },
+    "sphinx-doc__sphinx-8273": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "3/3",
+      "note": null
+    },
+    "sphinx-doc__sphinx-8282": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "16/16",
+      "note": null
+    },
+    "sphinx-doc__sphinx-8435": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "16/16",
+      "note": null
+    },
+    "sphinx-doc__sphinx-8474": {
+      "status": "VALID",
+      "no_patch_f2p": "0/4",
+      "gold_f2p": "4/4",
+      "gold_p2p": "436/436",
+      "note": null
+    },
+    "sphinx-doc__sphinx-8506": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "14/14",
+      "note": null
+    },
+    "sphinx-doc__sphinx-8595": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "0/0",
+      "note": null
+    },
+    "sphinx-doc__sphinx-8627": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "17/17",
+      "note": null
+    },
+    "sphinx-doc__sphinx-8713": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "45/45",
+      "note": null
+    },
+    "sphinx-doc__sphinx-8721": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "3/3",
+      "note": null
+    },
+    "sphinx-doc__sphinx-8801": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "8/8",
+      "note": null
+    },
+    "sympy__sympy-11400": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "29/29",
+      "note": null
+    },
+    "sympy__sympy-11870": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "58/58",
+      "note": null
+    },
+    "sympy__sympy-11897": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "95/95",
+      "note": null
+    },
+    "sympy__sympy-12171": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "8/8",
+      "note": null
+    },
+    "sympy__sympy-12236": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "133/133",
+      "note": null
+    },
+    "sympy__sympy-12419": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "25/25",
+      "note": null
+    },
+    "sympy__sympy-12454": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "134/134",
+      "note": null
+    },
+    "sympy__sympy-12481": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "7/7",
+      "note": null
+    },
+    "sympy__sympy-13031": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "9/9",
+      "note": null
+    },
+    "sympy__sympy-13043": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "1/1",
+      "note": null
+    },
+    "sympy__sympy-13146": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "34/34",
+      "note": null
+    },
+    "sympy__sympy-13177": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "75/75",
+      "note": null
+    },
+    "sympy__sympy-13437": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "15/15",
+      "note": null
+    },
+    "sympy__sympy-13471": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "82/82",
+      "note": null
+    },
+    "sympy__sympy-13480": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "43/43",
+      "note": null
+    },
+    "sympy__sympy-13647": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "76/76",
+      "note": null
+    },
+    "sympy__sympy-13773": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "69/69",
+      "note": null
+    },
+    "sympy__sympy-13895": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "82/82",
+      "note": null
+    },
+    "sympy__sympy-13915": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "62/62",
+      "note": null
+    },
+    "sympy__sympy-13971": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "102/102",
+      "note": null
+    },
+    "sympy__sympy-14024": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "83/83",
+      "note": null
+    },
+    "sympy__sympy-14308": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "113/113",
+      "note": null
+    },
+    "sympy__sympy-14317": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "116/116",
+      "note": null
+    },
+    "sympy__sympy-14396": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "44/44",
+      "note": null
+    },
+    "sympy__sympy-14774": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "114/114",
+      "note": null
+    },
+    "sympy__sympy-14817": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "111/111",
+      "note": null
+    },
+    "sympy__sympy-15011": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "53/53",
+      "note": null
+    },
+    "sympy__sympy-15308": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "120/120",
+      "note": null
+    },
+    "sympy__sympy-15345": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "8/8",
+      "note": null
+    },
+    "sympy__sympy-15346": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "22/22",
+      "note": null
+    },
+    "sympy__sympy-15609": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "121/121",
+      "note": null
+    },
+    "sympy__sympy-15678": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "3/3",
+      "note": null
+    },
+    "sympy__sympy-16106": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "55/55",
+      "note": null
+    },
+    "sympy__sympy-16281": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "120/120",
+      "note": null
+    },
+    "sympy__sympy-16503": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "121/121",
+      "note": null
+    },
+    "sympy__sympy-16792": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "54/54",
+      "note": null
+    },
+    "sympy__sympy-16988": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "72/72",
+      "note": null
+    },
+    "sympy__sympy-17022": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "8/8",
+      "note": null
+    },
+    "sympy__sympy-17139": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "67/67",
+      "note": null
+    },
+    "sympy__sympy-17630": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "19/19",
+      "note": null
+    },
+    "sympy__sympy-17655": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "9/9",
+      "note": null
+    },
+    "sympy__sympy-18057": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "98/98",
+      "note": null
+    },
+    "sympy__sympy-18087": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "35/35",
+      "note": null
+    },
+    "sympy__sympy-18189": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "41/41",
+      "note": null
+    },
+    "sympy__sympy-18199": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "113/113",
+      "note": null
+    },
+    "sympy__sympy-18532": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "28/28",
+      "note": null
+    },
+    "sympy__sympy-18621": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "15/15",
+      "note": null
+    },
+    "sympy__sympy-18698": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "147/147",
+      "note": null
+    },
+    "sympy__sympy-18835": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "41/41",
+      "note": null
+    },
+    "sympy__sympy-19007": {
+      "status": "VALID",
+      "no_patch_f2p": "0/3",
+      "gold_f2p": "3/3",
+      "gold_p2p": "26/26",
+      "note": null
+    },
+    "sympy__sympy-19254": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "18/18",
+      "note": null
+    },
+    "sympy__sympy-19487": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "90/90",
+      "note": null
+    },
+    "sympy__sympy-20049": {
+      "status": "VALID",
+      "no_patch_f2p": "0/4",
+      "gold_f2p": "4/4",
+      "gold_p2p": "9/9",
+      "note": null
+    },
+    "sympy__sympy-20154": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "40/40",
+      "note": null
+    },
+    "sympy__sympy-20212": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "32/32",
+      "note": null
+    },
+    "sympy__sympy-20322": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "89/89",
+      "note": null
+    },
+    "sympy__sympy-20442": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "24/24",
+      "note": null
+    },
+    "sympy__sympy-20590": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "21/21",
+      "note": null
+    },
+    "sympy__sympy-20639": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "139/139",
+      "note": null
+    },
+    "sympy__sympy-21055": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "13/13",
+      "note": null
+    },
+    "sympy__sympy-21171": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "152/152",
+      "note": null
+    },
+    "sympy__sympy-21379": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "91/91",
+      "note": null
+    },
+    "sympy__sympy-21612": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "98/98",
+      "note": null
+    },
+    "sympy__sympy-21614": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "6/6",
+      "note": null
+    },
+    "sympy__sympy-21627": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "26/26",
+      "note": null
+    },
+    "sympy__sympy-21847": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "9/9",
+      "note": null
+    },
+    "sympy__sympy-22005": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "2/2",
+      "note": null
+    },
+    "sympy__sympy-22714": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "11/11",
+      "note": null
+    },
+    "sympy__sympy-22840": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "95/95",
+      "note": null
+    },
+    "sympy__sympy-23117": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "3/3",
+      "note": null
+    },
+    "sympy__sympy-23191": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "3/3",
+      "note": null
+    },
+    "sympy__sympy-23262": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "61/61",
+      "note": null
+    },
+    "sympy__sympy-24066": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "30/30",
+      "note": null
+    },
+    "sympy__sympy-24102": {
+      "status": "VALID",
+      "no_patch_f2p": "0/2",
+      "gold_f2p": "2/2",
+      "gold_p2p": "0/0",
+      "note": null
+    },
+    "sympy__sympy-24152": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "6/6",
+      "note": null
+    },
+    "sympy__sympy-24213": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "31/31",
+      "note": null
+    },
+    "sympy__sympy-24909": {
+      "status": "VALID",
+      "no_patch_f2p": "0/1",
+      "gold_f2p": "1/1",
+      "gold_p2p": "2/2",
+      "note": null
+    }
+  }
+}

@@ -1,0 +1,12 @@
+[project]
+name = "autose"
+version = "0.1.0"
+description = "Autonomous bug fixing with a local small language model, evaluated on SWE-bench Lite"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "swebench==5.0.2",   # official SWE-bench test specs, log parsers and grading
+    "docker>=7",
+]
+
+[tool.setuptools.packages.find]
+include = ["autose*"]

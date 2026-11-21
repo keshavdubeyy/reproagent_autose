@@ -9,11 +9,13 @@ Result:
     private/                    <- evaluator only, never given to agents
       test_specs.json           everything needed to check a fix (tests, test patch, gold patch, env)
       repos/<owner__repo>.git   bare clones used to export the code (contain the fix commits)
+      swebench_harness.json     official SWE-bench Lite records: Docker image, eval script, log parser
 
 Steps:
   python scripts/build_benchmark.py reports --source external/brsr_data
   python scripts/build_benchmark.py code              # clones 12 repos, exports 300 snapshots (slow)
   python scripts/build_benchmark.py code --only pallets__flask-4045   # one instance
+  python scripts/build_benchmark.py harness           # needs `pip install swebench`
 """
 
 from __future__ import annotations
@@ -128,6 +130,18 @@ def export_code(only: str | None) -> int:
     return 0
 
 
+def download_harness() -> int:
+    """Save the official SWE-bench Lite records the evaluator needs (image name, eval script, log parser)."""
+    from swebench.harness.utils import load_swebench_dataset
+
+    records = [dict(r) for r in load_swebench_dataset("SWE-bench/SWE-bench_Lite", "test")]
+    path = OUT / "private" / "swebench_harness.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(records, indent=1, ensure_ascii=False), encoding="utf-8")
+    print(f"swebench_harness.json: {len(records)} records")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -135,7 +149,10 @@ def main() -> int:
     r.add_argument("--source", type=Path, required=True)
     c = sub.add_parser("code")
     c.add_argument("--only", help="export a single instance_id")
+    sub.add_parser("harness")
     a = ap.parse_args()
+    if a.cmd == "harness":
+        return download_harness()
     return build_reports(a.source) if a.cmd == "reports" else export_code(a.only)
 
 
