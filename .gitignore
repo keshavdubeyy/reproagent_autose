@@ -1,0 +1,35 @@
+# --- Benchmark: never commit ---
+# Gold patches, hidden tests and fix history (evaluator only)
+benchmarks/*/private/
+# Raw download from the paper's repo (contains gold patches)
+external/
+# Buggy code snapshots: large, rebuild with `python scripts/build_benchmark.py code`
+benchmarks/*/public/code/
+
+# --- Not final yet: remove this line once the architecture is finalized ---
+architecture.html
+
+# --- Run outputs ---
+workspaces/
+runs/
+data/
+
+# --- Local machine files ---
+user_path_backup.txt
+.env
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
