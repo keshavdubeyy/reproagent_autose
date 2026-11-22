@@ -126,3 +126,27 @@ def test_generator_asks_again_when_the_answer_is_cut_off():
     t = TestGenerator(llm).generate(BugReport("b", "t", "body"), BugSpec("s", "e", "o"), None, "", [], 1)
     assert t.code == "def test_x():\n    assert 1 == 2\n"
     assert "cut off" in llm.prompts[1]
+
+
+def test_django_plugin_is_valid_python_and_targets_only_the_reproduction_test():
+    import ast
+    from autose.agent.workspace import DJANGO_PLUGIN, TEST_FILE
+    ast.parse(DJANGO_PLUGIN)
+    assert TEST_FILE in DJANGO_PLUGIN and "settings.configure" in DJANGO_PLUGIN
+
+
+def test_django_projects_get_an_environment_hint():
+    from autose.agent.explore import TestGenerator
+    from autose.agent.models import BugReport, BugSpec, CodeContext
+
+    class LLM:
+        calls = 0
+        def __init__(self):
+            self.user = ""
+        def chat(self, system, user, json_mode=False, temperature=None):
+            self.user = user
+            return "```python\ndef test_x():\n    assert 1 == 2\n```"
+    for layout, expect in (("django/ docs/ tests/ setup.py", True), ("src/ tests/ setup.py", False)):
+        llm = LLM()
+        TestGenerator(llm).generate(BugReport("b", "t", "x"), BugSpec("s", "e", "o"), CodeContext(), layout, [], 1)
+        assert ("Do NOT call settings.configure()" in llm.user) is expect

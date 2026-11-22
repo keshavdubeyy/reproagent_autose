@@ -29,6 +29,57 @@ from pathlib import Path
 from .models import ExecutionResult, ReproTest
 
 TEST_FILE = "test_reproagent_repro.py"
+
+
+# pytest plugin for Django projects (SWE-bench runs Django's own tests with `runtests.py --settings=test_sqlite`;
+# a plain pytest run of a reproduction test has no settings at all). Only the reproduction test gets it, and
+# only when the test does not configure Django itself.
+DJANGO_PLUGIN = """
+import os
+
+
+def pytest_configure(config):
+    try:
+        import django
+        from django.conf import settings
+    except ImportError:
+        return
+    if settings.configured or os.environ.get("DJANGO_SETTINGS_MODULE"):
+        return
+    paths = [str(a).split("::")[0] for a in config.args]
+    if not any(p.endswith("%s") for p in paths):
+        return                                  # regression runs keep the project's own setup
+    for p in paths:
+        try:
+            with open(p) as f:
+                src = f.read()
+        except OSError:
+            continue
+        if "settings.configure" in src or "DJANGO_SETTINGS_MODULE" in src:
+            return                              # the test sets Django up itself
+    settings.configure(
+        DEBUG=False, SECRET_KEY="autose-repro", USE_TZ=False, SITE_ID=1,
+        DATABASES={"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"},
+                   "other": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"}},
+        INSTALLED_APPS=["django.contrib.contenttypes", "django.contrib.auth", "django.contrib.sessions",
+                        "django.contrib.messages", "django.contrib.admin", "django.contrib.sites",
+                        "django.contrib.staticfiles"],
+        MIDDLEWARE=["django.contrib.sessions.middleware.SessionMiddleware",
+                    "django.contrib.auth.middleware.AuthenticationMiddleware",
+                    "django.contrib.messages.middleware.MessageMiddleware"],
+        TEMPLATES=[{"BACKEND": "django.template.backends.django.DjangoTemplates", "DIRS": [], "APP_DIRS": True,
+                    "OPTIONS": {"context_processors": ["django.contrib.auth.context_processors.auth",
+                                                       "django.contrib.messages.context_processors.messages",
+                                                       "django.template.context_processors.request"]}}],
+        STATIC_URL="/static/", ROOT_URLCONF=None,
+    )
+    django.setup()
+    try:                                        # tables for the contrib models (in-memory database)
+        from django.core.management import call_command
+        call_command("migrate", run_syncdb=True, verbosity=0, interactive=False)
+    except Exception:
+        pass
+""" % TEST_FILE
 IGNORE = shutil.ignore_patterns(".git", "__pycache__", "*.pyc", ".tox", ".venv", "build", "dist",
                                 ".autose_snapshot")
 PYTEST_FLAGS = ["-p", "no:cacheprovider", "-p", "no:warnings"]   # old projects emit many warnings
@@ -166,6 +217,10 @@ class DockerExecutor(Executor):
                                "pip install -q pytest)")
         if code != 0:
             raise RuntimeError(f"could not install pytest in {image}: {out[-500:]}")
+        code, _ = self._exec("test -f django/__init__.py")
+        self.django = code == 0
+        if self.django:
+            self._put("/tmp/autose_plugins/autose_django.py", DJANGO_PLUGIN.encode("utf-8"))
         if base_patch:
             self._put("/tmp/base.diff", base_patch.encode("utf-8"))
             code, out = self._exec("git apply /tmp/base.diff || patch --batch --forward -p1 -i /tmp/base.diff")
@@ -208,8 +263,10 @@ class DockerExecutor(Executor):
 
     def _pytest(self, sb, args, timeout_s):
         self._sync(sb)
-        cmd = (f"{self.ACTIVATE} && PYTHONDONTWRITEBYTECODE=1 python -m pytest "
+        plug = "PYTHONPATH=/tmp/autose_plugins${PYTHONPATH:+:$PYTHONPATH} " if self.django else ""
+        cmd = (f"{self.ACTIVATE} && {plug}PYTHONDONTWRITEBYTECODE=1 python -m pytest "
                + " ".join(shlex.quote(a) for a in args) + " " + " ".join(PYTEST_FLAGS)
+               + (" -p autose_django" if self.django else "")
                + f" -c {self.INI} --rootdir {self.WORKDIR}")
         t0 = time.time()
         code, out = self._exec(cmd, timeout_s)

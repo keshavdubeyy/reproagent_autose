@@ -246,6 +246,12 @@ class TestGenerator:
                 parts.append("## How existing tests import/call this code (API usage ONLY - do NOT copy "
                              "their input values; use the values from the bug report)\n```python\n"
                              + "\n".join(ctx.usage_examples) + "\n```")
+        if ctx is not None and re.search(r"(^|\s)django/", layout or ""):
+            parts.append("## Test environment\nDjango settings are already configured when the test runs "
+                         "(in-memory SQLite with tables created; INSTALLED_APPS: contenttypes, auth, sessions, "
+                         "messages, admin, sites, staticfiles). Do NOT call settings.configure() or "
+                         "django.setup(). If you need a model, use an existing one such as "
+                         "django.contrib.auth.models.User, Group or Permission instead of defining a new one.")
         if spec.example_inputs:
             parts.append("## Scenario values from the report (use these)\n- " + "\n- ".join(spec.example_inputs))
         if history:
