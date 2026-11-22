@@ -24,3 +24,28 @@ def test_stage_rates_handoffs_and_first_break():
     assert s["false_confidence"] == 2
     page = to_html({"run": "t", **s, "bugs": bugs})
     assert "Pipeline Health" in page and "first broken checkpoint" in page
+
+
+def test_gold_symbols_attributes_new_method_to_its_class(tmp_path):
+    from autose.evaluation.localization import gold_symbols
+    (tmp_path / "m.py").write_text("import os\n\n\nclass E(Exception):\n    def __repr__(self):\n        return 'E'\n\n\n"
+                                   "def f():\n    return 1\n")
+    new_method = ("diff --git a/m.py b/m.py\n--- a/m.py\n+++ b/m.py\n@@ -5,3 +5,6 @@\n     def __repr__(self):\n"
+                  "         return 'E'\n+\n+    def __eq__(self, o):\n+        return True\n \n")
+    assert gold_symbols(tmp_path, new_method)[1] == {("m.py", "E")}
+    new_import = "diff --git a/m.py b/m.py\n--- a/m.py\n+++ b/m.py\n@@ -1,2 +1,3 @@\n import os\n+import re\n \n"
+    assert gold_symbols(tmp_path, new_import)[1] == {("m.py", "<module>")}
+    edit = ("diff --git a/m.py b/m.py\n--- a/m.py\n+++ b/m.py\n@@ -9,2 +9,2 @@\n def f():\n-    return 1\n"
+            "+    return 2\n")
+    assert gold_symbols(tmp_path, edit)[1] == {("m.py", "f")}
+    in_body = ("diff --git a/m.py b/m.py\n--- a/m.py\n+++ b/m.py\n@@ -5,2 +5,3 @@\n     def __repr__(self):\n"
+               "+        x = 1\n         return 'E'\n")
+    assert gold_symbols(tmp_path, in_body)[1] == {("m.py", "__repr__")}
+
+
+def test_realign_moves_offset_hunk_to_its_context(tmp_path):
+    from autose.evaluation.localization import gold_symbols, realign
+    (tmp_path / "m.py").write_text("# a\n# b\n\ndef f():\n    return 1\n\n\ndef g():\n    return 2\n")
+    off = "diff --git a/m.py b/m.py\n--- a/m.py\n+++ b/m.py\n@@ -6,2 +6,2 @@\n def g():\n-    return 2\n+    return 3\n"
+    assert "@@ -8,2 " in realign(tmp_path, off)
+    assert gold_symbols(tmp_path, off)[1] == {("m.py", "g")}

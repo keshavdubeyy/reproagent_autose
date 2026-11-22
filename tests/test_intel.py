@@ -1,5 +1,4 @@
 """Knowledge package + hybrid retrieval + localisation scoring on a tiny repository (no model needed)."""
-from pathlib import Path
 
 import pytest
 

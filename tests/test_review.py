@@ -1,5 +1,4 @@
 """Review agent rules (autose/agent/review.py)."""
-from autose.agent.blackboard import patch_sha
 from autose.agent.loop import AgentConfig, ReproAgent
 from autose.agent.models import BugReport, BugSpec, FaultCandidate, Patch, PatchCheck
 from autose.agent.review import Reviewer

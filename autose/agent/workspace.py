@@ -167,7 +167,7 @@ class DockerExecutor(Executor):
         if code != 0:
             raise RuntimeError(f"could not install pytest in {image}: {out[-500:]}")
         if base_patch:
-            self._put(f"/tmp/base.diff", base_patch.encode("utf-8"))
+            self._put("/tmp/base.diff", base_patch.encode("utf-8"))
             code, out = self._exec("git apply /tmp/base.diff || patch --batch --forward -p1 -i /tmp/base.diff")
             if code != 0:
                 raise RuntimeError(f"base patch did not apply: {out[-500:]}")

@@ -10,5 +10,8 @@ dependencies = [
     "pytest>=8",         # runs reproduction tests and the unit tests
 ]
 
+[project.optional-dependencies]
+dev = ["pytest-cov>=5", "ruff>=0.6"]   # quality scorecard: coverage and lint (python -m autose.evaluation.quality)
+
 [tool.setuptools.packages.find]
 include = ["autose*"]

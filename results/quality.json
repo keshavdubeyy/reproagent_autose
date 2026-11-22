@@ -1,0 +1,425 @@
+{
+ "when": "2026-11-22 16:59",
+ "n_bugs": 40,
+ "gate": 0.8,
+ "components": [
+  {
+   "key": "dataset",
+   "name": "Benchmark & dataset",
+   "promise": "Bugs are valid, the fix stays hidden, the subset is reproducible.",
+   "score": 1.0,
+   "passed": true,
+   "criteria": [
+    {
+     "component": "dataset",
+     "id": "D1",
+     "text": "Benchmark bugs validated (fail on the bug, pass with the fix)",
+     "threshold": "\u2265 95%",
+     "measured": "98.3% (295/300)",
+     "passed": true,
+     "n": 300,
+     "note": ""
+    },
+    {
+     "component": "dataset",
+     "id": "D2",
+     "text": "Public bug reports carry no fix, hidden tests or root cause",
+     "threshold": "\u2265 100%",
+     "measured": "100.0% (300/300)",
+     "passed": true,
+     "n": 300,
+     "note": ""
+    },
+    {
+     "component": "dataset",
+     "id": "D3",
+     "text": "Hidden ground truth never committed to git",
+     "threshold": "0 files",
+     "measured": "0 files",
+     "passed": true,
+     "n": 31,
+     "note": ""
+    },
+    {
+     "component": "dataset",
+     "id": "D4",
+     "text": "40-bug subset is reproducible from its seed",
+     "threshold": "identical",
+     "measured": "identical",
+     "passed": true,
+     "n": 40,
+     "note": ""
+    },
+    {
+     "component": "dataset",
+     "id": "D5",
+     "text": "Code snapshots have no git history (the fix cannot be looked up)",
+     "threshold": "\u2265 100%",
+     "measured": "100.0% (40/40)",
+     "passed": true,
+     "n": 40,
+     "note": ""
+    }
+   ]
+  },
+  {
+   "key": "index",
+   "name": "Knowledge package",
+   "promise": "Every repository is indexed completely and the index points at real code.",
+   "score": 1.0,
+   "passed": true,
+   "criteria": [
+    {
+     "component": "index",
+     "id": "K1",
+     "text": "Repositories indexed with status READY",
+     "threshold": "\u2265 95%",
+     "measured": "100.0% (40/40)",
+     "passed": true,
+     "n": 40,
+     "note": ""
+    },
+    {
+     "component": "index",
+     "id": "K2",
+     "text": "Source files parsed into the index",
+     "threshold": "\u2265 98%",
+     "measured": "100.0% (29078/29078)",
+     "passed": true,
+     "n": 29078,
+     "note": ""
+    },
+    {
+     "component": "index",
+     "id": "K3",
+     "text": "Indexed symbols point at a real line range in their file (sampled)",
+     "threshold": "\u2265 100%",
+     "measured": "100.0% (800/800)",
+     "passed": true,
+     "n": 800,
+     "note": ""
+    }
+   ]
+  },
+  {
+   "key": "search",
+   "name": "Search (retrieval)",
+   "promise": "The bug report leads to the file and function the developers fixed.",
+   "score": 1.0,
+   "passed": true,
+   "criteria": [
+    {
+     "component": "search",
+     "id": "S1",
+     "text": "Right file in the top 5",
+     "threshold": "\u2265 80%",
+     "measured": "90.0% (36/40)",
+     "passed": true,
+     "n": 40,
+     "note": ""
+    },
+    {
+     "component": "search",
+     "id": "S2",
+     "text": "Right file in the top 5 on sympy (never used for tuning)",
+     "threshold": "\u2265 80%",
+     "measured": "83.3% (10/12)",
+     "passed": true,
+     "n": 12,
+     "note": ""
+    },
+    {
+     "component": "search",
+     "id": "S3",
+     "text": "Right function in the top 10",
+     "threshold": "\u2265 60%",
+     "measured": "65.0% (26/40)",
+     "passed": true,
+     "n": 40,
+     "note": "from the bug report alone; the reproduction test's traceback adds the rest"
+    },
+    {
+     "component": "search",
+     "id": "S4",
+     "text": "Better than the mid-term keyword search (function in top 10)",
+     "threshold": "\u2265 1.5\u00d7",
+     "measured": "2.2\u00d7 (26 vs 12)",
+     "passed": true,
+     "n": 40,
+     "note": ""
+    }
+   ]
+  },
+  {
+   "key": "flow",
+   "name": "Flow analysis (CFG, data flow, slicing)",
+   "promise": "Works on every real function, fast, correct on known cases.",
+   "score": 1.0,
+   "passed": true,
+   "criteria": [
+    {
+     "component": "flow",
+     "id": "F1",
+     "text": "Real functions analysed without error (django + sympy)",
+     "threshold": "\u2265 100%",
+     "measured": "100.0% (45944/45944)",
+     "passed": true,
+     "n": 45944,
+     "note": ""
+    },
+    {
+     "component": "flow",
+     "id": "F2",
+     "text": "Speed per function (parse + CFG + data flow + slice)",
+     "threshold": "\u2264 5 ms",
+     "measured": "0.26 ms",
+     "passed": true,
+     "n": 45944,
+     "note": ""
+    },
+    {
+     "component": "flow",
+     "id": "F3",
+     "text": "Slices correct on hand-checked programs",
+     "threshold": "\u2265 100%",
+     "measured": "100.0% (6/6)",
+     "passed": true,
+     "n": 6,
+     "note": "unit tests: test_flow"
+    }
+   ]
+  },
+  {
+   "key": "repro",
+   "name": "Reproduction (Bug Understanding)",
+   "promise": "An accepted reproduction test is a real one: fails on the bug, passes on the fix.",
+   "score": 1.0,
+   "passed": true,
+   "criteria": [
+    {
+     "component": "repro",
+     "id": "R1",
+     "text": "Accepted reproduction tests that are valid (pass on the fixed code)",
+     "threshold": "\u2265 80%",
+     "measured": "100.0% (2/2)",
+     "passed": true,
+     "n": 2,
+     "note": "small sample until the night runs; from e2e_full_23nov"
+    },
+    {
+     "component": "repro",
+     "id": "R2",
+     "text": "Guards: invented error wording, wrong-reason failures",
+     "threshold": "\u2265 100%",
+     "measured": "100.0% (15/15)",
+     "passed": true,
+     "n": 15,
+     "note": "unit tests: test_repro_guards, test_message_meaning"
+    },
+    {
+     "component": "repro",
+     "id": "R3",
+     "text": "Reproduction loop components (spec, explorer, analyzer)",
+     "threshold": "\u2265 100%",
+     "measured": "100.0% (10/10)",
+     "passed": true,
+     "n": 10,
+     "note": "unit tests: test_components"
+    }
+   ]
+  },
+  {
+   "key": "review",
+   "name": "Review agent",
+   "promise": "Approves correct patches, rejects broken ones.",
+   "score": 1.0,
+   "passed": true,
+   "criteria": [
+    {
+     "component": "review",
+     "id": "V1",
+     "text": "Developers' real fixes approved (no false alarms)",
+     "threshold": "\u2265 95%",
+     "measured": "100.0% (40/40)",
+     "passed": true,
+     "n": 40,
+     "note": ""
+    },
+    {
+     "component": "review",
+     "id": "V2",
+     "text": "Real fixes with one injected typo rejected",
+     "threshold": "\u2265 80%",
+     "measured": "100.0% (38/38)",
+     "passed": true,
+     "n": 38,
+     "note": ""
+    },
+    {
+     "component": "review",
+     "id": "V3",
+     "text": "Review rules and the repair-loop hand-off",
+     "threshold": "\u2265 100%",
+     "measured": "100.0% (5/5)",
+     "passed": true,
+     "n": 5,
+     "note": "unit tests: test_review"
+    }
+   ]
+  },
+  {
+   "key": "board",
+   "name": "Blackboard",
+   "promise": "Artifacts follow the schema; only tested, unrejected patches are frozen.",
+   "score": 1.0,
+   "passed": true,
+   "criteria": [
+    {
+     "component": "board",
+     "id": "B1",
+     "text": "Frozen patches backed by an accepted test of the same hash, not rejected",
+     "threshold": "\u2265 100%",
+     "measured": "100.0% (1/1)",
+     "passed": true,
+     "n": 1,
+     "note": ""
+    },
+    {
+     "component": "board",
+     "id": "B2",
+     "text": "Artifacts on disk match their schema",
+     "threshold": "\u2265 100%",
+     "measured": "100.0% (15/15)",
+     "passed": true,
+     "n": 15,
+     "note": ""
+    },
+    {
+     "component": "board",
+     "id": "B3",
+     "text": "Blackboard rules (schema, hash binding, freeze)",
+     "threshold": "\u2265 100%",
+     "measured": "100.0% (6/6)",
+     "passed": true,
+     "n": 6,
+     "note": "unit tests: test_blackboard"
+    }
+   ]
+  },
+  {
+   "key": "testing",
+   "name": "Testing (patch validation)",
+   "promise": "A patch the agent accepts does not break existing behaviour.",
+   "score": 1.0,
+   "passed": true,
+   "criteria": [
+    {
+     "component": "testing",
+     "id": "T1",
+     "text": "Accepted patches that keep every existing test passing (hidden P2P)",
+     "threshold": "\u2265 80%",
+     "measured": "100.0% (1/1)",
+     "passed": true,
+     "n": 1,
+     "note": ""
+    },
+    {
+     "component": "testing",
+     "id": "T2",
+     "text": "Patch validation, regression selection, multi-location repair",
+     "threshold": "\u2265 100%",
+     "measured": "100.0% (19/19)",
+     "passed": true,
+     "n": 19,
+     "note": "unit tests: test_resolution, test_multiloc, test_swebench_glue"
+    }
+   ]
+  },
+  {
+   "key": "control",
+   "name": "Loop controller",
+   "promise": "No failure is repeated more than three times; decisions are deterministic.",
+   "score": 1.0,
+   "passed": true,
+   "criteria": [
+    {
+     "component": "control",
+     "id": "L1",
+     "text": "Bugs where no failure repeated more than 3 times",
+     "threshold": "\u2265 100%",
+     "measured": "100.0% (3/3)",
+     "passed": true,
+     "n": 3,
+     "note": ""
+    },
+    {
+     "component": "control",
+     "id": "L2",
+     "text": "Fingerprints, switch and stop decisions",
+     "threshold": "\u2265 100%",
+     "measured": "100.0% (3/3)",
+     "passed": true,
+     "n": 3,
+     "note": "unit tests: test_control"
+    }
+   ]
+  },
+  {
+   "key": "eng",
+   "name": "Engineering",
+   "promise": "Tests pass, code is covered by tests, no lint errors, decisions recorded.",
+   "score": 1.0,
+   "passed": true,
+   "criteria": [
+    {
+     "component": "eng",
+     "id": "E1",
+     "text": "Unit tests passing",
+     "threshold": "\u2265 100%",
+     "measured": "100.0% (91/91)",
+     "passed": true,
+     "n": 91,
+     "note": ""
+    },
+    {
+     "component": "eng",
+     "id": "E2",
+     "text": "Line coverage of the agent and repository intelligence",
+     "threshold": "\u2265 80%",
+     "measured": "82.3% (2137/2596)",
+     "passed": true,
+     "n": 2596,
+     "note": "weakest: report.py 16%, llm.py 35%, workspace.py 56%"
+    },
+    {
+     "component": "eng",
+     "id": "E3",
+     "text": "Lint errors (pyflakes: unused/undefined names, dead code)",
+     "threshold": "0",
+     "measured": "0",
+     "passed": true,
+     "n": null,
+     "note": ""
+    },
+    {
+     "component": "eng",
+     "id": "E4",
+     "text": "Design decisions recorded as ADRs",
+     "threshold": "\u2265 6",
+     "measured": "6",
+     "passed": true,
+     "n": 6,
+     "note": ""
+    }
+   ]
+  }
+ ],
+ "criteria_passed": 32,
+ "criteria_measured": 32,
+ "tracked": {
+  "bugs": 3,
+  "resolved": 0,
+  "valid_reproductions": 2,
+  "patches_accepted": 1
+ }
+}
