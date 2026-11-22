@@ -21,6 +21,7 @@ import textwrap
 from collections import defaultdict
 from pathlib import Path
 
+from autose.intel.flow import FunctionFlow
 from .llm import LLM, extract_code
 from .models import BugReport, BugSpec, FaultCandidate, Patch, PatchAttempt
 from .explore import RepoExplorer, _is_test_path
@@ -71,8 +72,9 @@ def _enclosing(defs: dict, line: int) -> str | None:
 
 # ------------------------------------------------------------------ Fault Localizer (tool)
 class FaultLocalizer:
-    def __init__(self, repo: Path, explorer: RepoExplorer | None = None):
+    def __init__(self, repo: Path, explorer: RepoExplorer | None = None, use_slicing: bool = True):
         self.repo = Path(repo)
+        self.use_slicing = use_slicing
         self.explorer = explorer or RepoExplorer(repo)
         if self.explorer._defs is None:
             self.explorer._index()
@@ -118,6 +120,7 @@ class FaultLocalizer:
                  test_output: str | None, k: int = 6) -> list[FaultCandidate]:
         score: dict[tuple[str, str], float] = defaultdict(float)
         why: dict[tuple[str, str], str] = {}
+        tb_line: dict[tuple[str, str], int] = {}     # candidate -> failing line (criterion for slicing)
 
         def add(key, s, reason):
             if key[1] is None:
@@ -135,6 +138,8 @@ class FaultLocalizer:
                 q = _enclosing({q: v for q, v in self.defs(rel).items()
                                 if not self._is_const(rel, q)}, int(line))
                 add((rel, q), 10 + depth, f"in the traceback (line {line})")
+                if q is not None:
+                    tb_line.setdefault((rel, q), int(line))
         # 2. project API the reproduction test calls
         if test_code:
             for key, reason, role in self._called_by_test(test_code):
@@ -158,12 +163,22 @@ class FaultLocalizer:
             for sn in self.explorer.search(spec, report, k=k).snippets:
                 q = _enclosing(self.defs(sn.file), sn.lineno) if sn.file in self.file2mod else None
                 add((sn.file, q or sn.name), sn.score, "matches the bug report")
-        # 4. one level of callees of the best candidates (the bug is often one call deeper)
+        # 4. one level of callees of the best candidates (the bug is often one call deeper).
+        #    A backward program slice (control + data dependence, autose/intel/flow.py) from the failing
+        #    line, or from the return statements, separates callees whose result can reach the failure
+        #    from callees that cannot (logging, bookkeeping), and ranks them accordingly.
         words = _words(f"{report.title} {report.body} {spec.summary} {spec.expected}")
         for (rel, q), s in sorted(score.items(), key=lambda t: -t[1])[:5]:
-            for key in self._callees(rel, q):
-                if key not in score:
+            in_slice = self._slice_lines(rel, q, tb_line.get((rel, q))) if self.use_slicing else None
+            for key, line in self._callees_at(rel, q):
+                if key in score:
+                    continue
+                if in_slice is None:
                     add(key, max(s / 2, 2.5), f"called by {q}")
+                elif line in in_slice:
+                    add(key, max(s * 0.6, 3.0), f"its result flows into {q} (program slice)")
+                else:
+                    add(key, max(s / 5, 1.0), f"called by {q}, outside the slice")
         # report vocabulary in the definition name (e.g. 'discount' -> bulk_discount)
         for key in list(score):
             score[key] += 1.5 * len(_words(key[1]) & words)
@@ -328,6 +343,25 @@ class FaultLocalizer:
         return out
 
     def _callees(self, rel: str, q: str):
+        for key, _line in self._callees_at(rel, q):
+            yield key
+
+    def _slice_lines(self, rel: str, q: str, line: int | None) -> set[int] | None:
+        """Lines of the backward slice of q: from the failing line if known, else from its returns."""
+        node = self._function_node(rel, q) if q in self.defs(rel) else None
+        if node is None:
+            return None
+        try:
+            ff = FunctionFlow(node)
+        except (RecursionError, ValueError):
+            return None
+        sl = ff.slice_from_line(line) if line else ff.slice_from_returns()
+        if not sl.stmts:
+            return None
+        return {ln for st in sl.stmts if st.kind not in ("entry", "exit") for ln in range(st.line, st.end_line + 1)}
+
+    def _callees_at(self, rel: str, q: str):
+        """(callee key, line of the call) for project functions q calls."""
         node = self._function_node(rel, q) if q in self.defs(rel) else None
         if node is None:
             return
@@ -339,14 +373,14 @@ class FaultLocalizer:
             f = sub.func
             if isinstance(f, ast.Name):
                 if f.id in self.defs(rel) and not self._is_class(rel, f.id):
-                    yield (rel, f.id)
+                    yield (rel, f.id), sub.lineno
                 elif f.id in imported:
                     for key in self._resolve(*imported[f.id]):
                         if not self._is_class(*key):
-                            yield key
+                            yield key, sub.lineno
             elif isinstance(f, ast.Attribute) and isinstance(f.value, ast.Name) and f.value.id == "self" \
                     and cls and f"{cls}.{f.attr}" in self.defs(rel):
-                yield (rel, f"{cls}.{f.attr}")
+                yield (rel, f"{cls}.{f.attr}"), sub.lineno
 
     def _constants_used(self, c: FaultCandidate):
         node = self._function_node(c.file, c.name)
