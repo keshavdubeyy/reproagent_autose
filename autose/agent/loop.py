@@ -213,7 +213,8 @@ class ReproAgent:
         if m.get("multi") and test is not None:
             return self._fix_multi(report, spec, repo, test, mode, m, t0, calls0)
         loc = FaultLocalizer(repo)
-        cands = loc.localize(report, spec, test.code if test else None, repro_output if test else None)
+        cands = loc.localize(report, spec, test.code if test else None, repro_output if test else None,
+                             retrieved=self._retrieved())
         self.log("[localize] " + ", ".join(f"{c.file}:{c.name}({c.score})" for c in cands))
         applier = PatchApplier(loc)
         reg_files = self.validator.select_tests(repo, list(dict.fromkeys(c.module for c in cands if c.module))[:2])
@@ -250,6 +251,12 @@ class ReproAgent:
                           regression_tests=reg_files,
                           locations=_locations(repo, final.files) if final else [])
 
+    def _retrieved(self) -> list[tuple[str, int, str]]:
+        """What Bug Understanding's search ranked for this bug, handed to the Fault Localiser."""
+        if self._ctx is None or self.cfg.retrieval == "explorer":
+            return []           # mid-term configuration: the localiser works as before (ablation A/baseline)
+        return list(self._ctx.ranked) or [(sn.file, sn.lineno, sn.name) for sn in self._ctx.snippets]
+
     def _record(self, history: list, patch, check, cands) -> None:
         """Keep the attempt and publish it: CHANGE_PLAN (what changed) + TEST_REPORT (bound to its hash)."""
         history.append(PatchAttempt(patch, check))
@@ -283,7 +290,7 @@ class ReproAgent:
             work.remove(TEST_FILE)
             failing, out_now = max(first.n_failed or 1, 1), first.output
             loc = FaultLocalizer(work.repo)
-            cands = loc.localize(report, spec, test.code, out_now)
+            cands = loc.localize(report, spec, test.code, out_now, retrieved=self._retrieved())
             all_cands = list(cands)
             focus_code = test.code
             self.log(f"[localize] {failing} failing repro test function(s); "
@@ -330,7 +337,8 @@ class ReproAgent:
                     loc = FaultLocalizer(work.repo)
                     focus_code = focus_test(test.code, check.repro_failing)   # only what still fails
                     kept = {tuple(x.split(":", 1)) for x in _locations(repo, base)}
-                    cands = [c for c in loc.localize(report, spec, focus_code, out_now, k=8)
+                    cands = [c for c in loc.localize(report, spec, focus_code, out_now, k=8,
+                                                     retrieved=self._retrieved())
                              if (c.file, c.name) not in kept][:6]           # don't let it undo kept fixes
                     all_cands += [c for c in cands if (c.file, c.name) not in {(a.file, a.name) for a in all_cands}]
                     self.log(f"[re-localize] {failing} still failing; "

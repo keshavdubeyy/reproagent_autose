@@ -189,3 +189,25 @@ def test_focus_test_and_locations(repo):
     src = (repo / "shopcart" / "pricing.py").read_text()
     assert _locations(repo, {"shopcart/pricing.py": src.replace("> DISCOUNT", ">= DISCOUNT")}) == [
         "shopcart/pricing.py:bulk_discount"]
+
+
+def test_search_results_reach_the_fault_localiser(repo):
+    from autose.agent.repair import FaultLocalizer
+    loc = FaultLocalizer(repo)
+    src = (repo / "shopcart" / "pricing.py").read_text().splitlines()
+    line = next(i for i, l in enumerate(src, 1) if l.startswith("def shipping_fee"))
+    plain = loc.localize(REPORT, SPEC, T_ONE, None)
+    handed = loc.localize(REPORT, SPEC, T_ONE, None, retrieved=[("shopcart/pricing.py", line, "shipping_fee")])
+    top = {c.name: c for c in handed}
+    assert "ranked #1 by the search" in top["shipping_fee"].why or top["shipping_fee"].score > \
+        next((c.score for c in plain if c.name == "shipping_fee"), 0)
+    assert handed[0].name == "bulk_discount"           # the test's asserted call still comes first
+
+
+def test_agent_hands_ranked_search_results_only_for_knowledge_package_configs(tmp_path, repo):
+    from autose.agent.models import CodeContext
+    agent = make_agent(tmp_path, [T_ONE], [])
+    agent._ctx = CodeContext(ranked=[("shopcart/pricing.py", 20, "shipping_fee")])
+    assert agent._retrieved() == []                     # config A (keyword search) keeps the mid-term localiser
+    agent.cfg.retrieval = "graph"
+    assert agent._retrieved() == [("shopcart/pricing.py", 20, "shipping_fee")]

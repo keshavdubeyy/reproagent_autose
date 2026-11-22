@@ -43,6 +43,7 @@ COMPONENTS = [
     ("index", "Knowledge package", "Every repository is indexed completely and the index points at real code."),
     ("search", "Search (retrieval)", "The bug report leads to the file and function the developers fixed."),
     ("flow", "Flow analysis (CFG, data flow, slicing)", "Works on every real function, fast, correct on known cases."),
+    ("codemod", "Code Modification (localise + patch)", "The localiser uses every signal: failing test, program slice and the search's results."),
     ("repro", "Reproduction (Bug Understanding)", "An accepted reproduction test is a real one: fails on the bug, passes on the fix."),
     ("review", "Review agent", "Approves correct patches, rejects broken ones."),
     ("board", "Blackboard", "Artifacts follow the schema; only tested, unrejected patches are frozen."),
@@ -270,6 +271,26 @@ def evaluate(ids: list[str], run_dirs: list[Path], quick: bool) -> list[Criterio
     C.append(Criterion("flow", "F2", "Speed per function (parse + CFG + data flow + slice)", "≤ 5 ms",
                        f"{ms:.2f} ms", ms <= 5, nf))
     C.append(unit(tests, "flow", "F3", "Slices correct on hand-checked programs", ["test_flow"]))
+
+    # --- code modification: search -> localiser hand-off (evaluator-side experiment, developers' tests as oracle)
+    ho = Path("results/localizer_handoff.json")
+    if ho.exists():
+        hb = [b for b in json.loads(ho.read_text())["bugs"] if b["instance_id"] in set(ids)]
+        t_only = sum(1 for b in hb if b["loc_test_only"])
+        both = sum(1 for b in hb if b["loc_test_plus_search"])
+        lost = sum(1 for b in hb if b["loc_test_only"] and not b["loc_test_plus_search"])
+        ratio = both / t_only if t_only else None
+        C.append(Criterion("codemod", "C1", "Search results help the localiser find the fixed function", "≥ 1.2×",
+                           f"{ratio:.2f}× ({both} vs {t_only} of {len(hb)})" if ratio else "no data",
+                           ratio >= 1.2 if ratio else None, len(hb),
+                           "developers' tests stand in for the reproduction test; rerun localizer_handoff"))
+        C.append(crit("codemod", "C2", "Bugs not lost when the search results are added", None, 1.0,
+                      t_only - lost, t_only))
+    else:
+        C.append(Criterion("codemod", "C1", "Search results help the localiser", "≥ 1.2×", "no data", None, 0,
+                           "run python -m autose.evaluation.localizer_handoff"))
+    C.append(unit(tests, "codemod", "C3", "Localiser, patching and the orchestrated repair loop",
+                  ["test_agent_loop"]))
 
     # --- runs (reproduction, testing, blackboard, loop controller)
     rows = run_rows(run_dirs)

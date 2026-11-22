@@ -277,6 +277,9 @@ def _tail(s: str, n: int) -> str:
 
 
 # ------------------------------------------------------------------ explorer backed by the knowledge package
+RANKED_K = 10
+
+
 class IndexedExplorer(RepoExplorer):
     """Same tool interface, but `search` ranks code with the knowledge package (autose/intel) instead of
     keyword overlap: `bm25`, `hybrid` (configuration C) or `graph` (configuration D)."""
@@ -298,9 +301,16 @@ class IndexedExplorer(RepoExplorer):
         r = self.retriever.search(report, k_symbols=40)
         self.last = r
         top: list[CodeSnippet] = []
+        ranked = []                         # the longer ranked list, handed to the Fault Localiser
         for c in r.symbols:
             row = self.index.symbol(c.sid)
             if row["kind"] == "module":
+                continue
+            if len(ranked) < RANKED_K:
+                ranked.append((row["path"], row["lineno"], row["name"]))
+            if len(top) >= k:
+                if len(ranked) >= RANKED_K:
+                    break
                 continue
             try:
                 lines = (self.repo / row["path"]).read_text(encoding="utf-8", errors="replace").splitlines()
@@ -311,6 +321,4 @@ class IndexedExplorer(RepoExplorer):
                 body = body[:MAX_SNIPPET_LINES] + ["    # ... (truncated)"]
             top.append(CodeSnippet(file=row["path"], module=row["module"], name=row["name"], lineno=row["lineno"],
                                    source="\n".join(body), score=round(c.score, 2)))
-            if len(top) >= k:
-                break
-        return CodeContext(snippets=top, usage_examples=self._usage(top[:2]))
+        return CodeContext(snippets=top, usage_examples=self._usage(top[:2]), ranked=ranked)

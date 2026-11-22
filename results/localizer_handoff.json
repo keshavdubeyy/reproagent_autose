@@ -1,0 +1,372 @@
+{
+ "summary": {
+  "search": 27,
+  "loc_test_only": 14,
+  "loc_test_plus_search": 23,
+  "loc_report_only": 10,
+  "loc_report_plus_search": 22,
+  "n": 40
+ },
+ "bugs": [
+  {
+   "instance_id": "django__django-11848",
+   "has_test": true,
+   "search": 1,
+   "loc_test_only": 1,
+   "loc_test_plus_search": 1,
+   "loc_report_only": 4,
+   "loc_report_plus_search": 1
+  },
+  {
+   "instance_id": "django__django-11964",
+   "has_test": true,
+   "search": null,
+   "loc_test_only": null,
+   "loc_test_plus_search": null,
+   "loc_report_only": null,
+   "loc_report_plus_search": null
+  },
+  {
+   "instance_id": "django__django-11999",
+   "has_test": true,
+   "search": null,
+   "loc_test_only": null,
+   "loc_test_plus_search": null,
+   "loc_report_only": null,
+   "loc_report_plus_search": null
+  },
+  {
+   "instance_id": "django__django-12113",
+   "has_test": true,
+   "search": null,
+   "loc_test_only": null,
+   "loc_test_plus_search": null,
+   "loc_report_only": null,
+   "loc_report_plus_search": null
+  },
+  {
+   "instance_id": "django__django-12125",
+   "has_test": true,
+   "search": null,
+   "loc_test_only": null,
+   "loc_test_plus_search": null,
+   "loc_report_only": null,
+   "loc_report_plus_search": null
+  },
+  {
+   "instance_id": "django__django-12184",
+   "has_test": true,
+   "search": null,
+   "loc_test_only": null,
+   "loc_test_plus_search": null,
+   "loc_report_only": null,
+   "loc_report_plus_search": null
+  },
+  {
+   "instance_id": "django__django-12284",
+   "has_test": true,
+   "search": null,
+   "loc_test_only": null,
+   "loc_test_plus_search": null,
+   "loc_report_only": null,
+   "loc_report_plus_search": null
+  },
+  {
+   "instance_id": "django__django-12286",
+   "has_test": true,
+   "search": 4,
+   "loc_test_only": 1,
+   "loc_test_plus_search": 1,
+   "loc_report_only": null,
+   "loc_report_plus_search": 1
+  },
+  {
+   "instance_id": "django__django-12308",
+   "has_test": true,
+   "search": 1,
+   "loc_test_only": 1,
+   "loc_test_plus_search": 1,
+   "loc_report_only": null,
+   "loc_report_plus_search": 1
+  },
+  {
+   "instance_id": "django__django-12453",
+   "has_test": true,
+   "search": 4,
+   "loc_test_only": 1,
+   "loc_test_plus_search": 1,
+   "loc_report_only": 2,
+   "loc_report_plus_search": 2
+  },
+  {
+   "instance_id": "django__django-12497",
+   "has_test": true,
+   "search": 4,
+   "loc_test_only": null,
+   "loc_test_plus_search": 3,
+   "loc_report_only": null,
+   "loc_report_plus_search": 3
+  },
+  {
+   "instance_id": "django__django-12700",
+   "has_test": true,
+   "search": 2,
+   "loc_test_only": 1,
+   "loc_test_plus_search": 1,
+   "loc_report_only": 2,
+   "loc_report_plus_search": 2
+  },
+  {
+   "instance_id": "django__django-12747",
+   "has_test": true,
+   "search": 7,
+   "loc_test_only": 1,
+   "loc_test_plus_search": 1,
+   "loc_report_only": null,
+   "loc_report_plus_search": null
+  },
+  {
+   "instance_id": "django__django-12856",
+   "has_test": true,
+   "search": null,
+   "loc_test_only": null,
+   "loc_test_plus_search": null,
+   "loc_report_only": null,
+   "loc_report_plus_search": null
+  },
+  {
+   "instance_id": "django__django-12908",
+   "has_test": true,
+   "search": 2,
+   "loc_test_only": 1,
+   "loc_test_plus_search": 2,
+   "loc_report_only": 5,
+   "loc_report_plus_search": 2
+  },
+  {
+   "instance_id": "django__django-13028",
+   "has_test": true,
+   "search": 1,
+   "loc_test_only": 3,
+   "loc_test_plus_search": 1,
+   "loc_report_only": 2,
+   "loc_report_plus_search": 1
+  },
+  {
+   "instance_id": "django__django-13220",
+   "has_test": true,
+   "search": 1,
+   "loc_test_only": null,
+   "loc_test_plus_search": null,
+   "loc_report_only": null,
+   "loc_report_plus_search": null
+  },
+  {
+   "instance_id": "django__django-13265",
+   "has_test": true,
+   "search": 7,
+   "loc_test_only": null,
+   "loc_test_plus_search": 2,
+   "loc_report_only": null,
+   "loc_report_plus_search": 2
+  },
+  {
+   "instance_id": "django__django-13401",
+   "has_test": true,
+   "search": 4,
+   "loc_test_only": null,
+   "loc_test_plus_search": 3,
+   "loc_report_only": null,
+   "loc_report_plus_search": 3
+  },
+  {
+   "instance_id": "django__django-13448",
+   "has_test": true,
+   "search": 5,
+   "loc_test_only": 1,
+   "loc_test_plus_search": 1,
+   "loc_report_only": null,
+   "loc_report_plus_search": null
+  },
+  {
+   "instance_id": "django__django-13551",
+   "has_test": true,
+   "search": 1,
+   "loc_test_only": 4,
+   "loc_test_plus_search": 1,
+   "loc_report_only": 2,
+   "loc_report_plus_search": 1
+  },
+  {
+   "instance_id": "django__django-13590",
+   "has_test": true,
+   "search": 1,
+   "loc_test_only": null,
+   "loc_test_plus_search": 1,
+   "loc_report_only": null,
+   "loc_report_plus_search": 1
+  },
+  {
+   "instance_id": "django__django-13658",
+   "has_test": true,
+   "search": 4,
+   "loc_test_only": null,
+   "loc_test_plus_search": 5,
+   "loc_report_only": null,
+   "loc_report_plus_search": 5
+  },
+  {
+   "instance_id": "django__django-13660",
+   "has_test": true,
+   "search": 1,
+   "loc_test_only": null,
+   "loc_test_plus_search": null,
+   "loc_report_only": 6,
+   "loc_report_plus_search": 6
+  },
+  {
+   "instance_id": "django__django-13757",
+   "has_test": true,
+   "search": 7,
+   "loc_test_only": null,
+   "loc_test_plus_search": 3,
+   "loc_report_only": null,
+   "loc_report_plus_search": 3
+  },
+  {
+   "instance_id": "django__django-13768",
+   "has_test": true,
+   "search": 1,
+   "loc_test_only": 1,
+   "loc_test_plus_search": 1,
+   "loc_report_only": 1,
+   "loc_report_plus_search": 1
+  },
+  {
+   "instance_id": "sympy__sympy-13031",
+   "has_test": true,
+   "search": null,
+   "loc_test_only": null,
+   "loc_test_plus_search": null,
+   "loc_report_only": null,
+   "loc_report_plus_search": null
+  },
+  {
+   "instance_id": "sympy__sympy-13437",
+   "has_test": true,
+   "search": 5,
+   "loc_test_only": null,
+   "loc_test_plus_search": 4,
+   "loc_report_only": null,
+   "loc_report_plus_search": 4
+  },
+  {
+   "instance_id": "sympy__sympy-13471",
+   "has_test": true,
+   "search": 1,
+   "loc_test_only": null,
+   "loc_test_plus_search": 1,
+   "loc_report_only": null,
+   "loc_report_plus_search": 1
+  },
+  {
+   "instance_id": "sympy__sympy-13647",
+   "has_test": true,
+   "search": null,
+   "loc_test_only": null,
+   "loc_test_plus_search": null,
+   "loc_report_only": null,
+   "loc_report_plus_search": null
+  },
+  {
+   "instance_id": "sympy__sympy-13773",
+   "has_test": true,
+   "search": 4,
+   "loc_test_only": 1,
+   "loc_test_plus_search": 1,
+   "loc_report_only": null,
+   "loc_report_plus_search": 4
+  },
+  {
+   "instance_id": "sympy__sympy-13895",
+   "has_test": true,
+   "search": null,
+   "loc_test_only": null,
+   "loc_test_plus_search": null,
+   "loc_report_only": null,
+   "loc_report_plus_search": null
+  },
+  {
+   "instance_id": "sympy__sympy-13971",
+   "has_test": true,
+   "search": 5,
+   "loc_test_only": null,
+   "loc_test_plus_search": 4,
+   "loc_report_only": null,
+   "loc_report_plus_search": null
+  },
+  {
+   "instance_id": "sympy__sympy-14024",
+   "has_test": true,
+   "search": null,
+   "loc_test_only": null,
+   "loc_test_plus_search": null,
+   "loc_report_only": null,
+   "loc_report_plus_search": null
+  },
+  {
+   "instance_id": "sympy__sympy-14308",
+   "has_test": true,
+   "search": null,
+   "loc_test_only": null,
+   "loc_test_plus_search": null,
+   "loc_report_only": null,
+   "loc_report_plus_search": null
+  },
+  {
+   "instance_id": "sympy__sympy-14317",
+   "has_test": true,
+   "search": 3,
+   "loc_test_only": null,
+   "loc_test_plus_search": null,
+   "loc_report_only": null,
+   "loc_report_plus_search": 4
+  },
+  {
+   "instance_id": "sympy__sympy-14396",
+   "has_test": true,
+   "search": 10,
+   "loc_test_only": 1,
+   "loc_test_plus_search": 1,
+   "loc_report_only": 2,
+   "loc_report_plus_search": null
+  },
+  {
+   "instance_id": "sympy__sympy-14774",
+   "has_test": true,
+   "search": 1,
+   "loc_test_only": null,
+   "loc_test_plus_search": null,
+   "loc_report_only": null,
+   "loc_report_plus_search": 1
+  },
+  {
+   "instance_id": "pallets__flask-4992",
+   "has_test": true,
+   "search": 1,
+   "loc_test_only": 1,
+   "loc_test_plus_search": 1,
+   "loc_report_only": 1,
+   "loc_report_plus_search": 1
+  },
+  {
+   "instance_id": "pallets__flask-5063",
+   "has_test": true,
+   "search": null,
+   "loc_test_only": null,
+   "loc_test_plus_search": null,
+   "loc_report_only": null,
+   "loc_report_plus_search": null
+  }
+ ]
+}

@@ -71,6 +71,9 @@ def _enclosing(defs: dict, line: int) -> str | None:
 
 
 # ------------------------------------------------------------------ Fault Localizer (tool)
+RETRIEVED_K, RETRIEVED_TOP, RETRIEVED_STEP = 10, 6.0, 0.5
+
+
 class FaultLocalizer:
     def __init__(self, repo: Path, explorer: RepoExplorer | None = None, use_slicing: bool = True):
         self.repo = Path(repo)
@@ -117,7 +120,11 @@ class FaultLocalizer:
         return out[:2]
 
     def localize(self, report: BugReport, spec: BugSpec, test_code: str | None,
-                 test_output: str | None, k: int = 6) -> list[FaultCandidate]:
+                 test_output: str | None, k: int = 6,
+                 retrieved: list[tuple[str, int, str]] | None = None) -> list[FaultCandidate]:
+        """`retrieved`: (file, line, name) of the definitions Bug Understanding's search ranked for this
+        report, best first (the search -> localiser hand-off). They add evidence by rank; the traceback
+        and the reproduction test stay the strongest signals."""
         score: dict[tuple[str, str], float] = defaultdict(float)
         why: dict[tuple[str, str], str] = {}
         tb_line: dict[tuple[str, str], int] = {}     # candidate -> failing line (criterion for slicing)
@@ -158,8 +165,22 @@ class FaultLocalizer:
                         if q.endswith("." + leaf) and not _is_test_path(f)][:2]
             for rel, q in hits:
                 add((rel, q), 4, "named in the bug report")
-        # without a test (fix_no_repro): fall back to the explorer's report-based ranking
-        if not test_code:
+        # 3b. the search's ranked definitions for this report
+        for r, (rel, line, name) in enumerate((retrieved or [])[:RETRIEVED_K]):
+            rel = rel.replace("\\", "/")
+            if rel not in self.file2mod or _is_test_path(rel):
+                continue
+            defs = self.defs(rel)
+            q = _enclosing({q: v for q, v in defs.items() if not self._is_const(rel, q)}, int(line or 0))
+            if q is None and name in defs:
+                q = name
+            if q is not None and self._is_class(rel, q):
+                # a class is not a patch target: credit its constructor (a report that names a class is
+                # usually about creating it, e.g. flask-4045 Blueprint(name=...))
+                q = f"{q}.__init__" if f"{q}.__init__" in defs else None
+            add((rel, q), max(RETRIEVED_TOP - RETRIEVED_STEP * r, 1.5), f"ranked #{r + 1} by the search")
+        # without a test (fix_no_repro) and no search results: the explorer's report-based ranking
+        if not test_code and not retrieved:
             for sn in self.explorer.search(spec, report, k=k).snippets:
                 q = _enclosing(self.defs(sn.file), sn.lineno) if sn.file in self.file2mod else None
                 add((sn.file, q or sn.name), sn.score, "matches the bug report")

@@ -52,7 +52,6 @@ def to_report(row: dict, variant: str = "full") -> BugReport:
 
 
 def run_swebench(a) -> int:
-    from autose.agent.workspace import DockerExecutor, swebench_image
 
     reports = load_reports()
     ids = list(a.ids or [])
@@ -77,52 +76,63 @@ def run_swebench(a) -> int:
     for i, iid in enumerate(ids, 1):
         if iid in done:
             continue
-        repo = PUBLIC / "code" / iid
-        if not repo.exists():
+        if not (PUBLIC / "code" / iid).exists():
             print(f"[{i}/{len(ids)}] {iid}: no code snapshot, run `python scripts/build_benchmark.py code --only {iid}`")
             continue
-        image = harness[iid]["image"] if harness and "image" in harness.get(iid, {}) else swebench_image(iid)
-        report = to_report(reports[iid], a.report)
-        print(f"\n[{i}/{len(ids)}] {iid}  ({image})", flush=True)
-        t0 = time.time()
-        ex = fixed_ex = None
-        row = {"instance_id": iid, "mode": a.mode, "retrieval": a.retrieval, "review": a.review,
-               "fix_mode": a.fix_mode if a.fix else None}
-        try:
-            ex = DockerExecutor(image, timeout_s=a.timeout)
-            if a.check_f2p:
-                fixed_ex = DockerExecutor(image, timeout_s=a.timeout, base_patch=harness[iid]["patch"])
-            row_pub = reports[iid]
-            agent = ReproAgent(llm, AgentConfig(mode=a.mode, budget=a.budget, fix=a.fix, fix_mode=a.fix_mode,
-                                                retrieval=a.retrieval, review=a.review, loop_control=a.loop_control, repo_id=row_pub["repo"],
-                                                commit=row_pub["base_commit"],
-                                                board_dir=str(out_dir / "blackboard")), executor=ex)
-            out = agent.run(report, repo, fixed_executor=fixed_ex)
-            save(out, out_dir)
-            row.update(control_switches=sum(1 for e in out.control_log if e["action"] == "switch"),
-                       control_stops=sum(1 for e in out.control_log if e["action"] == "stop"))
-            row.update(verdict=out.verdict.value, fail_to_pass=out.fail_to_pass, llm_calls=out.llm_calls,
-                       attempts=len(out.attempts), time_s=out.total_time_s)
-            if out.fix is not None:
-                row.update(fix_status=out.fix.status, fix_llm_calls=out.fix.llm_calls)
-                if a.grade and out.fix.final_diff:
-                    import docker
-                    from autose.evaluation.evaluator import evaluate
-                    res = evaluate(harness[iid], out.fix.final_diff, a.mode, out_dir / "eval" / iid,
-                                   docker.from_env(timeout=1800))
-                    row.update(resolved=res.resolved, f2p=f"{res.f2p_passed}/{res.f2p_total}",
-                               p2p=f"{res.p2p_passed}/{res.p2p_total}", eval_error=res.error)
-        except Exception as exc:   # record and continue the batch
-            row.update(error=f"{type(exc).__name__}: {exc}")
-        finally:
-            for e in (ex, fixed_ex):
-                if e is not None:
-                    e.close()
-        row["wall_s"] = round(time.time() - t0, 1)
+        print(f"\n[{i}/{len(ids)}] {iid}", flush=True)
+        row = run_one(a, iid, out_dir, llm, reports, harness)
         with summary.open("a", encoding="utf-8") as f:
             f.write(json.dumps(row) + "\n")
         print("  ->", json.dumps(row), flush=True)
     return 0
+
+
+def run_one(a, iid: str, out_dir: Path, llm: LLM, reports: dict, harness: dict | None) -> dict:
+    """One bug, one configuration, in its SWE-bench image. Never raises: errors go into the row."""
+    from autose.agent.workspace import DockerExecutor, swebench_image
+
+    repo = PUBLIC / "code" / iid
+    image = harness[iid]["image"] if harness and "image" in harness.get(iid, {}) else swebench_image(iid)
+    report = to_report(reports[iid], a.report)
+    t0 = time.time()
+    ex = fixed_ex = None
+    row = {"instance_id": iid, "mode": a.mode, "retrieval": a.retrieval, "review": a.review,
+           "loop_control": a.loop_control, "fix_mode": a.fix_mode if a.fix else None, "seed": a.seed}
+    try:
+        ex = DockerExecutor(image, timeout_s=a.timeout)
+        if a.check_f2p:
+            fixed_ex = DockerExecutor(image, timeout_s=a.timeout, base_patch=harness[iid]["patch"])
+        row_pub = reports[iid]
+        agent = ReproAgent(llm, AgentConfig(mode=a.mode, budget=a.budget, fix=a.fix, fix_mode=a.fix_mode,
+                                            retrieval=a.retrieval, review=a.review, loop_control=a.loop_control,
+                                            repo_id=row_pub["repo"], commit=row_pub["base_commit"],
+                                            board_dir=str(out_dir / "blackboard")), executor=ex)
+        out = agent.run(report, repo, fixed_executor=fixed_ex)
+        save(out, out_dir)
+        row.update(control_switches=sum(1 for e in out.control_log if e["action"] == "switch"),
+                   control_stops=sum(1 for e in out.control_log if e["action"] == "stop"))
+        row.update(verdict=out.verdict.value, fail_to_pass=out.fail_to_pass, llm_calls=out.llm_calls,
+                   attempts=len(out.attempts), time_s=out.total_time_s)
+        if out.fix is not None:
+            row.update(fix_status=out.fix.status, fix_llm_calls=out.fix.llm_calls)
+            if a.grade and out.fix.final_diff:
+                import docker
+                from autose.evaluation.evaluator import evaluate
+                res = evaluate(harness[iid], out.fix.final_diff, a.mode, out_dir / "eval" / iid,
+                               docker.from_env(timeout=1800))
+                row.update(resolved=res.resolved, f2p=f"{res.f2p_passed}/{res.f2p_total}",
+                           p2p=f"{res.p2p_passed}/{res.p2p_total}", eval_error=res.error)
+    except Exception as exc:   # record and continue the batch
+        row.update(error=f"{type(exc).__name__}: {exc}")
+    finally:
+        for e in (ex, fixed_ex):
+            if e is not None:
+                try:
+                    e.close()
+                except Exception:
+                    pass
+    row["wall_s"] = round(time.time() - t0, 1)
+    return row
 
 
 def run_local(a) -> int:

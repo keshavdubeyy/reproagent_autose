@@ -60,6 +60,7 @@ class CodeSnippet:
 class CodeContext:
     snippets: list[CodeSnippet] = field(default_factory=list)
     usage_examples: list[str] = field(default_factory=list)  # lines from existing tests
+    ranked: list = field(default_factory=list)   # (file, line, name) of the search's top definitions
 
 
 @dataclass
