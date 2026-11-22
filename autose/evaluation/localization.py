@@ -6,6 +6,7 @@ in the buggy version. For each bug and mode we record the rank of the first gold
   python -m autose.evaluation.localization                      # every bug with a code snapshot
   python -m autose.evaluation.localization --repo django/django --report raw
 Writes results/localization.json (ids, ranks, metrics only: no patch content, safe to publish).
+Progress is kept in <out>.partial.jsonl; rerunning the same command resumes. Delete it to start over.
 """
 from __future__ import annotations
 
@@ -128,10 +129,23 @@ def main() -> int:
         ids = [i for i in ids if reports[i]["repo"] in set(a.repo)]
     if a.ids:
         ids = [i for i in ids if i in set(a.ids)]
+    # One line per finished bug, so a crash or Ctrl-C loses nothing: a rerun skips bugs already done.
+    partial = a.out.with_suffix(".partial.jsonl")
+    done = {}
+    if partial.exists():
+        for line in partial.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                r = json.loads(line)
+                done[r["instance_id"]] = r
     rows = []
     for n, iid in enumerate(ids, 1):
+        if iid in done:
+            rows.append(done[iid])
+            continue
         r = evaluate_bug(iid, reports[iid], harness[iid], a.report)
         rows.append(r)
+        with partial.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(r) + "\n")
         print(f"[{n}/{len(ids)}] {iid}: " + "  ".join(f"{m}={r[m]['file_rank']}/{r[m]['symbol_rank']}" for m in MODES)
               + f"  (index {r['index_s']}s)", flush=True)
     summary = {"report": a.report, "modes": {m: metrics(rows, m) for m in MODES},

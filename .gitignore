@@ -41,3 +41,4 @@ benchmarks/*/work/
 # Leftovers from the mid-term branches (BugsInPy clones, caches)
 benchmarks/repos/
 benchmarks/.cache/
+results/*.partial.jsonl
