@@ -165,7 +165,7 @@ def build(repo: Path, repo_id: str, commit: str, force: bool = False) -> Path:
             try:
                 tree = ast.parse(src)
                 parsed = 1
-            except SyntaxError:
+            except (SyntaxError, RecursionError, ValueError):   # broken, or too deeply nested to parse
                 tree, parsed = None, 0
                 n_fail += 1
             n_files += 1
@@ -192,7 +192,12 @@ def build(repo: Path, repo_id: str, commit: str, force: bool = False) -> Path:
             if not tree:
                 continue
             v = _Visitor(rel, src.splitlines())
-            v.visit(tree)
+            try:
+                v.visit(tree)
+            except RecursionError:     # e.g. generated sympy files with very deep expressions
+                c.execute("update files set parsed=0 where id=?", (fid,))
+                n_fail += 1
+                continue
             ids = []
             for s in v.symbols:
                 parent = ids[s["parent"]] if s["parent"] is not None else mod_id
