@@ -1,0 +1,123 @@
+{
+  "source": "BugsInPy (https://github.com/soarsmu/BugsInPy). Reports are symptom-only rewrites of the original issues/commits: they never mention the fix.",
+  "bugs": [
+    {
+      "id": "youtube-dl_3",
+      "project": "youtube-dl",
+      "github_url": "https://github.com/ytdl-org/youtube-dl",
+      "buggy_commit": "f5469da9e6e259c1690c7ef54f1da1c19f65036f",
+      "patch": "youtube-dl/3.patch",
+      "title": "unescapeHTML leaves entities undecoded after a stray ampersand",
+      "body": "When a string contains a bare '&' that is not part of an entity, HTML entities that come after it are not decoded any more. For example youtube_dl.utils.unescapeHTML('&a&quot;') should return '&a\"' (the &quot; decoded) but the &quot; is left as-is."
+    },
+    {
+      "id": "youtube-dl_11",
+      "project": "youtube-dl",
+      "github_url": "https://github.com/ytdl-org/youtube-dl",
+      "buggy_commit": "b568561eba6f4aceb87419e21aba11567c5de7da",
+      "patch": "youtube-dl/11.patch",
+      "title": "str_to_int crashes when it receives an int",
+      "body": "Some extractors pass values that are already integers to youtube_dl.utils.str_to_int. Instead of returning the number unchanged it crashes with a TypeError. Expected: str_to_int(523) == 523."
+    },
+    {
+      "id": "youtube-dl_13",
+      "project": "youtube-dl",
+      "github_url": "https://github.com/ytdl-org/youtube-dl",
+      "buggy_commit": "6945b9e78f38284eb4e440b7badea2fc60b66c2f",
+      "patch": "youtube-dl/13.patch",
+      "title": "urljoin mangles absolute URLs with non-http schemes",
+      "body": "youtube_dl.utils.urljoin should return the second argument untouched when it is already an absolute URL. This works for http/https but not for other schemes such as rtmp: urljoin(None, 'rtmp://foo.de') is expected to return 'rtmp://foo.de' but returns None."
+    },
+    {
+      "id": "youtube-dl_17",
+      "project": "youtube-dl",
+      "github_url": "https://github.com/ytdl-org/youtube-dl",
+      "buggy_commit": "4bf22f7a1014c55e3358b5a419945071b152eafc",
+      "patch": "youtube-dl/17.patch",
+      "title": "cli_bool_option crashes when the option is not set",
+      "body": "youtube_dl.utils.cli_bool_option(params, command_option, param) builds external-downloader command-line flags from a params dict. When the param key is missing from the dict (e.g. cli_bool_option({}, '--check-certificate', 'nocheckcertificate')) it should simply return an empty list, but it raises an exception instead."
+    },
+    {
+      "id": "youtube-dl_27",
+      "project": "youtube-dl",
+      "github_url": "https://github.com/ytdl-org/youtube-dl",
+      "buggy_commit": "d631d5f9f27f93767226192e4288990413fa9dbd",
+      "patch": "youtube-dl/27.patch",
+      "title": "DFXP subtitle timestamps with frame separator are not parsed",
+      "body": "Some DFXP/TTML subtitles use timestamps like '00:00:01:100' (a colon before the fraction instead of a dot). youtube_dl.utils.parse_dfxp_time_expr('00:00:01:100') should return 1.1 seconds but returns None, so those subtitles cannot be converted."
+    },
+    {
+      "id": "youtube-dl_29",
+      "project": "youtube-dl",
+      "github_url": "https://github.com/ytdl-org/youtube-dl",
+      "buggy_commit": "c514b0ec655b23e7804eb18df04daa863d973f32",
+      "patch": "youtube-dl/29.patch",
+      "title": "unified_strdate returns the string 'None' for unparseable dates",
+      "body": "When youtube_dl.utils.unified_strdate cannot parse a date it should return None. Instead it returns a non-empty value, e.g. unified_strdate('UNKNOWN DATE FORMAT') does not return None, and the bogus upload date ends up in output filenames."
+    },
+    {
+      "id": "youtube-dl_43",
+      "project": "youtube-dl",
+      "github_url": "https://github.com/ytdl-org/youtube-dl",
+      "buggy_commit": "cecaaf3f58ad9f544dbb79af1e565d9353fa2b2d",
+      "patch": "youtube-dl/43.patch",
+      "title": "url_basename fails for URLs with deep paths",
+      "body": "youtube_dl.utils.url_basename returns an empty string for URLs that have several directories in the path. Expected url_basename('http://media.w3.org/2010/05/sintel/trailer.mp4') == 'trailer.mp4'."
+    },
+    {
+      "id": "thefuck_18",
+      "project": "thefuck",
+      "github_url": "https://github.com/nvbn/thefuck",
+      "buggy_commit": "b65a9a0a4fd9bef394b45a1d367d29aa1e1c403e",
+      "patch": "thefuck/18.patch",
+      "title": "sudo rule suggests 'sudo sudo ...'",
+      "body": "If I run 'sudo ls' and still get 'Permission denied', thefuck offers 'sudo sudo ls'. The sudo rule (thefuck/rules/sudo.py) should not match a command that already starts with sudo.",
+      "excluded": "Needs inspect.getargspec (removed in Python 3.11); cannot run on this machine's Python 3.14."
+    },
+    {
+      "id": "thefuck_25",
+      "project": "thefuck",
+      "github_url": "https://github.com/nvbn/thefuck",
+      "buggy_commit": "42a8b4f639269886e468762e6d100b6f01aad8ab",
+      "patch": "thefuck/25.patch",
+      "title": "mkdir_p rule does nothing for 'hdfs dfs -mkdir'",
+      "body": "For the command 'hdfs dfs -mkdir foo/bar/baz' failing with 'No such file or directory', the mkdir_p rule (thefuck/rules/mkdir_p.py) should suggest 'hdfs dfs -mkdir -p foo/bar/baz', but the suggested command is identical to the original."
+    },
+    {
+      "id": "thefuck_27",
+      "project": "thefuck",
+      "github_url": "https://github.com/nvbn/thefuck",
+      "buggy_commit": "bc6b107066d3f1e60b4cfcaa8cf6399e98cf1b1c",
+      "patch": "thefuck/27.patch",
+      "title": "open rule produces garbage for xdg-open / gnome-open",
+      "body": "The 'open' rule (thefuck/rules/open.py) adds http:// to a URL opened without a scheme. It works for 'open foo.com' but for 'xdg-open foo.com' it suggests a broken command; expected 'xdg-open http://foo.com'."
+    },
+    {
+      "id": "thefuck_31",
+      "project": "thefuck",
+      "github_url": "https://github.com/nvbn/thefuck",
+      "buggy_commit": "66e2ec7e3f0d3f848c01d87bb3503b0ff90fc78a",
+      "patch": "thefuck/31.patch",
+      "title": "git_diff_staged puts --staged in the wrong place",
+      "body": "For 'git diff foo' the git_diff_staged rule (thefuck/rules/git_diff_staged.py) suggests 'git diff foo --staged'. Expected suggestion: 'git diff --staged foo'."
+    },
+    {
+      "id": "thefuck_32",
+      "project": "thefuck",
+      "github_url": "https://github.com/nvbn/thefuck",
+      "buggy_commit": "cb33c912e5f2f4c2da6b70d708ff0437bfcd3b94",
+      "patch": "thefuck/32.patch",
+      "title": "ls_lah rule matches commands that are not ls",
+      "body": "The ls_lah rule (thefuck/rules/ls_lah.py) matches any command whose text contains 'ls', e.g. 'pacman -S binutils' (because of 'binutils'). It should only match the actual ls command."
+    },
+    {
+      "id": "tqdm_1",
+      "project": "tqdm",
+      "github_url": "https://github.com/tqdm/tqdm",
+      "buggy_commit": "8cc777fe8401a05d07f2c97e65d15e4460feab88",
+      "patch": "tqdm/1.patch",
+      "title": "tenumerate ignores the start argument",
+      "body": "tqdm.contrib.tenumerate(iterable, start=...) should behave like enumerate(iterable, start). But list(tenumerate(['a','b'], start=10)) gives indices starting at 0 instead of [(10,'a'), (11,'b')]."
+    }
+  ]
+}

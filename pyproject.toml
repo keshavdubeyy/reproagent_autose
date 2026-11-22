@@ -6,6 +6,8 @@ requires-python = ">=3.11,<3.13"
 dependencies = [
     "swebench==5.0.2",   # official SWE-bench test specs, log parsers and grading
     "docker>=7",
+    "requests>=2.31",    # Ollama client
+    "pytest>=8",         # runs reproduction tests and the unit tests
 ]
 
 [tool.setuptools.packages.find]

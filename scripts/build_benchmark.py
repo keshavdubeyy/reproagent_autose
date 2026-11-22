@@ -15,6 +15,7 @@ Steps:
   python scripts/build_benchmark.py reports --source external/brsr_data
   python scripts/build_benchmark.py code              # clones 12 repos, exports 300 snapshots (slow)
   python scripts/build_benchmark.py code --only pallets__flask-4045   # one instance
+  python scripts/build_benchmark.py code --repo pallets/flask psf/requests   # some repos
   python scripts/build_benchmark.py harness           # needs `pip install swebench`
 """
 
@@ -91,10 +92,15 @@ def git(*args: str, capture: bool = False):
     return subprocess.run(["git", *args], check=True, capture_output=capture)
 
 
-def export_code(only: str | None) -> int:
-    specs = load(OUT / "private" / "test_specs.json")
+def export_code(only: list[str] | None = None, repos: list[str] | None = None) -> int:
+    # repo + base_commit are all `code` needs; the public reports have them, so the private
+    # test_specs.json (built by `reports` from the paper's raw data) is optional here.
+    private = OUT / "private" / "test_specs.json"
+    specs = load(private) if private.exists() else load(OUT / "public" / "bug_reports.json")
     if only:
-        specs = [s for s in specs if s["instance_id"] == only]
+        specs = [s for s in specs if s["instance_id"] in set(only)]
+    if repos:
+        specs = [s for s in specs if s["repo"] in set(repos)]
     repos_dir = OUT / "private" / "repos"
     code_dir = OUT / "public" / "code"
     repos_dir.mkdir(parents=True, exist_ok=True)
@@ -148,12 +154,13 @@ def main() -> int:
     r = sub.add_parser("reports")
     r.add_argument("--source", type=Path, required=True)
     c = sub.add_parser("code")
-    c.add_argument("--only", help="export a single instance_id")
+    c.add_argument("--only", nargs="*", help="export only these instance ids")
+    c.add_argument("--repo", nargs="*", help="export only these repos, e.g. pallets/flask psf/requests")
     sub.add_parser("harness")
     a = ap.parse_args()
     if a.cmd == "harness":
         return download_harness()
-    return build_reports(a.source) if a.cmd == "reports" else export_code(a.only)
+    return build_reports(a.source) if a.cmd == "reports" else export_code(a.only, a.repo)
 
 
 if __name__ == "__main__":

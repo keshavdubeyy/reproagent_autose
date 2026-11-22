@@ -22,6 +22,7 @@ user_path_backup.txt
 __pycache__/
 *.py[cod]
 .venv/
+.venv-*/
 venv/
 *.egg-info/
 .pytest_cache/
@@ -33,3 +34,10 @@ htmlcov/
 .idea/
 Thumbs.db
 .DS_Store
+
+# Generated benchmark trees (rebuilt by benchmarks/*/build.py)
+benchmarks/*/work/
+
+# Leftovers from the mid-term branches (BugsInPy clones, caches)
+benchmarks/repos/
+benchmarks/.cache/

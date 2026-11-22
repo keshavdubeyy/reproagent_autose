@@ -1,0 +1,60 @@
+{
+  "source": "ShopCart: in-house demo e-commerce app. Each bug is a seeded mutation of the fixed app (app/). Bug shop_discount is the 'Discount is incorrectly applied to orders below Rs 1,000' use case from the course slides.",
+  "bugs": [
+    {
+      "id": "shop_discount", "file": "shopcart/pricing.py",
+      "old": "DISCOUNT_THRESHOLD = 1000 ", "new": "DISCOUNT_THRESHOLD = 100 ",
+      "title": "Discount is incorrectly applied to orders below Rs 1,000",
+      "body": "The e-commerce application provides a 10% discount for orders of Rs 1,000 or more. However, customers have reported that the discount is also being applied to orders below Rs 1,000.\nSteps to reproduce: 1. Add products worth Rs 800 to the cart. 2. Proceed to checkout. 3. Observe the bill.\nExpected: orders below Rs 1,000 should not receive a discount; the discount should be 0 and the amount before tax should remain Rs 800.\nActual: the application applies a 10% discount (Rs 80) and the discounted amount is Rs 720.\nThe issue occurs consistently. The repository contains existing unit tests for checkout functionality."
+    },
+    {
+      "id": "shop_shipping", "file": "shopcart/pricing.py",
+      "old": "if Decimal(str(amount)) >= FREE_SHIPPING_THRESHOLD:", "new": "if Decimal(str(amount)) > FREE_SHIPPING_THRESHOLD:",
+      "title": "Shipping charged on orders of exactly Rs 500",
+      "body": "Our policy says orders of Rs 500 or more ship for free. A customer whose order came to exactly Rs 500 was still charged the Rs 50 shipping fee at checkout. Expected shipping for a Rs 500 order: 0."
+    },
+    {
+      "id": "shop_coupon", "file": "shopcart/pricing.py",
+      "old": "return COUPONS.get(code.strip().upper(), Decimal(\"0\"))", "new": "return COUPONS.get(code.strip(), Decimal(\"0\"))",
+      "title": "Coupon code rejected when typed in lowercase",
+      "body": "Entering the coupon 'save10' in the cart is rejected (Cart.apply_coupon returns False), while 'SAVE10' works. Coupon codes are supposed to be case-insensitive, so 'save10' should be accepted."
+    },
+    {
+      "id": "shop_gst", "file": "shopcart/pricing.py",
+      "old": "return money(Decimal(str(amount)) * GST_RATE)", "new": "return Decimal(int(Decimal(str(amount)) * GST_RATE * 100)) / 100",
+      "title": "GST is off by one paisa",
+      "body": "The GST shown on some bills is one paisa too low. For a taxable amount of Rs 12.25 the 18% GST is 2.205, which should round to Rs 2.21, but the app shows Rs 2.20 (shopcart.pricing.gst)."
+    },
+    {
+      "id": "shop_empty_checkout", "file": "shopcart/cart.py",
+      "old": "    if not cart.items:\n        raise ValueError(\"cart is empty\")\n", "new": "",
+      "title": "Checkout of an empty cart crashes with an obscure error",
+      "body": "If a user clicks checkout with an empty cart the server crashes with a decimal InvalidOperation / division error. Checkout of an empty cart should be rejected with a clear ValueError saying the cart is empty."
+    },
+    {
+      "id": "shop_set_quantity_zero", "file": "shopcart/cart.py",
+      "old": "        if quantity == 0:\n            self.items.pop(sku, None)\n            return\n", "new": "",
+      "title": "Setting quantity to 0 does not remove the item",
+      "body": "In the cart page, setting an item's quantity to 0 should remove it from the cart (Cart.set_quantity). Instead the item stays in the cart with quantity 0 and still shows up in the order."
+    },
+    {
+      "id": "shop_remove_missing", "file": "shopcart/cart.py",
+      "old": "return self.items.pop(sku, None) is not None", "new": "del self.items[sku]\n        return True",
+      "title": "Removing an item twice crashes",
+      "body": "Double-clicking the remove button sends two remove requests. The second one crashes with a KeyError. Cart.remove is documented to return False when the item is not in the cart."
+    },
+    {
+      "id": "shop_stock", "file": "shopcart/cart.py",
+      "old": "        product.stock -= qty", "new": "        product.stock -= 1",
+      "title": "Inventory not reduced correctly after checkout",
+      "body": "A product had 10 units in stock. A customer bought 3 units of it in one order, but after checkout the product's stock shows 9 instead of 7."
+    },
+    {
+      "id": "shop_vague", "file": "shopcart/pricing.py",
+      "old": "DISCOUNT_THRESHOLD = 1000 ", "new": "DISCOUNT_THRESHOLD = 100 ",
+      "expected_verdict": "needs_more_information",
+      "title": "Something is wrong",
+      "body": "The website doesn't work properly sometimes. Please look into it."
+    }
+  ]
+}

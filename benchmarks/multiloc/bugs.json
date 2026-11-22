@@ -1,0 +1,55 @@
+{
+  "description": "Seeded MULTI-LOCATION bugs in the ShopCart app: every bug needs changes in two definitions (same file, two files, or code + constant). Fixing only one place leaves the hidden oracle failing. Built by build.py from ../shopcart/app.",
+  "bugs": [
+    {
+      "id": "ml_boundaries",
+      "kind": "same mistake in two functions (pricing.py)",
+      "mutations": [
+        {"file": "shopcart/pricing.py", "old": "    if subtotal >= DISCOUNT_THRESHOLD:", "new": "    if subtotal > DISCOUNT_THRESHOLD:"},
+        {"file": "shopcart/pricing.py", "old": "    if Decimal(str(amount)) >= FREE_SHIPPING_THRESHOLD:", "new": "    if Decimal(str(amount)) > FREE_SHIPPING_THRESHOLD:"}
+      ],
+      "title": "Orders exactly at the discount and free-shipping limits are treated wrongly",
+      "body": "The store promises a 10% discount for orders of Rs 1,000 or more, and free shipping for orders of Rs 500 or more.\nBut the limits themselves are excluded:\n1. An order of exactly Rs 1,000 gets no discount. Expected: discount Rs 100. Actual: discount Rs 0.\n2. The shipping fee for an amount of exactly Rs 500 is Rs 50. Expected: free shipping (Rs 0). Actual: Rs 50.\nBoth checks seem to use the wrong comparison."
+    },
+    {
+      "id": "ml_quantity",
+      "kind": "two methods of one class (cart.py)",
+      "mutations": [
+        {"file": "shopcart/cart.py", "old": "        if quantity <= 0:\n            raise ValueError(\"quantity must be positive\")", "new": "        if quantity < 0:\n            raise ValueError(\"quantity must be positive\")"},
+        {"file": "shopcart/cart.py", "old": "        if quantity < 0:\n            raise ValueError(\"quantity cannot be negative\")\n", "new": ""}
+      ],
+      "title": "Cart accepts invalid quantities",
+      "body": "The cart silently accepts quantities that make no sense.\n1. cart.add(product, 0) adds the product with quantity 0. Expected: ValueError, because the quantity must be positive.\n2. cart.set_quantity(sku, -2) on an item in the cart sets its quantity to -2. Expected: ValueError, because a quantity cannot be negative.\nNegative or zero quantities later produce wrong totals at checkout."
+    },
+    {
+      "id": "ml_shipping",
+      "kind": "caller in cart.py + constant in pricing.py",
+      "mutations": [
+        {"file": "shopcart/cart.py", "old": "    ship = shipping_fee(taxable)", "new": "    ship = shipping_fee(subtotal)"},
+        {"file": "shopcart/pricing.py", "old": "SHIPPING_FEE = Decimal(\"50\")", "new": "SHIPPING_FEE = Decimal(\"40\")"}
+      ],
+      "title": "Shipping charges are wrong",
+      "body": "Shipping is a flat Rs 50, free when the amount payable (after discounts and coupons) is Rs 500 or more.\n1. A Rs 300 order (one product of Rs 300) is charged Rs 40 shipping. Expected: Rs 50.\n2. A Rs 520 order (one product of Rs 520) with coupon SAVE10 pays Rs 468 after the coupon, so it should be charged Rs 50 shipping. Actual: shipping is free (Rs 0); free shipping seems to be decided on the amount before the coupon."
+    },
+    {
+      "id": "ml_coupon",
+      "kind": "function in pricing.py + caller in cart.py",
+      "mutations": [
+        {"file": "shopcart/pricing.py", "old": "    return COUPONS.get(code.strip().upper(), Decimal(\"0\"))", "new": "    return COUPONS.get(code.upper(), Decimal(\"0\"))"},
+        {"file": "shopcart/cart.py", "old": "    coupon = money((subtotal - discount) * coupon_rate(cart.coupon))", "new": "    coupon = money(subtotal * coupon_rate(cart.coupon))"}
+      ],
+      "title": "Coupon problems: codes with spaces rejected, coupon computed on the wrong amount",
+      "body": "Coupon codes are documented as case-insensitive and ignoring surrounding spaces, and the coupon applies to the amount after the bulk discount.\n1. cart.apply_coupon(' save10 ') (with spaces) returns False. Expected: True (it is the SAVE10 coupon).\n2. A Rs 2,000 order (one product of Rs 2,000) with coupon SAVE10: the bulk discount is Rs 200, so the coupon should be 10% of Rs 1,800 = Rs 180. Actual: coupon Rs 200 (computed on the amount before the discount)."
+    },
+    {
+      "id": "ml_gst",
+      "kind": "constant in pricing.py + caller in cart.py (one symptom, two causes)",
+      "mutations": [
+        {"file": "shopcart/pricing.py", "old": "GST_RATE = Decimal(\"0.18\")", "new": "GST_RATE = Decimal(\"0.12\")"},
+        {"file": "shopcart/cart.py", "old": "    tax = gst(taxable)", "new": "    tax = gst(subtotal)"}
+      ],
+      "title": "GST on the bill is wrong",
+      "body": "GST must be 18% of the amount after discounts and coupons.\nSteps: add one product of Rs 1,000 to the cart and check out. The 10% bulk discount gives Rs 900 taxable.\nExpected: tax = 18% of Rs 900 = Rs 162.00.\nActual: tax = Rs 120.00.\nWe suspect both the GST rate and the amount it is applied to are wrong."
+    }
+  ]
+}

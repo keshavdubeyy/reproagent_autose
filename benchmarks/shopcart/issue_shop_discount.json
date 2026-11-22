@@ -1,0 +1,5 @@
+{
+  "id": "shop_discount",
+  "title": "Discount is incorrectly applied to orders below Rs 1,000",
+  "body": "The e-commerce application provides a 10% discount for orders of Rs 1,000 or more. However, customers have reported that the discount is also being applied to orders below Rs 1,000.\nSteps to reproduce: 1. Add products worth Rs 800 to the cart. 2. Proceed to checkout. 3. Observe the bill.\nExpected: orders below Rs 1,000 should not receive a discount; the discount should be 0 and the amount before tax should remain Rs 800.\nActual: the application applies a 10% discount (Rs 80) and the discounted amount is Rs 720.\nThe issue occurs consistently. The repository contains existing unit tests for checkout functionality."
+}
