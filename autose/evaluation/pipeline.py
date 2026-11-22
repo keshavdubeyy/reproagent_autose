@@ -11,7 +11,7 @@ Three views:
   handoffs       P(next checkpoint passes | previous one passed): is the connection working?
   first break    the first checkpoint each bug fails: where the pipeline loses most bugs
 
-  python -m autose.evaluation.pipeline runs/e2e_test_22nov --html ../pipeline.html
+  python -m autose.evaluation.pipeline runs/e2e_test_22nov --html ../pipeline.html --js ../pipeline-data.js
 Writes results/pipeline_<run>.json (ids, booleans, rates only; no patch content).
 """
 from __future__ import annotations
@@ -100,6 +100,8 @@ def check_bug(row: dict, outcome: dict | None, gold_patch: str) -> dict:
         for k in ("loc_file", "loc_func", "patch_applies", "patch_gold", "self_check"):
             r[k] = None
     r["resolved"] = row.get("resolved")
+    if r["resolved"] is None and fix and not fix.get("final_diff"):
+        r["resolved"] = False                    # no patch produced: cannot be resolved
     r["first_break"] = next((k for k in CHAIN if r.get(k) is False), None if r.get("resolved") else "unknown")
     return r
 
@@ -225,6 +227,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("runs", nargs="+", type=Path, help="one or more runs/<name> folders (merged)")
     ap.add_argument("--html", type=Path, help="also write the visual report here")
+    ap.add_argument("--js", type=Path, help="also write window.PIPELINE = {...} here (read by architecture-audit.html)")
     a = ap.parse_args()
     parts = [analyse(r) for r in a.runs]
     bugs = [b for p in parts for b in p["bugs"]]
@@ -234,6 +237,11 @@ def main() -> int:
     for s in res["stages"]:
         print(f"{s['label']:<48} {s['pass']:>3}/{s['n']:<3}")
     print("first break:", res["first_break"])
+    if a.js:
+        slim = {k: v for k, v in res.items() if k != "bugs"}
+        slim["resolved"] = sum(1 for b in bugs if b.get("resolved"))
+        a.js.write_text("window.PIPELINE = " + json.dumps(slim) + ";\n", encoding="utf-8")
+        print("->", a.js)
     if a.html:
         a.html.write_text(to_html(res), encoding="utf-8")
         print("->", a.html)
