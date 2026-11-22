@@ -34,6 +34,7 @@ from .explore import IndexedExplorer, RepoExplorer, TestGenerator
 from .repair import (FaultLocalizer, PatchApplier, PatchGenerator, changed_definitions,
                          cumulative_diff, find_siblings)
 from .blackboard import Blackboard, BlackboardError, patch_sha
+from .control import LoopController
 from .review import Reviewer
 from .verify import FailToPassChecker, MessageJudge, PatchValidator, ResultAnalyzer, relax_invented_messages
 from .workspace import TEST_FILE, Executor, LocalExecutor
@@ -68,6 +69,7 @@ class AgentConfig:
     commit: Optional[str] = None
     board_dir: Optional[str] = None      # blackboard folder (one sub-folder per bug); None = in memory
     review: str = "off"                  # off | rules | slm: independent review of accepted patches
+    loop_control: bool = False           # failure fingerprints: switch strategy / stop on repeats
 
 
 class ReproAgent:
@@ -77,6 +79,7 @@ class ReproAgent:
         self._ctx = None          # code retrieved by Bug Understanding (kept for the outcome)
         self.board = Blackboard(None, "-")
         self._review_ctx = None
+        self.ctl: Optional[LoopController] = None
         self.cfg = config or AgentConfig()
         self.reviewer = (Reviewer(llm, use_slm=self.cfg.review == "slm")
                          if self.cfg.review in ("rules", "slm") else None)
@@ -99,6 +102,7 @@ class ReproAgent:
         t0 = time.time()
         calls0 = self.llm.calls
         self.board = Blackboard(Path(self.cfg.board_dir) if self.cfg.board_dir else None, report.id)
+        self.ctl = LoopController() if self.cfg.loop_control else None
         # 1. Issue Management: interpret the report
         spec = self.specifier.specify(report)
         self.log(f"[spec] expected={spec.expected!r} symbols={spec.symbols} kind={spec.failure_kind}")
@@ -136,6 +140,13 @@ class ReproAgent:
                 if ana.is_reproduction:
                     final = test
                     break
+                if self.ctl is not None:
+                    d = self.ctl.observe("reproduce", ana.category, res.exception_type, res.failure_line)
+                    if d.action == "switch":
+                        ana.feedback = (ana.feedback + " " + d.message).strip()
+                    elif d.action == "stop":
+                        self.log(f"[control] {d.message}")
+                        break
         finally:
             sandbox.cleanup()
 
@@ -165,6 +176,9 @@ class ReproAgent:
                 except BlackboardError as e:     # rule broken: do not report an unchecked patch as fixed
                     self.log(f"[blackboard] {e}")
                     out.fix.status, out.fix.final_diff = "not_fixed", None
+
+        if self.ctl is not None:
+            out.control_log = list(self.ctl.log)
 
         # Evaluation-only oracle: fail-to-pass on the fixed version (never fed back to the agent).
         if fixed_repo is not None or fixed_executor is not None:
@@ -220,6 +234,16 @@ class ReproAgent:
             if check.accepted:
                 final = patch
                 break
+            if self.ctl is not None:
+                d = self.ctl.observe("repair", check.category, check.repro_status,
+                                     (check.feedback or "").split(". ")[0])
+                if d.action == "switch":           # same failure again: focus on the next candidate
+                    check.feedback = (check.feedback + " " + d.message).strip()
+                    cands = cands[1:] + cands[:1]
+                    self.log(f"[control] switch: focus on {cands[0].file}:{cands[0].name}" if cands else "[control] switch")
+                elif d.action == "stop":
+                    self.log(f"[control] {d.message}")
+                    break
         return FixOutcome(bug_id=report.id, mode=mode, status="fixed" if final else "not_fixed",
                           attempts=history, candidates=cands, final_diff=final.diff if final else None,
                           total_time_s=round(time.time() - t0, 1), llm_calls=self.llm.calls - calls0,
@@ -289,6 +313,14 @@ class ReproAgent:
                 if check.accepted:
                     final = patch
                     break
+                if self.ctl is not None and check.category != "partial":
+                    d = self.ctl.observe("repair", check.category, check.repro_status,
+                                         (check.feedback or "").split(". ")[0])
+                    if d.action == "switch":
+                        check.feedback = (check.feedback + " " + d.message).strip()
+                    elif d.action == "stop":
+                        self.log(f"[control] {d.message}")
+                        break
                 if check.category == "partial":     # keep it, re-localise on the patched code
                     budget = min(budget + 1, m.get("max_budget", 5))   # progress earns one more attempt
                     base = dict(patch.files)

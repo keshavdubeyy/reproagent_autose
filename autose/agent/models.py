@@ -187,6 +187,7 @@ class Outcome:
     fix: Optional[FixOutcome] = None        # filled when bug resolution (fixing) is enabled
     retrieved: list = field(default_factory=list)   # "file:name" of code Bug Understanding retrieved
     retrieval: str = ""                             # which search produced it (explorer/bm25/hybrid/graph)
+    control_log: list = field(default_factory=list)  # loop controller decisions (fingerprint, action)
 
     def to_dict(self) -> dict:
         d = asdict(self)

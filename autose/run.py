@@ -61,7 +61,7 @@ def run_swebench(a) -> int:
     if not ids:
         sys.exit("give --ids or --subset")
     out_dir = Path("runs") / (a.run_name or f"{a.mode}_{a.retrieval}{'+' + a.fix_mode if a.fix else ''}"
-                              f"{'+review-' + a.review if a.review != 'off' else ''}_{a.report}")
+                              f"{'+review-' + a.review if a.review != 'off' else ''}{'+loopctl' if a.loop_control else ''}_{a.report}")
     out_dir.mkdir(parents=True, exist_ok=True)
     summary = out_dir / "summary.jsonl"
     done = {json.loads(l)["instance_id"] for l in summary.read_text().splitlines() if l.strip()} \
@@ -94,11 +94,13 @@ def run_swebench(a) -> int:
                 fixed_ex = DockerExecutor(image, timeout_s=a.timeout, base_patch=harness[iid]["patch"])
             row_pub = reports[iid]
             agent = ReproAgent(llm, AgentConfig(mode=a.mode, budget=a.budget, fix=a.fix, fix_mode=a.fix_mode,
-                                                retrieval=a.retrieval, review=a.review, repo_id=row_pub["repo"],
+                                                retrieval=a.retrieval, review=a.review, loop_control=a.loop_control, repo_id=row_pub["repo"],
                                                 commit=row_pub["base_commit"],
                                                 board_dir=str(out_dir / "blackboard")), executor=ex)
             out = agent.run(report, repo, fixed_executor=fixed_ex)
             save(out, out_dir)
+            row.update(control_switches=sum(1 for e in out.control_log if e["action"] == "switch"),
+                       control_stops=sum(1 for e in out.control_log if e["action"] == "stop"))
             row.update(verdict=out.verdict.value, fail_to_pass=out.fail_to_pass, llm_calls=out.llm_calls,
                        attempts=len(out.attempts), time_s=out.total_time_s)
             if out.fix is not None:
@@ -127,7 +129,7 @@ def run_local(a) -> int:
     report = IssueRetrieval().load(a.issue)
     agent = ReproAgent(LLM(a.model, seed=a.seed),
                        AgentConfig(mode=a.mode, budget=a.budget, fix=a.fix, fix_mode=a.fix_mode,
-                                   retrieval=a.retrieval, review=a.review, board_dir=str(Path(a.out) / "blackboard")))
+                                   retrieval=a.retrieval, review=a.review, loop_control=a.loop_control, board_dir=str(Path(a.out) / "blackboard")))
     outcome = agent.run(report, a.repo, a.fixed)
     path = save(outcome, a.out)
     print("\n" + to_markdown(outcome))
@@ -147,6 +149,8 @@ def main() -> int:
     common.add_argument("--seed", type=int, default=7)
     common.add_argument("--review", default="off", choices=["off", "rules", "slm"],
                         help="independent review of patches the tests accepted (rules, or rules + local model)")
+    common.add_argument("--loop-control", action="store_true",
+                        help="failure fingerprints: switch strategy after a repeated failure, stop after three")
     common.add_argument("--retrieval", default="explorer", choices=["explorer", "bm25", "hybrid", "graph"],
                         help="how Bug Understanding finds code: mid-term keyword search or the knowledge package")
     sub = ap.add_subparsers(dest="cmd", required=True)
