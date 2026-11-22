@@ -34,6 +34,7 @@ from .explore import IndexedExplorer, RepoExplorer, TestGenerator
 from .repair import (FaultLocalizer, PatchApplier, PatchGenerator, changed_definitions,
                          cumulative_diff, find_siblings)
 from .blackboard import Blackboard, BlackboardError, patch_sha
+from .review import Reviewer
 from .verify import FailToPassChecker, MessageJudge, PatchValidator, ResultAnalyzer, relax_invented_messages
 from .workspace import TEST_FILE, Executor, LocalExecutor
 
@@ -66,6 +67,7 @@ class AgentConfig:
     repo_id: Optional[str] = None        # knowledge package key; None = local project, re-indexed
     commit: Optional[str] = None
     board_dir: Optional[str] = None      # blackboard folder (one sub-folder per bug); None = in memory
+    review: str = "off"                  # off | rules | slm: independent review of accepted patches
 
 
 class ReproAgent:
@@ -74,7 +76,10 @@ class ReproAgent:
         self.llm = llm
         self._ctx = None          # code retrieved by Bug Understanding (kept for the outcome)
         self.board = Blackboard(None, "-")
+        self._review_ctx = None
         self.cfg = config or AgentConfig()
+        self.reviewer = (Reviewer(llm, use_slm=self.cfg.review == "slm")
+                         if self.cfg.review in ("rules", "slm") else None)
         m = MODES[self.cfg.mode]
         self.use_context = m["use_context"]
         self.budget = m["budget"] or self.cfg.budget
@@ -189,6 +194,7 @@ class ReproAgent:
         """Localise -> generate patch -> validate in sandbox -> refine. The repro test is never edited."""
         t0, calls0 = time.time(), self.llm.calls
         m = FIX_MODES[mode]
+        self._review_ctx = (report, spec, repo)
         test = repro_test if m["use_repro"] else None
         if m.get("multi") and test is not None:
             return self._fix_multi(report, spec, repo, test, mode, m, t0, calls0)
@@ -233,6 +239,16 @@ class ReproAgent:
             "attempt": patch.attempt, "patch_sha": sha, "category": check.category, "accepted": check.accepted,
             "repro_status": check.repro_status, "regressions": [str(r) for r in check.regressions][:50],
             "feedback": (check.feedback or "")[:2000]})
+        if self.reviewer is not None and check.accepted and self._review_ctx is not None:
+            report, spec, repo = self._review_ctx
+            r = self.reviewer.review(report, spec, repo, patch)
+            self.board.post("REVIEW_REPORT", "review", {"patch_sha": sha, "decision": r.decision,
+                                                        "reasons": r.reasons, "by": r.by})
+            self.log(f"[review] {r.decision}" + (f": {'; '.join(r.reasons)}" if r.reasons else ""))
+            if r.decision == "REJECT":          # back to the repair loop with the reviewer's reasons
+                check.accepted, check.category = False, "review_rejected"
+                check.feedback = ("An independent review rejected your patch: " + " ".join(r.reasons)
+                                  + ". Change only what the bug needs and keep all other code exactly as it was.")
 
     def _fix_multi(self, report: BugReport, spec: BugSpec, repo: Path, test: ReproTest, mode: str,
                    m: dict, t0: float, calls0: int) -> FixOutcome:
