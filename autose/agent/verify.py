@@ -20,6 +20,8 @@ import time
 from pathlib import Path
 from typing import Optional
 
+from autose.intel.index import module_name
+
 from .llm import LLM, parse_json
 from .models import Analysis, BugReport, BugSpec, ExecutionResult, Patch, PatchCheck, ReproTest
 from .workspace import TEST_FILE, Executor, LocalExecutor, Sandbox, TestExecutor  # noqa: F401
@@ -381,10 +383,11 @@ class PatchValidator:
                 exact = [rf"^\s*import {re.escape(mod)}\b", rf"^\s*from {re.escape(mod)} import"]
                 if pkg:
                     exact.append(rf"^\s*from {re.escape(pkg)} import .*\b{re.escape(leaf)}\b")
+                named = p.name == f"test_{leaf}.py"       # tests/test_blueprints.py for flask.blueprints
                 if any(re.search(x, src, re.M) for x in exact):
-                    tier = 0 if p.name == f"test_{leaf}.py" else 1
+                    tier = 0 if named else 1
                 elif pkg and re.search(rf"^\s*(from {re.escape(pkg)} import|import {re.escape(pkg)}\b)", src, re.M):
-                    tier = 2    # imports the package that re-exports the module's names
+                    tier = 0 if named else 2    # imports the package that re-exports the module's names
                 else:
                     continue
                 rank = (tier, i)
@@ -437,6 +440,10 @@ class PatchValidator:
                                           "(or your change broke the code path).", repro_status, [], res.output,
                                           res.n_failed, res.failing)
                 sb.remove(TEST_FILE)
+            # Always include the tests of the files this patch actually changed (the localiser's guess of
+            # where the bug is can differ from where the patch landed).
+            changed_mods = [module_name(rel) for rel in patch.files if rel.endswith(".py")]
+            files = list(files) + [f for f in self.select_tests(repo, changed_mods) if f not in files][:1]
             base = self.baseline(repo, files, label)
             fails, out = self.run_suite(sb, files)
             regs = sorted(fails - base) if base is not None and fails is not None else []

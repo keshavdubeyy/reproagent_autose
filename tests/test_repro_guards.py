@@ -54,3 +54,12 @@ def test_exception_named_in_the_report_still_counts():
     spec = BugSpec("", "returns None", "raises ValueError", failure_kind="wrong_value")
     a = ResultAnalyzer(None).analyze(rep, spec, ReproTest(1, ""), run(out, "ValueError"))
     assert a.category == "reproduced"
+
+
+def test_regression_tests_follow_the_changed_module(tmp_path):
+    from autose.agent.verify import PatchValidator
+    (tmp_path / "tests").mkdir()
+    (tmp_path / "tests" / "test_small.py").write_text("import flask\n")
+    (tmp_path / "tests" / "test_blueprints.py").write_text("import flask\n" + "# many tests\n" * 200)
+    v = PatchValidator(executor=None, max_files=1)
+    assert v.select_tests(tmp_path, ["flask.blueprints"]) == ["tests/test_blueprints.py"]
