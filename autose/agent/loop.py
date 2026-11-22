@@ -30,7 +30,7 @@ from .issue import BugSpecifier
 from .llm import LLM
 from .models import (AttemptRecord, BugReport, BugSpec, FixOutcome, Outcome, PatchAttempt,
                      PatchCheck, ReproTest, Verdict)
-from .explore import RepoExplorer, TestGenerator
+from .explore import IndexedExplorer, RepoExplorer, TestGenerator
 from .repair import (FaultLocalizer, PatchApplier, PatchGenerator, changed_definitions,
                          cumulative_diff, find_siblings)
 from .verify import FailToPassChecker, MessageJudge, PatchValidator, ResultAnalyzer
@@ -61,6 +61,9 @@ class AgentConfig:
     extra_paths: Optional[list] = None   # extra PYTHONPATH entries for the sandbox
     fix: bool = False                    # bug resolution after an accepted reproduction
     fix_mode: str = "fix_full"
+    retrieval: str = "explorer"          # explorer (mid-term keyword search) | bm25 | hybrid | graph
+    repo_id: Optional[str] = None        # knowledge package key; None = local project, re-indexed
+    commit: Optional[str] = None
 
 
 class ReproAgent:
@@ -95,7 +98,8 @@ class ReproAgent:
         # 2. Reproduction: explore the code base
         ctx, layout = None, ""
         if self.use_context:
-            explorer = RepoExplorer(repo)
+            explorer = (RepoExplorer(repo) if self.cfg.retrieval == "explorer" else
+                        IndexedExplorer(repo, self.cfg.retrieval, self.cfg.repo_id, self.cfg.commit))
             ctx = explorer.search(spec, report)
             layout = explorer.repo_layout()
             self.analyzer.explorer = explorer if self.symbol_feedback else None

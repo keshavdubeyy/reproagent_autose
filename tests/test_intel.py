@@ -113,3 +113,13 @@ def test_src_and_lib_layouts_map_to_import_paths():
         assert f("src/_pytest/__init__.py") == "_pytest"
         assert f("django/db/models/query.py") == "django.db.models.query"
         assert f("src.py") == "src"
+
+
+def test_indexed_explorer_returns_code_snippets(repo):
+    from autose.agent.explore import IndexedExplorer
+    from autose.agent.models import BugSpec
+    ex = IndexedExplorer(repo, "hybrid")
+    ctx = ex.search(BugSpec("", "no discount below threshold", "discount applied"),
+                    BugReport("b", "Bulk discount applied below threshold", "800 order gets bulk_discount"), k=3)
+    assert ctx.snippets and ctx.snippets[0].name == "bulk_discount"
+    assert ctx.snippets[0].module == "shop.pricing" and "def bulk_discount" in ctx.snippets[0].source

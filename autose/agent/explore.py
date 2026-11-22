@@ -274,3 +274,43 @@ def _norm(code: str) -> str:
 
 def _tail(s: str, n: int) -> str:
     return "\n".join(s.strip().splitlines()[-n:])
+
+
+# ------------------------------------------------------------------ explorer backed by the knowledge package
+class IndexedExplorer(RepoExplorer):
+    """Same tool interface, but `search` ranks code with the knowledge package (autose/intel) instead of
+    keyword overlap: `bm25`, `hybrid` (configuration C) or `graph` (configuration D)."""
+
+    def __init__(self, repo: Path, mode: str = "hybrid", repo_id: str | None = None, commit: str | None = None):
+        super().__init__(repo)
+        from autose.intel.index import KnowledgeIndex, build
+        from autose.intel.retrieve import HybridRetriever
+        rebuild = commit is None            # a local project without a known commit: always re-index
+        self.index = KnowledgeIndex(build(self.repo, repo_id or f"local/{self.repo.name}",
+                                          commit or "worktree", force=rebuild))
+        self.retriever = HybridRetriever(self.index, mode)
+        self.mode = mode
+        self.last = None
+
+    def search(self, spec: BugSpec, report: BugReport, k: int = 4) -> CodeContext:
+        if self._defs is None:
+            self._index()                   # still needed for symbol hints and usage examples
+        r = self.retriever.search(report, k_symbols=40)
+        self.last = r
+        top: list[CodeSnippet] = []
+        for c in r.symbols:
+            row = self.index.symbol(c.sid)
+            if row["kind"] == "module":
+                continue
+            try:
+                lines = (self.repo / row["path"]).read_text(encoding="utf-8", errors="replace").splitlines()
+            except OSError:
+                continue
+            body = lines[row["lineno"] - 1:row["end_lineno"]]
+            if len(body) > MAX_SNIPPET_LINES:
+                body = body[:MAX_SNIPPET_LINES] + ["    # ... (truncated)"]
+            top.append(CodeSnippet(file=row["path"], module=row["module"], name=row["name"], lineno=row["lineno"],
+                                   source="\n".join(body), score=round(c.score, 2)))
+            if len(top) >= k:
+                break
+        return CodeContext(snippets=top, usage_examples=self._usage(top[:2]))

@@ -60,7 +60,7 @@ def run_swebench(a) -> int:
         ids += json.loads(Path(a.subset).read_text(encoding="utf-8"))
     if not ids:
         sys.exit("give --ids or --subset")
-    out_dir = Path("runs") / (a.run_name or f"{a.mode}{'+' + a.fix_mode if a.fix else ''}_{a.report}")
+    out_dir = Path("runs") / (a.run_name or f"{a.mode}_{a.retrieval}{'+' + a.fix_mode if a.fix else ''}_{a.report}")
     out_dir.mkdir(parents=True, exist_ok=True)
     summary = out_dir / "summary.jsonl"
     done = {json.loads(l)["instance_id"] for l in summary.read_text().splitlines() if l.strip()} \
@@ -85,13 +85,15 @@ def run_swebench(a) -> int:
         print(f"\n[{i}/{len(ids)}] {iid}  ({image})", flush=True)
         t0 = time.time()
         ex = fixed_ex = None
-        row = {"instance_id": iid, "mode": a.mode, "fix_mode": a.fix_mode if a.fix else None}
+        row = {"instance_id": iid, "mode": a.mode, "retrieval": a.retrieval, "fix_mode": a.fix_mode if a.fix else None}
         try:
             ex = DockerExecutor(image, timeout_s=a.timeout)
             if a.check_f2p:
                 fixed_ex = DockerExecutor(image, timeout_s=a.timeout, base_patch=harness[iid]["patch"])
-            agent = ReproAgent(llm, AgentConfig(mode=a.mode, budget=a.budget, fix=a.fix, fix_mode=a.fix_mode),
-                               executor=ex)
+            row_pub = reports[iid]
+            agent = ReproAgent(llm, AgentConfig(mode=a.mode, budget=a.budget, fix=a.fix, fix_mode=a.fix_mode,
+                                                retrieval=a.retrieval, repo_id=row_pub["repo"],
+                                                commit=row_pub["base_commit"]), executor=ex)
             out = agent.run(report, repo, fixed_executor=fixed_ex)
             save(out, out_dir)
             row.update(verdict=out.verdict.value, fail_to_pass=out.fail_to_pass, llm_calls=out.llm_calls,
@@ -121,7 +123,8 @@ def run_swebench(a) -> int:
 def run_local(a) -> int:
     report = IssueRetrieval().load(a.issue)
     agent = ReproAgent(LLM(a.model, seed=a.seed),
-                       AgentConfig(mode=a.mode, budget=a.budget, fix=a.fix, fix_mode=a.fix_mode))
+                       AgentConfig(mode=a.mode, budget=a.budget, fix=a.fix, fix_mode=a.fix_mode,
+                                   retrieval=a.retrieval))
     outcome = agent.run(report, a.repo, a.fixed)
     path = save(outcome, a.out)
     print("\n" + to_markdown(outcome))
@@ -139,6 +142,8 @@ def main() -> int:
     common.add_argument("--fix-mode", default="fix_full", choices=list(FIX_MODES))
     common.add_argument("--model", default=DEFAULT_MODEL)
     common.add_argument("--seed", type=int, default=7)
+    common.add_argument("--retrieval", default="explorer", choices=["explorer", "bm25", "hybrid", "graph"],
+                        help="how Bug Understanding finds code: mid-term keyword search or the knowledge package")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     lo = sub.add_parser("local", parents=[common], help="a project on this machine")
