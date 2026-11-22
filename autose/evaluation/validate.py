@@ -29,7 +29,7 @@ from pathlib import Path
 
 import docker
 
-from autose.evaluation.evaluator import evaluate, load_harness
+from autose.evaluation.evaluator import PLATFORM, evaluate, load_harness
 
 PRIVATE = Path("benchmarks/swe_bench_lite/private")
 OUT = PRIVATE / "validation"                 # logs contain the gold patch: private
@@ -75,7 +75,7 @@ class Prefetcher:
                 return
             try:
                 repo, tag = image.rsplit(":", 1)
-                self.client.images.pull(repo, tag=tag)
+                self.client.images.pull(repo, tag=tag, platform=PLATFORM)
                 return
             except Exception as exc:
                 limited = "429" in str(exc) or "Too Many Requests" in str(exc)

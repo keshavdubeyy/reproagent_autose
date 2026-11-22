@@ -136,6 +136,7 @@ class DockerExecutor(Executor):
     WORKDIR = "/testbed"
     ACTIVATE = "source /opt/miniconda3/bin/activate && conda activate testbed"
     INI = "/tmp/autose_pytest.ini"
+    PLATFORM = "linux/amd64"   # SWE-bench images are x86 only (emulated on Apple Silicon)
 
     def __init__(self, image: str, timeout_s: int = 180, base_patch: str | None = None,
                  name: str | None = None, client=None):
@@ -145,7 +146,13 @@ class DockerExecutor(Executor):
         self.image = image
         self.name = name or f"autose-agent-{int(time.time() * 1000) % 10**9}"
         self.pushed: set[str] = set()      # paths currently differing from the base state
+        try:
+            self.client.images.get(image)
+        except docker.errors.ImageNotFound:
+            repo, tag = image.rsplit(":", 1)
+            self.client.images.pull(repo, tag=tag, platform=self.PLATFORM)
         self.container = self.client.containers.create(image, command="tail -f /dev/null", name=self.name,
+                                                       platform=self.PLATFORM,
                                                        working_dir=self.WORKDIR, user="root", detach=True)
         self.container.start()
         self._exec(f"printf '[pytest]\\n' > {self.INI}")

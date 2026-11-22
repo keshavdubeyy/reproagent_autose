@@ -25,6 +25,8 @@ from swebench.harness.utils import make_test_spec
 
 HARNESS_FILE = Path("benchmarks/swe_bench_lite/private/swebench_harness.json")
 WORKDIR = "/testbed"
+# SWE-bench images are published for x86 only; on Apple Silicon Docker runs them under emulation.
+PLATFORM = "linux/amd64"
 PATCH_FILE = "/tmp/patch.diff"
 # Same fallback order as the official harness.
 APPLY_CMDS = [
@@ -101,7 +103,7 @@ def evaluate(record: dict, patch: str | None, label: str, out_dir: Path,
             client.containers.get(name).remove(force=True)
         except docker.errors.NotFound:
             pass
-        container = client.containers.create(spec.image, command="tail -f /dev/null", name=name,
+        container = client.containers.create(spec.image, command="tail -f /dev/null", name=name, platform=PLATFORM,
                                              working_dir=WORKDIR, user="root", detach=True)
         container.start()
 

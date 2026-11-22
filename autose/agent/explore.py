@@ -25,7 +25,12 @@ def _is_test_path(rel: str) -> bool:
 
 
 def _module_name(rel: str) -> str:
-    mod = rel[:-3].replace("\\", "/").replace("/", ".")
+    """Import path of a file. `src/` and `lib/` layouts are not part of it: src/flask/app.py -> flask.app."""
+    rel = rel.replace("\\", "/")
+    head, _, rest = rel.partition("/")
+    if head in ("src", "lib") and "/" in rest:
+        rel = rest
+    mod = rel[:-3].replace("/", ".")
     return mod[: -len(".__init__")] if mod.endswith(".__init__") else mod
 
 
