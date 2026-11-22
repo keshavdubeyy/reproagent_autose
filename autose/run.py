@@ -93,7 +93,8 @@ def run_swebench(a) -> int:
             row_pub = reports[iid]
             agent = ReproAgent(llm, AgentConfig(mode=a.mode, budget=a.budget, fix=a.fix, fix_mode=a.fix_mode,
                                                 retrieval=a.retrieval, repo_id=row_pub["repo"],
-                                                commit=row_pub["base_commit"]), executor=ex)
+                                                commit=row_pub["base_commit"],
+                                                board_dir=str(out_dir / "blackboard")), executor=ex)
             out = agent.run(report, repo, fixed_executor=fixed_ex)
             save(out, out_dir)
             row.update(verdict=out.verdict.value, fail_to_pass=out.fail_to_pass, llm_calls=out.llm_calls,
@@ -124,7 +125,7 @@ def run_local(a) -> int:
     report = IssueRetrieval().load(a.issue)
     agent = ReproAgent(LLM(a.model, seed=a.seed),
                        AgentConfig(mode=a.mode, budget=a.budget, fix=a.fix, fix_mode=a.fix_mode,
-                                   retrieval=a.retrieval))
+                                   retrieval=a.retrieval, board_dir=str(Path(a.out) / "blackboard")))
     outcome = agent.run(report, a.repo, a.fixed)
     path = save(outcome, a.out)
     print("\n" + to_markdown(outcome))

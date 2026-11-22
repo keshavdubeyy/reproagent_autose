@@ -33,7 +33,8 @@ from .models import (AttemptRecord, BugReport, BugSpec, FixOutcome, Outcome, Pat
 from .explore import IndexedExplorer, RepoExplorer, TestGenerator
 from .repair import (FaultLocalizer, PatchApplier, PatchGenerator, changed_definitions,
                          cumulative_diff, find_siblings)
-from .verify import FailToPassChecker, MessageJudge, PatchValidator, ResultAnalyzer
+from .blackboard import Blackboard, BlackboardError, patch_sha
+from .verify import FailToPassChecker, MessageJudge, PatchValidator, ResultAnalyzer, relax_invented_messages
 from .workspace import TEST_FILE, Executor, LocalExecutor
 
 MODES = {
@@ -64,6 +65,7 @@ class AgentConfig:
     retrieval: str = "explorer"          # explorer (mid-term keyword search) | bm25 | hybrid | graph
     repo_id: Optional[str] = None        # knowledge package key; None = local project, re-indexed
     commit: Optional[str] = None
+    board_dir: Optional[str] = None      # blackboard folder (one sub-folder per bug); None = in memory
 
 
 class ReproAgent:
@@ -71,6 +73,7 @@ class ReproAgent:
                  log: Callable[[str], None] = print, executor: Executor | None = None):
         self.llm = llm
         self._ctx = None          # code retrieved by Bug Understanding (kept for the outcome)
+        self.board = Blackboard(None, "-")
         self.cfg = config or AgentConfig()
         m = MODES[self.cfg.mode]
         self.use_context = m["use_context"]
@@ -90,6 +93,7 @@ class ReproAgent:
         only: the final test is re-run on the fixed version and the result is never shown to the agent."""
         t0 = time.time()
         calls0 = self.llm.calls
+        self.board = Blackboard(Path(self.cfg.board_dir) if self.cfg.board_dir else None, report.id)
         # 1. Issue Management: interpret the report
         spec = self.specifier.specify(report)
         self.log(f"[spec] expected={spec.expected!r} symbols={spec.symbols} kind={spec.failure_kind}")
@@ -116,6 +120,9 @@ class ReproAgent:
             for attempt in range(1, self.budget + 1):
                 test = self.generator.generate(report, spec, ctx, layout,
                                                history if self.budget > 1 else [], attempt)
+                test.code, relaxed = relax_invented_messages(test.code, report)
+                if relaxed:
+                    self.log(f"[relax] dropped invented message check(s): {relaxed}")
                 res = self.executor.run(sandbox, test)
                 ana = self.analyzer.analyze(report, spec, test, res)
                 history.append(AttemptRecord(test, res, ana))
@@ -136,11 +143,23 @@ class ReproAgent:
         else:
             verdict = Verdict.NOT_REPRODUCED
         out = self._outcome(report, verdict, history, spec, final, t0, calls0)
+        last = history[-1].analysis if history else None
+        self.board.post("BUG_SPEC", "bug_understanding", {
+            "summary": spec.summary or "", "expected": spec.expected or "", "observed": spec.observed or "",
+            "failure_kind": spec.failure_kind or "", "retrieved": out.retrieved, "verdict": verdict.value,
+            "reproduction_test": final.code if final else None, "attempts": len(history),
+            "evidence": (last.llm_judgement or last.category) if last else ""})
 
         # 7. Bug Resolution: fix the bug, using the accepted reproduction test as localiser and oracle
         if self.cfg.fix and final is not None:
             out.fix = self.fix(report, spec, repo, final, history[-1].execution.output,
                                mode=self.cfg.fix_mode)
+            if out.fix.final_diff:
+                try:
+                    self.board.freeze(out.fix.final_diff)
+                except BlackboardError as e:     # rule broken: do not report an unchecked patch as fixed
+                    self.log(f"[blackboard] {e}")
+                    out.fix.status, out.fix.final_diff = "not_fixed", None
 
         # Evaluation-only oracle: fail-to-pass on the fixed version (never fed back to the agent).
         if fixed_repo is not None or fixed_executor is not None:
@@ -189,7 +208,7 @@ class ReproAgent:
                 check = PatchCheck("not_applicable", False, err)
             else:
                 check = self.validator.check(repo, patch, test, reg_files, report.id)
-            history.append(PatchAttempt(patch, check))
+            self._record(history, patch, check, cands)
             self.log(f"[patch {attempt}] -> {check.category}"
                      + (f" ({', '.join(patch.files)})" if patch.files else ""))
             if check.accepted:
@@ -200,6 +219,20 @@ class ReproAgent:
                           total_time_s=round(time.time() - t0, 1), llm_calls=self.llm.calls - calls0,
                           regression_tests=reg_files,
                           locations=_locations(repo, final.files) if final else [])
+
+    def _record(self, history: list, patch, check, cands) -> None:
+        """Keep the attempt and publish it: CHANGE_PLAN (what changed) + TEST_REPORT (bound to its hash)."""
+        history.append(PatchAttempt(patch, check))
+        sha = patch_sha(patch.diff)
+        self.board.post("CHANGE_PLAN", "code_modification", {
+            "attempt": patch.attempt, "patch_kind": patch.kind,
+            "candidates": [f"{c.file}:{c.name} ({c.score}) {c.why}" for c in cands][:10],
+            "changed": list(patch.changed), "files": sorted(patch.files), "patch_sha": sha,
+            "diff": patch.diff or "", "applies": check.category != "not_applicable"})
+        self.board.post("TEST_REPORT", "testing", {
+            "attempt": patch.attempt, "patch_sha": sha, "category": check.category, "accepted": check.accepted,
+            "repro_status": check.repro_status, "regressions": [str(r) for r in check.regressions][:50],
+            "feedback": (check.feedback or "")[:2000]})
 
     def _fix_multi(self, report: BugReport, spec: BugSpec, repo: Path, test: ReproTest, mode: str,
                    m: dict, t0: float, calls0: int) -> FixOutcome:
@@ -234,7 +267,7 @@ class ReproAgent:
                     patch.diff = cumulative_diff(repo, patch.files)
                     patch.changed = _locations(repo, patch.files)
                     check = self.validator.check(repo, patch, test, reg_files, report.id, progress_from=failing)
-                history.append(PatchAttempt(patch, check))
+                self._record(history, patch, check, cands)
                 self.log(f"[patch {attempt}] -> {check.category}"
                          + (f" ({', '.join(patch.changed)})" if patch.changed else ""))
                 if check.accepted:
@@ -287,7 +320,7 @@ class ReproAgent:
             sp.diff = cumulative_diff(repo, sp.files)
             sp.changed = _locations(repo, sp.files)
             check = self.validator.check(repo, sp, test, reg_files, report.id)
-        history.append(PatchAttempt(sp, check))
+        self._record(history, sp, check, cands)
         self.log(f"[sweep] -> {check.category}" + (f" ({', '.join(sp.changed)})" if sp.changed else ""))
         return sp if check.accepted else final
 
