@@ -63,3 +63,18 @@ def test_regression_tests_follow_the_changed_module(tmp_path):
     (tmp_path / "tests" / "test_blueprints.py").write_text("import flask\n" + "# many tests\n" * 200)
     v = PatchValidator(executor=None, max_files=1)
     assert v.select_tests(tmp_path, ["flask.blueprints"]) == ["tests/test_blueprints.py"]
+
+
+def test_real_django_report_does_not_name_value_error():
+    from autose.run import load_reports, to_report
+    rep = to_report(load_reports()["django__django-11848"])
+    out = "django/utils/http.py:175: in parse_http_date\nE   ValueError: '01 Jan 1980 00:00:00 GMT' is not in a valid HTTP date format"
+    a = ResultAnalyzer(None).analyze(rep, SPEC, ReproTest(1, ""), run(out, "ValueError"))
+    assert a.category == "wrong_failure"
+
+
+def test_exception_phrase_in_prose_counts():
+    rep = BugReport("x", "crash", "calling parse() gives a value error for empty input")
+    spec = BugSpec("", "returns None", "crashes", failure_kind="wrong_value")
+    a = ResultAnalyzer(None).analyze(rep, spec, ReproTest(1, ""), run("src/p.py:3: in parse\nE   ValueError: x", "ValueError"))
+    assert a.category == "reproduced"

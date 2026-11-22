@@ -118,7 +118,7 @@ def evidence_match(report: BugReport, spec: BugSpec, res: ExecutionResult) -> tu
     observed = spec.observed or ""
     exc = res.exception_type
     if exc and exc != "AssertionError":
-        if exc.lower() in text.lower() or exc.replace("Error", "").lower() in observed.lower():
+        if _exception_in_report(exc, report, spec):
             return True, f"project raised {exc}, as the report describes"
         if spec.failure_kind == "exception":
             return None, ""
@@ -137,8 +137,11 @@ def evidence_match(report: BugReport, spec: BugSpec, res: ExecutionResult) -> tu
 
 
 def _exception_in_report(exc: str, report: BugReport, spec: BugSpec) -> bool:
+    """The report names this exception: `ValueError`, or 'value error' / 'raises a ValueError'.
+    A bare stem ('value', 'type', 'key') is far too common in prose to count."""
     text = f"{report.title}\n{report.body}\n{spec.observed}".lower()
-    return exc.lower() in text or exc.replace("Error", "").lower() in text
+    stem = re.sub(r"(error|exception)$", "", exc.lower())
+    return exc.lower() in text or bool(stem and re.search(rf"\b{re.escape(stem)}[\s_-]*(error|exception)\b", text))
 
 
 _RAISES_REGEX = {"assertRaisesRegex": "assertRaises", "assertRaisesRegexp": "assertRaises",
