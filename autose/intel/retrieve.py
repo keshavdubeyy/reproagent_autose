@@ -98,15 +98,34 @@ class HybridRetriever:
                     if row["name"] == func:
                         add(sid, 2.0 / (1 + depth), f"traceback:{tail}:{func}")
 
+        # Graph evidence is kept apart from the report's own evidence. Measured on 118 SWE-bench bugs,
+        # pulling neighbours straight into the symbol list finds the right FILE more often but pushes the
+        # right FUNCTION down (callers/callees crowd it out). So: the graph decides file ranking in full,
+        # while for symbols it only reinforces candidates the report already points at.
+        graph: dict[int, float] = defaultdict(float)
         if self.mode == "graph":
             seeds = sorted(cands.values(), key=lambda c: -c.score)[:15]
             for c in seeds:
                 for nid, rel in self.ix.neighbours(c.sid):
-                    add(nid, 0.25 * c.score, f"graph:{rel}")
+                    graph[nid] += self.GRAPH_W * c.score
+                    if nid in cands and f"graph:{rel}" not in cands[nid].why:
+                        cands[nid].why.append(f"graph:{rel}")
 
+        def file_scores(items):
+            files: dict[str, float] = {}
+            for sid, sc in sorted(items, key=lambda t: -t[1])[:200]:
+                path = self.ix.symbol(sid)["path"]
+                files[path] = files.get(path, 0.0) + sc * (1.0 if path not in files else 0.3)
+            return sorted(files.items(), key=lambda t: -t[1])[:k_files]
+
+        base = {sid: c.score for sid, c in cands.items()}
+        full = dict(base)
+        for sid, g in graph.items():
+            full[sid] = full.get(sid, 0.0) + g
+        for sid, c in cands.items():                    # symbols: graph only corroborates
+            c.score += self.CORROBORATE_W * graph.get(sid, 0.0)
         ranked = sorted(cands.values(), key=lambda c: -c.score)
-        files: dict[str, float] = {}
-        for c in ranked[:200]:
-            path = self.ix.symbol(c.sid)["path"]
-            files[path] = files.get(path, 0.0) + c.score * (1.0 if path not in files else 0.3)
-        return Retrieval(ranked[:k_symbols], sorted(files.items(), key=lambda t: -t[1])[:k_files])
+        return Retrieval(ranked[:k_symbols], file_scores(full.items()))
+
+    GRAPH_W = 0.25          # neighbour gets this share of its seed's score (file ranking)
+    CORROBORATE_W = 0.2     # share of that graph score a report-backed symbol keeps
