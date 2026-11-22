@@ -156,6 +156,11 @@ class DockerExecutor(Executor):
                                                        working_dir=self.WORKDIR, user="root", detach=True)
         self.container.start()
         self._exec(f"printf '[pytest]\\n' > {self.INI}")
+        # SWE-bench images clone the whole repository, so branches and tags still point at commits
+        # that contain the fix. Drop every ref except the checked-out HEAD: `git log --all` then shows
+        # nothing after the buggy commit (objects stay, but nothing reachable names them).
+        self._exec("git checkout -q --detach && git for-each-ref --format='%(refname)' | "
+                   "xargs -r -n1 git update-ref -d && git reflog expire --expire=now --all")
         # The repo's own test runner is often not pytest (e.g. Django); our tests need it.
         code, out = self._exec(f"{self.ACTIVATE} && (python -c 'import pytest' 2>/dev/null || "
                                "pip install -q pytest)")
