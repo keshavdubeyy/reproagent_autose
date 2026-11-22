@@ -11,6 +11,7 @@
 """
 from __future__ import annotations
 
+import ast
 import os
 import re
 import subprocess
@@ -133,6 +134,51 @@ def evidence_match(report: BugReport, spec: BugSpec, res: ExecutionResult) -> tu
     return None, ""
 
 
+def _exception_in_report(exc: str, report: BugReport, spec: BugSpec) -> bool:
+    text = f"{report.title}\n{report.body}\n{spec.observed}".lower()
+    return exc.lower() in text or exc.replace("Error", "").lower() in text
+
+
+_RAISES_REGEX = {"assertRaisesRegex": "assertRaises", "assertRaisesRegexp": "assertRaises",
+                 "assertWarnsRegex": "assertWarns"}
+
+
+def relax_invented_messages(code: str, report: BugReport) -> tuple[str, list[str]]:
+    """Drop exact error-message checks the report does not support.
+
+    A small model often invents the wording of the expected error (`pytest.raises(ValueError,
+    match="Names must not contain dots")`). The real fix raises the right exception with other words, so
+    the test fails on the fixed version too: an invalid reproduction. Unless the report quotes that
+    wording or is about the message itself, keep the exception type and drop the wording.
+    Returns (new code, removed patterns)."""
+    try:
+        tree = ast.parse(code)
+    except SyntaxError:
+        return code, []
+    removed: list[str] = []
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.Call):
+            continue
+        f = node.func
+        name = f.attr if isinstance(f, ast.Attribute) else getattr(f, "id", "")
+        if name in ("raises", "warns"):
+            for kw in list(node.keywords):
+                if kw.arg == "match" and isinstance(kw.value, ast.Constant) and isinstance(kw.value.value, str) \
+                        and not message_is_the_bug(report, kw.value.value):
+                    node.keywords.remove(kw)
+                    removed.append(kw.value.value)
+        elif name in _RAISES_REGEX and len(node.args) >= 2 and isinstance(node.args[1], ast.Constant) \
+                and isinstance(node.args[1].value, str) and not message_is_the_bug(report, node.args[1].value):
+            removed.append(node.args.pop(1).value)
+            if isinstance(f, ast.Attribute):
+                f.attr = _RAISES_REGEX[name]
+            else:
+                f.id = _RAISES_REGEX[name]
+    if not removed:
+        return code, []
+    return ast.unparse(tree) + "\n", removed
+
+
 class ResultAnalyzer:
     def __init__(self, llm: LLM | None, use_judge: bool = True):
         self.llm = llm
@@ -172,6 +218,18 @@ class ResultAnalyzer:
         match, why = evidence_match(report, spec, res)
         if match is True:
             return Analysis("reproduced", True, "", f"[evidence-match] {why}")
+        # Guard: the report describes a wrong RESULT, but the project raised an exception the report never
+        # mentions. The test most likely fed input the function rejects (wrong format / type), so it
+        # fails for a reason unrelated to the bug and would fail on the fixed version too.
+        exc = res.exception_type
+        if spec.failure_kind == "wrong_value" and exc not in (None, "AssertionError") \
+                and not _exception_in_report(exc, report, spec):
+            why = f"the project raised {exc} ({err[:160]}) although the report describes a wrong result, not an error"
+            return Analysis("wrong_failure", False,
+                            f"The test failed, but {why}. Your input is probably not valid for this function "
+                            "(wrong format or type). Write the input exactly like the report's example or like "
+                            f"the existing tests, and assert: {spec.expected}",
+                            f"[guard] {why}")
         if match is False:
             return Analysis("wrong_failure", False, f"The test failed, but {why}. "
                             f"Build exactly the report's scenario and assert: {spec.expected}",
