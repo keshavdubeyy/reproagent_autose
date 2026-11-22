@@ -472,7 +472,9 @@ def main() -> int:
             print(f"        {mark} {x['id']} {x['text'][:62]:<62} {x['measured']}  (needs {x['threshold']}){small}")
     if a.html:
         a.html.write_text(to_html(res), encoding="utf-8")
-        print("->", a.html)
+        js = a.html.parent / "quality-data.js"          # read by architecture-audit.html
+        js.write_text("window.QUALITY = " + json.dumps(res) + ";\n", encoding="utf-8")
+        print("->", a.html, js)
     return 0
 
 
