@@ -44,6 +44,7 @@ HANDOFFS = [
     ("intake", "search_file", "Intake → Search"),
     ("search_file", "repro", "Search → Reproduction"),
     ("repro", "repro_valid", "Reproduction → Oracle check"),
+    ("search_func", "loc_func", "Search → Fault localiser (right function)"),
     ("repro_valid", "loc_file", "Valid test → Fault localiser"),
     ("loc_file", "loc_func", "Right file → right function"),
     ("loc_func", "patch_gold", "Localiser → Patch location"),
@@ -100,8 +101,8 @@ def check_bug(row: dict, outcome: dict | None, gold_patch: str) -> dict:
         for k in ("loc_file", "loc_func", "patch_applies", "patch_gold", "self_check"):
             r[k] = None
     r["resolved"] = row.get("resolved")
-    if r["resolved"] is None and fix and not fix.get("final_diff"):
-        r["resolved"] = False                    # no patch produced: cannot be resolved
+    if r["resolved"] is None and not (fix and fix.get("final_diff")):
+        r["resolved"] = False                    # no patch produced (or no reproduction): not resolved
     r["first_break"] = next((k for k in CHAIN if r.get(k) is False), None if r.get("resolved") else "unknown")
     return r
 
