@@ -185,6 +185,8 @@ class Outcome:
     fail_to_pass_semantic: Optional[bool] = None
     message_checks: list = field(default_factory=list)
     fix: Optional[FixOutcome] = None        # filled when bug resolution (fixing) is enabled
+    retrieved: list = field(default_factory=list)   # "file:name" of code Bug Understanding retrieved
+    retrieval: str = ""                             # which search produced it (explorer/bm25/hybrid/graph)
 
     def to_dict(self) -> dict:
         d = asdict(self)

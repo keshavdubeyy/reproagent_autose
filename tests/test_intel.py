@@ -123,3 +123,16 @@ def test_indexed_explorer_returns_code_snippets(repo):
                     BugReport("b", "Bulk discount applied below threshold", "800 order gets bulk_discount"), k=3)
     assert ctx.snippets and ctx.snippets[0].name == "bulk_discount"
     assert ctx.snippets[0].module == "shop.pricing" and "def bulk_discount" in ctx.snippets[0].source
+
+
+def test_outcome_records_what_bug_understanding_retrieved():
+    import time
+    from autose.agent.loop import AgentConfig, ReproAgent
+    from autose.agent.models import CodeContext, CodeSnippet, Verdict
+
+    class NoLLM:
+        calls = 0
+    agent = ReproAgent(NoLLM(), AgentConfig(retrieval="graph"), log=lambda _m: None)
+    agent._ctx = CodeContext([CodeSnippet("shop/pricing.py", "shop.pricing", "bulk_discount", 3, "")])
+    out = agent._outcome(BugReport("b", "t", "x"), Verdict.NOT_REPRODUCED, [], None, None, time.time(), 0)
+    assert out.retrieved == ["shop/pricing.py:bulk_discount"] and out.retrieval == "graph"

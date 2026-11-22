@@ -70,6 +70,7 @@ class ReproAgent:
     def __init__(self, llm: LLM, config: AgentConfig | None = None,
                  log: Callable[[str], None] = print, executor: Executor | None = None):
         self.llm = llm
+        self._ctx = None          # code retrieved by Bug Understanding (kept for the outcome)
         self.cfg = config or AgentConfig()
         m = MODES[self.cfg.mode]
         self.use_context = m["use_context"]
@@ -97,10 +98,12 @@ class ReproAgent:
 
         # 2. Reproduction: explore the code base
         ctx, layout = None, ""
+        self._ctx = None
         if self.use_context:
             explorer = (RepoExplorer(repo) if self.cfg.retrieval == "explorer" else
                         IndexedExplorer(repo, self.cfg.retrieval, self.cfg.repo_id, self.cfg.commit))
             ctx = explorer.search(spec, report)
+            self._ctx = ctx
             layout = explorer.repo_layout()
             self.analyzer.explorer = explorer if self.symbol_feedback else None
             self.log("[explore] " + ", ".join(f"{s.module}.{s.name}({s.score:.1f})" for s in ctx.snippets))
@@ -157,7 +160,9 @@ class ReproAgent:
     def _outcome(self, report, verdict, history, spec, final, t0, calls0) -> Outcome:
         return Outcome(bug_id=report.id, mode=self.cfg.mode, verdict=verdict, attempts=history,
                        spec=spec, final_test=final.code if final else None,
-                       total_time_s=round(time.time() - t0, 1), llm_calls=self.llm.calls - calls0)
+                       total_time_s=round(time.time() - t0, 1), llm_calls=self.llm.calls - calls0,
+                       retrieved=[f"{sn.file}:{sn.name}" for sn in self._ctx.snippets] if self._ctx else [],
+                       retrieval=self.cfg.retrieval if self._ctx else "")
 
     # ------------------------------------------------------------------ bug resolution
     def fix(self, report: BugReport, spec: BugSpec, repo: Path, repro_test: Optional[ReproTest],
