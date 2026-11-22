@@ -42,6 +42,10 @@ CONFIGS = {
 CONTAINER_PREFIXES = ("autose-agent-", "autose-eval-")
 
 
+class RunTimeout(Exception):
+    pass
+
+
 def cleanup_containers(client) -> int:
     n = 0
     for c in client.containers.list(all=True):
@@ -80,6 +84,8 @@ def main() -> int:
     ap.add_argument("--model", default=DEFAULT_MODEL)
     ap.add_argument("--keep-images", action="store_true")
     ap.add_argument("--min-free-gb", type=float, default=6.0)
+    ap.add_argument("--max-min-per-run", type=float, default=30.0,
+                    help="hard limit for one bug in one configuration; a run over it is recorded as an error")
     a = ap.parse_args()
 
     import docker
@@ -104,6 +110,10 @@ def main() -> int:
     signal.signal(signal.SIGINT, stop)
     signal.signal(signal.SIGTERM, stop)
 
+    def too_long(_signum, _frame):
+        raise RunTimeout(f"run exceeded {a.max_min_per_run:.0f} min")
+    signal.signal(signal.SIGALRM, too_long)
+
     n_old = cleanup_containers(client)
     say(f"start: configs {a.configs} on {len(ids)} bugs, seed {a.seed}, model {a.model}; "
         f"removed {n_old} leftover container(s); {free_gb():.0f} GB free")
@@ -125,7 +135,11 @@ def main() -> int:
             break
         for c in todo:
             args = argparse.Namespace(**{**BASE, **CONFIGS[c], "seed": a.seed})
-            row = run_one(args, iid, dirs[c], llm, reports, harness)
+            signal.alarm(int(a.max_min_per_run * 60))      # raises RunTimeout inside the run; run_one records it
+            try:
+                row = run_one(args, iid, dirs[c], llm, reports, harness)
+            finally:
+                signal.alarm(0)
             row["config"] = c
             with (dirs[c] / "summary.jsonl").open("a", encoding="utf-8") as f:
                 f.write(json.dumps(row) + "\n")

@@ -94,3 +94,35 @@ def test_executor_runs_in_sandbox_and_leaves_original_untouched():
         assert not (SHOP / "test_reproagent_repro.py").exists()
     finally:
         sb.cleanup()
+
+
+def test_extract_code_survives_an_answer_cut_off_by_the_length_limit():
+    import ast
+    from autose.agent.llm import extract_code, is_cut_off
+    raw = ("```python\nimport pytest\nfrom django.utils.http import parse_http_date\n\n"
+           "def test_two_digit_year():\n    assert parse_http_date('Sunday, 06-Nov-70 08:49:37 GMT') > 0\n\n"
+           "def test_other():\n    # Current year is 2025, so '80' should map to 2080\n    # But the report says that")
+    assert is_cut_off(raw) and not is_cut_off("```python\nx = 1\n```")
+    code = extract_code(raw)
+    assert not code.startswith("```")
+    ast.parse(code)                                   # pytest can collect it
+    assert "def test_two_digit_year" in code
+    assert extract_code("```python\nx = 1\n```\n") == "x = 1\n"
+
+
+def test_generator_asks_again_when_the_answer_is_cut_off():
+    from autose.agent.explore import TestGenerator
+    from autose.agent.models import BugReport, BugSpec
+    answers = ["```python\ndef test_x():\n    # thinking aloud " + "and more " * 50,
+               "```python\ndef test_x():\n    assert 1 == 2\n```"]
+
+    class LLM:
+        calls = 0
+        prompts = []
+        def chat(self, system, user, json_mode=False, temperature=None):
+            self.prompts.append(user)
+            return answers[len(self.prompts) - 1]
+    llm = LLM()
+    t = TestGenerator(llm).generate(BugReport("b", "t", "body"), BugSpec("s", "e", "o"), None, "", [], 1)
+    assert t.code == "def test_x():\n    assert 1 == 2\n"
+    assert "cut off" in llm.prompts[1]

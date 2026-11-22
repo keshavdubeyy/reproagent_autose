@@ -5,6 +5,7 @@ entirely in a 4 GB GPU / 8 GB RAM laptop. Override with REPROAGENT_MODEL.
 """
 from __future__ import annotations
 
+import ast
 import json
 import os
 import re
@@ -70,9 +71,26 @@ def parse_json(raw: str) -> dict:
     return {}
 
 
+def is_cut_off(raw: str) -> bool:
+    """The answer opened a code block that never closes: the model hit its output-length limit."""
+    return raw.count("```") % 2 == 1
+
+
 def extract_code(raw: str) -> str:
-    """Pull the python code block out of an LLM answer."""
+    """Pull the python code block out of an LLM answer. A block cut off by the length limit has no
+    closing fence: take what follows the opening fence and drop the unfinished tail, keeping the
+    longest prefix that is valid Python (so pytest can at least collect it)."""
     blocks = re.findall(r"```(?:python|py)?\s*\n(.*?)```", raw, re.S)
     if blocks:
         return max(blocks, key=len).strip() + "\n"
-    return raw.strip() + "\n"
+    m = re.search(r"```(?:python|py)?\s*\n", raw)
+    code = raw[m.end():] if m else raw
+    lines = code.strip().splitlines()
+    for end in range(len(lines), 0, -1):
+        part = "\n".join(lines[:end])
+        try:
+            ast.parse(part)
+            return part.rstrip() + "\n"
+        except SyntaxError:
+            continue
+    return code.strip() + "\n"

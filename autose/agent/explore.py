@@ -11,7 +11,7 @@ import os
 import re
 from pathlib import Path
 
-from .llm import LLM, extract_code
+from .llm import LLM, extract_code, is_cut_off
 from .models import AttemptRecord, BugReport, BugSpec, CodeContext, CodeSnippet, ReproTest
 
 SKIP_DIRS = {".git", ".venv", "venv", "build", "dist", "__pycache__", "node_modules", ".tox",
@@ -222,6 +222,7 @@ Rules:
 - If the report describes SEVERAL separate wrong behaviours, write one test function for EACH of them
   (each with its own scenario), so that every symptom is checked.
 - Keep it short: one test function per symptom, plain asserts.
+- Do not reason or explain in comments: at most one short comment line per test function.
 Answer with a single ```python code block and nothing else."""
 
 
@@ -260,6 +261,11 @@ class TestGenerator:
         for _ in range(2):   # regenerate once if the SLM repeats an earlier test verbatim
             raw = self.llm.chat(GEN_SYSTEM, prompt, temperature=temp)
             code = extract_code(raw)
+            if is_cut_off(raw):     # rambled in comments until the length limit: ask once for code only
+                prompt += ("\n\nYour answer was cut off because it was too long. Write the test code "
+                           "directly, with no explanatory comments.")
+                temp = 0.6
+                continue
             if _norm(code) not in seen:
                 break
             prompt += ("\n\nYou produced exactly the same test as before. It is wrong. Change the inputs "
