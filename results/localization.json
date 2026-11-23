@@ -1,0 +1,416 @@
+{
+ "report": "full",
+ "modes": {
+  "explorer": {
+   "n": 4,
+   "file@1": 0.5,
+   "file@3": 0.75,
+   "file@5": 0.75,
+   "file_MRR": 0.583,
+   "symbol@5": 0.5,
+   "symbol@10": 0.5,
+   "symbol@20": 0.5,
+   "avg_s": 0.22
+  },
+  "bm25": {
+   "n": 4,
+   "file@1": 0.25,
+   "file@3": 0.75,
+   "file@5": 1.0,
+   "file_MRR": 0.521,
+   "symbol@5": 0.5,
+   "symbol@10": 0.5,
+   "symbol@20": 1.0,
+   "avg_s": 0.01
+  },
+  "hybrid": {
+   "n": 4,
+   "file@1": 0.5,
+   "file@3": 0.75,
+   "file@5": 1.0,
+   "file_MRR": 0.646,
+   "symbol@5": 0.5,
+   "symbol@10": 0.5,
+   "symbol@20": 1.0,
+   "avg_s": 0.01
+  },
+  "graph": {
+   "n": 4,
+   "file@1": 0.5,
+   "file@3": 0.5,
+   "file@5": 1.0,
+   "file_MRR": 0.625,
+   "symbol@5": 0.5,
+   "symbol@10": 0.5,
+   "symbol@20": 0.75,
+   "avg_s": 0.01
+  }
+ },
+ "by_repo": {
+  "pallets/flask": {
+   "explorer": {
+    "n": 3,
+    "file@1": 0.667,
+    "file@3": 0.667,
+    "file@5": 0.667,
+    "file_MRR": 0.667,
+    "symbol@5": 0.333,
+    "symbol@10": 0.333,
+    "symbol@20": 0.333,
+    "avg_s": 0.12
+   },
+   "bm25": {
+    "n": 3,
+    "file@1": 0.333,
+    "file@3": 0.667,
+    "file@5": 1.0,
+    "file_MRR": 0.583,
+    "symbol@5": 0.667,
+    "symbol@10": 0.667,
+    "symbol@20": 1.0,
+    "avg_s": 0.01
+   },
+   "hybrid": {
+    "n": 3,
+    "file@1": 0.667,
+    "file@3": 1.0,
+    "file@5": 1.0,
+    "file_MRR": 0.778,
+    "symbol@5": 0.667,
+    "symbol@10": 0.667,
+    "symbol@20": 1.0,
+    "avg_s": 0.01
+   },
+   "graph": {
+    "n": 3,
+    "file@1": 0.667,
+    "file@3": 0.667,
+    "file@5": 1.0,
+    "file_MRR": 0.75,
+    "symbol@5": 0.667,
+    "symbol@10": 0.667,
+    "symbol@20": 0.667,
+    "avg_s": 0.01
+   }
+  },
+  "psf/requests": {
+   "explorer": {
+    "n": 1,
+    "file@1": 0.0,
+    "file@3": 1.0,
+    "file@5": 1.0,
+    "file_MRR": 0.333,
+    "symbol@5": 1.0,
+    "symbol@10": 1.0,
+    "symbol@20": 1.0,
+    "avg_s": 0.53
+   },
+   "bm25": {
+    "n": 1,
+    "file@1": 0.0,
+    "file@3": 1.0,
+    "file@5": 1.0,
+    "file_MRR": 0.333,
+    "symbol@5": 0.0,
+    "symbol@10": 0.0,
+    "symbol@20": 1.0,
+    "avg_s": 0.01
+   },
+   "hybrid": {
+    "n": 1,
+    "file@1": 0.0,
+    "file@3": 0.0,
+    "file@5": 1.0,
+    "file_MRR": 0.25,
+    "symbol@5": 0.0,
+    "symbol@10": 0.0,
+    "symbol@20": 1.0,
+    "avg_s": 0.01
+   },
+   "graph": {
+    "n": 1,
+    "file@1": 0.0,
+    "file@3": 0.0,
+    "file@5": 1.0,
+    "file_MRR": 0.25,
+    "symbol@5": 0.0,
+    "symbol@10": 0.0,
+    "symbol@20": 1.0,
+    "avg_s": 0.01
+   }
+  }
+ },
+ "bugs": [
+  {
+   "instance_id": "pallets__flask-4045",
+   "repo": "pallets/flask",
+   "gold_files": [
+    "src/flask/blueprints.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.2,
+   "index": {
+    "repo_id": "pallets/flask",
+    "commit": "d8c37f43724cd9fb0870f77877b7c4c7e38a19e0",
+    "schema": 1,
+    "files": 22,
+    "parse_failures": 0,
+    "symbols": 428,
+    "calls_resolved": 379,
+    "calls_unresolved": 24,
+    "build_s": 0.2
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "src/flask/blueprints.py",
+     "src/flask/wrappers.py",
+     "src/flask/app.py",
+     "src/flask/signals.py",
+     "src/flask/sessions.py"
+    ],
+    "s": 0.15
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "src/flask/blueprints.py",
+     "src/flask/app.py",
+     "src/flask/cli.py",
+     "src/flask/scaffold.py",
+     "src/flask/debughelpers.py"
+    ],
+    "s": 0.01
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 3,
+    "top_files": [
+     "src/flask/blueprints.py",
+     "src/flask/app.py",
+     "src/flask/cli.py",
+     "src/flask/scaffold.py",
+     "src/flask/debughelpers.py"
+    ],
+    "s": 0.01
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 2,
+    "top_files": [
+     "src/flask/blueprints.py",
+     "src/flask/app.py",
+     "src/flask/scaffold.py",
+     "src/flask/cli.py",
+     "src/flask/ctx.py"
+    ],
+    "s": 0.01
+   }
+  },
+  {
+   "instance_id": "pallets__flask-4992",
+   "repo": "pallets/flask",
+   "gold_files": [
+    "src/flask/config.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.2,
+   "index": {
+    "repo_id": "pallets/flask",
+    "commit": "4c288bc97ea371817199908d0d9b12de9dae327e",
+    "schema": 1,
+    "files": 22,
+    "parse_failures": 0,
+    "symbols": 432,
+    "calls_resolved": 371,
+    "calls_unresolved": 37,
+    "build_s": 0.2
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": 2,
+    "top_files": [
+     "src/flask/config.py",
+     "src/flask/json/provider.py",
+     "src/flask/json/__init__.py",
+     "src/flask/helpers.py",
+     "src/flask/app.py"
+    ],
+    "s": 0.1
+   },
+   "bm25": {
+    "file_rank": 2,
+    "symbol_rank": 1,
+    "top_files": [
+     "src/flask/cli.py",
+     "src/flask/config.py",
+     "src/flask/app.py",
+     "src/flask/scaffold.py",
+     "src/flask/json/provider.py"
+    ],
+    "s": 0.01
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "src/flask/config.py",
+     "src/flask/cli.py",
+     "src/flask/app.py",
+     "src/flask/testing.py",
+     "src/flask/json/provider.py"
+    ],
+    "s": 0.01
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "src/flask/config.py",
+     "src/flask/cli.py",
+     "src/flask/testing.py",
+     "src/flask/app.py",
+     "src/flask/json/provider.py"
+    ],
+    "s": 0.01
+   }
+  },
+  {
+   "instance_id": "pallets__flask-5063",
+   "repo": "pallets/flask",
+   "gold_files": [
+    "src/flask/cli.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.2,
+   "index": {
+    "repo_id": "pallets/flask",
+    "commit": "182ce3dd15dfa3537391c3efaf9c3ff407d134d4",
+    "schema": 1,
+    "files": 22,
+    "parse_failures": 0,
+    "symbols": 427,
+    "calls_resolved": 355,
+    "calls_unresolved": 37,
+    "build_s": 0.2
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "src/flask/blueprints.py",
+     "src/flask/app.py",
+     "src/flask/scaffold.py",
+     "src/flask/config.py"
+    ],
+    "s": 0.1
+   },
+   "bm25": {
+    "file_rank": 4,
+    "symbol_rank": 11,
+    "top_files": [
+     "src/flask/blueprints.py",
+     "src/flask/app.py",
+     "src/flask/scaffold.py",
+     "src/flask/cli.py",
+     "src/flask/sessions.py"
+    ],
+    "s": 0.01
+   },
+   "hybrid": {
+    "file_rank": 3,
+    "symbol_rank": 16,
+    "top_files": [
+     "src/flask/blueprints.py",
+     "src/flask/app.py",
+     "src/flask/cli.py",
+     "src/flask/scaffold.py",
+     "src/flask/__init__.py"
+    ],
+    "s": 0.01
+   },
+   "graph": {
+    "file_rank": 4,
+    "symbol_rank": null,
+    "top_files": [
+     "src/flask/blueprints.py",
+     "src/flask/app.py",
+     "src/flask/scaffold.py",
+     "src/flask/cli.py",
+     "src/flask/sessions.py"
+    ],
+    "s": 0.01
+   }
+  },
+  {
+   "instance_id": "psf__requests-3362",
+   "repo": "psf/requests",
+   "gold_files": [
+    "requests/utils.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.7,
+   "index": {
+    "repo_id": "psf/requests",
+    "commit": "36453b95b13079296776d11b09cab2567ea3e703",
+    "schema": 1,
+    "files": 84,
+    "parse_failures": 0,
+    "symbols": 826,
+    "calls_resolved": 744,
+    "calls_unresolved": 198,
+    "build_s": 0.7
+   },
+   "explorer": {
+    "file_rank": 3,
+    "symbol_rank": 3,
+    "top_files": [
+     "requests/models.py",
+     "requests/packages/urllib3/packages/six.py",
+     "requests/utils.py",
+     "requests/packages/chardet/mbcharsetprober.py",
+     "requests/cookies.py"
+    ],
+    "s": 0.53
+   },
+   "bm25": {
+    "file_rank": 3,
+    "symbol_rank": 18,
+    "top_files": [
+     "requests/models.py",
+     "requests/packages/urllib3/response.py",
+     "requests/utils.py",
+     "requests/packages/urllib3/_collections.py",
+     "requests/sessions.py"
+    ],
+    "s": 0.01
+   },
+   "hybrid": {
+    "file_rank": 4,
+    "symbol_rank": 19,
+    "top_files": [
+     "requests/models.py",
+     "requests/packages/urllib3/packages/six.py",
+     "requests/packages/urllib3/response.py",
+     "requests/utils.py",
+     "requests/packages/urllib3/_collections.py"
+    ],
+    "s": 0.01
+   },
+   "graph": {
+    "file_rank": 4,
+    "symbol_rank": 15,
+    "top_files": [
+     "requests/models.py",
+     "requests/packages/urllib3/response.py",
+     "requests/exceptions.py",
+     "requests/utils.py",
+     "requests/packages/urllib3/packages/six.py"
+    ],
+    "s": 0.01
+   }
+  }
+ ]
+}

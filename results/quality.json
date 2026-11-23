@@ -1,5 +1,5 @@
 {
- "when": "2026-11-22 16:59",
+ "when": "2026-11-23 09:02",
  "n_bugs": 40,
  "gate": 0.8,
  "components": [
@@ -172,7 +172,7 @@
      "id": "F2",
      "text": "Speed per function (parse + CFG + data flow + slice)",
      "threshold": "\u2264 5 ms",
-     "measured": "0.26 ms",
+     "measured": "0.51 ms",
      "passed": true,
      "n": 45944,
      "note": ""
@@ -190,21 +190,60 @@
    ]
   },
   {
+   "key": "codemod",
+   "name": "Code Modification (localise + patch)",
+   "promise": "The localiser uses every signal: failing test, program slice and the search's results.",
+   "score": 1.0,
+   "passed": true,
+   "criteria": [
+    {
+     "component": "codemod",
+     "id": "C1",
+     "text": "Search results help the localiser find the fixed function",
+     "threshold": "\u2265 1.2\u00d7",
+     "measured": "1.64\u00d7 (23 vs 14 of 40)",
+     "passed": true,
+     "n": 40,
+     "note": "developers' tests stand in for the reproduction test; rerun localizer_handoff"
+    },
+    {
+     "component": "codemod",
+     "id": "C2",
+     "text": "Bugs not lost when the search results are added",
+     "threshold": "\u2265 100%",
+     "measured": "100.0% (14/14)",
+     "passed": true,
+     "n": 14,
+     "note": ""
+    },
+    {
+     "component": "codemod",
+     "id": "C3",
+     "text": "Localiser, patching and the orchestrated repair loop",
+     "threshold": "\u2265 100%",
+     "measured": "100.0% (14/14)",
+     "passed": true,
+     "n": 14,
+     "note": "unit tests: test_agent_loop"
+    }
+   ]
+  },
+  {
    "key": "repro",
    "name": "Reproduction (Bug Understanding)",
    "promise": "An accepted reproduction test is a real one: fails on the bug, passes on the fix.",
-   "score": 1.0,
-   "passed": true,
+   "score": 0.6666666666666666,
+   "passed": false,
    "criteria": [
     {
      "component": "repro",
      "id": "R1",
      "text": "Accepted reproduction tests that are valid (pass on the fixed code)",
      "threshold": "\u2265 80%",
-     "measured": "100.0% (2/2)",
-     "passed": true,
-     "n": 2,
-     "note": "small sample until the night runs; from e2e_full_23nov"
+     "measured": "37.5% (12/32)",
+     "passed": false,
+     "n": 32,
+     "note": "small sample until the night runs; from night1_A, night1_C"
     },
     {
      "component": "repro",
@@ -221,9 +260,9 @@
      "id": "R3",
      "text": "Reproduction loop components (spec, explorer, analyzer)",
      "threshold": "\u2265 100%",
-     "measured": "100.0% (10/10)",
+     "measured": "100.0% (14/14)",
      "passed": true,
-     "n": 10,
+     "n": 14,
      "note": "unit tests: test_components"
     }
    ]
@@ -279,9 +318,9 @@
      "id": "B1",
      "text": "Frozen patches backed by an accepted test of the same hash, not rejected",
      "threshold": "\u2265 100%",
-     "measured": "100.0% (1/1)",
+     "measured": "100.0% (2/2)",
      "passed": true,
-     "n": 1,
+     "n": 2,
      "note": ""
     },
     {
@@ -289,9 +328,9 @@
      "id": "B2",
      "text": "Artifacts on disk match their schema",
      "threshold": "\u2265 100%",
-     "measured": "100.0% (15/15)",
+     "measured": "100.0% (266/266)",
      "passed": true,
-     "n": 15,
+     "n": 266,
      "note": ""
     },
     {
@@ -318,9 +357,9 @@
      "id": "T1",
      "text": "Accepted patches that keep every existing test passing (hidden P2P)",
      "threshold": "\u2265 80%",
-     "measured": "100.0% (1/1)",
+     "measured": "100.0% (2/2)",
      "passed": true,
-     "n": 1,
+     "n": 2,
      "note": ""
     },
     {
@@ -347,9 +386,9 @@
      "id": "L1",
      "text": "Bugs where no failure repeated more than 3 times",
      "threshold": "\u2265 100%",
-     "measured": "100.0% (3/3)",
-     "passed": true,
-     "n": 3,
+     "measured": "no data",
+     "passed": null,
+     "n": 0,
      "note": ""
     },
     {
@@ -368,17 +407,17 @@
    "key": "eng",
    "name": "Engineering",
    "promise": "Tests pass, code is covered by tests, no lint errors, decisions recorded.",
-   "score": 1.0,
-   "passed": true,
+   "score": 0.75,
+   "passed": false,
    "criteria": [
     {
      "component": "eng",
      "id": "E1",
      "text": "Unit tests passing",
      "threshold": "\u2265 100%",
-     "measured": "100.0% (91/91)",
+     "measured": "100.0% (97/97)",
      "passed": true,
-     "n": 91,
+     "n": 97,
      "note": ""
     },
     {
@@ -386,18 +425,18 @@
      "id": "E2",
      "text": "Line coverage of the agent and repository intelligence",
      "threshold": "\u2265 80%",
-     "measured": "82.3% (2137/2596)",
+     "measured": "83.1% (2197/2645)",
      "passed": true,
-     "n": 2596,
-     "note": "weakest: report.py 16%, llm.py 35%, workspace.py 56%"
+     "n": 2645,
+     "note": "weakest: report.py 16%, workspace.py 54%, llm.py 56%"
     },
     {
      "component": "eng",
      "id": "E3",
      "text": "Lint errors (pyflakes: unused/undefined names, dead code)",
      "threshold": "0",
-     "measured": "0",
-     "passed": true,
+     "measured": "1",
+     "passed": false,
      "n": null,
      "note": ""
     },
@@ -406,20 +445,20 @@
      "id": "E4",
      "text": "Design decisions recorded as ADRs",
      "threshold": "\u2265 6",
-     "measured": "6",
+     "measured": "7",
      "passed": true,
-     "n": 6,
+     "n": 7,
      "note": ""
     }
    ]
   }
  ],
  "criteria_passed": 32,
- "criteria_measured": 32,
+ "criteria_measured": 34,
  "tracked": {
-  "bugs": 3,
+  "bugs": 80,
   "resolved": 0,
-  "valid_reproductions": 2,
-  "patches_accepted": 1
+  "valid_reproductions": 12,
+  "patches_accepted": 2
  }
 }

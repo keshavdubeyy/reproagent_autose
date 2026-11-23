@@ -1,0 +1,5327 @@
+{
+ "report": "full",
+ "modes": {
+  "explorer": {
+   "n": 77,
+   "file@1": 0.351,
+   "file@3": 0.597,
+   "file@5": 0.649,
+   "file_MRR": 0.478,
+   "symbol@5": 0.234,
+   "symbol@10": 0.247,
+   "symbol@20": 0.299,
+   "avg_s": 8.1
+  },
+  "bm25": {
+   "n": 77,
+   "file@1": 0.455,
+   "file@3": 0.727,
+   "file@5": 0.805,
+   "file_MRR": 0.592,
+   "symbol@5": 0.338,
+   "symbol@10": 0.468,
+   "symbol@20": 0.545,
+   "avg_s": 0.09
+  },
+  "hybrid": {
+   "n": 77,
+   "file@1": 0.532,
+   "file@3": 0.766,
+   "file@5": 0.831,
+   "file_MRR": 0.651,
+   "symbol@5": 0.351,
+   "symbol@10": 0.455,
+   "symbol@20": 0.558,
+   "avg_s": 0.06
+  },
+  "graph": {
+   "n": 77,
+   "file@1": 0.519,
+   "file@3": 0.753,
+   "file@5": 0.805,
+   "file_MRR": 0.646,
+   "symbol@5": 0.364,
+   "symbol@10": 0.468,
+   "symbol@20": 0.584,
+   "avg_s": 0.08
+  }
+ },
+ "by_repo": {
+  "sympy/sympy": {
+   "explorer": {
+    "n": 77,
+    "file@1": 0.351,
+    "file@3": 0.597,
+    "file@5": 0.649,
+    "file_MRR": 0.478,
+    "symbol@5": 0.234,
+    "symbol@10": 0.247,
+    "symbol@20": 0.299,
+    "avg_s": 8.1
+   },
+   "bm25": {
+    "n": 77,
+    "file@1": 0.455,
+    "file@3": 0.727,
+    "file@5": 0.805,
+    "file_MRR": 0.592,
+    "symbol@5": 0.338,
+    "symbol@10": 0.468,
+    "symbol@20": 0.545,
+    "avg_s": 0.09
+   },
+   "hybrid": {
+    "n": 77,
+    "file@1": 0.532,
+    "file@3": 0.766,
+    "file@5": 0.831,
+    "file_MRR": 0.651,
+    "symbol@5": 0.351,
+    "symbol@10": 0.455,
+    "symbol@20": 0.558,
+    "avg_s": 0.06
+   },
+   "graph": {
+    "n": 77,
+    "file@1": 0.519,
+    "file@3": 0.753,
+    "file@5": 0.805,
+    "file_MRR": 0.646,
+    "symbol@5": 0.364,
+    "symbol@10": 0.468,
+    "symbol@20": 0.584,
+    "avg_s": 0.08
+   }
+  }
+ },
+ "bugs": [
+  {
+   "instance_id": "sympy__sympy-11400",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/ccode.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "8dcb12a6cf500e8738d6729ab954a261758f49ca",
+    "schema": 2,
+    "files": 553,
+    "parse_failures": 0,
+    "symbols": 14760,
+    "calls_resolved": 24301,
+    "calls_unresolved": 11086,
+    "build_s": 8.4
+   },
+   "explorer": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/functions/elementary/piecewise.py",
+     "sympy/printing/ccode.py",
+     "sympy/stats/rv.py",
+     "sympy/stats/frv.py",
+     "sympy/assumptions/handlers/sets.py"
+    ],
+    "s": 2.99
+   },
+   "bm25": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/mathml.py",
+     "sympy/printing/ccode.py",
+     "sympy/solvers/diophantine.py",
+     "sympy/functions/elementary/trigonometric.py",
+     "sympy/integrals/meijerint.py"
+    ],
+    "s": 0.05
+   },
+   "hybrid": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/mathml.py",
+     "sympy/printing/ccode.py",
+     "sympy/functions/elementary/trigonometric.py",
+     "sympy/functions/elementary/piecewise.py",
+     "sympy/solvers/diophantine.py"
+    ],
+    "s": 0.02
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 12,
+    "top_files": [
+     "sympy/printing/ccode.py",
+     "sympy/printing/mathml.py",
+     "sympy/functions/elementary/trigonometric.py",
+     "sympy/functions/elementary/piecewise.py",
+     "sympy/integrals/meijerint.py"
+    ],
+    "s": 0.04
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-11870",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/functions/elementary/trigonometric.py"
+   ],
+   "n_gold_symbols": 3,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "5c2e1f96a7ff562d4a778f4ca9ffc9c81557197e",
+    "schema": 2,
+    "files": 601,
+    "parse_failures": 0,
+    "symbols": 17096,
+    "calls_resolved": 32791,
+    "calls_unresolved": 12834,
+    "build_s": 23.4
+   },
+   "explorer": {
+    "file_rank": 16,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/functions/elementary/exponential.py",
+     "sympy/simplify/trigsimp.py",
+     "sympy/integrals/rubi/utility_function.py",
+     "sympy/physics/quantum/hilbert.py",
+     "sympy/matrices/expressions/matpow.py"
+    ],
+    "s": 9.85
+   },
+   "bm25": {
+    "file_rank": 3,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/functions/elementary/exponential.py",
+     "sympy/simplify/trigsimp.py",
+     "sympy/functions/elementary/trigonometric.py",
+     "sympy/integrals/manualintegrate.py",
+     "sympy/integrals/rubi/rules/miscellaneous_trig.py"
+    ],
+    "s": 0.06
+   },
+   "hybrid": {
+    "file_rank": 3,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/functions/elementary/exponential.py",
+     "sympy/simplify/trigsimp.py",
+     "sympy/functions/elementary/trigonometric.py",
+     "sympy/integrals/manualintegrate.py",
+     "sympy/integrals/rubi/rules/miscellaneous_trig.py"
+    ],
+    "s": 0.03
+   },
+   "graph": {
+    "file_rank": 3,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/simplify/trigsimp.py",
+     "sympy/functions/elementary/exponential.py",
+     "sympy/functions/elementary/trigonometric.py",
+     "sympy/integrals/manualintegrate.py",
+     "sympy/vector/basisdependent.py"
+    ],
+    "s": 0.04
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-11897",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/latex.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "e2918c1205c47345eb73c9be68b14c0f15fdeb17",
+    "schema": 2,
+    "files": 556,
+    "parse_failures": 0,
+    "symbols": 14894,
+    "calls_resolved": 24684,
+    "calls_unresolved": 11216,
+    "build_s": 5.9
+   },
+   "explorer": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/printing/latex.py",
+     "sympy/assumptions/handlers/calculus.py",
+     "sympy/assumptions/handlers/sets.py",
+     "sympy/assumptions/handlers/order.py"
+    ],
+    "s": 3.72
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/vector/vector.py",
+     "sympy/physics/quantum/tensorproduct.py"
+    ],
+    "s": 0.27
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/vector/vector.py",
+     "sympy/physics/quantum/tensorproduct.py"
+    ],
+    "s": 0.04
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/polys/domains/domain.py",
+     "sympy/vector/vector.py"
+    ],
+    "s": 0.05
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-12171",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/mathematica.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "ca6ef27272be31c9dc3753ede9232c39df9a75d8",
+    "schema": 2,
+    "files": 557,
+    "parse_failures": 0,
+    "symbols": 15012,
+    "calls_resolved": 24764,
+    "calls_unresolved": 11317,
+    "build_s": 5.9
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/str.py",
+     "sympy/printing/repr.py",
+     "sympy/printing/fcode.py",
+     "sympy/printing/theanocode.py",
+     "sympy/printing/pretty/pretty.py"
+    ],
+    "s": 3.32
+   },
+   "bm25": {
+    "file_rank": 3,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/str.py",
+     "sympy/printing/repr.py",
+     "sympy/printing/mathematica.py",
+     "sympy/printing/latex.py",
+     "sympy/physics/vector/printing.py"
+    ],
+    "s": 0.06
+   },
+   "hybrid": {
+    "file_rank": 3,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/str.py",
+     "sympy/printing/repr.py",
+     "sympy/printing/mathematica.py",
+     "sympy/printing/latex.py",
+     "sympy/physics/vector/printing.py"
+    ],
+    "s": 0.04
+   },
+   "graph": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/str.py",
+     "sympy/printing/mathematica.py",
+     "sympy/printing/repr.py",
+     "sympy/physics/vector/printing.py",
+     "sympy/printing/latex.py"
+    ],
+    "s": 0.05
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-12236",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/polys/domains/polynomialring.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "d60497958f6dea7f5e25bc41e9107a6a63694d01",
+    "schema": 2,
+    "files": 557,
+    "parse_failures": 0,
+    "symbols": 15027,
+    "calls_resolved": 24706,
+    "calls_unresolved": 11382,
+    "build_s": 5.9
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/core/function.py",
+     "sympy/stats/rv.py",
+     "sympy/stats/frv.py",
+     "sympy/core/expr.py",
+     "sympy/strategies/rl.py"
+    ],
+    "s": 3.02
+   },
+   "bm25": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/interactive/printing.py",
+     "sympy/polys/partfrac.py",
+     "sympy/interactive/session.py",
+     "sympy/logic/boolalg.py",
+     "release/fabfile.py"
+    ],
+    "s": 0.05
+   },
+   "hybrid": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/polys/partfrac.py",
+     "sympy/interactive/printing.py",
+     "sympy/interactive/session.py",
+     "sympy/logic/boolalg.py",
+     "release/fabfile.py"
+    ],
+    "s": 0.03
+   },
+   "graph": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/polys/partfrac.py",
+     "sympy/interactive/printing.py",
+     "sympy/interactive/session.py",
+     "sympy/core/expr.py",
+     "sympy/logic/boolalg.py"
+    ],
+    "s": 0.04
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-12419",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/matrices/expressions/matexpr.py"
+   ],
+   "n_gold_symbols": 3,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "479939f8c65c8c2908bbedc959549a257a7c0b0b",
+    "schema": 2,
+    "files": 560,
+    "parse_failures": 0,
+    "symbols": 15134,
+    "calls_resolved": 24844,
+    "calls_unresolved": 11398,
+    "build_s": 5.9
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/assumptions/ask.py",
+     "sympy/core/symbol.py",
+     "sympy/assumptions/refine.py",
+     "sympy/diffgeom/diffgeom.py",
+     "sympy/core/basic.py"
+    ],
+    "s": 3.34
+   },
+   "bm25": {
+    "file_rank": 3,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/assumptions/handlers/matrices.py",
+     "sympy/assumptions/ask.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/utilities/codegen.py",
+     "sympy/assumptions/handlers/sets.py"
+    ],
+    "s": 0.06
+   },
+   "hybrid": {
+    "file_rank": 3,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/assumptions/ask.py",
+     "sympy/assumptions/handlers/matrices.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/assumptions/handlers/sets.py",
+     "sympy/utilities/codegen.py"
+    ],
+    "s": 0.03
+   },
+   "graph": {
+    "file_rank": 4,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/assumptions/handlers/matrices.py",
+     "sympy/assumptions/ask.py",
+     "sympy/assumptions/handlers/sets.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/logic/inference.py"
+    ],
+    "s": 0.05
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-12454",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/matrices/matrices.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "d3fcdb72bfcbb560eb45264ac1c03f359436edef",
+    "schema": 2,
+    "files": 561,
+    "parse_failures": 0,
+    "symbols": 15127,
+    "calls_resolved": 24899,
+    "calls_unresolved": 11347,
+    "build_s": 5.9
+   },
+   "explorer": {
+    "file_rank": 2,
+    "symbol_rank": 3,
+    "top_files": [
+     "sympy/matrices/dense.py",
+     "sympy/matrices/matrices.py",
+     "sympy/tensor/array/dense_ndim_array.py",
+     "sympy/matrices/sparse.py",
+     "sympy/tensor/array/sparse_ndim_array.py"
+    ],
+    "s": 3.16
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 6,
+    "top_files": [
+     "sympy/matrices/matrices.py",
+     "sympy/matrices/dense.py",
+     "sympy/matrices/sparse.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/matrices/immutable.py"
+    ],
+    "s": 0.06
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 2,
+    "top_files": [
+     "sympy/matrices/matrices.py"
+    ],
+    "s": 0.06
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 2,
+    "top_files": [
+     "sympy/matrices/matrices.py",
+     "sympy/matrices/dense.py",
+     "sympy/matrices/sparse.py"
+    ],
+    "s": 0.06
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-12481",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/combinatorics/permutations.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "c807dfe7569692cad24f02a08477b70c1679a4dd",
+    "schema": 2,
+    "files": 561,
+    "parse_failures": 0,
+    "symbols": 15135,
+    "calls_resolved": 24923,
+    "calls_unresolved": 11350,
+    "build_s": 6.0
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/combinatorics/permutations.py",
+     "sympy/polys/domains/quotientring.py",
+     "sympy/polys/domains/expressiondomain.py",
+     "sympy/polys/domains/domain.py",
+     "sympy/polys/domains/polynomialring.py"
+    ],
+    "s": 3.06
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/combinatorics/permutations.py",
+     "sympy/combinatorics/perm_groups.py",
+     "sympy/combinatorics/free_groups.py",
+     "sympy/combinatorics/generators.py",
+     "sympy/utilities/iterables.py"
+    ],
+    "s": 0.05
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 5,
+    "top_files": [
+     "sympy/combinatorics/permutations.py",
+     "sympy/combinatorics/perm_groups.py",
+     "sympy/__init__.py",
+     "sympy/combinatorics/__init__.py",
+     "sympy/combinatorics/free_groups.py"
+    ],
+    "s": 0.03
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 5,
+    "top_files": [
+     "sympy/combinatorics/permutations.py",
+     "sympy/combinatorics/perm_groups.py",
+     "sympy/combinatorics/generators.py",
+     "sympy/combinatorics/named_groups.py",
+     "sympy/printing/pretty/pretty.py"
+    ],
+    "s": 0.05
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13031",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/matrices/sparse.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "2dfa7457f20ee187fbb09b5b6a1631da4458388c",
+    "schema": 2,
+    "files": 566,
+    "parse_failures": 0,
+    "symbols": 15396,
+    "calls_resolved": 25221,
+    "calls_unresolved": 11435,
+    "build_s": 6.1
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/matrices/expressions/inverse.py",
+     "sympy/matrices/expressions/funcmatrix.py",
+     "sympy/matrices/expressions/matpow.py",
+     "sympy/matrices/expressions/hadamard.py"
+    ],
+    "s": 3.15
+   },
+   "bm25": {
+    "file_rank": 3,
+    "symbol_rank": 9,
+    "top_files": [
+     "sympy/matrices/matrices.py",
+     "sympy/matrices/common.py",
+     "sympy/matrices/sparse.py",
+     "sympy/matrices/dense.py",
+     "sympy/matrices/densetools.py"
+    ],
+    "s": 0.04
+   },
+   "hybrid": {
+    "file_rank": 3,
+    "symbol_rank": 12,
+    "top_files": [
+     "sympy/matrices/matrices.py",
+     "sympy/matrices/common.py",
+     "sympy/matrices/sparse.py",
+     "sympy/matrices/dense.py",
+     "sympy/matrices/expressions/matexpr.py"
+    ],
+    "s": 0.02
+   },
+   "graph": {
+    "file_rank": 3,
+    "symbol_rank": 11,
+    "top_files": [
+     "sympy/matrices/matrices.py",
+     "sympy/matrices/common.py",
+     "sympy/matrices/sparse.py",
+     "sympy/matrices/dense.py",
+     "sympy/holonomic/linearsolver.py"
+    ],
+    "s": 0.03
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13043",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/integrals/intpoly.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "a3389a25ec84d36f5cf04a4f2562d820f131db64",
+    "schema": 2,
+    "files": 571,
+    "parse_failures": 0,
+    "symbols": 15469,
+    "calls_resolved": 25337,
+    "calls_unresolved": 11487,
+    "build_s": 6.1
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/integrals/intpoly.py",
+     "sympy/core/function.py",
+     "sympy/core/expr.py",
+     "sympy/core/containers.py",
+     "sympy/core/logic.py"
+    ],
+    "s": 3.17
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/integrals/intpoly.py",
+     "sympy/utilities/runtests.py",
+     "sympy/core/expr.py",
+     "sympy/polys/polytools.py",
+     "sympy/polys/rings.py"
+    ],
+    "s": 0.07
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/integrals/intpoly.py",
+     "sympy/polys/polytools.py",
+     "sympy/core/expr.py",
+     "sympy/polys/rings.py",
+     "sympy/utilities/runtests.py"
+    ],
+    "s": 0.04
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/integrals/intpoly.py",
+     "sympy/polys/polytools.py",
+     "sympy/polys/rings.py",
+     "sympy/combinatorics/permutations.py",
+     "sympy/core/expr.py"
+    ],
+    "s": 0.06
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13146",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/core/operations.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "b678d8103e48fdb1af335dbf0080b3d5366f2d17",
+    "schema": 2,
+    "files": 573,
+    "parse_failures": 0,
+    "symbols": 15611,
+    "calls_resolved": 25578,
+    "calls_unresolved": 11856,
+    "build_s": 6.4
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/core/symbol.py",
+     "sympy/core/evalf.py",
+     "sympy/simplify/simplify.py",
+     "sympy/codegen/ast.py",
+     "sympy/physics/units/dimensions.py"
+    ],
+    "s": 3.12
+   },
+   "bm25": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/plotting/intervalmath/lib_interval.py",
+     "sympy/printing/mathml.py",
+     "sympy/core/expr.py",
+     "sympy/simplify/hyperexpand.py",
+     "sympy/core/evalf.py"
+    ],
+    "s": 0.05
+   },
+   "hybrid": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/plotting/intervalmath/lib_interval.py",
+     "sympy/printing/mathml.py",
+     "sympy/core/expr.py",
+     "sympy/simplify/hyperexpand.py",
+     "sympy/core/evalf.py"
+    ],
+    "s": 0.03
+   },
+   "graph": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/plotting/intervalmath/lib_interval.py",
+     "sympy/core/evalf.py",
+     "sympy/printing/mathml.py",
+     "sympy/simplify/hyperexpand.py",
+     "sympy/core/expr.py"
+    ],
+    "s": 0.04
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13177",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/core/mod.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "662cfb818e865f580e18b59efbb3540c34232beb",
+    "schema": 2,
+    "files": 573,
+    "parse_failures": 0,
+    "symbols": 15634,
+    "calls_resolved": 25669,
+    "calls_unresolved": 11873,
+    "build_s": 6.2
+   },
+   "explorer": {
+    "file_rank": 4,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/core/logic.py",
+     "sympy/core/symbol.py",
+     "sympy/logic/boolalg.py",
+     "sympy/core/mod.py",
+     "sympy/codegen/ast.py"
+    ],
+    "s": 3.19
+   },
+   "bm25": {
+    "file_rank": 5,
+    "symbol_rank": 4,
+    "top_files": [
+     "sympy/core/power.py",
+     "sympy/simplify/radsimp.py",
+     "sympy/concrete/summations.py",
+     "sympy/integrals/meijerint.py",
+     "sympy/core/mod.py"
+    ],
+    "s": 0.06
+   },
+   "hybrid": {
+    "file_rank": 2,
+    "symbol_rank": 7,
+    "top_files": [
+     "sympy/core/power.py",
+     "sympy/core/mod.py",
+     "sympy/simplify/radsimp.py",
+     "sympy/concrete/summations.py",
+     "sympy/integrals/meijerint.py"
+    ],
+    "s": 0.04
+   },
+   "graph": {
+    "file_rank": 2,
+    "symbol_rank": 7,
+    "top_files": [
+     "sympy/core/power.py",
+     "sympy/core/mod.py",
+     "sympy/simplify/radsimp.py",
+     "sympy/concrete/summations.py",
+     "sympy/integrals/meijerint.py"
+    ],
+    "s": 0.04
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13437",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/functions/combinatorial/numbers.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "674afc619d7f5c519b6a5393a8b0532a131e57e0",
+    "schema": 2,
+    "files": 601,
+    "parse_failures": 0,
+    "symbols": 17099,
+    "calls_resolved": 32814,
+    "calls_unresolved": 12835,
+    "build_s": 21.7
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/functions/combinatorial/numbers.py",
+     "sympy/core/symbol.py",
+     "sympy/stats/rv.py",
+     "sympy/stats/frv.py",
+     "sympy/core/expr.py"
+    ],
+    "s": 9.85
+   },
+   "bm25": {
+    "file_rank": 2,
+    "symbol_rank": 12,
+    "top_files": [
+     "sympy/core/numbers.py",
+     "sympy/functions/combinatorial/numbers.py",
+     "sympy/utilities/codegen.py",
+     "sympy/series/limits.py",
+     "sympy/core/expr.py"
+    ],
+    "s": 0.05
+   },
+   "hybrid": {
+    "file_rank": 2,
+    "symbol_rank": 15,
+    "top_files": [
+     "sympy/core/numbers.py",
+     "sympy/functions/combinatorial/numbers.py",
+     "sympy/core/expr.py",
+     "sympy/series/limits.py",
+     "sympy/utilities/codegen.py"
+    ],
+    "s": 0.03
+   },
+   "graph": {
+    "file_rank": 2,
+    "symbol_rank": 20,
+    "top_files": [
+     "sympy/core/numbers.py",
+     "sympy/functions/combinatorial/numbers.py",
+     "sympy/series/limits.py",
+     "sympy/core/expr.py",
+     "sympy/utilities/codegen.py"
+    ],
+    "s": 0.04
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13471",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/core/numbers.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "3546ac7ed78e1780c1a76929864bb33330055740",
+    "schema": 2,
+    "files": 602,
+    "parse_failures": 0,
+    "symbols": 17127,
+    "calls_resolved": 32861,
+    "calls_unresolved": 12870,
+    "build_s": 23.0
+   },
+   "explorer": {
+    "file_rank": 7,
+    "symbol_rank": 14,
+    "top_files": [
+     "sympy/core/symbol.py",
+     "sympy/stats/rv.py",
+     "sympy/stats/frv.py",
+     "sympy/physics/mechanics/system.py",
+     "sympy/polys/polyoptions.py"
+    ],
+    "s": 9.96
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 2,
+    "top_files": [
+     "sympy/core/numbers.py",
+     "sympy/utilities/runtests.py",
+     "release/fabfile.py",
+     "sympy/utilities/codegen.py",
+     "sympy/diffgeom/diffgeom.py"
+    ],
+    "s": 0.07
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/core/numbers.py",
+     "sympy/utilities/runtests.py",
+     "release/fabfile.py",
+     "sympy/physics/mechanics/system.py",
+     "sympy/utilities/codegen.py"
+    ],
+    "s": 0.05
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/core/numbers.py",
+     "sympy/utilities/runtests.py",
+     "release/fabfile.py",
+     "sympy/physics/mechanics/system.py",
+     "sympy/assumptions/handlers/ntheory.py"
+    ],
+    "s": 0.06
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13480",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/functions/elementary/hyperbolic.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "f57fe3f4b3f2cab225749e1b3b38ae1bf80b62f0",
+    "schema": 2,
+    "files": 603,
+    "parse_failures": 0,
+    "symbols": 17129,
+    "calls_resolved": 32863,
+    "calls_unresolved": 12870,
+    "build_s": 22.0
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/functions/elementary/hyperbolic.py",
+     "sympy/functions/elementary/trigonometric.py",
+     "sympy/functions/elementary/exponential.py",
+     "sympy/core/symbol.py",
+     "sympy/integrals/rubi/utility_function.py"
+    ],
+    "s": 9.97
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/functions/elementary/hyperbolic.py",
+     "sympy/functions/elementary/trigonometric.py",
+     "sympy/functions/elementary/exponential.py",
+     "sympy/core/numbers.py",
+     "sympy/integrals/manualintegrate.py"
+    ],
+    "s": 0.05
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/functions/elementary/hyperbolic.py",
+     "sympy/functions/elementary/trigonometric.py",
+     "sympy/core/numbers.py",
+     "sympy/functions/elementary/exponential.py",
+     "sympy/integrals/manualintegrate.py"
+    ],
+    "s": 0.03
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/functions/elementary/hyperbolic.py",
+     "sympy/functions/elementary/trigonometric.py",
+     "sympy/core/sympify.py",
+     "sympy/polys/domains/modularinteger.py",
+     "sympy/core/function.py"
+    ],
+    "s": 0.05
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13647",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/matrices/common.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "67e3c956083d0128a621f65ee86a7dacd4f9f19f",
+    "schema": 2,
+    "files": 605,
+    "parse_failures": 0,
+    "symbols": 17192,
+    "calls_resolved": 33005,
+    "calls_unresolved": 12938,
+    "build_s": 21.7
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/matrices/common.py",
+     "sympy/physics/quantum/cartesian.py",
+     "sympy/matrices/dense.py",
+     "sympy/matrices/densetools.py",
+     "sympy/polys/domains/quotientring.py"
+    ],
+    "s": 9.47
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 7,
+    "top_files": [
+     "sympy/matrices/common.py",
+     "sympy/matrices/matrices.py",
+     "sympy/matrices/sparse.py",
+     "sympy/matrices/dense.py",
+     "sympy/polys/subresultants_qq_zz.py"
+    ],
+    "s": 0.06
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 11,
+    "top_files": [
+     "sympy/matrices/common.py",
+     "sympy/matrices/matrices.py",
+     "sympy/matrices/dense.py",
+     "sympy/matrices/sparse.py",
+     "sympy/polys/subresultants_qq_zz.py"
+    ],
+    "s": 0.04
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 17,
+    "top_files": [
+     "sympy/matrices/common.py",
+     "sympy/matrices/matrices.py",
+     "sympy/matrices/sparse.py",
+     "sympy/matrices/dense.py",
+     "sympy/simplify/hyperexpand.py"
+    ],
+    "s": 0.05
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13773",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/matrices/common.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "7121bdf1facdd90d05b6994b4c2e5b2865a4638a",
+    "schema": 2,
+    "files": 605,
+    "parse_failures": 0,
+    "symbols": 17221,
+    "calls_resolved": 33049,
+    "calls_unresolved": 12949,
+    "build_s": 22.1
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/polys/domains/quotientring.py",
+     "sympy/physics/quantum/matrixutils.py",
+     "sympy/polys/domains/expressiondomain.py",
+     "sympy/polys/domains/domain.py",
+     "sympy/polys/domains/polynomialring.py"
+    ],
+    "s": 9.92
+   },
+   "bm25": {
+    "file_rank": 4,
+    "symbol_rank": 4,
+    "top_files": [
+     "sympy/matrices/expressions/matmul.py",
+     "sympy/printing/pycode.py",
+     "sympy/assumptions/handlers/matrices.py",
+     "sympy/matrices/common.py",
+     "sympy/matrices/expressions/matexpr.py"
+    ],
+    "s": 0.06
+   },
+   "hybrid": {
+    "file_rank": 4,
+    "symbol_rank": 5,
+    "top_files": [
+     "sympy/matrices/expressions/matmul.py",
+     "sympy/printing/pycode.py",
+     "sympy/assumptions/handlers/matrices.py",
+     "sympy/matrices/common.py",
+     "sympy/matrices/expressions/matexpr.py"
+    ],
+    "s": 0.03
+   },
+   "graph": {
+    "file_rank": 4,
+    "symbol_rank": 5,
+    "top_files": [
+     "sympy/matrices/expressions/matmul.py",
+     "sympy/assumptions/handlers/matrices.py",
+     "sympy/printing/pycode.py",
+     "sympy/matrices/common.py",
+     "sympy/matrices/expressions/matexpr.py"
+    ],
+    "s": 0.04
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13895",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/core/numbers.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "4da0b64558e9551a11a99bccc63557ba34f50c58",
+    "schema": 2,
+    "files": 606,
+    "parse_failures": 0,
+    "symbols": 17266,
+    "calls_resolved": 33089,
+    "calls_unresolved": 12981,
+    "build_s": 21.9
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/core/symbol.py",
+     "sympy/simplify/simplify.py",
+     "sympy/integrals/rubi/utility_function.py",
+     "sympy/codegen/ast.py",
+     "sympy/physics/units/dimensions.py"
+    ],
+    "s": 9.95
+   },
+   "bm25": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/plotting/intervalmath/lib_interval.py",
+     "sympy/integrals/manualintegrate.py",
+     "sympy/polys/rootoftools.py",
+     "sympy/core/expr.py",
+     "sympy/solvers/solveset.py"
+    ],
+    "s": 0.05
+   },
+   "hybrid": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/plotting/intervalmath/lib_interval.py",
+     "sympy/integrals/manualintegrate.py",
+     "sympy/polys/rootoftools.py",
+     "sympy/core/expr.py",
+     "sympy/simplify/simplify.py"
+    ],
+    "s": 0.02
+   },
+   "graph": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/plotting/intervalmath/lib_interval.py",
+     "sympy/integrals/manualintegrate.py",
+     "sympy/polys/rootoftools.py",
+     "sympy/core/expr.py",
+     "sympy/simplify/simplify.py"
+    ],
+    "s": 0.04
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13915",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/core/mul.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "5c1644ff85e15752f9f8721bc142bfbf975e7805",
+    "schema": 2,
+    "files": 606,
+    "parse_failures": 0,
+    "symbols": 17266,
+    "calls_resolved": 33088,
+    "calls_unresolved": 12982,
+    "build_s": 23.0
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/stats/rv.py",
+     "sympy/stats/frv.py",
+     "sympy/core/expr.py",
+     "sympy/strategies/rl.py",
+     "sympy/functions/special/hyper.py"
+    ],
+    "s": 10.18
+   },
+   "bm25": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/interactive/printing.py",
+     "sympy/interactive/session.py",
+     "sympy/core/function.py",
+     "sympy/solvers/solveset.py",
+     "sympy/core/expr.py"
+    ],
+    "s": 0.07
+   },
+   "hybrid": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/interactive/printing.py",
+     "sympy/interactive/session.py",
+     "sympy/core/function.py",
+     "sympy/solvers/solveset.py",
+     "sympy/core/numbers.py"
+    ],
+    "s": 0.04
+   },
+   "graph": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/interactive/session.py",
+     "sympy/interactive/printing.py",
+     "sympy/core/function.py",
+     "sympy/solvers/solveset.py",
+     "sympy/core/expr.py"
+    ],
+    "s": 0.05
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13971",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/latex.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "84c125972ad535b2dfb245f8d311d347b45e5b8a",
+    "schema": 2,
+    "files": 607,
+    "parse_failures": 0,
+    "symbols": 17306,
+    "calls_resolved": 33165,
+    "calls_unresolved": 13044,
+    "build_s": 21.4
+   },
+   "explorer": {
+    "file_rank": 11,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/interactive/printing.py",
+     "sympy/stats/rv.py",
+     "sympy/stats/frv.py",
+     "sympy/polys/polyoptions.py",
+     "sympy/series/sequences.py"
+    ],
+    "s": 10.42
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/series/sequences.py",
+     "sympy/interactive/printing.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/physics/vector/printing.py"
+    ],
+    "s": 0.06
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 6,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/series/sequences.py",
+     "sympy/interactive/printing.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/__init__.py"
+    ],
+    "s": 0.04
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 6,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/series/sequences.py",
+     "sympy/interactive/printing.py",
+     "sympy/printing/pretty/stringpict.py"
+    ],
+    "s": 0.05
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-14024",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/core/numbers.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "b17abcb09cbcee80a90f6750e0f9b53f0247656c",
+    "schema": 2,
+    "files": 614,
+    "parse_failures": 0,
+    "symbols": 17709,
+    "calls_resolved": 33441,
+    "calls_unresolved": 13258,
+    "build_s": 21.9
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/core/symbol.py",
+     "sympy/simplify/simplify.py",
+     "sympy/integrals/rubi/utility_function.py",
+     "sympy/codegen/ast.py",
+     "sympy/physics/units/dimensions.py"
+    ],
+    "s": 9.94
+   },
+   "bm25": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/simplify/simplify.py",
+     "sympy/physics/secondquant.py",
+     "sympy/solvers/solveset.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/core/function.py"
+    ],
+    "s": 0.05
+   },
+   "hybrid": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/simplify/simplify.py",
+     "sympy/physics/secondquant.py",
+     "sympy/solvers/solveset.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/core/function.py"
+    ],
+    "s": 0.03
+   },
+   "graph": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/simplify/simplify.py",
+     "sympy/physics/secondquant.py",
+     "sympy/solvers/solveset.py",
+     "sympy/simplify/trigsimp.py",
+     "sympy/core/function.py"
+    ],
+    "s": 0.04
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-14308",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/pretty/pretty.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "fb536869fb7aa28b2695ad7a3b70949926b291c4",
+    "schema": 2,
+    "files": 627,
+    "parse_failures": 0,
+    "symbols": 17900,
+    "calls_resolved": 33517,
+    "calls_unresolved": 13479,
+    "build_s": 23.0
+   },
+   "explorer": {
+    "file_rank": 3,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/vector/coordsysrect.py",
+     "sympy/physics/quantum/qexpr.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/printing/pretty/pretty_symbology.py",
+     "sympy/printing/str.py"
+    ],
+    "s": 9.94
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/pretty/pretty.py",
+     "sympy/vector/coordsysrect.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/diffgeom/diffgeom.py",
+     "sympy/printing/latex.py"
+    ],
+    "s": 0.05
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/pretty/pretty.py",
+     "sympy/vector/coordsysrect.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/diffgeom/diffgeom.py",
+     "sympy/vector/vector.py"
+    ],
+    "s": 0.03
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/pretty/pretty.py",
+     "sympy/vector/coordsysrect.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/diffgeom/diffgeom.py",
+     "sympy/vector/vector.py"
+    ],
+    "s": 0.04
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-14317",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/latex.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "fb536869fb7aa28b2695ad7a3b70949926b291c4",
+    "schema": 2,
+    "files": 627,
+    "parse_failures": 0,
+    "symbols": 17900,
+    "calls_resolved": 33517,
+    "calls_unresolved": 13479,
+    "build_s": 23.0
+   },
+   "explorer": {
+    "file_rank": 3,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/printing/latex.py",
+     "sympy/polys/fglmtools.py",
+     "sympy/polys/polyclasses.py"
+    ],
+    "s": 10.33
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/printing/str.py",
+     "sympy/interactive/printing.py",
+     "sympy/physics/vector/printing.py"
+    ],
+    "s": 0.05
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/printing/str.py",
+     "sympy/polys/polytools.py",
+     "sympy/interactive/printing.py"
+    ],
+    "s": 0.03
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/printing/str.py",
+     "sympy/polys/rings.py"
+    ],
+    "s": 0.04
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-14396",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/polys/polyoptions.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "f35ad6411f86a15dd78db39c29d1e5291f66f9b5",
+    "schema": 2,
+    "files": 627,
+    "parse_failures": 0,
+    "symbols": 17918,
+    "calls_resolved": 33574,
+    "calls_unresolved": 13491,
+    "build_s": 21.3
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": 3,
+    "top_files": [
+     "sympy/polys/polyoptions.py",
+     "sympy/polys/polytools.py",
+     "sympy/polys/domains/domain.py",
+     "sympy/polys/domains/integerring.py",
+     "sympy/polys/domains/algebraicfield.py"
+    ],
+    "s": 10.43
+   },
+   "bm25": {
+    "file_rank": 2,
+    "symbol_rank": 5,
+    "top_files": [
+     "sympy/polys/polytools.py",
+     "sympy/polys/polyoptions.py",
+     "sympy/polys/domains/algebraicfield.py",
+     "sympy/polys/domains/old_polynomialring.py",
+     "sympy/polys/rings.py"
+    ],
+    "s": 0.08
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 12,
+    "top_files": [
+     "sympy/polys/polyoptions.py",
+     "sympy/polys/polytools.py",
+     "sympy/polys/domains/algebraicfield.py",
+     "sympy/polys/domains/old_polynomialring.py",
+     "sympy/stats/rv.py"
+    ],
+    "s": 0.07
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 13,
+    "top_files": [
+     "sympy/polys/polyoptions.py",
+     "sympy/polys/polytools.py",
+     "sympy/core/containers.py",
+     "sympy/polys/polyerrors.py",
+     "sympy/simplify/hyperexpand.py"
+    ],
+    "s": 0.08
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-14774",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/latex.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "8fc63c2d71752389a44367b8ef4aba8a91af6a45",
+    "schema": 2,
+    "files": 631,
+    "parse_failures": 0,
+    "symbols": 18035,
+    "calls_resolved": 33825,
+    "calls_unresolved": 13562,
+    "build_s": 21.8
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/core/symbol.py",
+     "sympy/stats/rv.py",
+     "sympy/stats/frv.py"
+    ],
+    "s": 12.1
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 2,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/functions/elementary/trigonometric.py",
+     "sympy/physics/vector/printing.py",
+     "sympy/integrals/rubi/utility_function.py",
+     "sympy/integrals/rubi/rules/inverse_trig.py"
+    ],
+    "s": 0.06
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/functions/elementary/trigonometric.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/plotting/intervalmath/lib_interval.py",
+     "sympy/assumptions/handlers/order.py"
+    ],
+    "s": 0.04
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/functions/elementary/trigonometric.py",
+     "sympy/printing/mathml.py",
+     "sympy/physics/vector/printing.py",
+     "sympy/printing/pretty/stringpict.py"
+    ],
+    "s": 0.05
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-14817",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/pretty/pretty.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "0dbdc0ea83d339936da175f8c3a97d0d6bafb9f8",
+    "schema": 2,
+    "files": 631,
+    "parse_failures": 0,
+    "symbols": 18051,
+    "calls_resolved": 33477,
+    "calls_unresolved": 13991,
+    "build_s": 22.3
+   },
+   "explorer": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/parsing/sympy_parser.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/printing/printer.py",
+     "sympy/core/sympify.py",
+     "sympy/parsing/ast_parser.py"
+    ],
+    "s": 10.08
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 3,
+    "top_files": [
+     "sympy/printing/pretty/pretty.py",
+     "sympy/parsing/sympy_parser.py",
+     "sympy/printing/latex.py",
+     "sympy/utilities/codegen.py",
+     "sympy/parsing/ast_parser.py"
+    ],
+    "s": 0.1
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/printing/pretty/pretty.py",
+     "sympy/parsing/sympy_parser.py",
+     "sympy/core/sympify.py",
+     "sympy/printing/printer.py"
+    ],
+    "s": 0.11
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 2,
+    "top_files": [
+     "sympy/printing/pretty/pretty.py",
+     "sympy/core/sympify.py",
+     "sympy/parsing/sympy_parser.py",
+     "sympy/parsing/ast_parser.py",
+     "sympy/printing/pretty/stringpict.py"
+    ],
+    "s": 0.12
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-15011",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/utilities/lambdify.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "b7c5ba2bf3ffd5cf453b25af7c8ddd9a639800cb",
+    "schema": 2,
+    "files": 676,
+    "parse_failures": 0,
+    "symbols": 27724,
+    "calls_resolved": 65242,
+    "calls_unresolved": 19249,
+    "build_s": 19.6
+   },
+   "explorer": {
+    "file_rank": 3,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/core/symbol.py",
+     "sympy/plotting/experimental_lambdify.py",
+     "sympy/utilities/lambdify.py",
+     "sympy/stats/rv.py",
+     "sympy/stats/joint_rv.py"
+    ],
+    "s": 8.12
+   },
+   "bm25": {
+    "file_rank": 4,
+    "symbol_rank": 2,
+    "top_files": [
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/vector/coordsysrect.py",
+     "sympy/utilities/codegen.py",
+     "sympy/utilities/lambdify.py",
+     "sympy/assumptions/handlers/matrices.py"
+    ],
+    "s": 0.08
+   },
+   "hybrid": {
+    "file_rank": 4,
+    "symbol_rank": 12,
+    "top_files": [
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/vector/coordsysrect.py",
+     "sympy/assumptions/handlers/matrices.py",
+     "sympy/utilities/lambdify.py",
+     "sympy/utilities/codegen.py"
+    ],
+    "s": 0.05
+   },
+   "graph": {
+    "file_rank": 3,
+    "symbol_rank": 12,
+    "top_files": [
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/vector/coordsysrect.py",
+     "sympy/utilities/lambdify.py",
+     "sympy/assumptions/handlers/matrices.py",
+     "sympy/utilities/codegen.py"
+    ],
+    "s": 0.06
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-15308",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/latex.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "fb59d703e6863ed803c98177b59197b5513332e9",
+    "schema": 2,
+    "files": 676,
+    "parse_failures": 0,
+    "symbols": 27789,
+    "calls_resolved": 65480,
+    "calls_unresolved": 19379,
+    "build_s": 19.8
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/matrices/expressions/trace.py",
+     "sympy/assumptions/handlers/order.py",
+     "sympy/assumptions/handlers/matrices.py"
+    ],
+    "s": 8.61
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/physics/vector/printing.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/physics/quantum/operator.py"
+    ],
+    "s": 0.06
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/physics/vector/printing.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/physics/quantum/operator.py"
+    ],
+    "s": 0.04
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/physics/vector/printing.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/physics/quantum/operator.py"
+    ],
+    "s": 0.05
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-15345",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/mathematica.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "9ef28fba5b4d6d0168237c9c005a550e6dc27d81",
+    "schema": 2,
+    "files": 676,
+    "parse_failures": 0,
+    "symbols": 27775,
+    "calls_resolved": 65462,
+    "calls_unresolved": 19365,
+    "build_s": 19.5
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/mathematica.py",
+     "sympy/core/symbol.py",
+     "sympy/stats/rv.py",
+     "sympy/codegen/ast.py",
+     "sympy/stats/joint_rv.py"
+    ],
+    "s": 8.27
+   },
+   "bm25": {
+    "file_rank": 2,
+    "symbol_rank": 6,
+    "top_files": [
+     "sympy/utilities/codegen.py",
+     "sympy/printing/mathematica.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/printing/latex.py",
+     "sympy/parsing/mathematica.py"
+    ],
+    "s": 0.06
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 9,
+    "top_files": [
+     "sympy/printing/mathematica.py",
+     "sympy/utilities/codegen.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/printing/latex.py",
+     "sympy/functions/elementary/miscellaneous.py"
+    ],
+    "s": 0.04
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 6,
+    "top_files": [
+     "sympy/printing/mathematica.py",
+     "sympy/utilities/codegen.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/parsing/mathematica.py",
+     "sympy/printing/latex.py"
+    ],
+    "s": 0.05
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-15346",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/simplify/trigsimp.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "9ef28fba5b4d6d0168237c9c005a550e6dc27d81",
+    "schema": 2,
+    "files": 676,
+    "parse_failures": 0,
+    "symbols": 27775,
+    "calls_resolved": 65462,
+    "calls_unresolved": 19365,
+    "build_s": 19.5
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/core/symbol.py",
+     "sympy/simplify/simplify.py",
+     "sympy/integrals/rubi/utility_function.py",
+     "sympy/stats/rv.py",
+     "sympy/logic/boolalg.py"
+    ],
+    "s": 8.07
+   },
+   "bm25": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/simplify/simplify.py",
+     "sympy/functions/elementary/trigonometric.py",
+     "sympy/utilities/codegen.py",
+     "sympy/core/numbers.py",
+     "sympy/integrals/manualintegrate.py"
+    ],
+    "s": 0.07
+   },
+   "hybrid": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/functions/elementary/trigonometric.py",
+     "sympy/assumptions/handlers/sets.py",
+     "sympy/simplify/simplify.py",
+     "sympy/core/numbers.py",
+     "sympy/utilities/codegen.py"
+    ],
+    "s": 0.04
+   },
+   "graph": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/integrals/rubi/rules/inverse_trig.py",
+     "sympy/functions/elementary/trigonometric.py",
+     "sympy/integrals/manualintegrate.py",
+     "sympy/assumptions/handlers/sets.py",
+     "sympy/simplify/simplify.py"
+    ],
+    "s": 0.07
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-15609",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/latex.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "15f56f3b0006d2ed2c29bde3c43e91618012c849",
+    "schema": 2,
+    "files": 679,
+    "parse_failures": 0,
+    "symbols": 27923,
+    "calls_resolved": 65690,
+    "calls_unresolved": 19549,
+    "build_s": 19.4
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/stats/rv.py",
+     "sympy/stats/joint_rv.py",
+     "sympy/stats/frv.py",
+     "sympy/assumptions/handlers/matrices.py"
+    ],
+    "s": 8.29
+   },
+   "bm25": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/mathml.py",
+     "sympy/printing/latex.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/utilities/codegen.py"
+    ],
+    "s": 0.09
+   },
+   "hybrid": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/mathml.py",
+     "sympy/printing/latex.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/utilities/codegen.py"
+    ],
+    "s": 0.05
+   },
+   "graph": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/mathml.py",
+     "sympy/printing/latex.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/utilities/codegen.py"
+    ],
+    "s": 0.07
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-15678",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/geometry/util.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "31c68eef3ffef39e2e792b0ec92cd92b7010eb2a",
+    "schema": 2,
+    "files": 680,
+    "parse_failures": 0,
+    "symbols": 27968,
+    "calls_resolved": 65770,
+    "calls_unresolved": 19587,
+    "build_s": 19.3
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/geometry/util.py",
+     "sympy/integrals/rubi/utility_function.py",
+     "sympy/core/symbol.py",
+     "sympy/core/function.py",
+     "sympy/sets/ordinals.py"
+    ],
+    "s": 8.33
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/geometry/util.py",
+     "sympy/solvers/ode.py",
+     "sympy/geometry/ellipse.py",
+     "sympy/core/function.py",
+     "sympy/solvers/solveset.py"
+    ],
+    "s": 0.08
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/geometry/util.py",
+     "sympy/core/function.py",
+     "sympy/geometry/ellipse.py",
+     "sympy/solvers/ode.py",
+     "sympy/matrices/sparse.py"
+    ],
+    "s": 0.07
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/geometry/util.py",
+     "sympy/geometry/ellipse.py",
+     "sympy/solvers/solvers.py",
+     "sympy/matrices/sparse.py",
+     "sympy/matrices/matrices.py"
+    ],
+    "s": 0.07
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-16106",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/mathml.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "0e987498b00167fdd4a08a41c852a97cb70ce8f2",
+    "schema": 2,
+    "files": 680,
+    "parse_failures": 0,
+    "symbols": 28103,
+    "calls_resolved": 65983,
+    "calls_unresolved": 19691,
+    "build_s": 19.4
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/mathml.py",
+     "sympy/printing/printer.py",
+     "sympy/printing/str.py",
+     "sympy/printing/theanocode.py",
+     "sympy/printing/latex.py"
+    ],
+    "s": 9.72
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/mathml.py",
+     "sympy/printing/fcode.py",
+     "sympy/printing/latex.py",
+     "sympy/printing/pycode.py",
+     "sympy/printing/codeprinter.py"
+    ],
+    "s": 0.13
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/mathml.py",
+     "sympy/printing/printer.py",
+     "sympy/tensor/indexed.py",
+     "sympy/printing/theanocode.py",
+     "sympy/printing/latex.py"
+    ],
+    "s": 0.11
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/mathml.py",
+     "sympy/tensor/indexed.py",
+     "sympy/printing/printer.py",
+     "sympy/printing/theanocode.py",
+     "sympy/printing/latex.py"
+    ],
+    "s": 0.13
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-16281",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/pretty/pretty.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "41490b75f3621408e0468b0e7b6dc409601fc6ff",
+    "schema": 2,
+    "files": 680,
+    "parse_failures": 0,
+    "symbols": 28160,
+    "calls_resolved": 66057,
+    "calls_unresolved": 19732,
+    "build_s": 19.4
+   },
+   "explorer": {
+    "file_rank": 4,
+    "symbol_rank": 13,
+    "top_files": [
+     "sympy/polys/agca/ideals.py",
+     "sympy/concrete/products.py",
+     "sympy/printing/pretty/pretty_symbology.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/printing/str.py"
+    ],
+    "s": 9.09
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 7,
+    "top_files": [
+     "sympy/printing/pretty/pretty.py",
+     "sympy/printing/pretty/pretty_symbology.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/physics/vector/dyadic.py",
+     "sympy/physics/quantum/hilbert.py"
+    ],
+    "s": 0.09
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 9,
+    "top_files": [
+     "sympy/printing/pretty/pretty.py",
+     "sympy/printing/pretty/pretty_symbology.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/physics/vector/dyadic.py",
+     "sympy/physics/vector/printing.py"
+    ],
+    "s": 0.06
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 10,
+    "top_files": [
+     "sympy/printing/pretty/pretty.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/printing/pretty/pretty_symbology.py",
+     "sympy/physics/vector/printing.py",
+     "sympy/physics/vector/dyadic.py"
+    ],
+    "s": 0.07
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-16503",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/pretty/pretty.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "a7e6f093c98a3c4783848a19fce646e32b6e0161",
+    "schema": 2,
+    "files": 680,
+    "parse_failures": 0,
+    "symbols": 28226,
+    "calls_resolved": 66099,
+    "calls_unresolved": 19789,
+    "build_s": 19.4
+   },
+   "explorer": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/concrete/summations.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/polys/domains/quotientring.py",
+     "sympy/polys/domains/expressiondomain.py",
+     "sympy/polys/domains/domain.py"
+    ],
+    "s": 8.67
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/printing/pretty/pretty.py",
+     "sympy/physics/quantum/qexpr.py",
+     "sympy/physics/quantum/operator.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/printing/tree.py"
+    ],
+    "s": 0.06
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 2,
+    "top_files": [
+     "sympy/printing/pretty/pretty.py",
+     "sympy/physics/quantum/qexpr.py",
+     "sympy/concrete/summations.py",
+     "sympy/physics/quantum/operator.py",
+     "sympy/printing/pretty/stringpict.py"
+    ],
+    "s": 0.04
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 2,
+    "top_files": [
+     "sympy/printing/pretty/pretty.py",
+     "sympy/printing/pretty/stringpict.py",
+     "sympy/physics/quantum/qexpr.py",
+     "sympy/plotting/pygletplot/plot.py",
+     "sympy/plotting/plot.py"
+    ],
+    "s": 0.05
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-16792",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/utilities/codegen.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "09786a173e7a0a488f46dd6000177c23e5d24eed",
+    "schema": 2,
+    "files": 681,
+    "parse_failures": 0,
+    "symbols": 28354,
+    "calls_resolved": 66286,
+    "calls_unresolved": 19893,
+    "build_s": 19.8
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/utilities/autowrap.py",
+     "sympy/codegen/ast.py",
+     "sympy/codegen/fnodes.py",
+     "sympy/assumptions/handlers/matrices.py",
+     "sympy/matrices/expressions/matexpr.py"
+    ],
+    "s": 8.08
+   },
+   "bm25": {
+    "file_rank": 2,
+    "symbol_rank": 13,
+    "top_files": [
+     "sympy/utilities/autowrap.py",
+     "sympy/utilities/codegen.py",
+     "sympy/printing/llvmjitcode.py",
+     "sympy/functions/special/delta_functions.py",
+     "sympy/matrices/expressions/matexpr.py"
+    ],
+    "s": 0.11
+   },
+   "hybrid": {
+    "file_rank": 2,
+    "symbol_rank": 20,
+    "top_files": [
+     "sympy/utilities/autowrap.py",
+     "sympy/utilities/codegen.py",
+     "sympy/printing/llvmjitcode.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/__init__.py"
+    ],
+    "s": 0.09
+   },
+   "graph": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/utilities/autowrap.py",
+     "sympy/utilities/codegen.py",
+     "sympy/plotting/plot.py",
+     "sympy/plotting/pygletplot/plot.py",
+     "sympy/printing/llvmjitcode.py"
+    ],
+    "s": 0.09
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-16988",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/sets/sets.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "e727339af6dc22321b00f52d971cda39e4ce89fb",
+    "schema": 2,
+    "files": 682,
+    "parse_failures": 0,
+    "symbols": 28508,
+    "calls_resolved": 66481,
+    "calls_unresolved": 19942,
+    "build_s": 19.3
+   },
+   "explorer": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/functions/elementary/piecewise.py",
+     "sympy/sets/sets.py",
+     "sympy/core/containers.py",
+     "sympy/geometry/entity.py",
+     "sympy/geometry/ellipse.py"
+    ],
+    "s": 8.43
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/sets/sets.py",
+     "sympy/solvers/solveset.py",
+     "sympy/sets/handlers/intersection.py",
+     "sympy/utilities/codegen.py",
+     "sympy/functions/elementary/piecewise.py"
+    ],
+    "s": 0.07
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/sets/sets.py",
+     "sympy/solvers/solveset.py",
+     "sympy/functions/elementary/piecewise.py",
+     "sympy/sets/handlers/intersection.py",
+     "sympy/utilities/codegen.py"
+    ],
+    "s": 0.04
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/sets/sets.py",
+     "sympy/solvers/solveset.py",
+     "sympy/functions/elementary/piecewise.py",
+     "sympy/sets/handlers/intersection.py",
+     "sympy/stats/crv_types.py"
+    ],
+    "s": 0.06
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-17022",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/pycode.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "f91de695585c1fbc7d4f49ee061f64fcb1c2c4d8",
+    "schema": 2,
+    "files": 682,
+    "parse_failures": 0,
+    "symbols": 28516,
+    "calls_resolved": 66524,
+    "calls_unresolved": 19959,
+    "build_s": 19.4
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/matrices/expressions/diagonal.py",
+     "sympy/matrices/expressions/inverse.py",
+     "sympy/matrices/expressions/funcmatrix.py",
+     "sympy/matrices/expressions/applyfunc.py"
+    ],
+    "s": 8.34
+   },
+   "bm25": {
+    "file_rank": 4,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/printing/mathml.py",
+     "sympy/utilities/codegen.py",
+     "sympy/printing/pycode.py",
+     "sympy/printing/latex.py"
+    ],
+    "s": 0.09
+   },
+   "hybrid": {
+    "file_rank": 5,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/utilities/codegen.py",
+     "sympy/printing/mathml.py",
+     "sympy/assumptions/handlers/matrices.py",
+     "sympy/printing/pycode.py"
+    ],
+    "s": 0.07
+   },
+   "graph": {
+    "file_rank": 6,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/utilities/codegen.py",
+     "sympy/printing/mathml.py",
+     "sympy/assumptions/handlers/matrices.py",
+     "sympy/printing/latex.py"
+    ],
+    "s": 0.08
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-17139",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/simplify/fu.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "1d3327b8e90a186df6972991963a5ae87053259d",
+    "schema": 2,
+    "files": 685,
+    "parse_failures": 0,
+    "symbols": 28639,
+    "calls_resolved": 66710,
+    "calls_unresolved": 20025,
+    "build_s": 19.6
+   },
+   "explorer": {
+    "file_rank": 3,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/core/expr.py",
+     "sympy/simplify/trigsimp.py",
+     "sympy/simplify/fu.py",
+     "sympy/simplify/simplify.py",
+     "sympy/integrals/rubi/utility_function.py"
+    ],
+    "s": 8.42
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 17,
+    "top_files": [
+     "sympy/simplify/fu.py",
+     "sympy/core/numbers.py",
+     "sympy/simplify/trigsimp.py",
+     "sympy/strategies/core.py",
+     "sympy/core/expr.py"
+    ],
+    "s": 0.09
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 8,
+    "top_files": [
+     "sympy/simplify/fu.py",
+     "sympy/simplify/trigsimp.py",
+     "sympy/strategies/core.py",
+     "sympy/core/expr.py",
+     "sympy/core/numbers.py"
+    ],
+    "s": 0.15
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 10,
+    "top_files": [
+     "sympy/simplify/fu.py",
+     "sympy/simplify/trigsimp.py",
+     "sympy/simplify/simplify.py",
+     "sympy/strategies/core.py",
+     "sympy/core/expr.py"
+    ],
+    "s": 0.18
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-17630",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/matrices/expressions/matexpr.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "58e78209c8577b9890e957b624466e5beed7eb08",
+    "schema": 2,
+    "files": 697,
+    "parse_failures": 0,
+    "symbols": 29139,
+    "calls_resolved": 53571,
+    "calls_unresolved": 20494,
+    "build_s": 17.2
+   },
+   "explorer": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/matrices/expressions/blockmatrix.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/assumptions/handlers/matrices.py",
+     "sympy/integrals/rubi/utility_function.py",
+     "sympy/parsing/autolev/_antlr/autolevparser.py"
+    ],
+    "s": 8.16
+   },
+   "bm25": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/matrices/expressions/blockmatrix.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/strategies/core.py",
+     "sympy/matrices/common.py",
+     "sympy/matrices/expressions/matmul.py"
+    ],
+    "s": 0.12
+   },
+   "hybrid": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/matrices/expressions/blockmatrix.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/strategies/core.py",
+     "sympy/assumptions/handlers/matrices.py",
+     "sympy/core/numbers.py"
+    ],
+    "s": 0.16
+   },
+   "graph": {
+    "file_rank": 3,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/matrices/expressions/blockmatrix.py",
+     "sympy/strategies/core.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/simplify/gammasimp.py",
+     "sympy/assumptions/handlers/matrices.py"
+    ],
+    "s": 0.16
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-17655",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/geometry/point.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "f5e965947af2410ded92cfad987aaf45262ea434",
+    "schema": 2,
+    "files": 697,
+    "parse_failures": 0,
+    "symbols": 29143,
+    "calls_resolved": 53617,
+    "calls_unresolved": 20496,
+    "build_s": 16.8
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": 3,
+    "top_files": [
+     "sympy/geometry/point.py",
+     "sympy/utilities/misc.py",
+     "sympy/geometry/exceptions.py",
+     "sympy/geometry/line.py",
+     "sympy/vector/point.py"
+    ],
+    "s": 8.25
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 3,
+    "top_files": [
+     "sympy/geometry/point.py",
+     "sympy/geometry/line.py",
+     "sympy/core/function.py",
+     "sympy/physics/units/dimensions.py",
+     "sympy/series/sequences.py"
+    ],
+    "s": 0.13
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 4,
+    "top_files": [
+     "sympy/geometry/point.py",
+     "sympy/geometry/line.py",
+     "sympy/geometry/exceptions.py",
+     "sympy/physics/units/dimensions.py",
+     "sympy/geometry/__init__.py"
+    ],
+    "s": 0.11
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 4,
+    "top_files": [
+     "sympy/geometry/point.py",
+     "sympy/geometry/line.py",
+     "sympy/geometry/exceptions.py",
+     "sympy/core/function.py",
+     "sympy/core/containers.py"
+    ],
+    "s": 0.12
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-18057",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/core/expr.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "62000f37b8821573ba00280524ffb4ac4a380875",
+    "schema": 2,
+    "files": 706,
+    "parse_failures": 0,
+    "symbols": 29326,
+    "calls_resolved": 53901,
+    "calls_unresolved": 20643,
+    "build_s": 17.2
+   },
+   "explorer": {
+    "file_rank": 3,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/parsing/sympy_parser.py",
+     "sympy/core/sympify.py",
+     "sympy/core/expr.py",
+     "sympy/parsing/ast_parser.py",
+     "sympy/core/exprtools.py"
+    ],
+    "s": 8.85
+   },
+   "bm25": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/parsing/sympy_parser.py",
+     "sympy/printing/repr.py",
+     "sympy/parsing/ast_parser.py",
+     "sympy/physics/secondquant.py",
+     "sympy/core/relational.py"
+    ],
+    "s": 0.11
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/core/expr.py",
+     "sympy/parsing/sympy_parser.py",
+     "sympy/core/sympify.py",
+     "sympy/parsing/ast_parser.py",
+     "sympy/__init__.py"
+    ],
+    "s": 0.09
+   },
+   "graph": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/parsing/sympy_parser.py",
+     "sympy/core/expr.py",
+     "sympy/core/sympify.py",
+     "sympy/plotting/plot.py",
+     "sympy/plotting/pygletplot/plot.py"
+    ],
+    "s": 0.11
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-18087",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/core/exprtools.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "9da013ad0ddc3cd96fe505f2e47c63e372040916",
+    "schema": 2,
+    "files": 706,
+    "parse_failures": 0,
+    "symbols": 29327,
+    "calls_resolved": 53903,
+    "calls_unresolved": 20643,
+    "build_s": 17.3
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/simplify/trigsimp.py",
+     "sympy/assumptions/handlers/sets.py",
+     "sympy/core/expr.py",
+     "sympy/assumptions/handlers/common.py",
+     "sympy/assumptions/handlers/calculus.py"
+    ],
+    "s": 8.39
+   },
+   "bm25": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/simplify/trigsimp.py",
+     "sympy/assumptions/sathandlers.py",
+     "sympy/assumptions/handlers/sets.py",
+     "sympy/integrals/manualintegrate.py",
+     "sympy/solvers/solveset.py"
+    ],
+    "s": 0.09
+   },
+   "hybrid": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/simplify/trigsimp.py",
+     "sympy/assumptions/sathandlers.py",
+     "sympy/assumptions/handlers/sets.py",
+     "sympy/core/expr.py",
+     "sympy/solvers/solveset.py"
+    ],
+    "s": 0.06
+   },
+   "graph": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/simplify/trigsimp.py",
+     "sympy/assumptions/sathandlers.py",
+     "sympy/assumptions/handlers/sets.py",
+     "sympy/solvers/solveset.py",
+     "sympy/core/expr.py"
+    ],
+    "s": 0.07
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-18189",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/solvers/diophantine.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "1923822ddf8265199dbd9ef9ce09641d3fd042b9",
+    "schema": 2,
+    "files": 707,
+    "parse_failures": 0,
+    "symbols": 29394,
+    "calls_resolved": 53990,
+    "calls_unresolved": 20704,
+    "build_s": 18.3
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/solvers/diophantine.py",
+     "sympy/stats/rv.py",
+     "sympy/assumptions/cnf.py",
+     "sympy/stats/frv.py",
+     "sympy/stats/joint_rv.py"
+    ],
+    "s": 8.27
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/solvers/diophantine.py",
+     "sympy/solvers/ode.py",
+     "sympy/assumptions/handlers/order.py",
+     "sympy/solvers/solveset.py",
+     "sympy/core/expr.py"
+    ],
+    "s": 0.06
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/solvers/diophantine.py",
+     "sympy/solvers/ode.py",
+     "sympy/assumptions/handlers/order.py",
+     "sympy/solvers/solveset.py",
+     "sympy/core/expr.py"
+    ],
+    "s": 0.04
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/solvers/diophantine.py",
+     "sympy/utilities/iterables.py",
+     "sympy/solvers/solveset.py",
+     "sympy/assumptions/handlers/order.py",
+     "sympy/core/expr.py"
+    ],
+    "s": 0.05
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-18199",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/ntheory/residue_ntheory.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "ba80d1e493f21431b4bf729b3e0452cd47eb9566",
+    "schema": 2,
+    "files": 707,
+    "parse_failures": 0,
+    "symbols": 29426,
+    "calls_resolved": 53998,
+    "calls_unresolved": 20711,
+    "build_s": 17.0
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/ntheory/residue_ntheory.py",
+     "sympy/core/basic.py",
+     "sympy/geometry/entity.py",
+     "sympy/polys/polytools.py",
+     "sympy/logic/boolalg.py"
+    ],
+    "s": 8.21
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 2,
+    "top_files": [
+     "sympy/ntheory/residue_ntheory.py",
+     "sympy/polys/rootoftools.py",
+     "sympy/solvers/ode.py",
+     "sympy/solvers/diophantine.py",
+     "sympy/polys/rootisolation.py"
+    ],
+    "s": 0.03
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/ntheory/residue_ntheory.py",
+     "sympy/polys/rootoftools.py",
+     "sympy/solvers/ode.py",
+     "sympy/core/mod.py",
+     "sympy/solvers/diophantine.py"
+    ],
+    "s": 0.01
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/ntheory/residue_ntheory.py",
+     "sympy/polys/rootoftools.py",
+     "sympy/solvers/ode.py",
+     "sympy/solvers/diophantine.py",
+     "sympy/core/mod.py"
+    ],
+    "s": 0.02
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-18532",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/core/basic.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "74227f900b05009d4eed62e34a166228788a32ca",
+    "schema": 2,
+    "files": 712,
+    "parse_failures": 0,
+    "symbols": 29423,
+    "calls_resolved": 54012,
+    "calls_unresolved": 20667,
+    "build_s": 16.9
+   },
+   "explorer": {
+    "file_rank": 15,
+    "symbol_rank": 15,
+    "top_files": [
+     "sympy/core/symbol.py",
+     "sympy/physics/units/dimensions.py",
+     "sympy/stats/frv.py",
+     "sympy/stats/joint_rv.py",
+     "sympy/stats/rv.py"
+    ],
+    "s": 8.25
+   },
+   "bm25": {
+    "file_rank": 3,
+    "symbol_rank": null,
+    "top_files": [
+     "bin/sympy_time_cache.py",
+     "sympy/printing/mathml.py",
+     "sympy/core/basic.py",
+     "sympy/plotting/experimental_lambdify.py",
+     "sympy/core/expr.py"
+    ],
+    "s": 0.08
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 2,
+    "top_files": [
+     "sympy/core/basic.py",
+     "bin/sympy_time_cache.py",
+     "sympy/printing/mathml.py",
+     "sympy/plotting/experimental_lambdify.py",
+     "sympy/core/expr.py"
+    ],
+    "s": 0.06
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 2,
+    "top_files": [
+     "sympy/core/basic.py",
+     "bin/sympy_time_cache.py",
+     "sympy/printing/mathml.py",
+     "sympy/core/expr.py",
+     "sympy/series/gruntz.py"
+    ],
+    "s": 0.07
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-18621",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/matrices/expressions/blockmatrix.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "b17ef6effe278d5b861d65896cc53442a6370d8f",
+    "schema": 2,
+    "files": 716,
+    "parse_failures": 0,
+    "symbols": 29472,
+    "calls_resolved": 53986,
+    "calls_unresolved": 20755,
+    "build_s": 16.7
+   },
+   "explorer": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/matrices/matrices.py",
+     "sympy/matrices/expressions/blockmatrix.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/matrices/dense.py",
+     "sympy/matrices/expressions/diagonal.py"
+    ],
+    "s": 8.62
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 8,
+    "top_files": [
+     "sympy/matrices/expressions/blockmatrix.py",
+     "sympy/matrices/common.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/matrices/dense.py",
+     "sympy/matrices/matrices.py"
+    ],
+    "s": 0.12
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 8,
+    "top_files": [
+     "sympy/matrices/expressions/blockmatrix.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/matrices/common.py",
+     "sympy/matrices/dense.py",
+     "sympy/matrices/matrices.py"
+    ],
+    "s": 0.13
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 8,
+    "top_files": [
+     "sympy/matrices/expressions/blockmatrix.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/matrices/matrices.py",
+     "sympy/matrices/common.py",
+     "sympy/matrices/dense.py"
+    ],
+    "s": 0.14
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-18698",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/polys/polytools.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "3dff1b98a78f28c953ae2140b69356b8391e399c",
+    "schema": 2,
+    "files": 716,
+    "parse_failures": 0,
+    "symbols": 29513,
+    "calls_resolved": 53863,
+    "calls_unresolved": 21020,
+    "build_s": 17.4
+   },
+   "explorer": {
+    "file_rank": 3,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/polys/rings.py",
+     "sympy/polys/polyclasses.py",
+     "sympy/polys/polytools.py",
+     "sympy/assumptions/handlers/common.py",
+     "sympy/plotting/intervalmath/lib_interval.py"
+    ],
+    "s": 8.46
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/polys/polytools.py",
+     "sympy/polys/sqfreetools.py",
+     "sympy/polys/compatibility.py",
+     "sympy/polys/galoistools.py",
+     "sympy/polys/factortools.py"
+    ],
+    "s": 0.04
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/polys/polytools.py",
+     "sympy/polys/sqfreetools.py",
+     "sympy/polys/compatibility.py",
+     "sympy/polys/polyclasses.py",
+     "sympy/polys/galoistools.py"
+    ],
+    "s": 0.01
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/polys/polytools.py",
+     "sympy/polys/sqfreetools.py",
+     "sympy/polys/compatibility.py",
+     "sympy/polys/galoistools.py",
+     "sympy/polys/polyclasses.py"
+    ],
+    "s": 0.02
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-18835",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/utilities/iterables.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "516fa83e69caf1e68306cfc912a13f36c434d51c",
+    "schema": 2,
+    "files": 719,
+    "parse_failures": 0,
+    "symbols": 29639,
+    "calls_resolved": 53984,
+    "calls_unresolved": 21110,
+    "build_s": 17.2
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": 2,
+    "top_files": [
+     "sympy/utilities/iterables.py",
+     "sympy/benchmarks/bench_symbench.py",
+     "sympy/core/containers.py",
+     "sympy/utilities/_compilation/util.py",
+     "sympy/polys/polyclasses.py"
+    ],
+    "s": 8.44
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 4,
+    "top_files": [
+     "sympy/utilities/iterables.py",
+     "sympy/utilities/codegen.py",
+     "sympy/combinatorics/subsets.py",
+     "sympy/utilities/enumerative.py",
+     "sympy/utilities/autowrap.py"
+    ],
+    "s": 0.1
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/utilities/iterables.py",
+     "sympy/utilities/codegen.py",
+     "sympy/combinatorics/subsets.py",
+     "sympy/utilities/enumerative.py",
+     "sympy/combinatorics/permutations.py"
+    ],
+    "s": 0.07
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/utilities/iterables.py",
+     "sympy/simplify/fu.py",
+     "sympy/combinatorics/permutations.py",
+     "sympy/crypto/crypto.py",
+     "sympy/simplify/hyperexpand.py"
+    ],
+    "s": 0.1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-19007",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/matrices/expressions/blockmatrix.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "f9e030b57623bebdc2efa7f297c1b5ede08fcebf",
+    "schema": 2,
+    "files": 719,
+    "parse_failures": 0,
+    "symbols": 29653,
+    "calls_resolved": 54026,
+    "calls_unresolved": 21128,
+    "build_s": 17.0
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/matrices/expressions/blockmatrix.py",
+     "sympy/stats/rv.py",
+     "sympy/assumptions/cnf.py",
+     "sympy/stats/frv.py",
+     "sympy/stats/joint_rv.py"
+    ],
+    "s": 8.25
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 3,
+    "top_files": [
+     "sympy/matrices/expressions/blockmatrix.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/assumptions/handlers/matrices.py",
+     "sympy/printing/latex.py",
+     "sympy/printing/pretty/pretty.py"
+    ],
+    "s": 0.08
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 17,
+    "top_files": [
+     "sympy/matrices/expressions/blockmatrix.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/assumptions/handlers/matrices.py",
+     "sympy/assumptions/handlers/sets.py",
+     "sympy/printing/latex.py"
+    ],
+    "s": 0.05
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 17,
+    "top_files": [
+     "sympy/matrices/expressions/blockmatrix.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/assumptions/handlers/matrices.py",
+     "sympy/logic/inference.py",
+     "sympy/assumptions/handlers/sets.py"
+    ],
+    "s": 0.05
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-19254",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/polys/factortools.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "e0ef1da13e2ab2a77866c05246f73c871ca9388c",
+    "schema": 2,
+    "files": 722,
+    "parse_failures": 0,
+    "symbols": 29765,
+    "calls_resolved": 54180,
+    "calls_unresolved": 21169,
+    "build_s": 18.4
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/polys/factortools.py",
+     "sympy/polys/compatibility.py",
+     "sympy/series/sequences.py",
+     "sympy/simplify/hyperexpand.py",
+     "sympy/polys/densebasic.py"
+    ],
+    "s": 8.36
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/polys/factortools.py",
+     "sympy/polys/densearith.py",
+     "sympy/polys/polyclasses.py",
+     "sympy/polys/densebasic.py",
+     "sympy/polys/compatibility.py"
+    ],
+    "s": 0.09
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/polys/factortools.py",
+     "sympy/polys/compatibility.py",
+     "sympy/polys/polyclasses.py",
+     "sympy/polys/densearith.py",
+     "sympy/polys/densebasic.py"
+    ],
+    "s": 0.06
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/polys/factortools.py",
+     "sympy/polys/compatibility.py",
+     "sympy/polys/polyclasses.py",
+     "sympy/polys/densearith.py",
+     "sympy/polys/densebasic.py"
+    ],
+    "s": 0.08
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-19487",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/functions/elementary/complexes.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "25fbcce5b1a4c7e3956e6062930f4a44ce95a632",
+    "schema": 2,
+    "files": 726,
+    "parse_failures": 0,
+    "symbols": 29889,
+    "calls_resolved": 54266,
+    "calls_unresolved": 21217,
+    "build_s": 17.9
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/integrals/rubi/utility_function.py",
+     "sympy/core/symbol.py",
+     "sympy/polys/groebnertools.py",
+     "sympy/sets/sets.py",
+     "sympy/polys/rings.py"
+    ],
+    "s": 8.52
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 12,
+    "top_files": [
+     "sympy/functions/elementary/complexes.py",
+     "sympy/functions/elementary/trigonometric.py",
+     "sympy/integrals/manualintegrate.py",
+     "sympy/core/expr.py",
+     "sympy/utilities/codegen.py"
+    ],
+    "s": 0.08
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/functions/elementary/complexes.py",
+     "sympy/integrals/manualintegrate.py",
+     "sympy/functions/elementary/trigonometric.py",
+     "sympy/core/expr.py",
+     "sympy/utilities/codegen.py"
+    ],
+    "s": 0.05
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/functions/elementary/complexes.py",
+     "sympy/series/gruntz.py",
+     "sympy/solvers/diophantine/diophantine.py",
+     "sympy/integrals/manualintegrate.py",
+     "sympy/functions/special/delta_functions.py"
+    ],
+    "s": 0.06
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-20049",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/physics/vector/point.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "d57aaf064041fe52c0fa357639b069100f8b28e1",
+    "schema": 2,
+    "files": 744,
+    "parse_failures": 0,
+    "symbols": 30411,
+    "calls_resolved": 54893,
+    "calls_unresolved": 21772,
+    "build_s": 17.4
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": 3,
+    "top_files": [
+     "sympy/physics/vector/point.py",
+     "sympy/physics/vector/frame.py",
+     "sympy/physics/mechanics/particle.py",
+     "sympy/vector/point.py",
+     "sympy/physics/vector/functions.py"
+    ],
+    "s": 8.74
+   },
+   "bm25": {
+    "file_rank": 2,
+    "symbol_rank": 5,
+    "top_files": [
+     "sympy/physics/vector/frame.py",
+     "sympy/physics/vector/point.py",
+     "sympy/physics/mechanics/functions.py",
+     "sympy/plotting/intervalmath/lib_interval.py",
+     "sympy/physics/mechanics/rigidbody.py"
+    ],
+    "s": 0.11
+   },
+   "hybrid": {
+    "file_rank": 2,
+    "symbol_rank": 10,
+    "top_files": [
+     "sympy/physics/vector/frame.py",
+     "sympy/physics/vector/point.py",
+     "sympy/physics/vector/functions.py",
+     "sympy/physics/mechanics/rigidbody.py",
+     "sympy/physics/mechanics/functions.py"
+    ],
+    "s": 0.09
+   },
+   "graph": {
+    "file_rank": 2,
+    "symbol_rank": 7,
+    "top_files": [
+     "sympy/physics/vector/frame.py",
+     "sympy/physics/vector/point.py",
+     "sympy/physics/mechanics/rigidbody.py",
+     "sympy/physics/mechanics/functions.py",
+     "sympy/physics/mechanics/models.py"
+    ],
+    "s": 0.09
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-20154",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/utilities/iterables.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "bdb49c4abfb35554a3c8ce761696ffff3bb837fe",
+    "schema": 2,
+    "files": 744,
+    "parse_failures": 0,
+    "symbols": 30431,
+    "calls_resolved": 54928,
+    "calls_unresolved": 21785,
+    "build_s": 17.2
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": 2,
+    "top_files": [
+     "sympy/utilities/iterables.py",
+     "sympy/stats/matrix_distributions.py",
+     "sympy/stats/rv.py",
+     "sympy/matrices/common.py",
+     "sympy/core/containers.py"
+    ],
+    "s": 8.45
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/utilities/iterables.py",
+     "sympy/combinatorics/partitions.py",
+     "sympy/utilities/enumerative.py",
+     "sympy/matrices/dense.py",
+     "sympy/utilities/codegen.py"
+    ],
+    "s": 0.1
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 3,
+    "top_files": [
+     "sympy/utilities/iterables.py",
+     "sympy/combinatorics/partitions.py",
+     "sympy/utilities/enumerative.py",
+     "sympy/combinatorics/permutations.py",
+     "sympy/__init__.py"
+    ],
+    "s": 0.07
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 3,
+    "top_files": [
+     "sympy/utilities/iterables.py",
+     "sympy/combinatorics/partitions.py",
+     "sympy/combinatorics/permutations.py",
+     "sympy/utilities/enumerative.py",
+     "sympy/solvers/diophantine/diophantine.py"
+    ],
+    "s": 0.09
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-20212",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/core/power.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "a106f4782a9dbe7f8fd16030f15401d977e03ae9",
+    "schema": 2,
+    "files": 744,
+    "parse_failures": 0,
+    "symbols": 30477,
+    "calls_resolved": 54991,
+    "calls_unresolved": 21821,
+    "build_s": 17.9
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/parsing/sym_expr.py",
+     "sympy/functions/elementary/exponential.py",
+     "sympy/geometry/entity.py",
+     "sympy/parsing/c/c_parser.py",
+     "sympy/core/expr.py"
+    ],
+    "s": 8.46
+   },
+   "bm25": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/core/numbers.py",
+     "sympy/core/power.py",
+     "sympy/assumptions/handlers/order.py",
+     "sympy/core/expr.py",
+     "sympy/assumptions/handlers/matrices.py"
+    ],
+    "s": 0.08
+   },
+   "hybrid": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/core/numbers.py",
+     "sympy/core/power.py",
+     "sympy/assumptions/handlers/order.py",
+     "sympy/core/expr.py",
+     "sympy/assumptions/handlers/matrices.py"
+    ],
+    "s": 0.05
+   },
+   "graph": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/core/numbers.py",
+     "sympy/core/power.py",
+     "sympy/assumptions/handlers/order.py",
+     "sympy/assumptions/handlers/matrices.py",
+     "sympy/core/expr.py"
+    ],
+    "s": 0.06
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-20322",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/core/mul.py"
+   ],
+   "n_gold_symbols": 3,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "ab864967e71c950a15771bb6c3723636026ba876",
+    "schema": 2,
+    "files": 747,
+    "parse_failures": 0,
+    "symbols": 30484,
+    "calls_resolved": 54995,
+    "calls_unresolved": 21828,
+    "build_s": 17.5
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/core/sympify.py",
+     "sympy/simplify/simplify.py",
+     "sympy/core/numbers.py",
+     "sympy/logic/boolalg.py",
+     "sympy/integrals/rubi/utility_function.py"
+    ],
+    "s": 8.49
+   },
+   "bm25": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/logic/boolalg.py",
+     "sympy/integrals/transforms.py",
+     "sympy/functions/elementary/integers.py",
+     "sympy/simplify/simplify.py",
+     "sympy/parsing/autolev/_antlr/autolevparser.py"
+    ],
+    "s": 0.08
+   },
+   "hybrid": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/logic/boolalg.py",
+     "sympy/functions/elementary/integers.py",
+     "sympy/integrals/transforms.py",
+     "sympy/simplify/simplify.py",
+     "sympy/parsing/autolev/_antlr/autolevparser.py"
+    ],
+    "s": 0.06
+   },
+   "graph": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/logic/boolalg.py",
+     "sympy/functions/elementary/integers.py",
+     "sympy/integrals/transforms.py",
+     "sympy/simplify/simplify.py",
+     "sympy/parsing/sympy_parser.py"
+    ],
+    "s": 0.07
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-20442",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/physics/units/util.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "1abbc0ac3e552cb184317194e5d5c5b9dd8fb640",
+    "schema": 2,
+    "files": 747,
+    "parse_failures": 0,
+    "symbols": 30496,
+    "calls_resolved": 55013,
+    "calls_unresolved": 21820,
+    "build_s": 17.5
+   },
+   "explorer": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/physics/units/quantities.py",
+     "sympy/physics/units/util.py",
+     "sympy/polys/domainmatrix.py",
+     "sympy/physics/units/unitsystem.py",
+     "sympy/polys/domains/quotientring.py"
+    ],
+    "s": 8.57
+   },
+   "bm25": {
+    "file_rank": 5,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/physics/units/unitsystem.py",
+     "sympy/physics/units/quantities.py",
+     "sympy/physics/units/dimensions.py",
+     "sympy/logic/boolalg.py",
+     "sympy/physics/units/util.py"
+    ],
+    "s": 0.09
+   },
+   "hybrid": {
+    "file_rank": 3,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/physics/units/unitsystem.py",
+     "sympy/physics/units/quantities.py",
+     "sympy/physics/units/util.py",
+     "sympy/physics/units/dimensions.py",
+     "sympy/logic/boolalg.py"
+    ],
+    "s": 0.06
+   },
+   "graph": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/physics/units/unitsystem.py",
+     "sympy/physics/units/util.py",
+     "sympy/physics/units/quantities.py",
+     "sympy/polys/domainmatrix.py",
+     "sympy/physics/units/dimensions.py"
+    ],
+    "s": 0.07
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-20590",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/core/_print_helpers.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "cffd4e0f86fefd4802349a9f9b19ed70934ea354",
+    "schema": 2,
+    "files": 753,
+    "parse_failures": 0,
+    "symbols": 30542,
+    "calls_resolved": 55070,
+    "calls_unresolved": 21869,
+    "build_s": 17.5
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/core/symbol.py",
+     "sympy/physics/units/dimensions.py",
+     "sympy/stats/frv.py",
+     "sympy/stats/joint_rv.py",
+     "sympy/stats/rv.py"
+    ],
+    "s": 8.48
+   },
+   "bm25": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/codegen/ast.py",
+     "sympy/codegen/fnodes.py",
+     "sympy/core/containers.py",
+     "sympy/parsing/sympy_parser.py",
+     "sympy/polys/polyutils.py"
+    ],
+    "s": 0.08
+   },
+   "hybrid": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/codegen/ast.py",
+     "sympy/codegen/fnodes.py",
+     "sympy/core/containers.py",
+     "sympy/parsing/sympy_parser.py",
+     "sympy/core/symbol.py"
+    ],
+    "s": 0.05
+   },
+   "graph": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/codegen/ast.py",
+     "sympy/core/containers.py",
+     "sympy/codegen/fnodes.py",
+     "sympy/core/symbol.py",
+     "sympy/parsing/sympy_parser.py"
+    ],
+    "s": 0.07
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-20639",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/pretty/pretty.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "eb926a1d0c1158bf43f01eaf673dc84416b5ebb1",
+    "schema": 2,
+    "files": 753,
+    "parse_failures": 0,
+    "symbols": 30601,
+    "calls_resolved": 55244,
+    "calls_unresolved": 21910,
+    "build_s": 18.0
+   },
+   "explorer": {
+    "file_rank": 17,
+    "symbol_rank": 17,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/core/power.py",
+     "sympy/parsing/latex/_antlr/latexparser.py",
+     "sympy/sets/ordinals.py",
+     "sympy/physics/quantum/hilbert.py"
+    ],
+    "s": 8.24
+   },
+   "bm25": {
+    "file_rank": 2,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/printing/str.py",
+     "sympy/printing/mathml.py",
+     "sympy/interactive/printing.py"
+    ],
+    "s": 0.09
+   },
+   "hybrid": {
+    "file_rank": 2,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/printing/str.py",
+     "sympy/printing/mathml.py",
+     "sympy/interactive/printing.py"
+    ],
+    "s": 0.06
+   },
+   "graph": {
+    "file_rank": 2,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/printing/str.py",
+     "sympy/printing/mathml.py",
+     "sympy/interactive/printing.py"
+    ],
+    "s": 0.08
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-21055",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/assumptions/refine.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "748ce73479ee2cd5c861431091001cc18943c735",
+    "schema": 2,
+    "files": 782,
+    "parse_failures": 0,
+    "symbols": 31103,
+    "calls_resolved": 59604,
+    "calls_unresolved": 18681,
+    "build_s": 18.7
+   },
+   "explorer": {
+    "file_rank": 9,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/functions/elementary/piecewise.py",
+     "sympy/integrals/rubi/utility_function.py",
+     "sympy/functions/special/tensor_functions.py",
+     "sympy/simplify/hyperexpand.py",
+     "sympy/functions/elementary/exponential.py"
+    ],
+    "s": 8.43
+   },
+   "bm25": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/functions/elementary/complexes.py",
+     "sympy/functions/elementary/exponential.py",
+     "sympy/functions/elementary/piecewise.py",
+     "sympy/core/numbers.py",
+     "sympy/integrals/manualintegrate.py"
+    ],
+    "s": 0.09
+   },
+   "hybrid": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/functions/elementary/complexes.py",
+     "sympy/functions/elementary/piecewise.py",
+     "sympy/functions/elementary/exponential.py",
+     "sympy/integrals/manualintegrate.py",
+     "sympy/functions/elementary/trigonometric.py"
+    ],
+    "s": 0.06
+   },
+   "graph": {
+    "file_rank": 9,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/functions/elementary/complexes.py",
+     "sympy/functions/elementary/piecewise.py",
+     "sympy/functions/elementary/exponential.py",
+     "sympy/integrals/manualintegrate.py",
+     "sympy/integrals/integrals.py"
+    ],
+    "s": 0.08
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-21171",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/latex.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "aa22709cb7df2d7503803d4b2c0baa7aa21440b6",
+    "schema": 2,
+    "files": 782,
+    "parse_failures": 0,
+    "symbols": 31118,
+    "calls_resolved": 59633,
+    "calls_unresolved": 18704,
+    "build_s": 17.8
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": 6,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/interactive/printing.py",
+     "sympy/physics/continuum_mechanics/beam.py",
+     "sympy/printing/printer.py"
+    ],
+    "s": 9.04
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 11,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/physics/continuum_mechanics/beam.py",
+     "sympy/interactive/printing.py",
+     "sympy/printing/mathml.py",
+     "sympy/printing/printer.py"
+    ],
+    "s": 0.22
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/printing/latex.py",
+     "sympy/physics/continuum_mechanics/beam.py",
+     "sympy/interactive/printing.py",
+     "sympy/printing/printer.py",
+     "sympy/printing/mathml.py"
+    ],
+    "s": 0.25
+   },
+   "graph": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/physics/continuum_mechanics/beam.py",
+     "sympy/printing/latex.py",
+     "sympy/interactive/printing.py",
+     "sympy/printing/printer.py",
+     "sympy/printing/mathml.py"
+    ],
+    "s": 0.25
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-21379",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/core/mod.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "624217179aaf8d094e6ff75b7493ad1ee47599b0",
+    "schema": 2,
+    "files": 788,
+    "parse_failures": 0,
+    "symbols": 31304,
+    "calls_resolved": 59831,
+    "calls_unresolved": 18856,
+    "build_s": 17.8
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/core/cache.py",
+     "sympy/polys/rootoftools.py",
+     "sympy/functions/elementary/hyperbolic.py",
+     "sympy/functions/elementary/piecewise.py",
+     "sympy/matrices/expressions/matpow.py"
+    ],
+    "s": 8.72
+   },
+   "bm25": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/functions/elementary/hyperbolic.py",
+     "sympy/core/expr.py",
+     "sympy/functions/elementary/piecewise.py",
+     "sympy/core/cache.py",
+     "sympy/integrals/manualintegrate.py"
+    ],
+    "s": 0.14
+   },
+   "hybrid": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/functions/elementary/hyperbolic.py",
+     "sympy/core/cache.py",
+     "sympy/functions/elementary/piecewise.py",
+     "sympy/core/expr.py",
+     "sympy/plotting/intervalmath/lib_interval.py"
+    ],
+    "s": 0.11
+   },
+   "graph": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/integrals/rubi/rules/hyperbolic.py",
+     "sympy/integrals/rubi/rules/inverse_hyperbolic.py",
+     "sympy/functions/elementary/hyperbolic.py",
+     "sympy/integrals/rubi/rules/inverse_trig.py",
+     "sympy/integrals/rubi/rules/special_functions.py"
+    ],
+    "s": 0.14
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-21612",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/str.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "b4777fdcef467b7132c055f8ac2c9a5059e6a145",
+    "schema": 2,
+    "files": 789,
+    "parse_failures": 0,
+    "symbols": 31411,
+    "calls_resolved": 60269,
+    "calls_unresolved": 18830,
+    "build_s": 19.3
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/parsing/latex/_parse_latex_antlr.py",
+     "sympy/parsing/latex/__init__.py",
+     "sympy/integrals/rubi/parsetools/parse.py",
+     "sympy/polys/agca/extensions.py",
+     "sympy/polys/domains/quotientring.py"
+    ],
+    "s": 8.87
+   },
+   "bm25": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/parsing/latex/_parse_latex_antlr.py",
+     "sympy/printing/latex.py",
+     "sympy/parsing/latex/_antlr/latexparser.py",
+     "sympy/integrals/rubi/parsetools/parse.py",
+     "sympy/parsing/sympy_parser.py"
+    ],
+    "s": 0.09
+   },
+   "hybrid": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/parsing/latex/_parse_latex_antlr.py",
+     "sympy/printing/latex.py",
+     "sympy/parsing/latex/_antlr/latexparser.py",
+     "sympy/parsing/latex/__init__.py",
+     "sympy/integrals/rubi/parsetools/parse.py"
+    ],
+    "s": 0.05
+   },
+   "graph": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/parsing/latex/_parse_latex_antlr.py",
+     "sympy/parsing/latex/_antlr/latexparser.py",
+     "sympy/parsing/latex/__init__.py",
+     "sympy/printing/latex.py",
+     "sympy/integrals/rubi/parsetools/parse.py"
+    ],
+    "s": 0.06
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-21614",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/core/function.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "b4777fdcef467b7132c055f8ac2c9a5059e6a145",
+    "schema": 2,
+    "files": 789,
+    "parse_failures": 0,
+    "symbols": 31411,
+    "calls_resolved": 60269,
+    "calls_unresolved": 18830,
+    "build_s": 19.3
+   },
+   "explorer": {
+    "file_rank": 3,
+    "symbol_rank": 3,
+    "top_files": [
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/matrices/common.py",
+     "sympy/core/function.py",
+     "sympy/integrals/integrals.py",
+     "sympy/polys/agca/extensions.py"
+    ],
+    "s": 8.43
+   },
+   "bm25": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/integrals/manualintegrate.py",
+     "sympy/core/kind.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/printing/mathml.py",
+     "sympy/matrices/common.py"
+    ],
+    "s": 0.07
+   },
+   "hybrid": {
+    "file_rank": 5,
+    "symbol_rank": 3,
+    "top_files": [
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/integrals/manualintegrate.py",
+     "sympy/core/kind.py",
+     "sympy/matrices/common.py",
+     "sympy/core/function.py"
+    ],
+    "s": 0.04
+   },
+   "graph": {
+    "file_rank": 5,
+    "symbol_rank": 3,
+    "top_files": [
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/matrices/common.py",
+     "sympy/core/kind.py",
+     "sympy/integrals/manualintegrate.py",
+     "sympy/core/function.py"
+    ],
+    "s": 0.06
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-21627",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/functions/elementary/complexes.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "126f80578140e752ad5135aac77b8ff887eede3e",
+    "schema": 2,
+    "files": 789,
+    "parse_failures": 0,
+    "symbols": 31415,
+    "calls_resolved": 60275,
+    "calls_unresolved": 18829,
+    "build_s": 18.0
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/core/sympify.py",
+     "sympy/integrals/rubi/utility_function.py",
+     "sympy/stats/rv.py",
+     "sympy/stats/compound_rv.py",
+     "sympy/stats/joint_rv.py"
+    ],
+    "s": 8.93
+   },
+   "bm25": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/logic/boolalg.py",
+     "sympy/core/expr.py",
+     "sympy/core/logic.py",
+     "sympy/functions/elementary/hyperbolic.py",
+     "sympy/geometry/point.py"
+    ],
+    "s": 0.08
+   },
+   "hybrid": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/logic/boolalg.py",
+     "sympy/functions/elementary/hyperbolic.py",
+     "sympy/calculus/util.py",
+     "sympy/core/expr.py",
+     "sympy/core/logic.py"
+    ],
+    "s": 0.05
+   },
+   "graph": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/logic/boolalg.py",
+     "sympy/core/expr.py",
+     "sympy/functions/elementary/hyperbolic.py",
+     "sympy/calculus/util.py",
+     "sympy/geometry/point.py"
+    ],
+    "s": 0.06
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-21847",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/polys/monomials.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "d9b18c518d64d0ebe8e35a98c2fb519938b9b151",
+    "schema": 2,
+    "files": 797,
+    "parse_failures": 0,
+    "symbols": 31676,
+    "calls_resolved": 60841,
+    "calls_unresolved": 19094,
+    "build_s": 18.1
+   },
+   "explorer": {
+    "file_rank": 4,
+    "symbol_rank": 4,
+    "top_files": [
+     "sympy/polys/orderings.py",
+     "sympy/polys/polyclasses.py",
+     "sympy/polys/polytools.py",
+     "sympy/polys/monomials.py",
+     "sympy/polys/polyoptions.py"
+    ],
+    "s": 8.82
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/polys/monomials.py",
+     "sympy/polys/orderings.py",
+     "sympy/polys/multivariate_resultants.py",
+     "sympy/solvers/diophantine/diophantine.py",
+     "sympy/polys/rings.py"
+    ],
+    "s": 0.09
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/polys/monomials.py",
+     "sympy/polys/orderings.py",
+     "sympy/polys/multivariate_resultants.py",
+     "sympy/polys/polytools.py",
+     "sympy/core/mul.py"
+    ],
+    "s": 0.06
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/polys/monomials.py",
+     "sympy/polys/orderings.py",
+     "sympy/polys/multivariate_resultants.py",
+     "sympy/polys/polytools.py",
+     "sympy/polys/polyclasses.py"
+    ],
+    "s": 0.07
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-22005",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/solvers/polysys.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "2c83657ff1c62fc2761b639469fdac7f7561a72a",
+    "schema": 2,
+    "files": 799,
+    "parse_failures": 0,
+    "symbols": 31738,
+    "calls_resolved": 60997,
+    "calls_unresolved": 19237,
+    "build_s": 17.7
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": 2,
+    "top_files": [
+     "sympy/solvers/polysys.py",
+     "sympy/core/containers.py",
+     "sympy/utilities/misc.py",
+     "sympy/polys/polytools.py",
+     "sympy/calculus/finite_diff.py"
+    ],
+    "s": 8.98
+   },
+   "bm25": {
+    "file_rank": 2,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/solvers/ode/single.py",
+     "sympy/solvers/polysys.py",
+     "sympy/solvers/solveset.py",
+     "sympy/solvers/solvers.py",
+     "sympy/polys/polytools.py"
+    ],
+    "s": 0.13
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/solvers/polysys.py",
+     "sympy/solvers/ode/single.py",
+     "sympy/polys/polytools.py",
+     "sympy/solvers/solveset.py",
+     "sympy/core/containers.py"
+    ],
+    "s": 0.11
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/solvers/polysys.py",
+     "sympy/simplify/hyperexpand.py",
+     "sympy/solvers/solvers.py",
+     "sympy/simplify/fu.py",
+     "sympy/combinatorics/permutations.py"
+    ],
+    "s": 0.14
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-22714",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/geometry/point.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "3ff4717b6aef6086e78f01cdfa06f64ae23aed7e",
+    "schema": 2,
+    "files": 812,
+    "parse_failures": 0,
+    "symbols": 32113,
+    "calls_resolved": 61439,
+    "calls_unresolved": 19642,
+    "build_s": 18.1
+   },
+   "explorer": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/parsing/sympy_parser.py",
+     "sympy/geometry/point.py",
+     "sympy/parsing/ast_parser.py",
+     "sympy/functions/special/error_functions.py",
+     "sympy/core/function.py"
+    ],
+    "s": 8.92
+   },
+   "bm25": {
+    "file_rank": 3,
+    "symbol_rank": 10,
+    "top_files": [
+     "sympy/parsing/sympy_parser.py",
+     "sympy/parsing/autolev/_antlr/autolevparser.py",
+     "sympy/geometry/point.py",
+     "sympy/parsing/ast_parser.py",
+     "sympy/core/relational.py"
+    ],
+    "s": 0.14
+   },
+   "hybrid": {
+    "file_rank": 2,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/parsing/sympy_parser.py",
+     "sympy/geometry/point.py",
+     "sympy/parsing/autolev/_antlr/autolevparser.py",
+     "sympy/parsing/ast_parser.py",
+     "sympy/core/sympify.py"
+    ],
+    "s": 0.12
+   },
+   "graph": {
+    "file_rank": 2,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/parsing/sympy_parser.py",
+     "sympy/geometry/point.py",
+     "sympy/core/sympify.py",
+     "sympy/parsing/ast_parser.py",
+     "sympy/utilities/misc.py"
+    ],
+    "s": 0.14
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-22840",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/simplify/cse_main.py"
+   ],
+   "n_gold_symbols": 2,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "d822fcba181155b85ff2b29fe525adbafb22b448",
+    "schema": 2,
+    "files": 812,
+    "parse_failures": 0,
+    "symbols": 32121,
+    "calls_resolved": 61370,
+    "calls_unresolved": 19734,
+    "build_s": 20.5
+   },
+   "explorer": {
+    "file_rank": 5,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/matrices/common.py",
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/printing/codeprinter.py",
+     "sympy/codegen/ast.py",
+     "sympy/simplify/cse_main.py"
+    ],
+    "s": 8.79
+   },
+   "bm25": {
+    "file_rank": 4,
+    "symbol_rank": 16,
+    "top_files": [
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/utilities/codegen.py",
+     "sympy/printing/codeprinter.py",
+     "sympy/simplify/cse_main.py",
+     "sympy/printing/mathml.py"
+    ],
+    "s": 0.17
+   },
+   "hybrid": {
+    "file_rank": 4,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/printing/codeprinter.py",
+     "sympy/utilities/codegen.py",
+     "sympy/simplify/cse_main.py",
+     "sympy/codegen/ast.py"
+    ],
+    "s": 0.13
+   },
+   "graph": {
+    "file_rank": 4,
+    "symbol_rank": 11,
+    "top_files": [
+     "sympy/matrices/expressions/matexpr.py",
+     "sympy/utilities/codegen.py",
+     "sympy/printing/codeprinter.py",
+     "sympy/simplify/cse_main.py",
+     "sympy/codegen/ast.py"
+    ],
+    "s": 0.14
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-23117",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/tensor/array/ndim_array.py"
+   ],
+   "n_gold_symbols": 3,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "c5cef2499d6eed024b0db5c792d6ec7c53baa470",
+    "schema": 2,
+    "files": 809,
+    "parse_failures": 0,
+    "symbols": 32203,
+    "calls_resolved": 61521,
+    "calls_unresolved": 19800,
+    "build_s": 18.2
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": 5,
+    "top_files": [
+     "sympy/tensor/array/ndim_array.py",
+     "sympy/tensor/array/dense_ndim_array.py",
+     "sympy/tensor/array/expressions/array_expressions.py",
+     "sympy/tensor/array/array_derivatives.py",
+     "sympy/tensor/array/array_comprehension.py"
+    ],
+    "s": 9.19
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 7,
+    "top_files": [
+     "sympy/tensor/array/ndim_array.py",
+     "sympy/tensor/array/dense_ndim_array.py",
+     "sympy/tensor/array/sparse_ndim_array.py",
+     "sympy/tensor/array/expressions/array_expressions.py",
+     "sympy/matrices/immutable.py"
+    ],
+    "s": 0.11
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 3,
+    "top_files": [
+     "sympy/tensor/array/ndim_array.py",
+     "sympy/tensor/array/dense_ndim_array.py",
+     "sympy/tensor/array/sparse_ndim_array.py",
+     "sympy/tensor/array/expressions/array_expressions.py",
+     "sympy/matrices/immutable.py"
+    ],
+    "s": 0.11
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 3,
+    "top_files": [
+     "sympy/tensor/array/ndim_array.py",
+     "sympy/tensor/array/dense_ndim_array.py",
+     "sympy/tensor/array/sparse_ndim_array.py",
+     "sympy/combinatorics/permutations.py",
+     "sympy/matrices/immutable.py"
+    ],
+    "s": 0.13
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-23191",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/printing/pretty/pretty.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "fa9b4b140ec0eaf75a62c1111131626ef0f6f524",
+    "schema": 2,
+    "files": 809,
+    "parse_failures": 0,
+    "symbols": 32212,
+    "calls_resolved": 61540,
+    "calls_unresolved": 19815,
+    "build_s": 18.0
+   },
+   "explorer": {
+    "file_rank": null,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/interactive/printing.py",
+     "sympy/physics/vector/vector.py",
+     "sympy/vector/operators.py",
+     "sympy/vector/vector.py",
+     "sympy/matrices/common.py"
+    ],
+    "s": 8.97
+   },
+   "bm25": {
+    "file_rank": 3,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/matrices/common.py",
+     "sympy/vector/coordsysrect.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/matrices/repmatrix.py",
+     "sympy/interactive/printing.py"
+    ],
+    "s": 0.13
+   },
+   "hybrid": {
+    "file_rank": 3,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/matrices/common.py",
+     "sympy/vector/coordsysrect.py",
+     "sympy/printing/pretty/pretty.py",
+     "sympy/interactive/printing.py",
+     "sympy/matrices/repmatrix.py"
+    ],
+    "s": 0.1
+   },
+   "graph": {
+    "file_rank": 6,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/matrices/common.py",
+     "sympy/vector/coordsysrect.py",
+     "sympy/integrals/prde.py",
+     "sympy/matrices/repmatrix.py",
+     "sympy/interactive/printing.py"
+    ],
+    "s": 0.12
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-23262",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/utilities/lambdify.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "fdc707f73a65a429935c01532cd3970d3355eab6",
+    "schema": 2,
+    "files": 809,
+    "parse_failures": 0,
+    "symbols": 32220,
+    "calls_resolved": 61547,
+    "calls_unresolved": 19826,
+    "build_s": 18.0
+   },
+   "explorer": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/plotting/experimental_lambdify.py",
+     "sympy/utilities/lambdify.py",
+     "sympy/codegen/ast.py",
+     "sympy/core/containers.py",
+     "sympy/integrals/rubi/parsetools/parse.py"
+    ],
+    "s": 9.36
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 7,
+    "top_files": [
+     "sympy/utilities/lambdify.py",
+     "sympy/utilities/codegen.py",
+     "sympy/plotting/experimental_lambdify.py",
+     "sympy/combinatorics/perm_groups.py",
+     "sympy/combinatorics/free_groups.py"
+    ],
+    "s": 0.1
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 9,
+    "top_files": [
+     "sympy/utilities/lambdify.py",
+     "sympy/plotting/experimental_lambdify.py",
+     "sympy/utilities/codegen.py",
+     "sympy/combinatorics/perm_groups.py",
+     "sympy/combinatorics/free_groups.py"
+    ],
+    "s": 0.06
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 9,
+    "top_files": [
+     "sympy/utilities/lambdify.py",
+     "sympy/plotting/pygletplot/plot_modes.py",
+     "sympy/plotting/experimental_lambdify.py",
+     "sympy/combinatorics/perm_groups.py",
+     "sympy/combinatorics/free_groups.py"
+    ],
+    "s": 0.07
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-24066",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/physics/units/unitsystem.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "514579c655bf22e2af14f0743376ae1d7befe345",
+    "schema": 2,
+    "files": 813,
+    "parse_failures": 0,
+    "symbols": 32428,
+    "calls_resolved": 61942,
+    "calls_unresolved": 20024,
+    "build_s": 18.2
+   },
+   "explorer": {
+    "file_rank": 2,
+    "symbol_rank": 2,
+    "top_files": [
+     "sympy/physics/units/quantities.py",
+     "sympy/physics/units/unitsystem.py",
+     "sympy/physics/units/dimensions.py",
+     "sympy/physics/quantum/operator.py",
+     "sympy/physics/quantum/hilbert.py"
+    ],
+    "s": 9.17
+   },
+   "bm25": {
+    "file_rank": 2,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/physics/units/dimensions.py",
+     "sympy/physics/units/unitsystem.py",
+     "sympy/physics/units/quantities.py",
+     "sympy/physics/units/util.py",
+     "sympy/solvers/ode/systems.py"
+    ],
+    "s": 0.09
+   },
+   "hybrid": {
+    "file_rank": 2,
+    "symbol_rank": 2,
+    "top_files": [
+     "sympy/physics/units/dimensions.py",
+     "sympy/physics/units/unitsystem.py",
+     "sympy/physics/units/quantities.py",
+     "sympy/solvers/ode/systems.py",
+     "sympy/__init__.py"
+    ],
+    "s": 0.07
+   },
+   "graph": {
+    "file_rank": 2,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/physics/units/dimensions.py",
+     "sympy/physics/units/unitsystem.py",
+     "sympy/physics/units/quantities.py",
+     "sympy/physics/units/util.py",
+     "sympy/solvers/ode/systems.py"
+    ],
+    "s": 0.07
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-24102",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/parsing/mathematica.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "58598660a3f6ab3d918781c4988c2e4b2bdd9297",
+    "schema": 2,
+    "files": 813,
+    "parse_failures": 0,
+    "symbols": 32449,
+    "calls_resolved": 61948,
+    "calls_unresolved": 20022,
+    "build_s": 18.1
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/parsing/mathematica.py",
+     "sympy/parsing/latex/_antlr/latexparser.py",
+     "sympy/core/symbol.py",
+     "sympy/physics/units/dimensions.py",
+     "sympy/stats/frv.py"
+    ],
+    "s": 8.92
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 8,
+    "top_files": [
+     "sympy/parsing/mathematica.py",
+     "sympy/parsing/autolev/_antlr/autolevparser.py",
+     "sympy/parsing/ast_parser.py",
+     "sympy/parsing/latex/_parse_latex_antlr.py",
+     "sympy/parsing/c/c_parser.py"
+    ],
+    "s": 0.09
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 13,
+    "top_files": [
+     "sympy/parsing/mathematica.py",
+     "sympy/parsing/autolev/_antlr/autolevparser.py",
+     "sympy/parsing/ast_parser.py",
+     "sympy/parsing/latex/_parse_latex_antlr.py",
+     "sympy/parsing/c/c_parser.py"
+    ],
+    "s": 0.06
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 14,
+    "top_files": [
+     "sympy/parsing/mathematica.py",
+     "sympy/parsing/c/c_parser.py",
+     "sympy/parsing/ast_parser.py",
+     "sympy/parsing/latex/_parse_latex_antlr.py",
+     "sympy/parsing/fortran/fortran_parser.py"
+    ],
+    "s": 0.07
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-24152",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/physics/quantum/tensorproduct.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "b9af885473ad7e34b5b0826cb424dd26d8934670",
+    "schema": 2,
+    "files": 813,
+    "parse_failures": 0,
+    "symbols": 32451,
+    "calls_resolved": 61947,
+    "calls_unresolved": 20023,
+    "build_s": 18.2
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/physics/quantum/tensorproduct.py",
+     "sympy/matrices/expressions/matmul.py",
+     "sympy/physics/quantum/operator.py",
+     "sympy/physics/quantum/qapply.py",
+     "sympy/core/expr.py"
+    ],
+    "s": 9.04
+   },
+   "bm25": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/physics/quantum/tensorproduct.py",
+     "sympy/physics/secondquant.py",
+     "sympy/physics/quantum/operatorordering.py",
+     "sympy/physics/quantum/hilbert.py",
+     "sympy/core/exprtools.py"
+    ],
+    "s": 0.16
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/physics/quantum/tensorproduct.py",
+     "sympy/physics/secondquant.py",
+     "sympy/physics/quantum/qapply.py",
+     "sympy/core/expr.py",
+     "sympy/core/mul.py"
+    ],
+    "s": 0.13
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/physics/quantum/tensorproduct.py",
+     "sympy/physics/secondquant.py",
+     "sympy/physics/quantum/qapply.py",
+     "sympy/core/mul.py",
+     "sympy/diffgeom/diffgeom.py"
+    ],
+    "s": 0.15
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-24213",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/physics/units/unitsystem.py"
+   ],
+   "n_gold_symbols": 1,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "e8c22f6eac7314be8d92590bfff92ced79ee03e2",
+    "schema": 2,
+    "files": 813,
+    "parse_failures": 0,
+    "symbols": 32465,
+    "calls_resolved": 61958,
+    "calls_unresolved": 20027,
+    "build_s": 18.4
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/physics/units/unitsystem.py",
+     "sympy/physics/units/dimensions.py",
+     "sympy/physics/units/quantities.py",
+     "sympy/physics/quantum/operator.py",
+     "sympy/physics/quantum/hilbert.py"
+    ],
+    "s": 9.09
+   },
+   "bm25": {
+    "file_rank": 3,
+    "symbol_rank": 2,
+    "top_files": [
+     "sympy/physics/units/dimensions.py",
+     "sympy/physics/units/quantities.py",
+     "sympy/physics/units/unitsystem.py",
+     "sympy/plotting/intervalmath/lib_interval.py",
+     "sympy/physics/units/util.py"
+    ],
+    "s": 0.09
+   },
+   "hybrid": {
+    "file_rank": 2,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/physics/units/dimensions.py",
+     "sympy/physics/units/unitsystem.py",
+     "sympy/physics/units/quantities.py",
+     "sympy/plotting/intervalmath/lib_interval.py",
+     "sympy/physics/units/util.py"
+    ],
+    "s": 0.07
+   },
+   "graph": {
+    "file_rank": 2,
+    "symbol_rank": 1,
+    "top_files": [
+     "sympy/physics/units/dimensions.py",
+     "sympy/physics/units/unitsystem.py",
+     "sympy/physics/units/quantities.py",
+     "sympy/physics/units/util.py",
+     "sympy/physics/units/prefixes.py"
+    ],
+    "s": 0.07
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-24909",
+   "repo": "sympy/sympy",
+   "gold_files": [
+    "sympy/physics/units/prefixes.py"
+   ],
+   "n_gold_symbols": 3,
+   "index_s": 0.0,
+   "index": {
+    "repo_id": "sympy/sympy",
+    "commit": "d3b4158dea271485e3daa11bf82e69b8dab348ce",
+    "schema": 2,
+    "files": 792,
+    "parse_failures": 1,
+    "symbols": 22658,
+    "calls_resolved": 35964,
+    "calls_unresolved": 17538,
+    "build_s": 9.1
+   },
+   "explorer": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/physics/units/prefixes.py",
+     "sympy/polys/polytools.py",
+     "sympy/geometry/point.py",
+     "sympy/physics/units/unitsystem.py",
+     "sympy/polys/agca/extensions.py"
+    ],
+    "s": 5.6
+   },
+   "bm25": {
+    "file_rank": 2,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/physics/units/unitsystem.py",
+     "sympy/physics/units/prefixes.py",
+     "sympy/plotting/intervalmath/lib_interval.py",
+     "sympy/physics/units/quantities.py",
+     "sympy/physics/units/dimensions.py"
+    ],
+    "s": 0.07
+   },
+   "hybrid": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/physics/units/prefixes.py",
+     "sympy/physics/units/unitsystem.py",
+     "sympy/plotting/intervalmath/lib_interval.py",
+     "sympy/physics/units/quantities.py",
+     "sympy/physics/units/dimensions.py"
+    ],
+    "s": 0.04
+   },
+   "graph": {
+    "file_rank": 1,
+    "symbol_rank": null,
+    "top_files": [
+     "sympy/physics/units/prefixes.py",
+     "sympy/physics/units/unitsystem.py",
+     "sympy/physics/units/quantities.py",
+     "sympy/plotting/intervalmath/lib_interval.py",
+     "sympy/physics/units/dimensions.py"
+    ],
+    "s": 0.05
+   }
+  }
+ ]
+}

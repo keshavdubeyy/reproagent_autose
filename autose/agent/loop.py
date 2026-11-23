@@ -20,6 +20,7 @@ Bug resolution (fixing), run after an accepted reproduction:
 """
 from __future__ import annotations
 
+import functools
 import re
 import time
 from dataclasses import dataclass
@@ -74,7 +75,7 @@ class AgentConfig:
 
 class ReproAgent:
     def __init__(self, llm: LLM, config: AgentConfig | None = None,
-                 log: Callable[[str], None] = print, executor: Executor | None = None):
+                 log: Callable[[str], None] = functools.partial(print, flush=True), executor: Executor | None = None):
         self.llm = llm
         self._ctx = None          # code retrieved by Bug Understanding (kept for the outcome)
         self.board = Blackboard(None, "-")

@@ -87,13 +87,15 @@ def run_swebench(a) -> int:
     return 0
 
 
-def run_one(a, iid: str, out_dir: Path, llm: LLM, reports: dict, harness: dict | None) -> dict:
-    """One bug, one configuration, in its SWE-bench image. Never raises: errors go into the row."""
+def run_one(a, iid: str, out_dir: Path, llm: LLM, reports: dict, harness: dict | None,
+            report: BugReport | None = None) -> dict:
+    """One bug, one configuration, in its SWE-bench image. Never raises: errors go into the row.
+    `report` replaces the benchmark's bug report (e.g. one written by a user in the runner UI)."""
     from autose.agent.workspace import DockerExecutor, swebench_image
 
     repo = PUBLIC / "code" / iid
     image = harness[iid]["image"] if harness and "image" in harness.get(iid, {}) else swebench_image(iid)
-    report = to_report(reports[iid], a.report)
+    report = report or to_report(reports[iid], a.report)
     t0 = time.time()
     ex = fixed_ex = None
     row = {"instance_id": iid, "mode": a.mode, "retrieval": a.retrieval, "review": a.review,
