@@ -703,13 +703,19 @@ class PatchApplier:
                 if tgt_cls is None:
                     missing.append(node.name)
                     continue
+                added = []
                 for sub in node.body:
                     if isinstance(sub, (ast.FunctionDef, ast.AsyncFunctionDef)):
                         t = self._target(sub.name, candidates, method_of=node.name)
                         if t:
                             edits[t[0]].append((t[1], seg(sub)))
+                        elif f"{tgt_cls[1]}.{sub.name}" not in self.loc.defs(tgt_cls[0]):
+                            added.append(seg(sub))      # a NEW method (django-13220: ValidationError.__eq__)
                         else:
                             missing.append(f"{node.name}.{sub.name}")
+                if added:   # appended at the end of the existing class body, after its last line
+                    s_, e_, col_ = self.loc.defs(tgt_cls[0])[tgt_cls[1]]
+                    edits[tgt_cls[0]].append(((e_ + 1, e_, col_ + 4), "\n" + "\n\n".join(added)))
             elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.Assign, ast.AnnAssign)):
                 name = node.name if hasattr(node, "name") else next(
                     (t.id for t in (node.targets if isinstance(node, ast.Assign) else [node.target])

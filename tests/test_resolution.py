@@ -189,3 +189,15 @@ def test_patch_generator_reasks_when_the_answer_is_cut_off():
     p = PatchGenerator(llm).generate(BugReport("x", "t", "b"), BugSpec("s", "e", "o"), [], "def test(): pass",
                                      "E   assert 1 == 2", [], 1)
     assert len(llm.prompts) == 2 and llm.prompts[1].endswith(CUT_OFF_HINT) and "return 2" in p.code
+
+
+def test_applier_adds_a_new_method_to_an_existing_class(tmp_path):
+    # Night 1, django-13220: the fix adds ValidationError.__eq__, which did not exist yet.
+    loc, cands = _printer_repo(tmp_path)
+    cands = [loc._candidate("printing.py", "Printer._print_Function", 1.0, "test")]
+    p = Patch(1, "class Printer:\n    def __eq__(self, other):\n        return True\n")
+    assert PatchApplier(loc).apply(p, cands) is None
+    new = p.files["printing.py"]
+    assert "    def __eq__(self, other):\n        return True\n" in new
+    assert new.index("_print_Other") < new.index("__eq__")       # appended after the last method
+    assert "def _print_Function" in new and "def latex" in new   # nothing else replaced

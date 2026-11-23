@@ -36,7 +36,7 @@ from .evaluator import load_harness
 from .localization import evaluate_bug
 
 GATE = 0.80
-RUN_BASED = {"R1", "T1", "B1", "B2", "L1"}    # measured on agent runs: few bugs until the night runs
+RUN_BASED = {"R1", "T1", "B1", "B2", "L1", "C4"}    # measured on agent runs: few bugs until the night runs
 SUBSET = Path("benchmarks/swe_bench_lite/subset.json")
 COMPONENTS = [
     ("dataset", "Benchmark & dataset", "Bugs are valid, the fix stays hidden, the subset is reproducible."),
@@ -294,6 +294,11 @@ def evaluate(ids: list[str], run_dirs: list[Path], quick: bool) -> list[Criterio
 
     # --- runs (reproduction, testing, blackboard, loop controller)
     rows = run_rows(run_dirs)
+    # End to end: C1-C3 test the parts; this asks whether the repair works on real bugs once the agent
+    # has a valid reproduction. Target 50%: a valid failing test plus localised code should usually be enough.
+    valid = [r for _, r, _ in rows if r.get("fail_to_pass")]
+    C.append(crit("codemod", "C4", "Valid reproductions whose patch the agent's own tests accept (real runs)", None,
+                  0.50, sum(r.get("fix_status") == "fixed" for r in valid), len(valid)))
     acc = [(r, o) for _, r, o in rows if r.get("verdict") == "reproduced" and r.get("fail_to_pass") is not None]
     C.append(crit("repro", "R1", "Accepted reproduction tests that are valid (pass on the fixed code)", None, 0.80,
                   sum(1 for r, _ in acc if r["fail_to_pass"]), len(acc),
