@@ -135,3 +135,57 @@ def test_new_import_goes_after_multiline_import():
     lines = ["import os", "from x import (", "    a,", "    b,", ")", "", "def f():", "    pass"]
     out = PatchApplier._add_imports(lines, ["import re"])
     assert out[5] == "import re" and out[1:5] == lines[1:5]
+
+
+# Night 1: sympy-14774's right answer (a table local to a method) was rejected as "not found in the project".
+PRINTER = '''def latex(expr):
+    return Printer().doprint(expr)
+
+
+class Printer:
+    def _print_Function(self, func):
+        inv_trig_table = ["asin", "acos"]
+        return func in inv_trig_table
+
+    def _print_Other(self, x):
+        return x
+'''
+
+
+def _printer_repo(tmp_path, src=PRINTER):
+    (tmp_path / "printing.py").write_text(src)
+    loc = FaultLocalizer(tmp_path)
+    c = loc._candidate("printing.py", "latex", 1.0, "test")   # the localiser named the file, not the method
+    return loc, [c]
+
+
+def test_applier_replaces_a_table_local_to_a_method_in_a_candidate_file(tmp_path):
+    loc, cands = _printer_repo(tmp_path)
+    p = Patch(1, 'inv_trig_table = ["asin", "acos", "acsc"]\n')
+    assert PatchApplier(loc).apply(p, cands) is None
+    assert '        inv_trig_table = ["asin", "acos", "acsc"]' in p.files["printing.py"]
+    body = [l for l in p.diff.splitlines() if l[:1] in "+-" and not l.startswith(("---", "+++"))]
+    assert body == ['-        inv_trig_table = ["asin", "acos"]', '+        inv_trig_table = ["asin", "acos", "acsc"]']
+
+
+def test_applier_rejects_a_local_name_assigned_in_two_places(tmp_path):
+    src = PRINTER.replace("        return x\n", "        inv_trig_table = []\n        return x\n")
+    loc, cands = _printer_repo(tmp_path, src)
+    p = Patch(1, 'inv_trig_table = ["asin"]\n')
+    assert "not found in the project" in PatchApplier(loc).apply(p, cands)
+
+
+def test_patch_generator_reasks_when_the_answer_is_cut_off():
+    from autose.agent.repair import CUT_OFF_HINT, PatchGenerator
+
+    class LLM:
+        prompts = []
+
+        def chat(self, system, prompt, **k):
+            self.prompts.append(prompt)
+            return "```python\ndef f():\n    return [1," if len(self.prompts) == 1 else "```python\ndef f():\n    return 2\n```"
+
+    llm = LLM()
+    p = PatchGenerator(llm).generate(BugReport("x", "t", "b"), BugSpec("s", "e", "o"), [], "def test(): pass",
+                                     "E   assert 1 == 2", [], 1)
+    assert len(llm.prompts) == 2 and llm.prompts[1].endswith(CUT_OFF_HINT) and "return 2" in p.code

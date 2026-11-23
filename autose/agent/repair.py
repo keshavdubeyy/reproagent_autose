@@ -22,7 +22,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from autose.intel.flow import FunctionFlow
-from .llm import LLM, extract_code
+from .llm import LLM, extract_code, is_cut_off
 from .models import BugReport, BugSpec, FaultCandidate, Patch, PatchAttempt
 from .explore import RepoExplorer, _is_test_path
 from .verify import TEST_FILE
@@ -452,6 +452,10 @@ FIX_SYSTEM_NO_TEST = FIX_SYSTEM.replace(
     "not only the test's values", "not only the report's example")
 
 
+CUT_OFF_HINT = ("\n\nYour previous answer was too long and was cut off. Return ONLY the method(s) you change, "
+                "inside their class line, with no comments and no explanation inside the code.")
+
+
 class PatchGenerator:
     def __init__(self, llm: LLM):
         self.llm = llm
@@ -485,6 +489,8 @@ class PatchGenerator:
         temp = 0.2 if attempt == 1 else 0.6
         for _ in range(2):   # regenerate once if the SLM repeats a rejected patch verbatim
             raw = self.llm.chat(system, prompt, temperature=temp)
+            if is_cut_off(raw):   # hit the output limit mid-definition (django-13220): ask for less, once
+                raw = self.llm.chat(system, prompt + CUT_OFF_HINT, temperature=temp)
             code = extract_code(raw)
             if re.sub(r"\s+", "", code) not in seen:
                 break
@@ -648,6 +654,28 @@ class PatchApplier:
                 return hits[0]
         return None
 
+    def _local_assignment(self, name: str, candidates: list[FaultCandidate]):
+        """`name = ...` assigned exactly once inside the suspicious functions (else: inside any function of the
+        suspicious files): a table or setting local to a function (sympy-14774: `inv_trig_table` inside
+        LatexPrinter._print_Function). Returns (file, (start, end, indent)), or None when there is no such
+        statement or more than one (ambiguous: the patch is rejected as before)."""
+        hits = set()
+        for c in candidates:
+            if c.name not in self.loc.defs(c.file):
+                continue
+            fn = self.loc._function_node(c.file, c.name)
+            for n in ast.walk(fn) if fn is not None else []:
+                if isinstance(n, ast.Assign) and len(n.targets) == 1 and \
+                        isinstance(n.targets[0], ast.Name) and n.targets[0].id == name:
+                    hits.add((c.file, (n.lineno, n.end_lineno, n.col_offset)))
+        if not hits:   # the localiser may name the file but not the function (latex() vs LatexPrinter)
+            for rel in dict.fromkeys(c.file for c in candidates):
+                for n in ast.walk(ast.parse(self.loc.src(rel))):
+                    if isinstance(n, ast.Assign) and n.col_offset > 0 and len(n.targets) == 1 and \
+                            isinstance(n.targets[0], ast.Name) and n.targets[0].id == name:
+                        hits.add((rel, (n.lineno, n.end_lineno, n.col_offset)))
+        return hits.pop() if len(hits) == 1 else None
+
     def apply(self, patch: Patch, candidates: list[FaultCandidate]) -> str | None:
         """Fill patch.files and patch.diff. Returns an error message for the generator, or None."""
         code = _dedent_code(patch.code)
@@ -687,8 +715,12 @@ class PatchApplier:
                     (t.id for t in (node.targets if isinstance(node, ast.Assign) else [node.target])
                      if isinstance(t, ast.Name)), None)
                 t = self._target(name, candidates) if name else None
+                local = self._local_assignment(name, candidates) if name and not t \
+                    and not isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) else None
                 if t:
                     edits[t[0]].append((t[1], seg(node)))
+                elif local:
+                    edits[local[0]].append((local[1], seg(node)))
                 elif name:
                     missing.append(name)
         if not edits:
@@ -700,8 +732,8 @@ class PatchApplier:
             old = self.loc.src(rel)
             new_lines = old.splitlines()
             defs = self.loc.defs(rel)
-            for q, text in sorted(items, key=lambda it: -defs[it[0]][0]):   # bottom-up
-                s, e, col = defs[q]
+            spans = [((defs[q] if isinstance(q, str) else q), text) for q, text in items]
+            for (s, e, col), text in sorted(spans, key=lambda it: -it[0][0]):   # bottom-up
                 new_lines[s - 1:e] = textwrap.indent(text, " " * col).splitlines()
             new_lines = self._add_imports(new_lines, imports)
             imports = []    # imports go to the first patched file only
@@ -714,7 +746,8 @@ class PatchApplier:
                 patch.files[rel] = new
                 diffs.append(git_diff(rel, old, new))
         if not patch.files:
-            return self._identical_feedback([(rel, q) for rel, items in edits.items() for q, _ in items])
+            return self._identical_feedback([(rel, q) for rel, items in edits.items() for q, _ in items
+                                             if isinstance(q, str)])
         patch.diff = "".join(diffs)   # no blank line between files (git apply)
         return None
 
