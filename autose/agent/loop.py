@@ -37,7 +37,8 @@ from .repair import (FaultLocalizer, PatchApplier, PatchGenerator, changed_defin
 from .blackboard import Blackboard, BlackboardError, patch_sha
 from .control import LoopController
 from .review import Reviewer
-from .verify import FailToPassChecker, MessageJudge, PatchValidator, ResultAnalyzer, relax_invented_messages
+from .verify import (FailToPassChecker, MessageJudge, PatchValidator, ResultAnalyzer, relax_invented_messages,
+                     wrap_top_level)
 from .workspace import TEST_FILE, Executor, LocalExecutor
 
 MODES = {
@@ -130,6 +131,9 @@ class ReproAgent:
             for attempt in range(1, self.budget + 1):
                 test = self.generator.generate(report, spec, ctx, layout,
                                                history if self.budget > 1 else [], attempt)
+                test.code, wrapped = wrap_top_level(test.code)
+                if wrapped:
+                    self.log("[wrap] moved module-level test code into test_reproduction()")
                 test.code, relaxed = relax_invented_messages(test.code, report)
                 if relaxed:
                     self.log(f"[relax] dropped invented message check(s): {relaxed}")

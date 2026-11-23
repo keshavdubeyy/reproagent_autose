@@ -108,3 +108,25 @@ def test_unknown_keyword_argument_is_api_misuse_unless_the_report_uses_it():
     code = BugReport("x", "database is locked", "user.save(using=self._db) fails")
     assert ResultAnalyzer(None).analyze(code, spec, ReproTest(1, ""), run(out, "TypeError")).category == "reproduced"
 
+
+
+def test_script_style_test_is_wrapped_so_pytest_reports_the_assertion(tmp_path):
+    # Night 1, sympy-13437: `assert bell(oo) is oo` at module level was a collection error, thrown away.
+    import subprocess
+    import sys
+    from autose.agent.verify import wrap_top_level
+    code = ("import math\n\ndef helper():\n    return LIMIT\n\nLIMIT = 3\nx = math.floor(2.5)\n"
+            "assert x == helper(), 'floor is wrong'\nif __name__ == '__main__':\n    print('done')\n")
+    new, changed = wrap_top_level(code)
+    assert changed and "def test_reproduction():" in new and new.index("import math") < new.index("def test_")
+    f = tmp_path / "test_reproagent_repro.py"
+    f.write_text(new)
+    r = subprocess.run([sys.executable, "-m", "pytest", "-q", str(f)], capture_output=True, text=True)
+    assert "1 failed" in r.stdout and "AssertionError: floor is wrong" in r.stdout and "error" not in r.stdout.splitlines()[-1]
+
+
+def test_files_with_test_functions_or_nothing_to_run_are_left_alone():
+    from autose.agent.verify import wrap_top_level
+    for code in ("def test_a():\n    assert 1\n", "class TestX:\n    def test_a(self):\n        pass\n",
+                 "import os\nX = 1\n"):
+        assert wrap_top_level(code) == (code, False)

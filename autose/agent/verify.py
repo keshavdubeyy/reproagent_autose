@@ -161,6 +161,42 @@ _RAISES_REGEX = {"assertRaisesRegex": "assertRaises", "assertRaisesRegexp": "ass
                  "assertWarnsRegex": "assertWarns"}
 
 
+def wrap_top_level(code: str) -> tuple[str, bool]:
+    """A test written as a script (asserts at module level, no test function) fails at import, so pytest
+    reports a collection error and the failure is thrown away even when it shows the bug (night 1:
+    11 attempts, e.g. sympy-13437 `assert bell(oo) is oo`). Move the script part into one test function.
+    Imports, functions and classes stay at module level; names the script assigns stay module globals so
+    helper functions still see them; an `if __name__ == "__main__":` body runs inside the test.
+    Returns (new code, changed)."""
+    try:
+        tree = ast.parse(code)
+    except SyntaxError:
+        return code, False
+    keep = (ast.Import, ast.ImportFrom, ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)
+    if any(isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)) and
+           n.name.lower().startswith("test") for n in tree.body):
+        return code, False
+    head, body = [], []
+    for n in tree.body:
+        if isinstance(n, keep) or (isinstance(n, ast.Expr) and isinstance(n.value, ast.Constant)
+                                    and isinstance(n.value.value, str) and not body):
+            head.append(n)                      # imports, definitions, module docstring
+        elif isinstance(n, ast.If) and "__name__" in ast.unparse(n.test):
+            body.extend(n.body)
+        else:
+            body.append(n)
+    if not any(isinstance(n, (ast.Assert, ast.Expr, ast.With, ast.If, ast.For, ast.Try, ast.Raise))
+               for n in body):
+        return code, False                      # nothing would run: leave it to the analyzer
+    names = sorted({t.id for n in body for t in ast.walk(n)
+                    if isinstance(t, ast.Name) and isinstance(t.ctx, ast.Store)})
+    fn = ast.FunctionDef(name="test_reproduction", args=ast.arguments(posonlyargs=[], args=[], kwonlyargs=[],
+                         kw_defaults=[], defaults=[]), decorator_list=[], returns=None, type_params=[],
+                         body=([ast.Global(names=names)] if names else []) + body)
+    tree.body = head + [fn]
+    return ast.unparse(ast.fix_missing_locations(tree)) + "\n", True
+
+
 def relax_invented_messages(code: str, report: BugReport) -> tuple[str, list[str]]:
     """Drop exact error-message checks the report does not support.
 
