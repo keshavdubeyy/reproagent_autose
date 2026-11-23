@@ -42,3 +42,6 @@ benchmarks/*/work/
 benchmarks/repos/
 benchmarks/.cache/
 results/*.partial.jsonl
+
+# React UI dependencies (ui/dist is committed so the runner needs only Python)
+ui/node_modules/

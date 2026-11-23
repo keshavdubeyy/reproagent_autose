@@ -1,0 +1,185 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Dark mode follows the .dark class on <html>; src/theme.ts sets it from Auto/Light/Dark. */
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-heading: var(--font-sans);
+  --font-mono: "DM Mono", ui-monospace, monospace;
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+
+  /* Paper-and-ink extras (design.md) used directly by the page */
+  --color-canvas: var(--canvas);
+  --color-paper: var(--paper);
+  --color-action: var(--action);
+  --color-peach: var(--peach);
+  --color-peach-soft: var(--peach-soft);
+  --color-ink-strong: var(--ink-strong);
+  --color-code: var(--code);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Light: cream paper #fef9ed, ink #5d524b, editorial paper #f7f1e3, action paper #f7ecd9, peach #fbd3be */
+:root {
+  --canvas: #fef9ed;
+  --paper: #f7f1e3;
+  --action: #f7ecd9;
+  --peach-soft: #fbd3be;
+  --peach: #c4673d;
+  --ink-strong: #3f3732;
+  --code: #f3ead7;
+  --ok: #346846;
+  --ok-soft: #e2ecd5;
+  --warn: #7a5710;
+  --warn-soft: #f7e7c1;
+  --bad: #a5432f;
+  --bad-soft: #f8dcd2;
+  --shadow: rgba(93, 82, 75, 0.28);
+
+  --background: var(--canvas);
+  --foreground: #5d524b;
+  --card: var(--paper);
+  --card-foreground: #5d524b;
+  --popover: var(--canvas);
+  --popover-foreground: #5d524b;
+  --primary: #5d524b;
+  --primary-foreground: #f7ecd9;
+  --secondary: var(--action);
+  --secondary-foreground: #5d524b;
+  --muted: var(--paper);
+  --muted-foreground: #766960;
+  --accent: var(--action);
+  --accent-foreground: var(--ink-strong);
+  --destructive: var(--bad);
+  --border: #e7dcc6;
+  --input: #e7dcc6;
+  --ring: var(--peach);
+  --radius: 0.25rem;
+  color-scheme: light;
+}
+
+/* Night paper: the same names, derived for dark */
+.dark {
+  --canvas: #1d1814;
+  --paper: #28211c;
+  --action: #352b24;
+  --peach-soft: #4b3226;
+  --peach: #eaa883;
+  --ink-strong: #fbf3e4;
+  --code: #231c17;
+  --ok: #9fd2a6;
+  --ok-soft: #22321f;
+  --warn: #e6c27a;
+  --warn-soft: #3a2f1c;
+  --bad: #f2a08e;
+  --bad-soft: #40231d;
+  --shadow: rgba(0, 0, 0, 0.5);
+
+  --foreground: #f1e6d4;
+  --card-foreground: #f1e6d4;
+  --popover-foreground: #f1e6d4;
+  --primary: #f1e6d4;
+  --primary-foreground: #1d1814;
+  --secondary-foreground: #f1e6d4;
+  --muted-foreground: #bcab98;
+  --border: #3e342c;
+  --input: #3e342c;
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html,
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+  body {
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  code,
+  kbd,
+  pre {
+    @apply font-mono;
+  }
+}
+
+@layer components {
+  /* Small metadata label (was the mono label): DM Sans 500, a little tracking */
+  .lbl {
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--muted-foreground);
+  }
+  .inline-code {
+    font-family: var(--font-mono);
+    font-size: 0.86em;
+    background: var(--code);
+    padding: 1px 5px;
+    border-radius: 3px;
+    overflow-wrap: anywhere;
+  }
+  .pulse {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--peach);
+    margin-right: 8px;
+    vertical-align: 1px;
+    animation: ra-pulse 1.6s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pulse {
+      animation: none;
+    }
+  }
+}
+
+@keyframes ra-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}

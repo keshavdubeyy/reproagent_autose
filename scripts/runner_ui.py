@@ -18,7 +18,7 @@ import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, unquote, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
@@ -29,6 +29,17 @@ UI_RUNS = ROOT / "runs" / "ui"
 SHOP = ROOT / "benchmarks" / "shopcart"
 PUBLIC = ROOT / "benchmarks" / "swe_bench_lite" / "public"
 PY = ROOT / ".venv-autose" / "bin" / "python"
+# The React page (ui/, built into ui/dist). When it is not built, the inline PAGE below is served instead.
+DIST = ROOT / "ui" / "dist"
+ASSET_TYPES = {".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".svg": "image/svg+xml",
+               ".png": "image/png", ".woff2": "font/woff2", ".json": "application/json"}
+
+
+def dist_asset(path: str) -> Path | None:
+    """A file under ui/dist/assets for a URL path like /assets/x.js, or None (no traversal outside it)."""
+    base = (DIST / "assets").resolve()
+    f = (DIST / unquote(path).lstrip("/")).resolve()
+    return f if base in f.parents and f.is_file() and f.suffix in ASSET_TYPES else None
 
 
 class Job:
@@ -200,7 +211,7 @@ class Handler(BaseHTTPRequestHandler):
         pass
 
     def send(self, obj, code=200, ctype="application/json"):
-        body = obj.encode() if isinstance(obj, str) else json.dumps(obj).encode()
+        body = obj if isinstance(obj, bytes) else obj.encode() if isinstance(obj, str) else json.dumps(obj).encode()
         self.send_response(code)
         self.send_header("Content-Type", ctype)
         self.send_header("Cache-Control", "no-store")
@@ -212,7 +223,13 @@ class Handler(BaseHTTPRequestHandler):
         q = parse_qs(u.query)
         try:
             if u.path in ("/", "/index.html"):
+                if (DIST / "index.html").is_file():
+                    return self.send((DIST / "index.html").read_bytes(), ctype="text/html; charset=utf-8")
                 return self.send(PAGE, ctype="text/html; charset=utf-8")
+            if u.path.startswith("/assets/"):
+                f = dist_asset(u.path)
+                if f:
+                    return self.send(f.read_bytes(), ctype=ASSET_TYPES[f.suffix])
             if u.path == "/api/options":
                 return self.send(options())
             if u.path == "/api/history":
