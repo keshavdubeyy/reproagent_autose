@@ -78,3 +78,33 @@ def test_exception_phrase_in_prose_counts():
     spec = BugSpec("", "returns None", "crashes", failure_kind="wrong_value")
     a = ResultAnalyzer(None).analyze(rep, spec, ReproTest(1, ""), run("src/p.py:3: in parse\nE   ValueError: x", "ValueError"))
     assert a.category == "reproduced"
+
+
+# Night 1 (23 Nov): invalid reproductions that failed while setting up, or called the API wrongly.
+def test_setup_failure_is_not_a_reproduction():
+    exc_spec = BugSpec("", "no crash", "crash", failure_kind="exception")
+    for out, exc in [("flask/cli.py:9: in main\nE   flask.cli.NoAppException: Could not locate a Flask application.", "NoAppException"),
+                     ("click/core.py:9: in main\nE   click.exceptions.UsageError: No such command 'x'.", "UsageError"),
+                     ("django/conf/__init__.py:91: in __getattr__\nE   django.core.exceptions.ImproperlyConfigured: "
+                      "The SECRET_KEY setting must not be empty.", None)]:
+        a = ResultAnalyzer(None).analyze(DJANGO, exc_spec, ReproTest(1, ""), run(out, exc))
+        assert a.category == "invalid_test", out
+
+
+def test_setup_exception_kept_when_the_report_is_about_it():
+    rep = BugReport("x", "ImproperlyConfigured raised for a valid DATABASES setting", "...")
+    spec = BugSpec("", "no error", "raises ImproperlyConfigured", failure_kind="exception")
+    out = "django/db/utils.py:9: in __init__\nE   django.core.exceptions.ImproperlyConfigured: bad"
+    a = ResultAnalyzer(None).analyze(rep, spec, ReproTest(1, ""), run(out, "ImproperlyConfigured"))
+    assert a.category == "reproduced"
+
+
+def test_unknown_keyword_argument_is_api_misuse_unless_the_report_uses_it():
+    spec = BugSpec("", "saves", "crashes", failure_kind="exception")
+    out = ("django/db/models/base.py:501: in __init__\n"
+           "E   TypeError: User() got an unexpected keyword argument 'using'")
+    prose = BugReport("x", "database is locked", "I've tried using persistent SQLite databases.")
+    assert ResultAnalyzer(None).analyze(prose, spec, ReproTest(1, ""), run(out, "TypeError")).category == "invalid_test"
+    code = BugReport("x", "database is locked", "user.save(using=self._db) fails")
+    assert ResultAnalyzer(None).analyze(code, spec, ReproTest(1, ""), run(out, "TypeError")).category == "reproduced"
+

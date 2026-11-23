@@ -76,6 +76,9 @@ def raised_in_test(out: str) -> bool:
 
 INVALID_EXC = {"ImportError", "ModuleNotFoundError", "SyntaxError", "NameError", "IndentationError",
                "FixtureLookupError"}
+# The test failed while setting up the program (CLI exit, app/settings not configured), before it reached
+# the code the report is about. Replayed on night 1: rejects 3 of 20 invalid reproductions, 0 of 12 valid.
+SETUP_EXC = {"SystemExit", "UsageError", "NoAppException", "ImproperlyConfigured", "AppRegistryNotReady"}
 API_MISUSE = re.compile(r"positional argument|unexpected keyword|takes \d+ positional|has no attribute|"
                         r"not callable|cannot import name|missing \d+ required", re.I)
 
@@ -85,6 +88,7 @@ It is NOT evidence if the test itself is wrong: inputs that differ from the repo
 contradicts the report, or an assertion on a property the report does not mention.
 Return ONLY JSON, keys in this order:
   {"actual": "<what the code produced, from the E line>", "reason": "<one sentence>", "reproduces": true|false}"""
+
 
 _ASSERT = re.compile(r"^E\s+(?:AssertionError:\s+)?assert\s+(.+?)\s+(?:==|!=|is not|is|in|not in|<=|>=|<|>)\s+(.+)$", re.M)
 _TOK = re.compile(r"-?\d+(?:\.\d+)?|'[^']*'|\"[^\"]*\"|None|True|False")
@@ -133,6 +137,16 @@ def evidence_match(report: BugReport, spec: BugSpec, res: ExecutionResult) -> tu
         return False, (f"the report observed {', '.join(sorted(numeric_obs))} but your test produced {val}, "
                        "so your inputs do not match the report's scenario")
     return None, ""
+
+
+def misuse_in_report(err: str, report: BugReport) -> bool:
+    """An argument error is the bug only when the report is about that argument or that error text."""
+    text = f"{report.title}\n{report.body}"
+    names = re.findall(r"'([A-Za-z_]\w*)'", err)
+    # code-like mentions only (`using=`, `using`, 'using', using(...)): plain words like "using" are prose
+    return any(re.search(rf"\b{re.escape(n)}\s*=|[`'\"]{re.escape(n)}[`'\"]|\b{re.escape(n)}\(", text)
+               for n in names if n != "self") \
+        or _norm_msg(err.split(":", 1)[-1]) in _norm_msg(text)
 
 
 def _exception_in_report(exc: str, report: BugReport, spec: BugSpec) -> bool:
@@ -212,6 +226,16 @@ class ResultAnalyzer:
             return Analysis("invalid_test", False,
                             f"The test could not run because of a mistake in the test itself: {err}. "
                             "Fix imports/names using the module paths and examples shown.")
+        setup = res.exception_type in SETUP_EXC or any(re.search(rf"\b{e}\b", err) for e in SETUP_EXC)
+        if setup and not any(_exception_in_report(e, report, spec) for e in SETUP_EXC if e in f"{res.exception_type} {err}"):
+            return Analysis("invalid_test", False,
+                            f"The test failed while setting up, before reaching the reported behaviour: {err}. "
+                            "Call the affected function directly instead of a command line or app runner, and "
+                            "build only the objects the report's example needs.", f"[guard] setup failure: {err[:160]}")
+        if res.exception_type == "TypeError" and API_MISUSE.search(err) and not misuse_in_report(err, report):
+            return Analysis("invalid_test", False,
+                            f"The test calls the project with arguments it does not accept: {err}. Check the "
+                            "function signature and how existing tests call it.", f"[guard] API misuse: {err[:160]}")
         if res.exception_type not in (None, "AssertionError") and \
                 raised_in_test(res.output):
             return Analysis("invalid_test", False,
