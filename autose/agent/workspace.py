@@ -36,19 +36,91 @@ TEST_FILE = "test_reproagent_repro.py"
 # only when the test does not configure Django itself.
 DJANGO_PLUGIN = """
 import os
+import types
+
+import pytest
+
+REPRO = None                 # module name of the reproduction test, set only for reproduction runs
+APP = "autose_repro_app"     # app that models defined inside the reproduction test belong to
+_tables_done = False
+
+
+def _app(apps, label):
+    # Register an app for `label` (models written in the test, or a Meta.app_label that is not installed),
+    # so Django can find the models, their tables and their reverse relations.
+    from django.apps import AppConfig
+    cfg = apps.app_configs.get(label)
+    if cfg is None:
+        module = types.ModuleType(label)
+        module.__file__ = __file__
+        cfg = AppConfig(label, module)
+        cfg.apps, cfg.models = apps, apps.all_models[label]
+        apps.app_configs[label] = cfg
+        apps.clear_cache()
+    return cfg
+
+
+def _adopt_test_models():
+    # A model class written in the test file has no app, so Django raises "doesn't declare an explicit
+    # app_label and isn't in an application in INSTALLED_APPS". Give such models a small app of their own.
+    from django.apps.registry import Apps
+    original = Apps.get_containing_app_config
+
+    def lookup(self, object_name):
+        cfg = original(self, object_name)
+        if cfg is None and REPRO and object_name.split(".")[0] == REPRO and self.ready:
+            cfg = _app(self, APP)
+        return cfg
+    Apps.get_containing_app_config = lookup
+
+
+@pytest.hookimpl(tryfirst=True)
+def pytest_runtest_setup(item):
+    # Tables for the models the test defines ("no such table"): migrate ran before the test was imported.
+    global _tables_done
+    if _tables_done or not REPRO:
+        return
+    _tables_done = True
+    try:
+        from django.apps import apps
+        from django.db import connections
+        if not apps.ready:
+            return
+    except Exception:
+        return
+    for label in list(apps.all_models):        # Meta.app_label = "test_app" (not installed)
+        if label not in apps.app_configs and any(m.__module__.split(".")[0] == REPRO
+                                                 for m in apps.all_models[label].values()):
+            _app(apps, label)
+    models = [m for label in list(apps.all_models) for m in list(apps.all_models[label].values())
+              if m.__module__.split(".")[0] == REPRO and m._meta.managed and not m._meta.proxy
+              and not m._meta.swapped and not m._meta.auto_created]   # M2M tables come with their model
+    for alias in connections:
+        conn = connections[alias]
+        for m in models:                         # one at a time: one bad model must not block the rest
+            try:
+                if m._meta.db_table not in conn.introspection.table_names():
+                    with conn.schema_editor() as editor:
+                        editor.create_model(m)
+            except Exception:
+                pass
 
 
 def pytest_configure(config):
+    global REPRO
     try:
         import django
         from django.conf import settings
     except ImportError:
         return
+    paths = [str(a).split("::")[0] for a in config.args]
+    repro = [p for p in paths if p.endswith("%s")]
+    if not repro:
+        return                                  # regression runs keep the project's own setup
+    REPRO = os.path.splitext(os.path.basename(repro[0]))[0]
+    _adopt_test_models()
     if settings.configured or os.environ.get("DJANGO_SETTINGS_MODULE"):
         return
-    paths = [str(a).split("::")[0] for a in config.args]
-    if not any(p.endswith("%s") for p in paths):
-        return                                  # regression runs keep the project's own setup
     for p in paths:
         try:
             with open(p) as f:

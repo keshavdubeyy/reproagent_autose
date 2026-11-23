@@ -150,3 +150,26 @@ def test_django_projects_get_an_environment_hint():
         llm = LLM()
         TestGenerator(llm).generate(BugReport("b", "t", "x"), BugSpec("s", "e", "o"), CodeContext(), layout, [], 1)
         assert ("Do NOT call settings.configure()" in llm.user) is expect
+
+
+def test_django_plugin_registers_models_written_in_the_test(tmp_path):
+    """Night 1: 18 of 48 failed reproductions died on "doesn't declare an explicit app_label" or
+    "no such table" for a model the test itself defines. Runs only where Django is installed."""
+    import os
+    import subprocess
+    import sys
+
+    import pytest
+    pytest.importorskip("django")
+    from autose.agent.workspace import DJANGO_PLUGIN, TEST_FILE
+    (tmp_path / "plugins").mkdir()
+    (tmp_path / "plugins" / "autose_django.py").write_text(DJANGO_PLUGIN)
+    (tmp_path / TEST_FILE).write_text(
+        "from django.db import models\n\nclass Author(models.Model):\n    name = models.CharField(max_length=9)\n\n"
+        "class Book(models.Model):\n    author = models.ForeignKey(Author, on_delete=models.CASCADE)\n"
+        "    class Meta:\n        app_label = 'test_app'\n\n"
+        "def test_it():\n    Book.objects.create(author=Author.objects.create(name='x'))\n"
+        "    assert Book.objects.count() == 2\n")
+    r = subprocess.run([sys.executable, "-m", "pytest", "-q", "-p", "autose_django", TEST_FILE], cwd=tmp_path,
+                       capture_output=True, text=True, env={**os.environ, "PYTHONPATH": str(tmp_path / "plugins")})
+    assert "assert 1 == 2" in r.stdout, r.stdout[-1500:]       # fails on the assertion, not on setup
