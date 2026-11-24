@@ -30,6 +30,7 @@ SCHEMAS: dict[str, dict[str, tuple]] = {
                     "files": (list,), "patch_sha": (str,), "diff": (str,), "applies": (bool,)},
     "TEST_REPORT": {"attempt": (int,), "patch_sha": (str,), "category": (str,), "accepted": (bool,),
                     "repro_status": (str, NoneType), "regressions": (list,), "feedback": (str,)},
+    # TEST_REPORT also carries "regression_checked" (bool/None) since 24 Nov; optional, so older boards stay valid.
     "REVIEW_REPORT": {"patch_sha": (str,), "decision": (str,), "reasons": (list,), "by": (str,)},
     "FROZEN_PATCH": {"patch_sha": (str,), "diff": (str,), "test_report": (int,)},
 }

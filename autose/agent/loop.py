@@ -274,7 +274,7 @@ class ReproAgent:
         self.board.post("TEST_REPORT", "testing", {
             "attempt": patch.attempt, "patch_sha": sha, "category": check.category, "accepted": check.accepted,
             "repro_status": check.repro_status, "regressions": [str(r) for r in check.regressions][:50],
-            "feedback": (check.feedback or "")[:2000]})
+            "feedback": (check.feedback or "")[:2000], "regression_checked": check.regression_checked})
         if self.reviewer is not None and check.accepted and self._review_ctx is not None:
             report, spec, repo = self._review_ctx
             r = self.reviewer.review(report, spec, repo, patch)

@@ -136,6 +136,9 @@ class PatchCheck:
     output: str = ""
     repro_failed: Optional[int] = None        # failing repro test functions after the patch
     repro_failing: list = field(default_factory=list)
+    # True: existing tests really ran (some passed before the patch) and none newly failed.
+    # False: the regression suite could not show anything (timed out, or no test passed even before).
+    regression_checked: Optional[bool] = None
 
 
 @dataclass

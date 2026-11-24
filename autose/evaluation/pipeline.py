@@ -97,8 +97,11 @@ def check_bug(row: dict, outcome: dict | None, gold_patch: str) -> dict:
         else:
             r["patch_gold"] = False
         r["self_check"] = fix.get("status") == "fixed"
+        # Did the accepted patch's regression suite really run? None for runs before 24 Nov (not recorded).
+        acc = [a["check"] for a in atts if a["check"].get("accepted")]
+        r["regression_checked"] = acc[-1].get("regression_checked") if acc else None
     else:
-        for k in ("loc_file", "loc_func", "patch_applies", "patch_gold", "self_check"):
+        for k in ("loc_file", "loc_func", "patch_applies", "patch_gold", "self_check", "regression_checked"):
             r[k] = None
     r["resolved"] = row.get("resolved")
     if r["resolved"] is None and not (fix and fix.get("final_diff")):

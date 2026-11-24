@@ -416,6 +416,25 @@ class MessageJudge:
 
 
 # ------------------------------------------------------------------ patch validation (fixing)
+_GENERIC_WORDS = {"test", "py", "init", "src", "lib", "base", "core"}
+
+
+def _path_words(path: str) -> set[str]:
+    """Words of a path for matching tests to modules: tests/model_fields/tests.py -> {model, field}."""
+    words = set()
+    for w in re.split(r"[/._\-]+", path.lower()):
+        w = w[:-1] if len(w) > 3 and w.endswith("s") else w
+        if w and w not in _GENERIC_WORDS:
+            words.add(w)
+    return words
+
+
+def passed_count(out: str) -> int:
+    """Number of passing tests in a pytest summary (`12 passed, 3 failed`), 0 if none or unknown."""
+    return sum(int(n) for n in re.findall(r"\b(\d+) passed\b", out or ""))
+
+
+_SANDBOX_PATH = re.compile(r"(?:\.\./)*\S*?autose_[^/\s]*/repo")
 _RESULT_LINE = re.compile(r"^(?:FAILED|ERROR) (\S+?)(?: - (.*))?$", re.M)
 
 
@@ -455,8 +474,12 @@ class PatchValidator:
                 rank = (tier, i)
                 best = rank if best is None else min(best, rank)
             if best is not None:
-                hits.append((best, len(src), rel))
-        return [rel for _, _, rel in sorted(hits)[:self.max_files]]
+                near = max((len(_path_words(rel) & _path_words(m.replace(".", "/"))) for m in modules), default=0)
+                hits.append((best[0] > 0, -near, best, len(src), rel))
+        # After test_<leaf>.py: tests whose path names the module's parts (django/core/exceptions.py ->
+        # tests/test_exceptions/..., django/db/models/fields -> tests/model_fields/...), then import tier,
+        # then size. Before, the smallest file importing the package won, often an unrelated app's tests.
+        return [rel for *_, rel in sorted(hits)[:self.max_files]]
 
     def run_suite(self, sb: Sandbox, files: list[str]) -> tuple[set | None, str]:
         """Failing test ids of the given test files (None if the run timed out)."""
@@ -465,7 +488,9 @@ class PatchValidator:
         out = self.executor.run_files(sb, files, self.suite_timeout_s)
         if out is None:
             return None, f"timed out after {self.suite_timeout_s}s"
-        return {m.group(1) for m in _RESULT_LINE.finditer(out)}, out
+        # A local sandbox lives in a fresh temp dir per run; a collection error names that dir, so the
+        # same error before and after a patch would look like a new failure without this.
+        return {_SANDBOX_PATH.sub("<sandbox>", m.group(1)) for m in _RESULT_LINE.finditer(out)}, out
 
     def baseline(self, repo: Path, files: list[str], label: str) -> set | None:
         key = (str(repo), tuple(files))
@@ -476,6 +501,11 @@ class PatchValidator:
             finally:
                 sb.cleanup()
         return self._baseline[key][0]
+
+    def baseline_ran(self, repo: Path, files: list[str]) -> bool:
+        """Did any selected test pass before the patch? If none did (collection errors, missing settings,
+        every test erroring), comparing failures before/after proves nothing."""
+        return passed_count(self._baseline.get((str(repo), tuple(files)), (None, ""))[1]) > 0
 
     def check(self, repo: Path, patch: Patch, repro_test: ReproTest | None, files: list[str],
               label: str, progress_from: Optional[int] = None) -> PatchCheck:
@@ -508,23 +538,28 @@ class PatchValidator:
             files = list(files) + [f for f in self.select_tests(repo, changed_mods) if f not in files][:1]
             base = self.baseline(repo, files, label)
             fails, out = self.run_suite(sb, files)
+            checked = bool(files) and base is not None and fails is not None and self.baseline_ran(repo, files)
             regs = sorted(fails - base) if base is not None and fails is not None else []
             if regs:
                 details = [m.group(0)[:200] for m in _RESULT_LINE.finditer(out) if m.group(1) in regs][:5]
                 return PatchCheck("regression", False,
                                   f"Your patch breaks {len(regs)} existing test(s) that passed before: "
                                   + "; ".join(details) + ". Keep the existing behaviour and fix only the bug.",
-                                  repro_status, regs, out[-3000:])
+                                  repro_status, regs, out[-3000:], regression_checked=checked)
             if partial is not None:
                 return PatchCheck("partial", False,
                                   f"Your patch made progress and was KEPT: {progress_from - partial.n_failed} more "
                                   f"reproduction test function(s) now pass, but {partial.n_failed} still fail(s) "
                                   f"({', '.join(partial.failing) or partial.failure_line}): "
                                   f"{partial.failure_line}. The bug needs a change in ANOTHER place too.",
-                                  repro_status, [], partial.output, partial.n_failed, partial.failing)
+                                  repro_status, [], partial.output, partial.n_failed, partial.failing,
+                                  regression_checked=checked)
             if base is None or fails is None:
-                return PatchCheck("plausible", True, "", repro_status, [], "regression suite timed out")
-            return PatchCheck("plausible", True, "", repro_status, [], out[-1500:])
+                return PatchCheck("plausible", True, "", repro_status, [], "regression suite timed out",
+                                  regression_checked=False)
+            note = "" if checked else "[regression check UNVERIFIED: no selected test passed before the patch]\n"
+            return PatchCheck("plausible", True, "", repro_status, [], note + out[-1500:],
+                              regression_checked=checked)
         finally:
             sb.cleanup()
 

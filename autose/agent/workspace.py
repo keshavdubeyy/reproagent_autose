@@ -245,6 +245,40 @@ class LocalExecutor(Executor):
 TestExecutor = LocalExecutor
 
 
+def django_label(rel: str) -> str | None:
+    """tests/model_fields/test_promises.py -> model_fields: the whole test app, for Django's runtests.py.
+    The selected file is often a small sibling of the app's main tests.py; running the app covers both
+    (on the 40-bug subset the hidden tests' app is covered for 32 bugs vs 25 with single files)."""
+    parts = rel.split("/")
+    if len(parts) < 3 or parts[0] != "tests" or not rel.endswith(".py"):
+        return None
+    return parts[1]
+
+
+_UT_HEAD = re.compile(r"^(FAIL|ERROR): ([\w.]+) \(([\w.]+)\)", re.M)
+
+
+def unittest_to_pytest(out: str) -> str:
+    """Rewrite unittest (Django runtests.py) output into the pytest result lines the validator parses:
+    one `FAILED <id>` line per failing test and a `N passed, M failed` summary. Django < 4.1 prints
+    `FAIL: test_x (pkg.mod.Class)`, newer versions `FAIL: test_x (pkg.mod.Class.test_x)`; an import
+    failure of a whole module is `ERROR: pkg.mod (unittest.loader._FailedTest)` style and keeps its name."""
+    ids = []
+    for kind, name, where in _UT_HEAD.findall(out):
+        tid = where if where.endswith("." + name) else f"{where}.{name}"
+        if where.startswith("unittest.loader."):
+            tid = name
+        ids.append(tid)
+    ran = re.search(r"^Ran (\d+) tests?", out, re.M)
+    lines = ["  " + l for l in out.splitlines()]          # indented: never mistaken for result lines
+    lines += [f"FAILED {t}" for t in dict.fromkeys(ids)]
+    if ran:
+        n = int(ran.group(1))
+        skipped = sum(int(x) for x in re.findall(r"skipped=(\d+)", out))
+        lines.append(f"{max(n - len(set(ids)) - skipped, 0)} passed, {len(set(ids))} failed")
+    return "\n".join(lines)
+
+
 def swebench_image(instance_id: str) -> str:
     """Official prebuilt SWE-bench image name (same naming as the swebench package)."""
     return f"swebench/sweb.eval.x86_64.{instance_id.replace('__', '_1776_').lower()}:latest"
@@ -332,6 +366,21 @@ class DockerExecutor(Executor):
             else:
                 self._exec(f"rm -f {shlex.quote(rel)}")
         self.pushed = set(sb.written)
+
+    def run_files(self, sb: Sandbox, files: list[str], timeout_s: int) -> str | None:
+        """Django's own tests need its runner (settings, test apps, test database), not pytest: under
+        pytest they fail at collection ("settings are not configured") before and after a patch, which
+        looks like "no regressions". Run them the way SWE-bench does and report pytest-style lines."""
+        labels = list(dict.fromkeys(lb for lb in map(django_label, files) if lb))
+        if not self.django or not labels or self._exec("test -f tests/runtests.py")[0] != 0:
+            return super().run_files(sb, files, timeout_s)
+        self._sync(sb)
+        cmd = (f"{self.ACTIVATE} && cd tests && PYTHONDONTWRITEBYTECODE=1 python runtests.py "
+               f"--settings=test_sqlite --parallel 1 --verbosity 2 " + " ".join(shlex.quote(x) for x in labels))
+        code, out = self._exec(cmd + " 2>&1", timeout_s)
+        if code == 124:
+            return None
+        return unittest_to_pytest(out)
 
     def _pytest(self, sb, args, timeout_s):
         self._sync(sb)
