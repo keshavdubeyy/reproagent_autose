@@ -29,6 +29,10 @@ from .verify import TEST_FILE
 
 MAX_DEF_LINES = 120
 MAX_CONTEXT_CHARS = 9000
+ELISION_MATCH = 0.7   # similarity for an edited line next to a placeholder
+# Guard: a rewrite may not silently drop a block of more than this many existing code lines. In all 300
+# SWE-bench Lite gold fixes the largest net deleted block is 22 lines (matplotlib-24265), most are <= 6.
+GUARD_MAX_DROPPED = 25
 
 
 # ------------------------------------------------------------------ AST helpers (tool)
@@ -59,6 +63,129 @@ def definitions(src: str) -> dict[str, tuple[int, int, int]]:
                 if isinstance(t, ast.Name):
                     out[t.id] = _span(node)
     return out
+
+
+# A comment-only line standing for code the model left out: "# ... (existing code)", "# rest of the
+# function unchanged", our own "# ... (truncated)". Night 1+2: 60 of 335 patch attempts had one, and the
+# applier replaced the WHOLE definition with the short version (django-12497 lost 190 lines).
+_ELISION = re.compile(r"^#\s*(\.\.\.|…)|\b(unchanged|rest of (the|this)|existing (code|logic|implementation)"
+                      r"|other (code|lines|cases|methods)|omitted|truncated|same as before)\b", re.I)
+
+
+def _elision_lines(text: str, orig: str = "") -> list[int]:
+    """0-based lines of `text` that are placeholders: a comment-only line matching _ELISION, or a bare
+    `...` statement. The same comment or stub already in the original definition `orig` is real code,
+    and anything inside a string (doctest `...`) is never a placeholder."""
+    import io
+    import tokenize
+    out = set()
+    try:
+        for tok in tokenize.generate_tokens(io.StringIO(text).readline):
+            if tok.type == tokenize.COMMENT and tok.line.strip() == tok.string.strip() \
+                    and _ELISION.search(tok.string):
+                out.add(tok.start[0] - 1)
+        for n in ast.walk(ast.parse(text)):
+            if isinstance(n, ast.Expr) and isinstance(n.value, ast.Constant) and n.value.value is Ellipsis:
+                out.add(n.lineno - 1)
+    except (SyntaxError, tokenize.TokenError, IndentationError):
+        return []
+    lines = text.splitlines()
+    real = {orig.splitlines()[j].strip() for j in _elision_lines(orig)} if orig else set()
+    return sorted(i for i in out if i < len(lines) and lines[i].strip() not in real)
+
+
+def fill_elisions(orig: str, new: str) -> tuple[str, int | None]:
+    """Replace each placeholder line in `new` (a rewritten definition) by the original lines it stands for.
+    The gap is placed between the code line just before the placeholder and the one just after it, found
+    in `orig` (the current definition, dedented the same way): the same line, or else the most similar one
+    (the model's edited line, e.g. a longer table). A placeholder at the end keeps the rest of the original.
+    Returns (merged text, None), or (new, 1-based line) when a placeholder cannot be placed: the caller
+    then asks the model for the complete definition."""
+    o = orig.splitlines()
+    ostrip = [l.strip() for l in o]
+    n = new.splitlines()
+    marks = _elision_lines(new, orig)
+    if not marks:
+        return new, None
+    mset, out, pos, i = set(marks), [], 0, 0
+
+    def code(j):   # a real code line of the new text
+        return j not in mset and n[j].strip() != ""
+
+    def find(line, start):
+        line = line.strip()
+        exact = next((k for k in range(start, len(o)) if ostrip[k] == line), None)
+        if exact is not None:
+            return exact
+        scored = [(difflib.SequenceMatcher(None, ostrip[k], line).ratio(), -k) for k in range(start, len(o))
+                  if ostrip[k]]
+        best = max(scored, default=(0, 0))
+        return -best[1] if best[0] >= ELISION_MATCH else None
+    while i < len(n):
+        if i not in mset:
+            out.append(n[i])
+            i += 1
+            continue
+        prev = next((j for j in range(i - 1, -1, -1) if code(j)), None)
+        nxt = next((j for j in range(i + 1, len(n)) if code(j)), None)
+        a = find(n[prev], pos) if prev is not None else None
+        b = None if a is None else len(o) if nxt is None else find(n[nxt], a + 1)
+        if b is None:
+            return new, i + 1
+        out.extend(o[a + 1:b])
+        pos = b
+        i = nxt if nxt is not None else len(n)
+    return "\n".join(out), None
+
+
+def _soft_lines(orig: str) -> set[int]:
+    """0-based lines of a definition that are docstring, comment-only or blank (dropping them changes no
+    behaviour, but small models often shorten long docstrings while copying a definition)."""
+    lines = orig.splitlines()
+    soft = {i for i, l in enumerate(lines) if not l.strip() or l.strip().startswith("#")}
+    try:
+        node = ast.parse(orig).body[0]
+    except (SyntaxError, IndexError):
+        return soft
+    body = getattr(node, "body", None)
+    if body and isinstance(body[0], ast.Expr) and isinstance(body[0].value, ast.Constant) \
+            and isinstance(body[0].value.value, str):
+        soft |= set(range(body[0].lineno - 1, body[0].end_lineno))
+    return soft
+
+
+def guard_definition(orig: str, new: str) -> tuple[str, str | None]:
+    """Tool-side guard for one rewritten definition (`orig`, `new`: dedented). (1) placeholders are filled
+    from the original (fill_elisions); (2) docstring / comment lines the model silently dropped are put
+    back; (3) a block of more than GUARD_MAX_DROPPED existing code lines deleted without replacement is
+    refused. Returns (text to splice, None) or (new, problem for the model)."""
+    text, bad = fill_elisions(orig, new)
+    if bad:
+        return new, (f"skips existing code with a placeholder (line {bad}: `{new.splitlines()[bad - 1].strip()}`), "
+                     "and the lines around it do not match the current code, so the skipped part is unknown. "
+                     "Return the COMPLETE definition with no placeholders, or keep the line just before and just "
+                     "after each placeholder exactly as in the current code.")
+    o, n, soft, nsoft = orig.splitlines(), text.splitlines(), _soft_lines(orig), _soft_lines(text)
+    sm = difflib.SequenceMatcher(None, [l.strip() for l in o], [l.strip() for l in n], autojunk=False)
+    out, worst = [], (0, "")
+    for tag, i1, i2, j1, j2 in sm.get_opcodes():
+        hard = [o[k] for k in range(i1, i2) if k not in soft]
+        if tag == "delete" and not hard:
+            out.extend(o[i1:i2])                 # restore dropped docs / comments
+            continue
+        out.extend(n[j1:j2])
+        dropped = len(hard) - sum(k not in nsoft for k in range(j1, j2))   # new docs replace no code
+        if tag in ("delete", "replace") and dropped > worst[0]:
+            worst = (dropped, hard[0].strip())
+    if worst[0] > GUARD_MAX_DROPPED:
+        return new, (f"deletes {worst[0]} lines of existing code (starting at `{worst[1][:60]}`). Bug fixes do not "
+                     "remove that much. Return the COMPLETE definition: copy every line you do not change.")
+    merged = "\n".join(out)
+    try:
+        ast.parse(merged)
+    except SyntaxError:
+        merged = text                            # restoring docs broke the syntax: keep the model's text
+    return merged, None
 
 
 def _enclosing(defs: dict, line: int) -> str | None:
@@ -692,7 +819,13 @@ class PatchApplier:
         missing: list[str] = []
 
         def seg(node):
-            s, e, _ = _span(node)
+            s, e, col = _span(node)
+            j = e   # the AST ends at the last statement: keep trailing body comments ("# ... rest unchanged")
+            while j < len(lines) and (not lines[j].strip() or (lines[j].lstrip().startswith("#")
+                                                               and len(lines[j]) - len(lines[j].lstrip()) > col)):
+                j += 1
+                if lines[j - 1].strip():
+                    e = j
             return textwrap.dedent("\n".join(lines[s - 1:e]))
 
         for node in tree.body:
@@ -723,6 +856,11 @@ class PatchApplier:
                 t = self._target(name, candidates) if name else None
                 local = self._local_assignment(name, candidates) if name and not t \
                     and not isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) else None
+                if t and isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.Assign, ast.AnnAssign)) \
+                        and self.loc._is_class(*t):
+                    return (f"`{name}` is a CLASS in {t[0]}, but you wrote it as a "
+                            f"{'function' if hasattr(node, 'name') else 'variable'}, which would delete the whole "
+                            f"class. Fix the method that has the bug, inside `class {name}:`.")
                 if t:
                     edits[t[0]].append((t[1], seg(node)))
                 elif local:
@@ -738,7 +876,16 @@ class PatchApplier:
             old = self.loc.src(rel)
             new_lines = old.splitlines()
             defs = self.loc.defs(rel)
-            spans = [((defs[q] if isinstance(q, str) else q), text) for q, text in items]
+            spans = []
+            for q, text in items:
+                if isinstance(q, str):
+                    s, e, col = defs[q]
+                    orig = "\n".join(l[col:] if l[:col].strip() == "" else l.lstrip()
+                                     for l in old.splitlines()[s - 1:e])
+                    text, problem = guard_definition(orig, text)
+                    if problem:
+                        return f"Your code for {q} {problem}"
+                spans.append(((defs[q] if isinstance(q, str) else q), text))
             for (s, e, col), text in sorted(spans, key=lambda it: -it[0][0]):   # bottom-up
                 new_lines[s - 1:e] = textwrap.indent(text, " " * col).splitlines()
             new_lines = self._add_imports(new_lines, imports)

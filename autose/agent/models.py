@@ -192,6 +192,7 @@ class Outcome:
     retrieved: list = field(default_factory=list)   # "file:name" of code Bug Understanding retrieved
     retrieval: str = ""                             # which search produced it (explorer/bm25/hybrid/graph)
     control_log: list = field(default_factory=list)  # loop controller decisions (fingerprint, action)
+    guards: list = field(default_factory=list)       # tool-side guard warnings (e.g. prompt window), see LLM
 
     def to_dict(self) -> dict:
         d = asdict(self)

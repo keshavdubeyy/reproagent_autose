@@ -184,6 +184,7 @@ class ReproAgent:
 
         if self.ctl is not None:
             out.control_log = list(self.ctl.log)
+        out.guards = [w for w in getattr(self.llm, "warnings", []) if w["call"] > calls0]
 
         # Evaluation-only oracle: fail-to-pass on the fixed version (never fed back to the agent).
         if fixed_repo is not None or fixed_executor is not None:

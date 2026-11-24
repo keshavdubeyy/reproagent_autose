@@ -114,7 +114,7 @@ def run_one(a, iid: str, out_dir: Path, llm: LLM, reports: dict, harness: dict |
         row.update(control_switches=sum(1 for e in out.control_log if e["action"] == "switch"),
                    control_stops=sum(1 for e in out.control_log if e["action"] == "stop"))
         row.update(verdict=out.verdict.value, fail_to_pass=out.fail_to_pass, llm_calls=out.llm_calls,
-                   attempts=len(out.attempts), time_s=out.total_time_s)
+                   attempts=len(out.attempts), time_s=out.total_time_s, guard_warnings=len(out.guards))
         if out.fix is not None:
             row.update(fix_status=out.fix.status, fix_llm_calls=out.fix.llm_calls)
             if a.grade and out.fix.final_diff:

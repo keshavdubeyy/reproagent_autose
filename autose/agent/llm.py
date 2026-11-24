@@ -27,6 +27,11 @@ class LLM:
         self.seed = seed
         self.calls = 0
         self.total_time = 0.0
+        self.num_predict = 1536   # guard against runaway generations (one hit the 600 s timeout)
+        # Guard: Ollama silently drops the start of a prompt that does not fit num_ctx (prompt + reply).
+        # Every call near or over the window is recorded here and copied into the run's Outcome.
+        self.warnings: list[dict] = []
+        self.max_prompt_tokens = 0
 
     def chat(self, system: str, user: str, json_mode: bool = False,
              temperature: float | None = None) -> str:
@@ -39,7 +44,7 @@ class LLM:
                 "temperature": self.temperature if temperature is None else temperature,
                 "num_ctx": self.num_ctx,
                 "seed": self.seed,
-                "num_predict": 1536,   # guard against runaway generations (one hit the 600 s timeout)
+                "num_predict": self.num_predict,
             },
         }
         if json_mode:
@@ -51,7 +56,21 @@ class LLM:
         r.raise_for_status()
         self.calls += 1
         self.total_time += time.time() - t0
-        return r.json()["message"]["content"]
+        body = r.json()
+        self._check_window(body)
+        return body["message"]["content"]
+
+    def _check_window(self, body: dict) -> None:
+        """Record a call whose prompt left less room than num_predict for the reply (the reply may be cut, or
+        the prompt was already truncated by Ollama), and replies stopped by the output limit."""
+        used = int(body.get("prompt_eval_count") or 0)
+        self.max_prompt_tokens = max(self.max_prompt_tokens, used)
+        if used + self.num_predict > self.num_ctx:
+            self.warnings.append({"call": self.calls, "kind": "prompt_window", "prompt_tokens": used,
+                                  "num_ctx": self.num_ctx})
+        if body.get("done_reason") == "length":
+            self.warnings.append({"call": self.calls, "kind": "reply_cut_off",
+                                  "reply_tokens": int(body.get("eval_count") or 0)})
 
     def chat_json(self, system: str, user: str) -> dict:
         raw = self.chat(system, user, json_mode=True)
