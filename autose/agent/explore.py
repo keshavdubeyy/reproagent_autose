@@ -290,6 +290,17 @@ def _tail(s: str, n: int) -> str:
 
 # ------------------------------------------------------------------ explorer backed by the knowledge package
 RANKED_K = 10
+# Code shown to the reproduction prompt. Night 2: with the top 4 symbols one file often took every slot
+# (django-12184: 4 x core/handlers/base.py, the fix was in urls/resolvers.py). Offline on the 40-bug
+# subset, 6 snippets with at most 2 per file put the fixed file in view for 34/40 bugs vs 31/40 (graph).
+SEARCH_K = 6
+PER_FILE = 2
+# Prompt budget (num_ctx 6144 holds prompt AND the up-to-1536-token reply): snippets after the first
+# FULL_SNIPPETS are shortened. Measured with Ollama on the worst bug (django-13448, retry prompt):
+# 6 full snippets = 6439 tokens with the reply (over the window); extras cut to 12 lines = 5946; the old
+# 4 snippets = 5403. All 40 first prompts: median 2647, max 4375 tokens (before the extras were cut).
+FULL_SNIPPETS = 4
+EXTRA_SNIPPET_LINES = 12
 
 
 class IndexedExplorer(RepoExplorer):
@@ -307,12 +318,13 @@ class IndexedExplorer(RepoExplorer):
         self.mode = mode
         self.last = None
 
-    def search(self, spec: BugSpec, report: BugReport, k: int = 4) -> CodeContext:
+    def search(self, spec: BugSpec, report: BugReport, k: int = SEARCH_K, per_file: int = PER_FILE) -> CodeContext:
         if self._defs is None:
             self._index()                   # still needed for symbol hints and usage examples
         r = self.retriever.search(report, k_symbols=40)
         self.last = r
         top: list[CodeSnippet] = []
+        shown: dict[str, int] = {}          # snippets per file
         ranked = []                         # the longer ranked list, handed to the Fault Localiser
         for c in r.symbols:
             row = self.index.symbol(c.sid)
@@ -320,17 +332,19 @@ class IndexedExplorer(RepoExplorer):
                 continue
             if len(ranked) < RANKED_K:
                 ranked.append((row["path"], row["lineno"], row["name"]))
-            if len(top) >= k:
-                if len(ranked) >= RANKED_K:
+            if len(top) >= k or shown.get(row["path"], 0) >= per_file:
+                if len(top) >= k and len(ranked) >= RANKED_K:
                     break
                 continue
+            shown[row["path"]] = shown.get(row["path"], 0) + 1
             try:
                 lines = (self.repo / row["path"]).read_text(encoding="utf-8", errors="replace").splitlines()
             except OSError:
                 continue
             body = lines[row["lineno"] - 1:row["end_lineno"]]
-            if len(body) > MAX_SNIPPET_LINES:
-                body = body[:MAX_SNIPPET_LINES] + ["    # ... (truncated)"]
+            cap = MAX_SNIPPET_LINES if len(top) < FULL_SNIPPETS else EXTRA_SNIPPET_LINES
+            if len(body) > cap:
+                body = body[:cap] + ["    # ... (truncated)"]
             top.append(CodeSnippet(file=row["path"], module=row["module"], name=row["name"], lineno=row["lineno"],
                                    source="\n".join(body), score=round(c.score, 2)))
         return CodeContext(snippets=top, usage_examples=self._usage(top[:2]), ranked=ranked)

@@ -124,6 +124,27 @@ def test_indexed_explorer_returns_code_snippets(repo):
     assert ctx.snippets[0].module == "shop.pricing" and "def bulk_discount" in ctx.snippets[0].source
 
 
+def test_one_file_cannot_take_every_snippet(tmp_path, monkeypatch):
+    """django-12184: the top 4 symbols all came from core/handlers/base.py; the fixed file
+    (urls/resolvers.py) ranked lower and was never shown. At most PER_FILE snippets per file."""
+    from autose.agent.explore import PER_FILE, IndexedExplorer
+    from autose.agent.models import BugSpec
+    monkeypatch.setattr(ix_mod, "INDEX_DIR", tmp_path / "idx")
+    root = tmp_path / "repo"
+    (root / "app").mkdir(parents=True)
+    (root / "app" / "handlers.py").write_text("".join(
+        f"def handle_view_kwargs_{i}(request, view_kwargs):\n    return view_kwargs\n\n" for i in range(5)))
+    (root / "app" / "resolvers.py").write_text(
+        "def resolve_view_kwargs(path, view_kwargs):\n    return view_kwargs\n")
+    ex = IndexedExplorer(root, "bm25")
+    ctx = ex.search(BugSpec("", "view gets kwargs", "view_kwargs crash"),
+                    BugReport("b", "view_kwargs crash in handle view kwargs", "handle view_kwargs"), k=4)
+    files = [s.file for s in ctx.snippets]
+    assert files.count("app/handlers.py") == PER_FILE
+    assert "app/resolvers.py" in files
+    assert len(ctx.ranked) == 6                    # the localiser still gets the full ranked list
+
+
 def test_outcome_records_what_bug_understanding_retrieved():
     import time
     from autose.agent.loop import AgentConfig, ReproAgent
