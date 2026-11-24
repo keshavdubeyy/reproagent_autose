@@ -1,5 +1,5 @@
 {
- "when": "2026-11-23 17:01",
+ "when": "2026-11-24 07:56",
  "n_bugs": 40,
  "gate": 0.8,
  "components": [
@@ -172,7 +172,7 @@
      "id": "F2",
      "text": "Speed per function (parse + CFG + data flow + slice)",
      "threshold": "\u2264 5 ms",
-     "measured": "0.52 ms",
+     "measured": "0.26 ms",
      "passed": true,
      "n": 45944,
      "note": ""
@@ -231,9 +231,9 @@
      "id": "C4",
      "text": "Valid reproductions whose patch the agent's own tests accept (real runs)",
      "threshold": "\u2265 50%",
-     "measured": "16.7% (2/12)",
+     "measured": "35.9% (14/39)",
      "passed": false,
-     "n": 12,
+     "n": 39,
      "note": ""
     }
    ]
@@ -250,10 +250,10 @@
      "id": "R1",
      "text": "Accepted reproduction tests that are valid (pass on the fixed code)",
      "threshold": "\u2265 80%",
-     "measured": "37.5% (12/32)",
+     "measured": "55.7% (39/70)",
      "passed": false,
-     "n": 32,
-     "note": "small sample until the night runs; from night1_A, night1_C"
+     "n": 70,
+     "note": "small sample until the night runs; from night2_C, night2_D, night2_E"
     },
     {
      "component": "repro",
@@ -328,9 +328,9 @@
      "id": "B1",
      "text": "Frozen patches backed by an accepted test of the same hash, not rejected",
      "threshold": "\u2265 100%",
-     "measured": "100.0% (2/2)",
+     "measured": "100.0% (14/14)",
      "passed": true,
-     "n": 2,
+     "n": 14,
      "note": ""
     },
     {
@@ -338,9 +338,9 @@
      "id": "B2",
      "text": "Artifacts on disk match their schema",
      "threshold": "\u2265 100%",
-     "measured": "100.0% (266/266)",
+     "measured": "100.0% (511/511)",
      "passed": true,
-     "n": 266,
+     "n": 511,
      "note": ""
     },
     {
@@ -359,17 +359,17 @@
    "key": "testing",
    "name": "Testing (patch validation)",
    "promise": "A patch the agent accepts does not break existing behaviour.",
-   "score": 1.0,
-   "passed": true,
+   "score": 0.5,
+   "passed": false,
    "criteria": [
     {
      "component": "testing",
      "id": "T1",
      "text": "Accepted patches that keep every existing test passing (hidden P2P)",
      "threshold": "\u2265 80%",
-     "measured": "100.0% (2/2)",
-     "passed": true,
-     "n": 2,
+     "measured": "78.6% (11/14)",
+     "passed": false,
+     "n": 14,
      "note": ""
     },
     {
@@ -396,9 +396,9 @@
      "id": "L1",
      "text": "Bugs where no failure repeated more than 3 times",
      "threshold": "\u2265 100%",
-     "measured": "no data",
-     "passed": null,
-     "n": 0,
+     "measured": "100.0% (37/37)",
+     "passed": true,
+     "n": 37,
      "note": ""
     },
     {
@@ -464,11 +464,11 @@
   }
  ],
  "criteria_passed": 33,
- "criteria_measured": 35,
+ "criteria_measured": 36,
  "tracked": {
-  "bugs": 80,
-  "resolved": 0,
-  "valid_reproductions": 12,
-  "patches_accepted": 2
+  "bugs": 120,
+  "resolved": 3,
+  "valid_reproductions": 39,
+  "patches_accepted": 14
  }
 }
