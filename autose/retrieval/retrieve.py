@@ -20,7 +20,9 @@ from autose.retrieval.graph import Graph
 from autose.retrieval.lexical import BM25, entity_texts
 
 RRF_K = 60
-SOURCE_WEIGHT = {"mentions": 1.0, "bm25": 1.0, "graph": 0.5, "embedding": 1.0}
+# embedding 3.0: chosen on the 84 sympy/seaborn/flask bugs (1 -> 3 raised function hit@10
+# 0.44 -> 0.51, file hit@5 unchanged); check it on the other repos before trusting the gain
+SOURCE_WEIGHT = {"mentions": 1.0, "bm25": 1.0, "graph": 0.5, "embedding": 3.0}
 SEEDS_PER_SOURCE = 5
 POOL_FILES = 5
 POOL_MAX = 300

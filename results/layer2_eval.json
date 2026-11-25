@@ -1,37 +1,37 @@
 {
  "summary": {
   "instances": 84,
-  "seconds_median": 39.3,
+  "seconds_median": 10.3,
   "fused": {
    "files": {
     "n": 84,
-    "hit@1": 0.5238,
+    "hit@1": 0.5,
     "hit@5": 0.7381,
-    "hit@10": 0.7738,
-    "hit@20": 0.8095,
-    "recall@10": 0.7738,
-    "recall@20": 0.8095,
-    "mrr": 0.6254
+    "hit@10": 0.7857,
+    "hit@20": 0.8214,
+    "recall@10": 0.7857,
+    "recall@20": 0.8214,
+    "mrr": 0.6079
    },
    "classes": {
     "n": 81,
-    "hit@1": 0.2716,
-    "hit@5": 0.5432,
-    "hit@10": 0.6296,
-    "hit@20": 0.679,
-    "recall@10": 0.6173,
-    "recall@20": 0.6728,
-    "mrr": 0.393
+    "hit@1": 0.321,
+    "hit@5": 0.6173,
+    "hit@10": 0.6543,
+    "hit@20": 0.716,
+    "recall@10": 0.642,
+    "recall@20": 0.7037,
+    "mrr": 0.43
    },
    "entities": {
     "n": 81,
-    "hit@1": 0.1481,
-    "hit@5": 0.3333,
-    "hit@10": 0.4691,
+    "hit@1": 0.1852,
+    "hit@5": 0.4198,
+    "hit@10": 0.5185,
     "hit@20": 0.5679,
-    "recall@10": 0.4506,
-    "recall@20": 0.535,
-    "mrr": 0.2517
+    "recall@10": 0.5,
+    "recall@20": 0.5432,
+    "mrr": 0.2849
    }
   },
   "fused_no_embedding": {
@@ -199,7 +199,7 @@
   {
    "instance_id": "mwaskom__seaborn-2848",
    "repo": "mwaskom/seaborn",
-   "seconds": 59.7,
+   "seconds": 4.8,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -214,16 +214,16 @@
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.3333
+      "mrr": 0.2
      },
      "classes": {
       "hit@1": 0,
-      "hit@5": 0,
+      "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.125
+      "mrr": 0.2
      },
      "entities": {
       "hit@1": 0,
@@ -385,7 +385,7 @@
   {
    "instance_id": "mwaskom__seaborn-3010",
    "repo": "mwaskom/seaborn",
-   "seconds": 31.0,
+   "seconds": 2.1,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -394,22 +394,22 @@
    "metrics": {
     "fused": {
      "files": {
-      "hit@1": 0,
+      "hit@1": 1,
       "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.5
+      "mrr": 1.0
      },
      "classes": {
-      "hit@1": 0,
+      "hit@1": 1,
       "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.5
+      "mrr": 1.0
      },
      "entities": {
       "hit@1": 0,
@@ -418,7 +418,7 @@
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.125
+      "mrr": 0.1667
      }
     },
     "fused_no_embedding": {
@@ -571,7 +571,7 @@
   {
    "instance_id": "mwaskom__seaborn-3190",
    "repo": "mwaskom/seaborn",
-   "seconds": 30.7,
+   "seconds": 1.4,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -757,7 +757,7 @@
   {
    "instance_id": "mwaskom__seaborn-3407",
    "repo": "mwaskom/seaborn",
-   "seconds": 30.6,
+   "seconds": 1.8,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -790,7 +790,7 @@
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.3333
+      "mrr": 0.25
      }
     },
     "fused_no_embedding": {
@@ -943,7 +943,7 @@
   {
    "instance_id": "pallets__flask-4045",
    "repo": "pallets/flask",
-   "seconds": 0.3,
+   "seconds": 0.8,
    "gold_counts": {
     "files": 1,
     "entities": 2,
@@ -971,12 +971,12 @@
      },
      "entities": {
       "hit@1": 0,
-      "hit@5": 0,
+      "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 0.5,
       "recall@20": 0.5,
-      "mrr": 0.1429
+      "mrr": 0.25
      }
     },
     "fused_no_embedding": {
@@ -1129,7 +1129,7 @@
   {
    "instance_id": "pallets__flask-4992",
    "repo": "pallets/flask",
-   "seconds": 34.2,
+   "seconds": 1.0,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -1315,7 +1315,7 @@
   {
    "instance_id": "pallets__flask-5063",
    "repo": "pallets/flask",
-   "seconds": 19.8,
+   "seconds": 1.2,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -1339,16 +1339,16 @@
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.2
+      "mrr": 0.25
      },
      "entities": {
       "hit@1": 0,
-      "hit@5": 0,
+      "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.1111
+      "mrr": 0.25
      }
     },
     "fused_no_embedding": {
@@ -1501,7 +1501,7 @@
   {
    "instance_id": "sympy__sympy-11400",
    "repo": "sympy/sympy",
-   "seconds": 63.9,
+   "seconds": 8.6,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -1525,7 +1525,7 @@
       "hit@20": 0,
       "recall@10": 0.0,
       "recall@20": 0.0,
-      "mrr": 0.0294
+      "mrr": 0.04
      },
      "entities": {
       "hit@1": 0,
@@ -1687,7 +1687,7 @@
   {
    "instance_id": "sympy__sympy-11870",
    "repo": "sympy/sympy",
-   "seconds": 58.6,
+   "seconds": 8.7,
    "gold_counts": {
     "files": 1,
     "entities": 2,
@@ -1720,7 +1720,7 @@
       "hit@20": 0,
       "recall@10": 0.0,
       "recall@20": 0.0,
-      "mrr": 0.0
+      "mrr": 0.0238
      }
     },
     "fused_no_embedding": {
@@ -1873,7 +1873,7 @@
   {
    "instance_id": "sympy__sympy-11897",
    "repo": "sympy/sympy",
-   "seconds": 63.1,
+   "seconds": 7.5,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -1892,12 +1892,12 @@
      },
      "classes": {
       "hit@1": 0,
-      "hit@5": 1,
+      "hit@5": 0,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.2
+      "mrr": 0.1667
      },
      "entities": {
       "hit@1": 0,
@@ -2059,7 +2059,7 @@
   {
    "instance_id": "sympy__sympy-12171",
    "repo": "sympy/sympy",
-   "seconds": 53.0,
+   "seconds": 7.5,
    "gold_counts": {
     "files": 1,
     "entities": 0,
@@ -2149,7 +2149,7 @@
   {
    "instance_id": "sympy__sympy-12236",
    "repo": "sympy/sympy",
-   "seconds": 59.6,
+   "seconds": 7.6,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -2335,7 +2335,7 @@
   {
    "instance_id": "sympy__sympy-12419",
    "repo": "sympy/sympy",
-   "seconds": 55.6,
+   "seconds": 7.7,
    "gold_counts": {
     "files": 1,
     "entities": 2,
@@ -2350,7 +2350,7 @@
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.25
+      "mrr": 0.2
      },
      "classes": {
       "hit@1": 0,
@@ -2358,8 +2358,8 @@
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 0.5,
-      "recall@20": 0.5,
-      "mrr": 0.2
+      "recall@20": 1.0,
+      "mrr": 0.5
      },
      "entities": {
       "hit@1": 0,
@@ -2521,7 +2521,7 @@
   {
    "instance_id": "sympy__sympy-12454",
    "repo": "sympy/sympy",
-   "seconds": 49.6,
+   "seconds": 7.6,
    "gold_counts": {
     "files": 1,
     "entities": 2,
@@ -2707,7 +2707,7 @@
   {
    "instance_id": "sympy__sympy-12481",
    "repo": "sympy/sympy",
-   "seconds": 61.3,
+   "seconds": 7.1,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -2893,7 +2893,7 @@
   {
    "instance_id": "sympy__sympy-13031",
    "repo": "sympy/sympy",
-   "seconds": 52.9,
+   "seconds": 7.6,
    "gold_counts": {
     "files": 1,
     "entities": 2,
@@ -2903,12 +2903,12 @@
     "fused": {
      "files": {
       "hit@1": 0,
-      "hit@5": 0,
+      "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.1667
+      "mrr": 0.2
      },
      "classes": {
       "hit@1": 0,
@@ -2917,7 +2917,7 @@
       "hit@20": 1,
       "recall@10": 0.0,
       "recall@20": 1.0,
-      "mrr": 0.0909
+      "mrr": 0.0556
      },
      "entities": {
       "hit@1": 0,
@@ -3079,7 +3079,7 @@
   {
    "instance_id": "sympy__sympy-13043",
    "repo": "sympy/sympy",
-   "seconds": 36.5,
+   "seconds": 7.5,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -3088,13 +3088,13 @@
    "metrics": {
     "fused": {
      "files": {
-      "hit@1": 1,
+      "hit@1": 0,
       "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 1.0
+      "mrr": 0.5
      },
      "classes": {
       "hit@1": 1,
@@ -3265,7 +3265,7 @@
   {
    "instance_id": "sympy__sympy-13146",
    "repo": "sympy/sympy",
-   "seconds": 56.7,
+   "seconds": 7.5,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -3451,7 +3451,7 @@
   {
    "instance_id": "sympy__sympy-13177",
    "repo": "sympy/sympy",
-   "seconds": 48.9,
+   "seconds": 7.7,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -3475,16 +3475,16 @@
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.25
+      "mrr": 0.3333
      },
      "entities": {
       "hit@1": 0,
-      "hit@5": 0,
+      "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.1667
+      "mrr": 0.2
      }
     },
     "fused_no_embedding": {
@@ -3637,7 +3637,7 @@
   {
    "instance_id": "sympy__sympy-13437",
    "repo": "sympy/sympy",
-   "seconds": 38.1,
+   "seconds": 8.1,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -3667,10 +3667,10 @@
       "hit@1": 0,
       "hit@5": 0,
       "hit@10": 0,
-      "hit@20": 1,
+      "hit@20": 0,
       "recall@10": 0.0,
-      "recall@20": 1.0,
-      "mrr": 0.0769
+      "recall@20": 0.0,
+      "mrr": 0.0455
      }
     },
     "fused_no_embedding": {
@@ -3823,7 +3823,7 @@
   {
    "instance_id": "sympy__sympy-13471",
    "repo": "sympy/sympy",
-   "seconds": 37.0,
+   "seconds": 8.3,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -3851,12 +3851,12 @@
      },
      "entities": {
       "hit@1": 0,
-      "hit@5": 1,
+      "hit@5": 0,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.2
+      "mrr": 0.1667
      }
     },
     "fused_no_embedding": {
@@ -4009,7 +4009,7 @@
   {
    "instance_id": "sympy__sympy-13480",
    "repo": "sympy/sympy",
-   "seconds": 46.7,
+   "seconds": 8.4,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -4042,7 +4042,7 @@
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.25
+      "mrr": 0.5
      }
     },
     "fused_no_embedding": {
@@ -4195,7 +4195,7 @@
   {
    "instance_id": "sympy__sympy-13647",
    "repo": "sympy/sympy",
-   "seconds": 23.4,
+   "seconds": 8.5,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -4214,21 +4214,21 @@
      },
      "classes": {
       "hit@1": 0,
-      "hit@5": 0,
-      "hit@10": 0,
-      "hit@20": 0,
-      "recall@10": 0.0,
-      "recall@20": 0.0,
-      "mrr": 0.0
+      "hit@5": 1,
+      "hit@10": 1,
+      "hit@20": 1,
+      "recall@10": 1.0,
+      "recall@20": 1.0,
+      "mrr": 0.2
      },
      "entities": {
       "hit@1": 0,
       "hit@5": 0,
       "hit@10": 0,
-      "hit@20": 0,
+      "hit@20": 1,
       "recall@10": 0.0,
-      "recall@20": 0.0,
-      "mrr": 0.0
+      "recall@20": 1.0,
+      "mrr": 0.05
      }
     },
     "fused_no_embedding": {
@@ -4381,7 +4381,7 @@
   {
    "instance_id": "sympy__sympy-13773",
    "repo": "sympy/sympy",
-   "seconds": 25.7,
+   "seconds": 8.5,
    "gold_counts": {
     "files": 1,
     "entities": 2,
@@ -4412,9 +4412,9 @@
       "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
-      "recall@10": 0.5,
+      "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.3333
+      "mrr": 0.2
      }
     },
     "fused_no_embedding": {
@@ -4567,7 +4567,7 @@
   {
    "instance_id": "sympy__sympy-13895",
    "repo": "sympy/sympy",
-   "seconds": 40.9,
+   "seconds": 8.2,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -4753,7 +4753,7 @@
   {
    "instance_id": "sympy__sympy-13915",
    "repo": "sympy/sympy",
-   "seconds": 40.7,
+   "seconds": 8.4,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -4939,7 +4939,7 @@
   {
    "instance_id": "sympy__sympy-13971",
    "repo": "sympy/sympy",
-   "seconds": 39.2,
+   "seconds": 8.3,
    "gold_counts": {
     "files": 1,
     "entities": 2,
@@ -4958,21 +4958,21 @@
      },
      "classes": {
       "hit@1": 0,
-      "hit@5": 0,
+      "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.1
+      "mrr": 0.2
      },
      "entities": {
       "hit@1": 0,
       "hit@5": 0,
-      "hit@10": 0,
+      "hit@10": 1,
       "hit@20": 1,
-      "recall@10": 0.0,
+      "recall@10": 0.5,
       "recall@20": 0.5,
-      "mrr": 0.0526
+      "mrr": 0.1
      }
     },
     "fused_no_embedding": {
@@ -5125,7 +5125,7 @@
   {
    "instance_id": "sympy__sympy-14024",
    "repo": "sympy/sympy",
-   "seconds": 23.7,
+   "seconds": 8.8,
    "gold_counts": {
     "files": 1,
     "entities": 2,
@@ -5311,7 +5311,7 @@
   {
    "instance_id": "sympy__sympy-14308",
    "repo": "sympy/sympy",
-   "seconds": 32.2,
+   "seconds": 8.3,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -5322,20 +5322,20 @@
      "files": {
       "hit@1": 0,
       "hit@5": 0,
-      "hit@10": 0,
+      "hit@10": 1,
       "hit@20": 1,
-      "recall@10": 0.0,
+      "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.0833
+      "mrr": 0.1111
      },
      "classes": {
       "hit@1": 0,
       "hit@5": 0,
       "hit@10": 0,
-      "hit@20": 0,
+      "hit@20": 1,
       "recall@10": 0.0,
-      "recall@20": 0.0,
-      "mrr": 0.037
+      "recall@20": 1.0,
+      "mrr": 0.0714
      },
      "entities": {
       "hit@1": 0,
@@ -5497,7 +5497,7 @@
   {
    "instance_id": "sympy__sympy-14317",
    "repo": "sympy/sympy",
-   "seconds": 34.4,
+   "seconds": 8.5,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -5509,10 +5509,10 @@
       "hit@1": 0,
       "hit@5": 0,
       "hit@10": 0,
-      "hit@20": 0,
+      "hit@20": 1,
       "recall@10": 0.0,
-      "recall@20": 0.0,
-      "mrr": 0.0476
+      "recall@20": 1.0,
+      "mrr": 0.0625
      },
      "classes": {
       "hit@1": 0,
@@ -5683,7 +5683,7 @@
   {
    "instance_id": "sympy__sympy-14396",
    "repo": "sympy/sympy",
-   "seconds": 39.0,
+   "seconds": 9.1,
    "gold_counts": {
     "files": 1,
     "entities": 2,
@@ -5707,7 +5707,7 @@
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.25
+      "mrr": 0.3333
      },
      "entities": {
       "hit@1": 0,
@@ -5716,7 +5716,7 @@
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.25
+      "mrr": 0.3333
      }
     },
     "fused_no_embedding": {
@@ -5869,7 +5869,7 @@
   {
    "instance_id": "sympy__sympy-14774",
    "repo": "sympy/sympy",
-   "seconds": 32.3,
+   "seconds": 8.8,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -5902,7 +5902,7 @@
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.125
+      "mrr": 0.1667
      }
     },
     "fused_no_embedding": {
@@ -6055,7 +6055,7 @@
   {
    "instance_id": "sympy__sympy-14817",
    "repo": "sympy/sympy",
-   "seconds": 42.1,
+   "seconds": 9.1,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -6241,7 +6241,7 @@
   {
    "instance_id": "sympy__sympy-15011",
    "repo": "sympy/sympy",
-   "seconds": 35.3,
+   "seconds": 9.9,
    "gold_counts": {
     "files": 1,
     "entities": 2,
@@ -6260,21 +6260,21 @@
      },
      "classes": {
       "hit@1": 0,
-      "hit@5": 0,
+      "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.1667
+      "mrr": 0.2
      },
      "entities": {
       "hit@1": 0,
-      "hit@5": 0,
+      "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
-      "recall@10": 0.5,
-      "recall@20": 0.5,
-      "mrr": 0.1667
+      "recall@10": 1.0,
+      "recall@20": 1.0,
+      "mrr": 0.2
      }
     },
     "fused_no_embedding": {
@@ -6427,7 +6427,7 @@
   {
    "instance_id": "sympy__sympy-15308",
    "repo": "sympy/sympy",
-   "seconds": 24.1,
+   "seconds": 10.3,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -6451,7 +6451,7 @@
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.125
+      "mrr": 0.1429
      },
      "entities": {
       "hit@1": 0,
@@ -6613,7 +6613,7 @@
   {
    "instance_id": "sympy__sympy-15345",
    "repo": "sympy/sympy",
-   "seconds": 42.8,
+   "seconds": 9.6,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -6637,16 +6637,16 @@
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.125
+      "mrr": 0.1667
      },
      "entities": {
       "hit@1": 0,
       "hit@5": 0,
-      "hit@10": 0,
+      "hit@10": 1,
       "hit@20": 1,
-      "recall@10": 0.0,
+      "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.0909
+      "mrr": 0.125
      }
     },
     "fused_no_embedding": {
@@ -6799,7 +6799,7 @@
   {
    "instance_id": "sympy__sympy-15346",
    "repo": "sympy/sympy",
-   "seconds": 38.4,
+   "seconds": 10.3,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -6814,7 +6814,7 @@
       "hit@20": 1,
       "recall@10": 0.0,
       "recall@20": 1.0,
-      "mrr": 0.0625
+      "mrr": 0.0667
      },
      "classes": {
       "hit@1": 0,
@@ -6985,7 +6985,7 @@
   {
    "instance_id": "sympy__sympy-15609",
    "repo": "sympy/sympy",
-   "seconds": 28.1,
+   "seconds": 10.3,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -7006,10 +7006,10 @@
       "hit@1": 0,
       "hit@5": 0,
       "hit@10": 0,
-      "hit@20": 1,
+      "hit@20": 0,
       "recall@10": 0.0,
-      "recall@20": 1.0,
-      "mrr": 0.0588
+      "recall@20": 0.0,
+      "mrr": 0.0417
      },
      "entities": {
       "hit@1": 0,
@@ -7018,7 +7018,7 @@
       "hit@20": 0,
       "recall@10": 0.0,
       "recall@20": 0.0,
-      "mrr": 0.0
+      "mrr": 0.0357
      }
     },
     "fused_no_embedding": {
@@ -7171,7 +7171,7 @@
   {
    "instance_id": "sympy__sympy-15678",
    "repo": "sympy/sympy",
-   "seconds": 35.3,
+   "seconds": 10.1,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -7181,12 +7181,12 @@
     "fused": {
      "files": {
       "hit@1": 0,
-      "hit@5": 1,
+      "hit@5": 0,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.3333
+      "mrr": 0.1429
      },
      "classes": {
       "hit@1": 1,
@@ -7357,7 +7357,7 @@
   {
    "instance_id": "sympy__sympy-16106",
    "repo": "sympy/sympy",
-   "seconds": 44.1,
+   "seconds": 10.7,
    "gold_counts": {
     "files": 1,
     "entities": 0,
@@ -7447,7 +7447,7 @@
   {
    "instance_id": "sympy__sympy-16281",
    "repo": "sympy/sympy",
-   "seconds": 45.4,
+   "seconds": 10.2,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -7462,7 +7462,7 @@
       "hit@20": 0,
       "recall@10": 0.0,
       "recall@20": 0.0,
-      "mrr": 0.0312
+      "mrr": 0.0417
      },
      "classes": {
       "hit@1": 0,
@@ -7633,7 +7633,7 @@
   {
    "instance_id": "sympy__sympy-16503",
    "repo": "sympy/sympy",
-   "seconds": 33.3,
+   "seconds": 9.9,
    "gold_counts": {
     "files": 1,
     "entities": 2,
@@ -7819,7 +7819,7 @@
   {
    "instance_id": "sympy__sympy-16792",
    "repo": "sympy/sympy",
-   "seconds": 35.6,
+   "seconds": 10.4,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -8005,7 +8005,7 @@
   {
    "instance_id": "sympy__sympy-16988",
    "repo": "sympy/sympy",
-   "seconds": 43.9,
+   "seconds": 10.0,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -8038,7 +8038,7 @@
       "hit@20": 0,
       "recall@10": 0.0,
       "recall@20": 0.0,
-      "mrr": 0.0
+      "mrr": 0.0476
      }
     },
     "fused_no_embedding": {
@@ -8191,7 +8191,7 @@
   {
    "instance_id": "sympy__sympy-17022",
    "repo": "sympy/sympy",
-   "seconds": 34.9,
+   "seconds": 10.1,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -8377,7 +8377,7 @@
   {
    "instance_id": "sympy__sympy-17139",
    "repo": "sympy/sympy",
-   "seconds": 47.3,
+   "seconds": 10.4,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -8398,19 +8398,19 @@
       "hit@1": 0,
       "hit@5": 0,
       "hit@10": 0,
-      "hit@20": 1,
+      "hit@20": 0,
       "recall@10": 0.0,
-      "recall@20": 1.0,
-      "mrr": 0.0769
+      "recall@20": 0.0,
+      "mrr": 0.0278
      },
      "entities": {
       "hit@1": 0,
       "hit@5": 0,
       "hit@10": 0,
-      "hit@20": 1,
+      "hit@20": 0,
       "recall@10": 0.0,
-      "recall@20": 1.0,
-      "mrr": 0.0769
+      "recall@20": 0.0,
+      "mrr": 0.0263
      }
     },
     "fused_no_embedding": {
@@ -8563,7 +8563,7 @@
   {
    "instance_id": "sympy__sympy-17630",
    "repo": "sympy/sympy",
-   "seconds": 30.9,
+   "seconds": 11.8,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -8749,7 +8749,7 @@
   {
    "instance_id": "sympy__sympy-17655",
    "repo": "sympy/sympy",
-   "seconds": 36.9,
+   "seconds": 10.8,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -8935,7 +8935,7 @@
   {
    "instance_id": "sympy__sympy-18057",
    "repo": "sympy/sympy",
-   "seconds": 41.3,
+   "seconds": 10.9,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -8956,10 +8956,10 @@
       "hit@1": 0,
       "hit@5": 0,
       "hit@10": 0,
-      "hit@20": 0,
+      "hit@20": 1,
       "recall@10": 0.0,
-      "recall@20": 0.0,
-      "mrr": 0.0385
+      "recall@20": 1.0,
+      "mrr": 0.0833
      },
      "entities": {
       "hit@1": 0,
@@ -9121,7 +9121,7 @@
   {
    "instance_id": "sympy__sympy-18087",
    "repo": "sympy/sympy",
-   "seconds": 33.4,
+   "seconds": 10.1,
    "gold_counts": {
     "files": 1,
     "entities": 2,
@@ -9307,7 +9307,7 @@
   {
    "instance_id": "sympy__sympy-18189",
    "repo": "sympy/sympy",
-   "seconds": 41.1,
+   "seconds": 10.7,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -9493,7 +9493,7 @@
   {
    "instance_id": "sympy__sympy-18199",
    "repo": "sympy/sympy",
-   "seconds": 36.5,
+   "seconds": 10.5,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -9679,7 +9679,7 @@
   {
    "instance_id": "sympy__sympy-18532",
    "repo": "sympy/sympy",
-   "seconds": 40.7,
+   "seconds": 10.7,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -9865,7 +9865,7 @@
   {
    "instance_id": "sympy__sympy-18621",
    "repo": "sympy/sympy",
-   "seconds": 32.6,
+   "seconds": 10.8,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -10051,7 +10051,7 @@
   {
    "instance_id": "sympy__sympy-18698",
    "repo": "sympy/sympy",
-   "seconds": 43.1,
+   "seconds": 10.4,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -10237,7 +10237,7 @@
   {
    "instance_id": "sympy__sympy-18835",
    "repo": "sympy/sympy",
-   "seconds": 38.8,
+   "seconds": 10.6,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -10246,13 +10246,13 @@
    "metrics": {
     "fused": {
      "files": {
-      "hit@1": 1,
+      "hit@1": 0,
       "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 1.0
+      "mrr": 0.5
      },
      "classes": {
       "hit@1": 1,
@@ -10423,7 +10423,7 @@
   {
    "instance_id": "sympy__sympy-19007",
    "repo": "sympy/sympy",
-   "seconds": 22.0,
+   "seconds": 10.6,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -10456,7 +10456,7 @@
       "hit@20": 1,
       "recall@10": 0.0,
       "recall@20": 1.0,
-      "mrr": 0.0714
+      "mrr": 0.0833
      }
     },
     "fused_no_embedding": {
@@ -10609,7 +10609,7 @@
   {
    "instance_id": "sympy__sympy-19254",
    "repo": "sympy/sympy",
-   "seconds": 56.2,
+   "seconds": 11.2,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -10627,22 +10627,22 @@
       "mrr": 1.0
      },
      "classes": {
-      "hit@1": 0,
+      "hit@1": 1,
       "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.5
+      "mrr": 1.0
      },
      "entities": {
-      "hit@1": 0,
+      "hit@1": 1,
       "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.5
+      "mrr": 1.0
      }
     },
     "fused_no_embedding": {
@@ -10795,7 +10795,7 @@
   {
    "instance_id": "sympy__sympy-19487",
    "repo": "sympy/sympy",
-   "seconds": 49.7,
+   "seconds": 10.5,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -10981,7 +10981,7 @@
   {
    "instance_id": "sympy__sympy-20049",
    "repo": "sympy/sympy",
-   "seconds": 11.8,
+   "seconds": 11.4,
    "gold_counts": {
     "files": 1,
     "entities": 2,
@@ -11014,7 +11014,7 @@
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.5
+      "mrr": 0.3333
      }
     },
     "fused_no_embedding": {
@@ -11167,7 +11167,7 @@
   {
    "instance_id": "sympy__sympy-20154",
    "repo": "sympy/sympy",
-   "seconds": 31.9,
+   "seconds": 10.6,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -11353,7 +11353,7 @@
   {
    "instance_id": "sympy__sympy-20212",
    "repo": "sympy/sympy",
-   "seconds": 48.2,
+   "seconds": 10.7,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -11368,7 +11368,7 @@
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.1667
+      "mrr": 0.1429
      },
      "classes": {
       "hit@1": 0,
@@ -11377,7 +11377,7 @@
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.5
+      "mrr": 0.25
      },
      "entities": {
       "hit@1": 0,
@@ -11539,7 +11539,7 @@
   {
    "instance_id": "sympy__sympy-20322",
    "repo": "sympy/sympy",
-   "seconds": 31.3,
+   "seconds": 12.4,
    "gold_counts": {
     "files": 1,
     "entities": 2,
@@ -11725,7 +11725,7 @@
   {
    "instance_id": "sympy__sympy-20442",
    "repo": "sympy/sympy",
-   "seconds": 42.0,
+   "seconds": 11.7,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -11746,19 +11746,19 @@
       "hit@1": 0,
       "hit@5": 0,
       "hit@10": 0,
-      "hit@20": 0,
+      "hit@20": 1,
       "recall@10": 0.0,
-      "recall@20": 0.0,
-      "mrr": 0.0333
+      "recall@20": 1.0,
+      "mrr": 0.0588
      },
      "entities": {
       "hit@1": 0,
       "hit@5": 0,
       "hit@10": 0,
-      "hit@20": 0,
+      "hit@20": 1,
       "recall@10": 0.0,
-      "recall@20": 0.0,
-      "mrr": 0.0303
+      "recall@20": 1.0,
+      "mrr": 0.0526
      }
     },
     "fused_no_embedding": {
@@ -11911,7 +11911,7 @@
   {
    "instance_id": "sympy__sympy-20590",
    "repo": "sympy/sympy",
-   "seconds": 44.1,
+   "seconds": 11.1,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -12097,7 +12097,7 @@
   {
    "instance_id": "sympy__sympy-20639",
    "repo": "sympy/sympy",
-   "seconds": 46.0,
+   "seconds": 11.1,
    "gold_counts": {
     "files": 1,
     "entities": 2,
@@ -12116,21 +12116,21 @@
      },
      "classes": {
       "hit@1": 0,
-      "hit@5": 0,
-      "hit@10": 0,
+      "hit@5": 1,
+      "hit@10": 1,
       "hit@20": 1,
-      "recall@10": 0.0,
+      "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.0714
+      "mrr": 0.25
      },
      "entities": {
       "hit@1": 0,
-      "hit@5": 0,
-      "hit@10": 0,
+      "hit@5": 1,
+      "hit@10": 1,
       "hit@20": 1,
-      "recall@10": 0.0,
+      "recall@10": 0.5,
       "recall@20": 0.5,
-      "mrr": 0.0667
+      "mrr": 0.25
      }
     },
     "fused_no_embedding": {
@@ -12283,7 +12283,7 @@
   {
    "instance_id": "sympy__sympy-21055",
    "repo": "sympy/sympy",
-   "seconds": 42.0,
+   "seconds": 11.8,
    "gold_counts": {
     "files": 1,
     "entities": 0,
@@ -12373,7 +12373,7 @@
   {
    "instance_id": "sympy__sympy-21171",
    "repo": "sympy/sympy",
-   "seconds": 38.0,
+   "seconds": 13.2,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -12391,22 +12391,22 @@
       "mrr": 1.0
      },
      "classes": {
-      "hit@1": 0,
+      "hit@1": 1,
       "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.5
+      "mrr": 1.0
      },
      "entities": {
-      "hit@1": 0,
+      "hit@1": 1,
       "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.5
+      "mrr": 1.0
      }
     },
     "fused_no_embedding": {
@@ -12559,7 +12559,7 @@
   {
    "instance_id": "sympy__sympy-21379",
    "repo": "sympy/sympy",
-   "seconds": 37.1,
+   "seconds": 12.0,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -12745,7 +12745,7 @@
   {
    "instance_id": "sympy__sympy-21612",
    "repo": "sympy/sympy",
-   "seconds": 53.7,
+   "seconds": 11.5,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -12931,7 +12931,7 @@
   {
    "instance_id": "sympy__sympy-21614",
    "repo": "sympy/sympy",
-   "seconds": 42.2,
+   "seconds": 11.2,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -12946,16 +12946,16 @@
       "hit@20": 1,
       "recall@10": 0.0,
       "recall@20": 1.0,
-      "mrr": 0.0556
+      "mrr": 0.0588
      },
      "classes": {
       "hit@1": 0,
-      "hit@5": 0,
+      "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.125
+      "mrr": 0.2
      },
      "entities": {
       "hit@1": 0,
@@ -12964,7 +12964,7 @@
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.125
+      "mrr": 0.1667
      }
     },
     "fused_no_embedding": {
@@ -13117,7 +13117,7 @@
   {
    "instance_id": "sympy__sympy-21627",
    "repo": "sympy/sympy",
-   "seconds": 43.4,
+   "seconds": 11.0,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -13303,7 +13303,7 @@
   {
    "instance_id": "sympy__sympy-21847",
    "repo": "sympy/sympy",
-   "seconds": 38.6,
+   "seconds": 11.6,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -13489,7 +13489,7 @@
   {
    "instance_id": "sympy__sympy-22005",
    "repo": "sympy/sympy",
-   "seconds": 34.9,
+   "seconds": 12.1,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -13507,22 +13507,22 @@
       "mrr": 1.0
      },
      "classes": {
-      "hit@1": 0,
+      "hit@1": 1,
       "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.5
+      "mrr": 1.0
      },
      "entities": {
-      "hit@1": 0,
+      "hit@1": 1,
       "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.5
+      "mrr": 1.0
      }
     },
     "fused_no_embedding": {
@@ -13675,7 +13675,7 @@
   {
    "instance_id": "sympy__sympy-22714",
    "repo": "sympy/sympy",
-   "seconds": 39.4,
+   "seconds": 12.4,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -13699,16 +13699,16 @@
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.3333
+      "mrr": 0.25
      },
      "entities": {
       "hit@1": 0,
-      "hit@5": 0,
+      "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.1429
+      "mrr": 0.25
      }
     },
     "fused_no_embedding": {
@@ -13861,7 +13861,7 @@
   {
    "instance_id": "sympy__sympy-22840",
    "repo": "sympy/sympy",
-   "seconds": 37.4,
+   "seconds": 12.9,
    "gold_counts": {
     "files": 1,
     "entities": 2,
@@ -13870,31 +13870,31 @@
    "metrics": {
     "fused": {
      "files": {
-      "hit@1": 1,
+      "hit@1": 0,
       "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 1.0
+      "mrr": 0.5
      },
      "classes": {
       "hit@1": 0,
       "hit@5": 0,
       "hit@10": 0,
-      "hit@20": 0,
+      "hit@20": 1,
       "recall@10": 0.0,
-      "recall@20": 0.0,
-      "mrr": 0.0
+      "recall@20": 0.5,
+      "mrr": 0.0769
      },
      "entities": {
       "hit@1": 0,
       "hit@5": 0,
       "hit@10": 0,
-      "hit@20": 0,
+      "hit@20": 1,
       "recall@10": 0.0,
-      "recall@20": 0.0,
-      "mrr": 0.0
+      "recall@20": 0.5,
+      "mrr": 0.0769
      }
     },
     "fused_no_embedding": {
@@ -14047,7 +14047,7 @@
   {
    "instance_id": "sympy__sympy-23117",
    "repo": "sympy/sympy",
-   "seconds": 41.8,
+   "seconds": 11.7,
    "gold_counts": {
     "files": 1,
     "entities": 3,
@@ -14070,17 +14070,17 @@
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 0.5,
-      "recall@20": 1.0,
+      "recall@20": 0.5,
       "mrr": 1.0
      },
      "entities": {
       "hit@1": 0,
       "hit@5": 0,
       "hit@10": 0,
-      "hit@20": 1,
+      "hit@20": 0,
       "recall@10": 0.0,
-      "recall@20": 0.3333,
-      "mrr": 0.0526
+      "recall@20": 0.0,
+      "mrr": 0.0476
      }
     },
     "fused_no_embedding": {
@@ -14233,7 +14233,7 @@
   {
    "instance_id": "sympy__sympy-23191",
    "repo": "sympy/sympy",
-   "seconds": 29.8,
+   "seconds": 11.8,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -14248,7 +14248,7 @@
       "hit@20": 0,
       "recall@10": 0.0,
       "recall@20": 0.0,
-      "mrr": 0.0263
+      "mrr": 0.0294
      },
      "classes": {
       "hit@1": 0,
@@ -14419,7 +14419,7 @@
   {
    "instance_id": "sympy__sympy-23262",
    "repo": "sympy/sympy",
-   "seconds": 46.2,
+   "seconds": 11.7,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -14438,21 +14438,21 @@
      },
      "classes": {
       "hit@1": 0,
-      "hit@5": 0,
+      "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.1667
+      "mrr": 0.2
      },
      "entities": {
       "hit@1": 0,
-      "hit@5": 0,
+      "hit@5": 1,
       "hit@10": 1,
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.1667
+      "mrr": 0.2
      }
     },
     "fused_no_embedding": {
@@ -14605,7 +14605,7 @@
   {
    "instance_id": "sympy__sympy-24066",
    "repo": "sympy/sympy",
-   "seconds": 42.9,
+   "seconds": 11.8,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -14620,7 +14620,7 @@
       "hit@20": 1,
       "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.5
+      "mrr": 0.3333
      },
      "classes": {
       "hit@1": 1,
@@ -14791,7 +14791,7 @@
   {
    "instance_id": "sympy__sympy-24102",
    "repo": "sympy/sympy",
-   "seconds": 40.8,
+   "seconds": 11.7,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -14977,7 +14977,7 @@
   {
    "instance_id": "sympy__sympy-24152",
    "repo": "sympy/sympy",
-   "seconds": 56.3,
+   "seconds": 12.0,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -15163,7 +15163,7 @@
   {
    "instance_id": "sympy__sympy-24213",
    "repo": "sympy/sympy",
-   "seconds": 15.4,
+   "seconds": 11.8,
    "gold_counts": {
     "files": 1,
     "entities": 1,
@@ -15349,7 +15349,7 @@
   {
    "instance_id": "sympy__sympy-24909",
    "repo": "sympy/sympy",
-   "seconds": 57.7,
+   "seconds": 10.7,
    "gold_counts": {
     "files": 1,
     "entities": 2,
@@ -15377,12 +15377,12 @@
      },
      "entities": {
       "hit@1": 0,
-      "hit@5": 0,
-      "hit@10": 0,
+      "hit@5": 1,
+      "hit@10": 1,
       "hit@20": 1,
-      "recall@10": 0.0,
+      "recall@10": 1.0,
       "recall@20": 1.0,
-      "mrr": 0.0909
+      "mrr": 0.3333
      }
     },
     "fused_no_embedding": {
