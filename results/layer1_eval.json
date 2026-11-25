@@ -1,0 +1,4317 @@
+{
+ "summary": {
+  "instances": 84,
+  "entity_recall_unique_names": 1.0,
+  "entity_precision": 1.0,
+  "gold_files_in_index": {
+   "num": 84,
+   "den": 84,
+   "rate": 1.0
+  },
+  "gold_lines_in_entity": {
+   "num": 295,
+   "den": 315,
+   "rate": 0.9365
+  },
+  "instances_with_gold_entity": 81,
+  "p2p_tests_tagged": {
+   "num": 4591,
+   "den": 4591,
+   "rate": 1.0
+  },
+  "build_seconds": {
+   "median": 300.95,
+   "max": 708.9
+  },
+  "mb": {
+   "median": 83.3,
+   "max": 97.69
+  }
+ },
+ "instances": [
+  {
+   "instance_id": "mwaskom__seaborn-2848",
+   "repo": "mwaskom/seaborn",
+   "cost": {
+    "build_seconds": 4.9,
+    "mb": 2.22,
+    "files": 146,
+    "entities": 2452,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 2452,
+    "indexed": 2452,
+    "recall": 1.0,
+    "precision": 1.0,
+    "shadowed_same_name": 0,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 50,
+    "p2p_located": 50,
+    "tagged": 50,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 2622,
+     "imports": 454,
+     "inherits": 133,
+     "invokes": 5361
+    },
+    "call_resolution": {
+     "global": 1101,
+     "scoped": 4260
+    },
+    "invokes_out_degree": {
+     "median": 2,
+     "p95": 8,
+     "max": 58
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "mwaskom__seaborn-3010",
+   "repo": "mwaskom/seaborn",
+   "cost": {
+    "build_seconds": 7.5,
+    "mb": 2.36,
+    "files": 145,
+    "entities": 2584,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 2584,
+    "indexed": 2584,
+    "recall": 1.0,
+    "precision": 1.0,
+    "shadowed_same_name": 0,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 2,
+    "p2p_located": 2,
+    "tagged": 2,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 2753,
+     "imports": 493,
+     "inherits": 143,
+     "invokes": 5799
+    },
+    "call_resolution": {
+     "global": 1163,
+     "scoped": 4636
+    },
+    "invokes_out_degree": {
+     "median": 2.0,
+     "p95": 8,
+     "max": 56
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "mwaskom__seaborn-3190",
+   "repo": "mwaskom/seaborn",
+   "cost": {
+    "build_seconds": 8.1,
+    "mb": 2.48,
+    "files": 153,
+    "entities": 2706,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 2706,
+    "indexed": 2706,
+    "recall": 1.0,
+    "precision": 1.0,
+    "shadowed_same_name": 0,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 84,
+    "p2p_located": 84,
+    "tagged": 84,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 2883,
+     "imports": 542,
+     "inherits": 159,
+     "invokes": 6102
+    },
+    "call_resolution": {
+     "global": 1211,
+     "scoped": 4891
+    },
+    "invokes_out_degree": {
+     "median": 2,
+     "p95": 8,
+     "max": 56
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "mwaskom__seaborn-3407",
+   "repo": "mwaskom/seaborn",
+   "cost": {
+    "build_seconds": 5.6,
+    "mb": 2.64,
+    "files": 153,
+    "entities": 2879,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 2879,
+    "indexed": 2879,
+    "recall": 1.0,
+    "precision": 1.0,
+    "shadowed_same_name": 0,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 120,
+    "p2p_located": 120,
+    "tagged": 120,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 3056,
+     "imports": 566,
+     "inherits": 158,
+     "invokes": 6531
+    },
+    "call_resolution": {
+     "global": 1296,
+     "scoped": 5235
+    },
+    "invokes_out_degree": {
+     "median": 2.0,
+     "p95": 8,
+     "max": 55
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 2,
+    "lines_in_entity": 2
+   }
+  },
+  {
+   "instance_id": "pallets__flask-4045",
+   "repo": "pallets/flask",
+   "cost": {
+    "build_seconds": 1.2,
+    "mb": 1.66,
+    "files": 75,
+    "entities": 1482,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 1506,
+    "indexed": 1482,
+    "recall": 0.9841,
+    "precision": 1.0,
+    "shadowed_same_name": 24,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 50,
+    "p2p_located": 50,
+    "tagged": 50,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 1600,
+     "imports": 207,
+     "inherits": 67,
+     "invokes": 5310
+    },
+    "call_resolution": {
+     "global": 4145,
+     "scoped": 1165
+    },
+    "invokes_out_degree": {
+     "median": 3,
+     "p95": 20,
+     "max": 56
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 7,
+    "lines_in_entity": 7
+   }
+  },
+  {
+   "instance_id": "pallets__flask-4992",
+   "repo": "pallets/flask",
+   "cost": {
+    "build_seconds": 1.9,
+    "mb": 1.73,
+    "files": 80,
+    "entities": 1548,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 1569,
+    "indexed": 1548,
+    "recall": 0.9866,
+    "precision": 1.0,
+    "shadowed_same_name": 21,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 18,
+    "p2p_located": 17,
+    "tagged": 17,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 1676,
+     "imports": 225,
+     "inherits": 70,
+     "invokes": 5541
+    },
+    "call_resolution": {
+     "global": 4269,
+     "scoped": 1272
+    },
+    "invokes_out_degree": {
+     "median": 3.0,
+     "p95": 20,
+     "max": 33
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 6,
+    "lines_in_entity": 6
+   }
+  },
+  {
+   "instance_id": "pallets__flask-5063",
+   "repo": "pallets/flask",
+   "cost": {
+    "build_seconds": 1.6,
+    "mb": 1.7,
+    "files": 80,
+    "entities": 1534,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 1555,
+    "indexed": 1534,
+    "recall": 0.9865,
+    "precision": 1.0,
+    "shadowed_same_name": 21,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 54,
+    "p2p_located": 52,
+    "tagged": 52,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 1663,
+     "imports": 223,
+     "inherits": 69,
+     "invokes": 5399
+    },
+    "call_resolution": {
+     "global": 4152,
+     "scoped": 1247
+    },
+    "invokes_out_degree": {
+     "median": 3,
+     "p95": 20,
+     "max": 33
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 27,
+    "lines_in_entity": 23
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-11400",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 171.8,
+    "mb": 46.66,
+    "files": 1099,
+    "entities": 22218,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 22269,
+    "indexed": 22218,
+    "recall": 0.9977,
+    "precision": 1.0,
+    "shadowed_same_name": 51,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 29,
+    "p2p_located": 29,
+    "tagged": 29,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 23490,
+     "imports": 13555,
+     "inherits": 1263,
+     "invokes": 200924
+    },
+    "call_resolution": {
+     "global": 48847,
+     "scoped": 152077
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 45,
+     "max": 381
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-11870",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 176.9,
+    "mb": 55.71,
+    "files": 1179,
+    "entities": 25565,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 25625,
+    "indexed": 25565,
+    "recall": 0.9977,
+    "precision": 1.0,
+    "shadowed_same_name": 60,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 58,
+    "p2p_located": 58,
+    "tagged": 58,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 26928,
+     "imports": 23184,
+     "inherits": 1432,
+     "invokes": 233776
+    },
+    "call_resolution": {
+     "global": 55512,
+     "scoped": 178264
+    },
+    "invokes_out_degree": {
+     "median": 5,
+     "p95": 45,
+     "max": 418
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 3,
+    "lines_in_entity": 2
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-11897",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 112.0,
+    "mb": 48.29,
+    "files": 1106,
+    "entities": 22462,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 22518,
+    "indexed": 22462,
+    "recall": 0.9975,
+    "precision": 1.0,
+    "shadowed_same_name": 56,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 95,
+    "p2p_located": 95,
+    "tagged": 95,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 23744,
+     "imports": 13762,
+     "inherits": 1276,
+     "invokes": 209264
+    },
+    "call_resolution": {
+     "global": 49930,
+     "scoped": 159334
+    },
+    "invokes_out_degree": {
+     "median": 5,
+     "p95": 46,
+     "max": 385
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 2,
+    "lines_in_entity": 2
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-12171",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 113.6,
+    "mb": 48.44,
+    "files": 1109,
+    "entities": 22708,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 22764,
+    "indexed": 22708,
+    "recall": 0.9975,
+    "precision": 1.0,
+    "shadowed_same_name": 56,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 8,
+    "p2p_located": 8,
+    "tagged": 8,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 23992,
+     "imports": 13888,
+     "inherits": 1292,
+     "invokes": 209239
+    },
+    "call_resolution": {
+     "global": 50637,
+     "scoped": 158602
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 45,
+     "max": 387
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 0
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-12236",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 114.0,
+    "mb": 48.58,
+    "files": 1109,
+    "entities": 22725,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 22781,
+    "indexed": 22725,
+    "recall": 0.9975,
+    "precision": 1.0,
+    "shadowed_same_name": 56,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 133,
+    "p2p_located": 133,
+    "tagged": 133,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 24009,
+     "imports": 13890,
+     "inherits": 1292,
+     "invokes": 210004
+    },
+    "call_resolution": {
+     "global": 50648,
+     "scoped": 159356
+    },
+    "invokes_out_degree": {
+     "median": 5,
+     "p95": 45,
+     "max": 387
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 3,
+    "lines_in_entity": 3
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-12419",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 115.3,
+    "mb": 48.8,
+    "files": 1116,
+    "entities": 22914,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 22970,
+    "indexed": 22914,
+    "recall": 0.9976,
+    "precision": 1.0,
+    "shadowed_same_name": 56,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 25,
+    "p2p_located": 25,
+    "tagged": 25,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 24205,
+     "imports": 14042,
+     "inherits": 1329,
+     "invokes": 210621
+    },
+    "call_resolution": {
+     "global": 50952,
+     "scoped": 159669
+    },
+    "invokes_out_degree": {
+     "median": 5,
+     "p95": 45,
+     "max": 388
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 6,
+    "lines_in_entity": 4
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-12454",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 118.0,
+    "mb": 48.69,
+    "files": 1115,
+    "entities": 22917,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 22973,
+    "indexed": 22917,
+    "recall": 0.9976,
+    "precision": 1.0,
+    "shadowed_same_name": 56,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 134,
+    "p2p_located": 134,
+    "tagged": 134,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 24207,
+     "imports": 14040,
+     "inherits": 1333,
+     "invokes": 209984
+    },
+    "call_resolution": {
+     "global": 50574,
+     "scoped": 159410
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 45,
+     "max": 387
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 2,
+    "lines_in_entity": 2
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-12481",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 120.4,
+    "mb": 48.72,
+    "files": 1115,
+    "entities": 22928,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 22984,
+    "indexed": 22928,
+    "recall": 0.9976,
+    "precision": 1.0,
+    "shadowed_same_name": 56,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 7,
+    "p2p_located": 7,
+    "tagged": 7,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 24218,
+     "imports": 14049,
+     "inherits": 1333,
+     "invokes": 210104
+    },
+    "call_resolution": {
+     "global": 50633,
+     "scoped": 159471
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 45,
+     "max": 387
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 6,
+    "lines_in_entity": 6
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13031",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 129.0,
+    "mb": 49.68,
+    "files": 1127,
+    "entities": 23353,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 23411,
+    "indexed": 23353,
+    "recall": 0.9975,
+    "precision": 1.0,
+    "shadowed_same_name": 58,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 9,
+    "p2p_located": 9,
+    "tagged": 9,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 24657,
+     "imports": 14230,
+     "inherits": 1376,
+     "invokes": 214398
+    },
+    "call_resolution": {
+     "global": 51558,
+     "scoped": 162840
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 45,
+     "max": 399
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 4,
+    "lines_in_entity": 4
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13043",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 120.5,
+    "mb": 50.02,
+    "files": 1136,
+    "entities": 23453,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 23511,
+    "indexed": 23453,
+    "recall": 0.9975,
+    "precision": 1.0,
+    "shadowed_same_name": 58,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 1,
+    "p2p_located": 1,
+    "tagged": 1,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 24766,
+     "imports": 14317,
+     "inherits": 1402,
+     "invokes": 215807
+    },
+    "call_resolution": {
+     "global": 51944,
+     "scoped": 163863
+    },
+    "invokes_out_degree": {
+     "median": 5,
+     "p95": 45,
+     "max": 403
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 3,
+    "lines_in_entity": 3
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13146",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 123.2,
+    "mb": 50.56,
+    "files": 1140,
+    "entities": 23713,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 23773,
+    "indexed": 23713,
+    "recall": 0.9975,
+    "precision": 1.0,
+    "shadowed_same_name": 60,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 34,
+    "p2p_located": 34,
+    "tagged": 34,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 25030,
+     "imports": 14484,
+     "inherits": 1426,
+     "invokes": 218097
+    },
+    "call_resolution": {
+     "global": 53457,
+     "scoped": 164640
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 45,
+     "max": 406
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 6,
+    "lines_in_entity": 6
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13177",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 133.0,
+    "mb": 50.66,
+    "files": 1140,
+    "entities": 23739,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 23799,
+    "indexed": 23739,
+    "recall": 0.9975,
+    "precision": 1.0,
+    "shadowed_same_name": 60,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 76,
+    "p2p_located": 76,
+    "tagged": 76,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 25056,
+     "imports": 14509,
+     "inherits": 1426,
+     "invokes": 218527
+    },
+    "call_resolution": {
+     "global": 53529,
+     "scoped": 164998
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 45,
+     "max": 406
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13437",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 185.5,
+    "mb": 55.76,
+    "files": 1179,
+    "entities": 25572,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 25632,
+    "indexed": 25572,
+    "recall": 0.9977,
+    "precision": 1.0,
+    "shadowed_same_name": 60,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 15,
+    "p2p_located": 15,
+    "tagged": 15,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 26935,
+     "imports": 23241,
+     "inherits": 1432,
+     "invokes": 234022
+    },
+    "call_resolution": {
+     "global": 55629,
+     "scoped": 178393
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 45,
+     "max": 418
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13471",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 186.0,
+    "mb": 55.96,
+    "files": 1180,
+    "entities": 25616,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 25676,
+    "indexed": 25616,
+    "recall": 0.9977,
+    "precision": 1.0,
+    "shadowed_same_name": 60,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 82,
+    "p2p_located": 82,
+    "tagged": 82,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 26980,
+     "imports": 23301,
+     "inherits": 1433,
+     "invokes": 235078
+    },
+    "call_resolution": {
+     "global": 55955,
+     "scoped": 179123
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 45,
+     "max": 418
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13480",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 190.1,
+    "mb": 55.96,
+    "files": 1181,
+    "entities": 25617,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 25677,
+    "indexed": 25617,
+    "recall": 0.9977,
+    "precision": 1.0,
+    "shadowed_same_name": 60,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 43,
+    "p2p_located": 43,
+    "tagged": 43,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 26982,
+     "imports": 23305,
+     "inherits": 1433,
+     "invokes": 235081
+    },
+    "call_resolution": {
+     "global": 55956,
+     "scoped": 179125
+    },
+    "invokes_out_degree": {
+     "median": 5,
+     "p95": 45,
+     "max": 418
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13647",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 179.9,
+    "mb": 56.42,
+    "files": 1187,
+    "entities": 25740,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 25800,
+    "indexed": 25740,
+    "recall": 0.9977,
+    "precision": 1.0,
+    "shadowed_same_name": 60,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 76,
+    "p2p_located": 76,
+    "tagged": 76,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 27111,
+     "imports": 23406,
+     "inherits": 1425,
+     "invokes": 237052
+    },
+    "call_resolution": {
+     "global": 56927,
+     "scoped": 180125
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 46,
+     "max": 419
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13773",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 176.5,
+    "mb": 56.61,
+    "files": 1187,
+    "entities": 25781,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 25842,
+    "indexed": 25781,
+    "recall": 0.9976,
+    "precision": 1.0,
+    "shadowed_same_name": 61,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 69,
+    "p2p_located": 69,
+    "tagged": 69,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 27152,
+     "imports": 23432,
+     "inherits": 1425,
+     "invokes": 238052
+    },
+    "call_resolution": {
+     "global": 57004,
+     "scoped": 181048
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 46,
+     "max": 419
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 2,
+    "lines_in_entity": 2
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13895",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 180.3,
+    "mb": 57.04,
+    "files": 1189,
+    "entities": 25854,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 25915,
+    "indexed": 25854,
+    "recall": 0.9976,
+    "precision": 1.0,
+    "shadowed_same_name": 61,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 82,
+    "p2p_located": 82,
+    "tagged": 82,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 27227,
+     "imports": 23489,
+     "inherits": 1427,
+     "invokes": 240439
+    },
+    "call_resolution": {
+     "global": 57187,
+     "scoped": 183252
+    },
+    "invokes_out_degree": {
+     "median": 5,
+     "p95": 46,
+     "max": 419
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 5,
+    "lines_in_entity": 5
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13915",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 181.7,
+    "mb": 57.05,
+    "files": 1189,
+    "entities": 25855,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 25916,
+    "indexed": 25855,
+    "recall": 0.9976,
+    "precision": 1.0,
+    "shadowed_same_name": 61,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 62,
+    "p2p_located": 62,
+    "tagged": 62,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 27228,
+     "imports": 23492,
+     "inherits": 1427,
+     "invokes": 240495
+    },
+    "call_resolution": {
+     "global": 57187,
+     "scoped": 183308
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 46,
+     "max": 419
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13971",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 196.7,
+    "mb": 57.29,
+    "files": 1191,
+    "entities": 25912,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 25973,
+    "indexed": 25912,
+    "recall": 0.9977,
+    "precision": 1.0,
+    "shadowed_same_name": 61,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 102,
+    "p2p_located": 102,
+    "tagged": 102,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 27287,
+     "imports": 23524,
+     "inherits": 1429,
+     "invokes": 241619
+    },
+    "call_resolution": {
+     "global": 57368,
+     "scoped": 184251
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 46,
+     "max": 421
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 2,
+    "lines_in_entity": 2
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-14024",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 192.3,
+    "mb": 58.56,
+    "files": 1200,
+    "entities": 26329,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 26390,
+    "indexed": 26329,
+    "recall": 0.9977,
+    "precision": 1.0,
+    "shadowed_same_name": 61,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 83,
+    "p2p_located": 83,
+    "tagged": 83,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 27715,
+     "imports": 23582,
+     "inherits": 1429,
+     "invokes": 246616
+    },
+    "call_resolution": {
+     "global": 58530,
+     "scoped": 188086
+    },
+    "invokes_out_degree": {
+     "median": 5,
+     "p95": 46,
+     "max": 462
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 10,
+    "lines_in_entity": 10
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-14308",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 197.8,
+    "mb": 60.65,
+    "files": 1218,
+    "entities": 26655,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 26780,
+    "indexed": 26655,
+    "recall": 0.9953,
+    "precision": 1.0,
+    "shadowed_same_name": 125,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 113,
+    "p2p_located": 113,
+    "tagged": 113,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 28062,
+     "imports": 23830,
+     "inherits": 1444,
+     "invokes": 256635
+    },
+    "call_resolution": {
+     "global": 65290,
+     "scoped": 191345
+    },
+    "invokes_out_degree": {
+     "median": 5,
+     "p95": 51,
+     "max": 464
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 11,
+    "lines_in_entity": 11
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-14317",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 201.1,
+    "mb": 60.65,
+    "files": 1218,
+    "entities": 26655,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 26780,
+    "indexed": 26655,
+    "recall": 0.9953,
+    "precision": 1.0,
+    "shadowed_same_name": 125,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 116,
+    "p2p_located": 116,
+    "tagged": 116,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 28062,
+     "imports": 23830,
+     "inherits": 1444,
+     "invokes": 256635
+    },
+    "call_resolution": {
+     "global": 65290,
+     "scoped": 191345
+    },
+    "invokes_out_degree": {
+     "median": 5,
+     "p95": 51,
+     "max": 464
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-14396",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 198.2,
+    "mb": 60.71,
+    "files": 1218,
+    "entities": 26678,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 26811,
+    "indexed": 26678,
+    "recall": 0.995,
+    "precision": 1.0,
+    "shadowed_same_name": 133,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 44,
+    "p2p_located": 44,
+    "tagged": 44,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 28085,
+     "imports": 23902,
+     "inherits": 1444,
+     "invokes": 256848
+    },
+    "call_resolution": {
+     "global": 65218,
+     "scoped": 191630
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 51,
+     "max": 464
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 3,
+    "lines_in_entity": 3
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-14774",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 199.3,
+    "mb": 61.45,
+    "files": 1226,
+    "entities": 26885,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 27020,
+    "indexed": 26885,
+    "recall": 0.995,
+    "precision": 1.0,
+    "shadowed_same_name": 135,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 114,
+    "p2p_located": 114,
+    "tagged": 114,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 28302,
+     "imports": 24029,
+     "inherits": 1454,
+     "invokes": 260386
+    },
+    "call_resolution": {
+     "global": 66709,
+     "scoped": 193677
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 52,
+     "max": 472
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-14817",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 199.2,
+    "mb": 61.7,
+    "files": 1226,
+    "entities": 26914,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 27049,
+    "indexed": 26914,
+    "recall": 0.995,
+    "precision": 1.0,
+    "shadowed_same_name": 135,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 111,
+    "p2p_located": 111,
+    "tagged": 111,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 28331,
+     "imports": 24058,
+     "inherits": 1457,
+     "invokes": 261720
+    },
+    "call_resolution": {
+     "global": 67531,
+     "scoped": 194189
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 52,
+     "max": 472
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-15011",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 422.2,
+    "mb": 80.52,
+    "files": 1294,
+    "entities": 36785,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 36926,
+    "indexed": 36785,
+    "recall": 0.9962,
+    "precision": 1.0,
+    "shadowed_same_name": 141,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 53,
+    "p2p_located": 53,
+    "tagged": 53,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 38277,
+     "imports": 29849,
+     "inherits": 1570,
+     "invokes": 327338
+    },
+    "call_resolution": {
+     "global": 79634,
+     "scoped": 247704
+    },
+    "invokes_out_degree": {
+     "median": 5,
+     "p95": 45,
+     "max": 531
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 4,
+    "lines_in_entity": 4
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-15308",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 393.9,
+    "mb": 80.95,
+    "files": 1301,
+    "entities": 36955,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 37097,
+    "indexed": 36955,
+    "recall": 0.9962,
+    "precision": 1.0,
+    "shadowed_same_name": 142,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 120,
+    "p2p_located": 120,
+    "tagged": 120,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 38455,
+     "imports": 30016,
+     "inherits": 1576,
+     "invokes": 329050
+    },
+    "call_resolution": {
+     "global": 80310,
+     "scoped": 248740
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 45,
+     "max": 537
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 2,
+    "lines_in_entity": 2
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-15345",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 392.9,
+    "mb": 80.88,
+    "files": 1300,
+    "entities": 36936,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 37078,
+    "indexed": 36936,
+    "recall": 0.9962,
+    "precision": 1.0,
+    "shadowed_same_name": 142,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 8,
+    "p2p_located": 8,
+    "tagged": 8,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 38435,
+     "imports": 29999,
+     "inherits": 1575,
+     "invokes": 328678
+    },
+    "call_resolution": {
+     "global": 80279,
+     "scoped": 248399
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 45,
+     "max": 537
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 2,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-15346",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 379.1,
+    "mb": 80.88,
+    "files": 1300,
+    "entities": 36936,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 37078,
+    "indexed": 36936,
+    "recall": 0.9962,
+    "precision": 1.0,
+    "shadowed_same_name": 142,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 22,
+    "p2p_located": 22,
+    "tagged": 22,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 38435,
+     "imports": 29999,
+     "inherits": 1575,
+     "invokes": 328678
+    },
+    "call_resolution": {
+     "global": 80279,
+     "scoped": 248399
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 45,
+     "max": 537
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 2,
+    "lines_in_entity": 2
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-15609",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 377.2,
+    "mb": 82.16,
+    "files": 1306,
+    "entities": 37204,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 37346,
+    "indexed": 37204,
+    "recall": 0.9962,
+    "precision": 1.0,
+    "shadowed_same_name": 142,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 121,
+    "p2p_located": 121,
+    "tagged": 121,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 38709,
+     "imports": 30186,
+     "inherits": 1593,
+     "invokes": 334939
+    },
+    "call_resolution": {
+     "global": 82496,
+     "scoped": 252443
+    },
+    "invokes_out_degree": {
+     "median": 5,
+     "p95": 47,
+     "max": 538
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-15678",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 397.6,
+    "mb": 82.36,
+    "files": 1308,
+    "entities": 37268,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 37410,
+    "indexed": 37268,
+    "recall": 0.9962,
+    "precision": 1.0,
+    "shadowed_same_name": 142,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 3,
+    "p2p_located": 3,
+    "tagged": 3,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 38775,
+     "imports": 30219,
+     "inherits": 1594,
+     "invokes": 335815
+    },
+    "call_resolution": {
+     "global": 82658,
+     "scoped": 253157
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 47,
+     "max": 539
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 3,
+    "lines_in_entity": 3
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-16106",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 350.9,
+    "mb": 82.75,
+    "files": 1308,
+    "entities": 37538,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 37678,
+    "indexed": 37538,
+    "recall": 0.9963,
+    "precision": 1.0,
+    "shadowed_same_name": 140,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 55,
+    "p2p_located": 55,
+    "tagged": 55,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 39045,
+     "imports": 30340,
+     "inherits": 1598,
+     "invokes": 337160
+    },
+    "call_resolution": {
+     "global": 83675,
+     "scoped": 253485
+    },
+    "invokes_out_degree": {
+     "median": 5,
+     "p95": 47,
+     "max": 539
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 0
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-16281",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 708.9,
+    "mb": 82.91,
+    "files": 1308,
+    "entities": 37637,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 37777,
+    "indexed": 37637,
+    "recall": 0.9963,
+    "precision": 1.0,
+    "shadowed_same_name": 140,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 120,
+    "p2p_located": 120,
+    "tagged": 120,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 39144,
+     "imports": 30386,
+     "inherits": 1599,
+     "invokes": 337731
+    },
+    "call_resolution": {
+     "global": 83824,
+     "scoped": 253907
+    },
+    "invokes_out_degree": {
+     "median": 5,
+     "p95": 47,
+     "max": 539
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 4,
+    "lines_in_entity": 4
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-16503",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 641.0,
+    "mb": 83.69,
+    "files": 1308,
+    "entities": 37770,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 37910,
+    "indexed": 37770,
+    "recall": 0.9963,
+    "precision": 1.0,
+    "shadowed_same_name": 140,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 121,
+    "p2p_located": 121,
+    "tagged": 121,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 39277,
+     "imports": 30445,
+     "inherits": 1603,
+     "invokes": 341538
+    },
+    "call_resolution": {
+     "global": 84664,
+     "scoped": 256874
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 47,
+     "max": 539
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 3,
+    "lines_in_entity": 3
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-16792",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 376.2,
+    "mb": 84.45,
+    "files": 1310,
+    "entities": 37952,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 38097,
+    "indexed": 37952,
+    "recall": 0.9962,
+    "precision": 1.0,
+    "shadowed_same_name": 145,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 54,
+    "p2p_located": 54,
+    "tagged": 54,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 39461,
+     "imports": 30650,
+     "inherits": 1606,
+     "invokes": 345111
+    },
+    "call_resolution": {
+     "global": 85257,
+     "scoped": 259854
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 47,
+     "max": 541
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 6,
+    "lines_in_entity": 6
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-16988",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 374.7,
+    "mb": 86.07,
+    "files": 1313,
+    "entities": 38157,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 38310,
+    "indexed": 38157,
+    "recall": 0.996,
+    "precision": 1.0,
+    "shadowed_same_name": 153,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 72,
+    "p2p_located": 72,
+    "tagged": 72,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 39669,
+     "imports": 30820,
+     "inherits": 1633,
+     "invokes": 353285
+    },
+    "call_resolution": {
+     "global": 91927,
+     "scoped": 261358
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 49,
+     "max": 541
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-17022",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 365.0,
+    "mb": 86.72,
+    "files": 1315,
+    "entities": 38198,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 38349,
+    "indexed": 38198,
+    "recall": 0.9961,
+    "precision": 1.0,
+    "shadowed_same_name": 151,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 8,
+    "p2p_located": 8,
+    "tagged": 8,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 39712,
+     "imports": 30852,
+     "inherits": 1633,
+     "invokes": 356560
+    },
+    "call_resolution": {
+     "global": 92145,
+     "scoped": 264415
+    },
+    "invokes_out_degree": {
+     "median": 5.0,
+     "p95": 49,
+     "max": 541
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-17139",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 383.1,
+    "mb": 87.95,
+    "files": 1319,
+    "entities": 38381,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 38533,
+    "indexed": 38381,
+    "recall": 0.9961,
+    "precision": 1.0,
+    "shadowed_same_name": 152,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 67,
+    "p2p_located": 67,
+    "tagged": 67,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 39899,
+     "imports": 31004,
+     "inherits": 1624,
+     "invokes": 362661
+    },
+    "call_resolution": {
+     "global": 94200,
+     "scoped": 268461
+    },
+    "invokes_out_degree": {
+     "median": 5,
+     "p95": 51,
+     "max": 542
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-17630",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 399.5,
+    "mb": 87.28,
+    "files": 1338,
+    "entities": 39149,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 39307,
+    "indexed": 39149,
+    "recall": 0.996,
+    "precision": 1.0,
+    "shadowed_same_name": 158,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 19,
+    "p2p_located": 19,
+    "tagged": 19,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 40688,
+     "imports": 31298,
+     "inherits": 1657,
+     "invokes": 361865
+    },
+    "call_resolution": {
+     "global": 97057,
+     "scoped": 264808
+    },
+    "invokes_out_degree": {
+     "median": 4,
+     "p95": 52,
+     "max": 561
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-17655",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 413.7,
+    "mb": 87.41,
+    "files": 1338,
+    "entities": 39159,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 39317,
+    "indexed": 39159,
+    "recall": 0.996,
+    "precision": 1.0,
+    "shadowed_same_name": 158,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 9,
+    "p2p_located": 9,
+    "tagged": 9,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 40698,
+     "imports": 31315,
+     "inherits": 1657,
+     "invokes": 362597
+    },
+    "call_resolution": {
+     "global": 97157,
+     "scoped": 265440
+    },
+    "invokes_out_degree": {
+     "median": 4,
+     "p95": 52,
+     "max": 561
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-18057",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 377.1,
+    "mb": 87.57,
+    "files": 1355,
+    "entities": 39416,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 39585,
+    "indexed": 39416,
+    "recall": 0.9957,
+    "precision": 1.0,
+    "shadowed_same_name": 169,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 98,
+    "p2p_located": 98,
+    "tagged": 98,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 40973,
+     "imports": 31599,
+     "inherits": 1664,
+     "invokes": 361920
+    },
+    "call_resolution": {
+     "global": 99117,
+     "scoped": 262803
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 52,
+     "max": 565
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-18087",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 366.3,
+    "mb": 87.58,
+    "files": 1355,
+    "entities": 39422,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 39591,
+    "indexed": 39422,
+    "recall": 0.9957,
+    "precision": 1.0,
+    "shadowed_same_name": 169,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 35,
+    "p2p_located": 35,
+    "tagged": 35,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 40979,
+     "imports": 31608,
+     "inherits": 1664,
+     "invokes": 361962
+    },
+    "call_resolution": {
+     "global": 99123,
+     "scoped": 262839
+    },
+    "invokes_out_degree": {
+     "median": 4,
+     "p95": 52,
+     "max": 565
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 9,
+    "lines_in_entity": 9
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-18189",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 372.0,
+    "mb": 88.35,
+    "files": 1357,
+    "entities": 39568,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 39744,
+    "indexed": 39568,
+    "recall": 0.9956,
+    "precision": 1.0,
+    "shadowed_same_name": 176,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 41,
+    "p2p_located": 41,
+    "tagged": 41,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 41127,
+     "imports": 31696,
+     "inherits": 1675,
+     "invokes": 365716
+    },
+    "call_resolution": {
+     "global": 100352,
+     "scoped": 265364
+    },
+    "invokes_out_degree": {
+     "median": 4,
+     "p95": 53,
+     "max": 566
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-18199",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 368.7,
+    "mb": 88.7,
+    "files": 1357,
+    "entities": 39614,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 39789,
+    "indexed": 39614,
+    "recall": 0.9956,
+    "precision": 1.0,
+    "shadowed_same_name": 175,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 113,
+    "p2p_located": 113,
+    "tagged": 113,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 41173,
+     "imports": 31664,
+     "inherits": 1675,
+     "invokes": 367678
+    },
+    "call_resolution": {
+     "global": 101065,
+     "scoped": 266613
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 53,
+     "max": 567
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 6,
+    "lines_in_entity": 4
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-18532",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 454.1,
+    "mb": 90.28,
+    "files": 1374,
+    "entities": 39802,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 39972,
+    "indexed": 39802,
+    "recall": 0.9957,
+    "precision": 1.0,
+    "shadowed_same_name": 170,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 28,
+    "p2p_located": 28,
+    "tagged": 28,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 41385,
+     "imports": 31575,
+     "inherits": 1783,
+     "invokes": 375664
+    },
+    "call_resolution": {
+     "global": 101042,
+     "scoped": 274622
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 53,
+     "max": 571
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 6,
+    "lines_in_entity": 6
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-18621",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 424.4,
+    "mb": 90.71,
+    "files": 1379,
+    "entities": 39892,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 40062,
+    "indexed": 39892,
+    "recall": 0.9958,
+    "precision": 1.0,
+    "shadowed_same_name": 170,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 15,
+    "p2p_located": 15,
+    "tagged": 15,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 41480,
+     "imports": 31679,
+     "inherits": 1783,
+     "invokes": 377702
+    },
+    "call_resolution": {
+     "global": 102448,
+     "scoped": 275254
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 54,
+     "max": 571
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-18698",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 422.5,
+    "mb": 90.97,
+    "files": 1382,
+    "entities": 39960,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 40130,
+    "indexed": 39960,
+    "recall": 0.9958,
+    "precision": 1.0,
+    "shadowed_same_name": 170,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 147,
+    "p2p_located": 147,
+    "tagged": 147,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 41551,
+     "imports": 31754,
+     "inherits": 1791,
+     "invokes": 378964
+    },
+    "call_resolution": {
+     "global": 102943,
+     "scoped": 276021
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 54,
+     "max": 571
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 6,
+    "lines_in_entity": 5
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-18835",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 422.2,
+    "mb": 91.7,
+    "files": 1391,
+    "entities": 40120,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 40290,
+    "indexed": 40120,
+    "recall": 0.9958,
+    "precision": 1.0,
+    "shadowed_same_name": 170,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 41,
+    "p2p_located": 41,
+    "tagged": 41,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 41720,
+     "imports": 31826,
+     "inherits": 1854,
+     "invokes": 382297
+    },
+    "call_resolution": {
+     "global": 104118,
+     "scoped": 278179
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 54,
+     "max": 577
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 5,
+    "lines_in_entity": 5
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-19007",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 450.5,
+    "mb": 91.8,
+    "files": 1391,
+    "entities": 40155,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 40326,
+    "indexed": 40155,
+    "recall": 0.9958,
+    "precision": 1.0,
+    "shadowed_same_name": 171,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 26,
+    "p2p_located": 26,
+    "tagged": 26,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 41755,
+     "imports": 31836,
+     "inherits": 1854,
+     "invokes": 382794
+    },
+    "call_resolution": {
+     "global": 104243,
+     "scoped": 278551
+    },
+    "invokes_out_degree": {
+     "median": 4,
+     "p95": 54,
+     "max": 577
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 8,
+    "lines_in_entity": 7
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-19254",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 418.8,
+    "mb": 92.02,
+    "files": 1398,
+    "entities": 40343,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 40512,
+    "indexed": 40343,
+    "recall": 0.9958,
+    "precision": 1.0,
+    "shadowed_same_name": 169,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 18,
+    "p2p_located": 18,
+    "tagged": 18,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 41950,
+     "imports": 32024,
+     "inherits": 1859,
+     "invokes": 383230
+    },
+    "call_resolution": {
+     "global": 102206,
+     "scoped": 281024
+    },
+    "invokes_out_degree": {
+     "median": 4,
+     "p95": 54,
+     "max": 578
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 6,
+    "lines_in_entity": 5
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-19487",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 417.0,
+    "mb": 92.4,
+    "files": 1404,
+    "entities": 40507,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 40678,
+    "indexed": 40507,
+    "recall": 0.9958,
+    "precision": 1.0,
+    "shadowed_same_name": 171,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 90,
+    "p2p_located": 90,
+    "tagged": 90,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 42120,
+     "imports": 32130,
+     "inherits": 1868,
+     "invokes": 384816
+    },
+    "call_resolution": {
+     "global": 102521,
+     "scoped": 282295
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 54,
+     "max": 581
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-20049",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 435.7,
+    "mb": 91.71,
+    "files": 1439,
+    "entities": 41287,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 41479,
+    "indexed": 41287,
+    "recall": 0.9954,
+    "precision": 1.0,
+    "shadowed_same_name": 192,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 9,
+    "p2p_located": 7,
+    "tagged": 7,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 42938,
+     "imports": 32711,
+     "inherits": 1926,
+     "invokes": 378075
+    },
+    "call_resolution": {
+     "global": 84613,
+     "scoped": 293462
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 50,
+     "max": 585
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 4,
+    "lines_in_entity": 4
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-20154",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 428.3,
+    "mb": 91.75,
+    "files": 1439,
+    "entities": 41333,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 41525,
+    "indexed": 41333,
+    "recall": 0.9954,
+    "precision": 1.0,
+    "shadowed_same_name": 192,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 40,
+    "p2p_located": 40,
+    "tagged": 40,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 42984,
+     "imports": 32736,
+     "inherits": 1937,
+     "invokes": 378070
+    },
+    "call_resolution": {
+     "global": 84890,
+     "scoped": 293180
+    },
+    "invokes_out_degree": {
+     "median": 4,
+     "p95": 50,
+     "max": 587
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 19,
+    "lines_in_entity": 19
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-20212",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 422.5,
+    "mb": 92.18,
+    "files": 1439,
+    "entities": 41383,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 41575,
+    "indexed": 41383,
+    "recall": 0.9954,
+    "precision": 1.0,
+    "shadowed_same_name": 192,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 32,
+    "p2p_located": 32,
+    "tagged": 32,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 43034,
+     "imports": 32756,
+     "inherits": 1937,
+     "invokes": 380039
+    },
+    "call_resolution": {
+     "global": 85254,
+     "scoped": 294785
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 50,
+     "max": 590
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-20322",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 440.5,
+    "mb": 92.18,
+    "files": 1441,
+    "entities": 41388,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 41582,
+    "indexed": 41388,
+    "recall": 0.9953,
+    "precision": 1.0,
+    "shadowed_same_name": 194,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 89,
+    "p2p_located": 89,
+    "tagged": 89,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 43041,
+     "imports": 32783,
+     "inherits": 1937,
+     "invokes": 380023
+    },
+    "call_resolution": {
+     "global": 85372,
+     "scoped": 294651
+    },
+    "invokes_out_degree": {
+     "median": 4,
+     "p95": 50,
+     "max": 589
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 18,
+    "lines_in_entity": 17
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-20442",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 422.4,
+    "mb": 92.29,
+    "files": 1441,
+    "entities": 41403,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 41597,
+    "indexed": 41403,
+    "recall": 0.9953,
+    "precision": 1.0,
+    "shadowed_same_name": 194,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 24,
+    "p2p_located": 24,
+    "tagged": 24,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 43056,
+     "imports": 32801,
+     "inherits": 1940,
+     "invokes": 380522
+    },
+    "call_resolution": {
+     "global": 84773,
+     "scoped": 295749
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 50,
+     "max": 589
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 2,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-20590",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 430.2,
+    "mb": 92.3,
+    "files": 1449,
+    "entities": 41455,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 41649,
+    "indexed": 41455,
+    "recall": 0.9953,
+    "precision": 1.0,
+    "shadowed_same_name": 194,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 21,
+    "p2p_located": 21,
+    "tagged": 21,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 43116,
+     "imports": 32784,
+     "inherits": 1939,
+     "invokes": 380598
+    },
+    "call_resolution": {
+     "global": 85808,
+     "scoped": 294790
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 50,
+     "max": 591
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-20639",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 440.4,
+    "mb": 92.73,
+    "files": 1449,
+    "entities": 41557,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 41749,
+    "indexed": 41557,
+    "recall": 0.9954,
+    "precision": 1.0,
+    "shadowed_same_name": 192,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 139,
+    "p2p_located": 139,
+    "tagged": 139,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 43218,
+     "imports": 32746,
+     "inherits": 1954,
+     "invokes": 382705
+    },
+    "call_resolution": {
+     "global": 85790,
+     "scoped": 296915
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 50,
+     "max": 591
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 12,
+    "lines_in_entity": 12
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-21055",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 440.6,
+    "mb": 95.22,
+    "files": 1494,
+    "entities": 41880,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 42400,
+    "indexed": 41880,
+    "recall": 0.9877,
+    "precision": 1.0,
+    "shadowed_same_name": 520,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 13,
+    "p2p_located": 13,
+    "tagged": 13,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 43591,
+     "imports": 33391,
+     "inherits": 1973,
+     "invokes": 394657
+    },
+    "call_resolution": {
+     "global": 87447,
+     "scoped": 307210
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 51,
+     "max": 602
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 2,
+    "lines_in_entity": 0
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-21171",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 427.9,
+    "mb": 95.05,
+    "files": 1495,
+    "entities": 41882,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 42402,
+    "indexed": 41882,
+    "recall": 0.9877,
+    "precision": 1.0,
+    "shadowed_same_name": 520,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 152,
+    "p2p_located": 152,
+    "tagged": 152,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 43594,
+     "imports": 33409,
+     "inherits": 1974,
+     "invokes": 393654
+    },
+    "call_resolution": {
+     "global": 86159,
+     "scoped": 307495
+    },
+    "invokes_out_degree": {
+     "median": 4,
+     "p95": 50,
+     "max": 602
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 2,
+    "lines_in_entity": 2
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-21379",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 427.0,
+    "mb": 95.98,
+    "files": 1506,
+    "entities": 42160,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 42696,
+    "indexed": 42160,
+    "recall": 0.9874,
+    "precision": 1.0,
+    "shadowed_same_name": 536,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 91,
+    "p2p_located": 91,
+    "tagged": 91,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 43883,
+     "imports": 33514,
+     "inherits": 1979,
+     "invokes": 397867
+    },
+    "call_resolution": {
+     "global": 86925,
+     "scoped": 310942
+    },
+    "invokes_out_degree": {
+     "median": 4,
+     "p95": 51,
+     "max": 606
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 5,
+    "lines_in_entity": 5
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-21612",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 429.6,
+    "mb": 96.47,
+    "files": 1508,
+    "entities": 42337,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 42873,
+    "indexed": 42337,
+    "recall": 0.9875,
+    "precision": 1.0,
+    "shadowed_same_name": 536,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 98,
+    "p2p_located": 98,
+    "tagged": 98,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 44063,
+     "imports": 33615,
+     "inherits": 1984,
+     "invokes": 400003
+    },
+    "call_resolution": {
+     "global": 87797,
+     "scoped": 312206
+    },
+    "invokes_out_degree": {
+     "median": 4,
+     "p95": 51,
+     "max": 605
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-21614",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 433.4,
+    "mb": 96.47,
+    "files": 1508,
+    "entities": 42337,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 42873,
+    "indexed": 42337,
+    "recall": 0.9875,
+    "precision": 1.0,
+    "shadowed_same_name": 536,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 6,
+    "p2p_located": 6,
+    "tagged": 6,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 44063,
+     "imports": 33615,
+     "inherits": 1984,
+     "invokes": 400003
+    },
+    "call_resolution": {
+     "global": 87797,
+     "scoped": 312206
+    },
+    "invokes_out_degree": {
+     "median": 4,
+     "p95": 51,
+     "max": 605
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-21627",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 436.0,
+    "mb": 96.51,
+    "files": 1508,
+    "entities": 42344,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 42880,
+    "indexed": 42344,
+    "recall": 0.9875,
+    "precision": 1.0,
+    "shadowed_same_name": 536,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 26,
+    "p2p_located": 26,
+    "tagged": 26,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 44070,
+     "imports": 33621,
+     "inherits": 1986,
+     "invokes": 400252
+    },
+    "call_resolution": {
+     "global": 87807,
+     "scoped": 312445
+    },
+    "invokes_out_degree": {
+     "median": 4,
+     "p95": 51,
+     "max": 605
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-21847",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 431.3,
+    "mb": 97.63,
+    "files": 1519,
+    "entities": 42728,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 43264,
+    "indexed": 42728,
+    "recall": 0.9876,
+    "precision": 1.0,
+    "shadowed_same_name": 536,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 9,
+    "p2p_located": 9,
+    "tagged": 9,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 44465,
+     "imports": 33787,
+     "inherits": 2014,
+     "invokes": 405072
+    },
+    "call_resolution": {
+     "global": 90091,
+     "scoped": 314981
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 52,
+     "max": 610
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 2,
+    "lines_in_entity": 2
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-22005",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 430.0,
+    "mb": 97.69,
+    "files": 1524,
+    "entities": 42851,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 43387,
+    "indexed": 42851,
+    "recall": 0.9876,
+    "precision": 1.0,
+    "shadowed_same_name": 536,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 2,
+    "p2p_located": 2,
+    "tagged": 2,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 44599,
+     "imports": 33858,
+     "inherits": 2016,
+     "invokes": 404836
+    },
+    "call_resolution": {
+     "global": 90184,
+     "scoped": 314652
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 52,
+     "max": 614
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-22714",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 272.2,
+    "mb": 86.77,
+    "files": 1546,
+    "entities": 43431,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 43970,
+    "indexed": 43431,
+    "recall": 0.9877,
+    "precision": 1.0,
+    "shadowed_same_name": 539,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 11,
+    "p2p_located": 11,
+    "tagged": 11,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 45211,
+     "imports": 40506,
+     "inherits": 2017,
+     "invokes": 335299
+    },
+    "call_resolution": {
+     "global": 139137,
+     "scoped": 196162
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 43,
+     "max": 628
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-22840",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 268.5,
+    "mb": 86.88,
+    "files": 1546,
+    "entities": 43453,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 43994,
+    "indexed": 43453,
+    "recall": 0.9877,
+    "precision": 1.0,
+    "shadowed_same_name": 541,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 95,
+    "p2p_located": 95,
+    "tagged": 95,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 45233,
+     "imports": 40542,
+     "inherits": 2019,
+     "invokes": 335807
+    },
+    "call_resolution": {
+     "global": 139524,
+     "scoped": 196283
+    },
+    "invokes_out_degree": {
+     "median": 4,
+     "p95": 44,
+     "max": 628
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 2,
+    "lines_in_entity": 2
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-23117",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 266.5,
+    "mb": 87.42,
+    "files": 1544,
+    "entities": 43598,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 44140,
+    "indexed": 43598,
+    "recall": 0.9877,
+    "precision": 1.0,
+    "shadowed_same_name": 542,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 3,
+    "p2p_located": 3,
+    "tagged": 3,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 45376,
+     "imports": 40634,
+     "inherits": 2029,
+     "invokes": 338098
+    },
+    "call_resolution": {
+     "global": 140626,
+     "scoped": 197472
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 43,
+     "max": 631
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 6,
+    "lines_in_entity": 6
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-23191",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 301.0,
+    "mb": 87.5,
+    "files": 1545,
+    "entities": 43624,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 44166,
+    "indexed": 43624,
+    "recall": 0.9877,
+    "precision": 1.0,
+    "shadowed_same_name": 542,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 3,
+    "p2p_located": 3,
+    "tagged": 3,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 45403,
+     "imports": 40661,
+     "inherits": 2027,
+     "invokes": 338434
+    },
+    "call_resolution": {
+     "global": 140695,
+     "scoped": 197739
+    },
+    "invokes_out_degree": {
+     "median": 4,
+     "p95": 43,
+     "max": 631
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 11,
+    "lines_in_entity": 11
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-23262",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 276.7,
+    "mb": 87.55,
+    "files": 1545,
+    "entities": 43640,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 44182,
+    "indexed": 43640,
+    "recall": 0.9877,
+    "precision": 1.0,
+    "shadowed_same_name": 542,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 61,
+    "p2p_located": 61,
+    "tagged": 61,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 45419,
+     "imports": 40685,
+     "inherits": 2027,
+     "invokes": 338630
+    },
+    "call_resolution": {
+     "global": 140752,
+     "scoped": 197878
+    },
+    "invokes_out_degree": {
+     "median": 4,
+     "p95": 43,
+     "max": 631
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 2,
+    "lines_in_entity": 2
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-24066",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 274.9,
+    "mb": 88.91,
+    "files": 1555,
+    "entities": 44067,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 44618,
+    "indexed": 44067,
+    "recall": 0.9877,
+    "precision": 1.0,
+    "shadowed_same_name": 551,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 30,
+    "p2p_located": 30,
+    "tagged": 30,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 45859,
+     "imports": 41003,
+     "inherits": 2043,
+     "invokes": 344356
+    },
+    "call_resolution": {
+     "global": 141022,
+     "scoped": 203334
+    },
+    "invokes_out_degree": {
+     "median": 4,
+     "p95": 44,
+     "max": 636
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 4,
+    "lines_in_entity": 4
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-24102",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 271.0,
+    "mb": 88.97,
+    "files": 1555,
+    "entities": 44097,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 44648,
+    "indexed": 44097,
+    "recall": 0.9877,
+    "precision": 1.0,
+    "shadowed_same_name": 551,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 0,
+    "p2p_located": 0,
+    "tagged": 0,
+    "recall": 0.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 45889,
+     "imports": 41002,
+     "inherits": 2042,
+     "invokes": 344588
+    },
+    "call_resolution": {
+     "global": 141034,
+     "scoped": 203554
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 44,
+     "max": 638
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-24152",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 300.9,
+    "mb": 88.99,
+    "files": 1555,
+    "entities": 44102,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 44653,
+    "indexed": 44102,
+    "recall": 0.9877,
+    "precision": 1.0,
+    "shadowed_same_name": 551,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 6,
+    "p2p_located": 6,
+    "tagged": 6,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 45894,
+     "imports": 41003,
+     "inherits": 2042,
+     "invokes": 344674
+    },
+    "call_resolution": {
+     "global": 141064,
+     "scoped": 203610
+    },
+    "invokes_out_degree": {
+     "median": 4,
+     "p95": 44,
+     "max": 638
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 3,
+    "lines_in_entity": 3
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-24213",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 284.8,
+    "mb": 89.23,
+    "files": 1555,
+    "entities": 44122,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 44673,
+    "indexed": 44122,
+    "recall": 0.9877,
+    "precision": 1.0,
+    "shadowed_same_name": 551,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 31,
+    "p2p_located": 31,
+    "tagged": 31,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 45914,
+     "imports": 41032,
+     "inherits": 2043,
+     "invokes": 345875
+    },
+    "call_resolution": {
+     "global": 142082,
+     "scoped": 203793
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 44,
+     "max": 639
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 1,
+    "lines_in_entity": 1
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-24909",
+   "repo": "sympy/sympy",
+   "cost": {
+    "build_seconds": 122.9,
+    "mb": 77.56,
+    "files": 1518,
+    "entities": 34039,
+    "parse_errors": 0
+   },
+   "entities": {
+    "truth": 34589,
+    "indexed": 34039,
+    "recall": 0.9841,
+    "precision": 1.0,
+    "shadowed_same_name": 550,
+    "recall_unique_names": 1.0
+   },
+   "tests": {
+    "p2p_total": 2,
+    "p2p_located": 2,
+    "tagged": 2,
+    "recall": 1.0,
+    "miss_examples": []
+   },
+   "graph": {
+    "relationships": {
+     "contains": 35788,
+     "imports": 27110,
+     "inherits": 2093,
+     "invokes": 320011
+    },
+    "call_resolution": {
+     "global": 143944,
+     "scoped": 176067
+    },
+    "invokes_out_degree": {
+     "median": 4.0,
+     "p95": 59,
+     "max": 631
+    }
+   },
+   "gold": {
+    "py_files": 1,
+    "new_files": 0,
+    "files_in_index": 1,
+    "files_existing": 1,
+    "lines": 5,
+    "lines_in_entity": 4
+   }
+  }
+ ]
+}
