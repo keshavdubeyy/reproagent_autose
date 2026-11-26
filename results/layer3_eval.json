@@ -1,0 +1,3971 @@
+{
+ "summary": {
+  "instances": 32,
+  "ok": 32,
+  "errors": 0,
+  "seconds_median": 612.75,
+  "primary_from_layer2_fallback": 0,
+  "agent": {
+   "class": {
+    "n": 1,
+    "hit": 0,
+    "coverage": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+   },
+   "method": {
+    "n": 31,
+    "hit": 0.7097,
+    "coverage": 0.4516,
+    "precision": 0.5806,
+    "recall": 0.5806,
+    "f1": 0.5398
+   },
+   "strict": {
+    "entity_hit": 0.75,
+    "entity_recall": 0.7188,
+    "entity_precision": 0.4297,
+    "file_hit": 0.7812
+   }
+  },
+  "agent_primary": {
+   "class": {
+    "n": 1,
+    "hit": 0,
+    "coverage": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+   },
+   "method": {
+    "n": 31,
+    "hit": 0.5161,
+    "coverage": 0.3548,
+    "precision": 0.5161,
+    "recall": 0.4355,
+    "f1": 0.4624
+   },
+   "strict": {
+    "entity_hit": 0.625,
+    "entity_recall": 0.5938,
+    "entity_precision": 0.625,
+    "file_hit": 0.75
+   }
+  },
+  "layer2_top1": {
+   "class": {
+    "n": 1,
+    "hit": 0,
+    "coverage": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+   },
+   "method": {
+    "n": 31,
+    "hit": 0.1935,
+    "coverage": 0.129,
+    "precision": 0.1935,
+    "recall": 0.1613,
+    "f1": 0.172
+   },
+   "strict": {
+    "entity_hit": 0.2188,
+    "entity_recall": 0.2031,
+    "entity_precision": 0.2188,
+    "file_hit": 0.5
+   }
+  },
+  "layer2_top3": {
+   "class": {
+    "n": 1,
+    "hit": 0,
+    "coverage": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+   },
+   "method": {
+    "n": 31,
+    "hit": 0.2903,
+    "coverage": 0.1935,
+    "precision": 0.1559,
+    "recall": 0.2419,
+    "f1": 0.1742
+   },
+   "strict": {
+    "entity_hit": 0.3125,
+    "entity_recall": 0.2812,
+    "entity_precision": 0.1146,
+    "file_hit": 0.625
+   }
+  },
+  "layer2_top5": {
+   "class": {
+    "n": 1,
+    "hit": 0,
+    "coverage": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+   },
+   "method": {
+    "n": 31,
+    "hit": 0.4516,
+    "coverage": 0.3226,
+    "precision": 0.1414,
+    "recall": 0.3871,
+    "f1": 0.1991
+   },
+   "strict": {
+    "entity_hit": 0.4688,
+    "entity_recall": 0.4219,
+    "entity_precision": 0.1125,
+    "file_hit": 0.7188
+   }
+  }
+ },
+ "instances": [
+  {
+   "instance_id": "mwaskom__seaborn-2848",
+   "repo": "mwaskom/seaborn",
+   "status": "ok",
+   "seconds": 521.6,
+   "primary_source": "model",
+   "tool_calls": 3,
+   "tokens_in": 31947,
+   "tokens_out": 9695,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 1,
+     "methods": 1
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 0,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 1,
+     "methods": 2
+    },
+    "layer2_top5": {
+     "classes": 3,
+     "methods": 3
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.5,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top5": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "mwaskom__seaborn-3010",
+   "repo": "mwaskom/seaborn",
+   "status": "ok",
+   "seconds": 573.4,
+   "primary_source": "model",
+   "tool_calls": 5,
+   "tokens_in": 37222,
+   "tokens_out": 10769,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 2,
+     "methods": 3
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top3": {
+     "classes": 2,
+     "methods": 2
+    },
+    "layer2_top5": {
+     "classes": 3,
+     "methods": 3
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1": 0.5
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.3333,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "mwaskom__seaborn-3190",
+   "repo": "mwaskom/seaborn",
+   "status": "ok",
+   "seconds": 472.4,
+   "primary_source": "model",
+   "tool_calls": 3,
+   "tokens_in": 29001,
+   "tokens_out": 9175,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 2,
+     "methods": 2
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 3,
+     "methods": 3
+    },
+    "layer2_top5": {
+     "classes": 3,
+     "methods": 5
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1": 0.5
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.2,
+      "recall": 1.0,
+      "f1": 0.3333
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.3333,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top3": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.3333,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.2,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "mwaskom__seaborn-3407",
+   "repo": "mwaskom/seaborn",
+   "status": "ok",
+   "seconds": 597.5,
+   "primary_source": "model",
+   "tool_calls": 3,
+   "tokens_in": 33496,
+   "tokens_out": 10714,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 1,
+     "methods": 1
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top3": {
+     "classes": 1,
+     "methods": 2
+    },
+    "layer2_top5": {
+     "classes": 1,
+     "methods": 4
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.25,
+      "recall": 1.0,
+      "f1": 0.4
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.5,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.2,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "pallets__flask-4045",
+   "repo": "pallets/flask",
+   "status": "ok",
+   "seconds": 463.7,
+   "primary_source": "model",
+   "tool_calls": 3,
+   "tokens_in": 20313,
+   "tokens_out": 10233,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 2
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 1,
+     "methods": 1
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top3": {
+     "classes": 2,
+     "methods": 2
+    },
+    "layer2_top5": {
+     "classes": 3,
+     "methods": 4
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 0.5,
+     "entity_precision": 0.5,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 0.5,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 1,
+     "entity_recall": 0.5,
+     "entity_precision": 0.2,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "pallets__flask-4992",
+   "repo": "pallets/flask",
+   "status": "ok",
+   "seconds": 512.7,
+   "primary_source": "model",
+   "tool_calls": 5,
+   "tokens_in": 29541,
+   "tokens_out": 9963,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 1,
+     "methods": 1
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 2,
+     "methods": 2
+    },
+    "layer2_top5": {
+     "classes": 2,
+     "methods": 4
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.25,
+      "recall": 1.0,
+      "f1": 0.4
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.5,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top3": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.3333,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.2,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "pallets__flask-5063",
+   "repo": "pallets/flask",
+   "status": "ok",
+   "seconds": 467.3,
+   "primary_source": "model",
+   "tool_calls": 3,
+   "tokens_in": 22739,
+   "tokens_out": 9963,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 2
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 0,
+     "methods": 1
+    },
+    "agent_primary": {
+     "classes": 0,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 2,
+     "methods": 3
+    },
+    "layer2_top5": {
+     "classes": 3,
+     "methods": 5
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 0.2,
+      "recall": 0.5,
+      "f1": 0.2857
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top5": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.2,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-11400",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 532.3,
+   "primary_source": "model",
+   "tool_calls": 3,
+   "tokens_in": 29855,
+   "tokens_out": 10491,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 2
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 1,
+     "methods": 1
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top3": {
+     "classes": 2,
+     "methods": 2
+    },
+    "layer2_top5": {
+     "classes": 3,
+     "methods": 4
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-12419",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 764.7,
+   "primary_source": "model",
+   "tool_calls": 5,
+   "tokens_in": 47019,
+   "tokens_out": 14239,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 2
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 1,
+     "methods": 1
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 3,
+     "methods": 2
+    },
+    "layer2_top5": {
+     "classes": 4,
+     "methods": 3
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "agent_primary": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13043",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 445.5,
+   "primary_source": "model",
+   "tool_calls": 2,
+   "tokens_in": 18431,
+   "tokens_out": 10155,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 2,
+     "methods": 1
+    },
+    "agent_primary": {
+     "classes": 0,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 0,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top5": {
+     "classes": 3,
+     "methods": 2
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.3333,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top3": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.3333,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.2,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13177",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 507.9,
+   "primary_source": "model",
+   "tool_calls": 2,
+   "tokens_in": 21816,
+   "tokens_out": 10185,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 1,
+     "methods": 2
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top3": {
+     "classes": 1,
+     "methods": 2
+    },
+    "layer2_top5": {
+     "classes": 2,
+     "methods": 4
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.25,
+      "recall": 1.0,
+      "f1": 0.4
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.3333,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.2,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13480",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 491.0,
+   "primary_source": "model",
+   "tool_calls": 3,
+   "tokens_in": 23120,
+   "tokens_out": 10126,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 1,
+     "methods": 1
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top3": {
+     "classes": 2,
+     "methods": 2
+    },
+    "layer2_top5": {
+     "classes": 4,
+     "methods": 2
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top3": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.3333,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.2,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13773",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 856.1,
+   "primary_source": "model",
+   "tool_calls": 3,
+   "tokens_in": 23765,
+   "tokens_out": 10194,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 2
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 1,
+     "methods": 1
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 2,
+     "methods": 2
+    },
+    "layer2_top5": {
+     "classes": 2,
+     "methods": 3
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 1,
+     "entity_recall": 0.5,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top3": {
+     "entity_hit": 1,
+     "entity_recall": 0.5,
+     "entity_precision": 0.3333,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 1,
+     "entity_recall": 0.5,
+     "entity_precision": 0.4,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-13971",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 552.7,
+   "primary_source": "model",
+   "tool_calls": 1,
+   "tokens_in": 23597,
+   "tokens_out": 10336,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 2,
+     "methods": 2
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top3": {
+     "classes": 1,
+     "methods": 2
+    },
+    "layer2_top5": {
+     "classes": 1,
+     "methods": 4
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "agent_primary": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top5": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-14774",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 519.4,
+   "primary_source": "model",
+   "tool_calls": 2,
+   "tokens_in": 25675,
+   "tokens_out": 10857,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 1,
+     "methods": 1
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top3": {
+     "classes": 3,
+     "methods": 0
+    },
+    "layer2_top5": {
+     "classes": 5,
+     "methods": 0
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.5,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top5": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-15308",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 594.9,
+   "primary_source": "model",
+   "tool_calls": 3,
+   "tokens_in": 30601,
+   "tokens_out": 11513,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 2
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 3,
+     "methods": 1
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top3": {
+     "classes": 2,
+     "methods": 1
+    },
+    "layer2_top5": {
+     "classes": 3,
+     "methods": 1
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.3333,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top5": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-15345",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 1192.6,
+   "primary_source": "model",
+   "tool_calls": 4,
+   "tokens_in": 39421,
+   "tokens_out": 13322,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 2,
+     "methods": 1
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top1": {
+     "classes": 0,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 1,
+     "methods": 2
+    },
+    "layer2_top5": {
+     "classes": 2,
+     "methods": 4
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.3333,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-15609",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 824.5,
+   "primary_source": "model",
+   "tool_calls": 5,
+   "tokens_in": 47513,
+   "tokens_out": 13663,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 3,
+     "methods": 2
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 2,
+     "methods": 2
+    },
+    "layer2_top5": {
+     "classes": 4,
+     "methods": 2
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "agent_primary": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top5": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-16988",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 1423.6,
+   "primary_source": "model",
+   "tool_calls": 4,
+   "tokens_in": 32055,
+   "tokens_out": 13282,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 1,
+     "methods": 3
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top3": {
+     "classes": 2,
+     "methods": 1
+    },
+    "layer2_top5": {
+     "classes": 3,
+     "methods": 2
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1": 0.5
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.25,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-17139",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 541.9,
+   "primary_source": "model",
+   "tool_calls": 4,
+   "tokens_in": 33749,
+   "tokens_out": 10272,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 0,
+     "methods": 2
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 0,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 0,
+     "methods": 3
+    },
+    "layer2_top5": {
+     "classes": 0,
+     "methods": 5
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.5,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top5": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-17630",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 1612.5,
+   "primary_source": "model",
+   "tool_calls": 1,
+   "tokens_in": 37109,
+   "tokens_out": 11181,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 1,
+     "methods": 4
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 0,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 2,
+     "methods": 1
+    },
+    "layer2_top5": {
+     "classes": 2,
+     "methods": 3
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "agent_primary": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top5": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-17655",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 971.9,
+   "primary_source": "model",
+   "tool_calls": 1,
+   "tokens_in": 28498,
+   "tokens_out": 9652,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 1,
+     "methods": 1
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top3": {
+     "classes": 2,
+     "methods": 1
+    },
+    "layer2_top5": {
+     "classes": 3,
+     "methods": 2
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top3": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.6667,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.6,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-18199",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 703.0,
+   "primary_source": "model",
+   "tool_calls": 5,
+   "tokens_in": 40756,
+   "tokens_out": 12659,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 2
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 0,
+     "methods": 3
+    },
+    "agent_primary": {
+     "classes": 0,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 0,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 0,
+     "methods": 3
+    },
+    "layer2_top5": {
+     "classes": 0,
+     "methods": 5
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 0.3333,
+      "recall": 0.5,
+      "f1": 0.4
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 0.3333,
+      "recall": 0.5,
+      "f1": 0.4
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 0.2,
+      "recall": 0.5,
+      "f1": 0.2857
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.3333,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top3": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.3333,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.2,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-20154",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 976.4,
+   "primary_source": "model",
+   "tool_calls": 2,
+   "tokens_in": 19510,
+   "tokens_out": 8922,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 0,
+     "methods": 2
+    },
+    "agent_primary": {
+     "classes": 0,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 0,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 0,
+     "methods": 3
+    },
+    "layer2_top5": {
+     "classes": 0,
+     "methods": 5
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1": 0.5
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.2,
+      "recall": 1.0,
+      "f1": 0.3333
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.5,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top3": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.3333,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.2,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-20442",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 1184.9,
+   "primary_source": "model",
+   "tool_calls": 3,
+   "tokens_in": 23730,
+   "tokens_out": 11380,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 1,
+     "methods": 2
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 2,
+     "methods": 2
+    },
+    "layer2_top5": {
+     "classes": 3,
+     "methods": 4
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-20590",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 623.3,
+   "primary_source": "model",
+   "tool_calls": 3,
+   "tokens_in": 28449,
+   "tokens_out": 11953,
+   "gold_counts": {
+    "classes": 1,
+    "methods": 0
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 1,
+     "methods": 0
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top1": {
+     "classes": 0,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 1,
+     "methods": 2
+    },
+    "layer2_top5": {
+     "classes": 2,
+     "methods": 3
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     },
+     "method": null
+    },
+    "agent_primary": {
+     "class": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     },
+     "method": null
+    },
+    "layer2_top1": {
+     "class": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     },
+     "method": null
+    },
+    "layer2_top3": {
+     "class": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     },
+     "method": null
+    },
+    "layer2_top5": {
+     "class": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     },
+     "method": null
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "agent_primary": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top5": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-21171",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 864.8,
+   "primary_source": "model",
+   "tool_calls": 2,
+   "tokens_in": 45096,
+   "tokens_out": 10382,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 2,
+     "methods": 1
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 3,
+     "methods": 3
+    },
+    "layer2_top5": {
+     "classes": 4,
+     "methods": 4
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1": 0.5
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.25,
+      "recall": 1.0,
+      "f1": 0.4
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.3333,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top3": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.3333,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.2,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-21614",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 1395.7,
+   "primary_source": "model",
+   "tool_calls": 6,
+   "tokens_in": 54298,
+   "tokens_out": 12760,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 2
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 1,
+     "methods": 1
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 3,
+     "methods": 1
+    },
+    "layer2_top5": {
+     "classes": 4,
+     "methods": 2
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top5": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-21627",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 661.1,
+   "primary_source": "model",
+   "tool_calls": 4,
+   "tokens_in": 24561,
+   "tokens_out": 12248,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 1,
+     "methods": 2
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 3,
+     "methods": 1
+    },
+    "layer2_top5": {
+     "classes": 5,
+     "methods": 2
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "agent_primary": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top5": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-23191",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 680.0,
+   "primary_source": "model",
+   "tool_calls": 2,
+   "tokens_in": 32132,
+   "tokens_out": 10540,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 2,
+     "methods": 2
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 0,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 1,
+     "methods": 3
+    },
+    "layer2_top5": {
+     "classes": 1,
+     "methods": 5
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "agent_primary": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    },
+    "layer2_top5": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 0
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-23262",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 1091.4,
+   "primary_source": "model",
+   "tool_calls": 3,
+   "tokens_in": 25042,
+   "tokens_out": 9789,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 1
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 0,
+     "methods": 1
+    },
+    "agent_primary": {
+     "classes": 0,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 0,
+     "methods": 1
+    },
+    "layer2_top3": {
+     "classes": 2,
+     "methods": 1
+    },
+    "layer2_top5": {
+     "classes": 2,
+     "methods": 3
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 1,
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1": 0.5
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top3": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 1,
+     "entity_recall": 1.0,
+     "entity_precision": 0.2,
+     "file_hit": 1
+    }
+   }
+  },
+  {
+   "instance_id": "sympy__sympy-24909",
+   "repo": "sympy/sympy",
+   "status": "ok",
+   "seconds": 602.2,
+   "primary_source": "model",
+   "tool_calls": 2,
+   "tokens_in": 28442,
+   "tokens_out": 11389,
+   "gold_counts": {
+    "classes": 0,
+    "methods": 2
+   },
+   "pred_counts": {
+    "agent": {
+     "classes": 2,
+     "methods": 1
+    },
+    "agent_primary": {
+     "classes": 1,
+     "methods": 1
+    },
+    "layer2_top1": {
+     "classes": 1,
+     "methods": 0
+    },
+    "layer2_top3": {
+     "classes": 1,
+     "methods": 2
+    },
+    "layer2_top5": {
+     "classes": 2,
+     "methods": 4
+    }
+   },
+   "metrics": {
+    "agent": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667
+     }
+    },
+    "agent_primary": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667
+     }
+    },
+    "layer2_top1": {
+     "class": null,
+     "method": {
+      "hit": 0,
+      "coverage": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     }
+    },
+    "layer2_top3": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5
+     }
+    },
+    "layer2_top5": {
+     "class": null,
+     "method": {
+      "hit": 1,
+      "coverage": 0,
+      "precision": 0.25,
+      "recall": 0.5,
+      "f1": 0.3333
+     }
+    }
+   },
+   "strict": {
+    "agent": {
+     "entity_hit": 1,
+     "entity_recall": 0.5,
+     "entity_precision": 0.3333,
+     "file_hit": 1
+    },
+    "agent_primary": {
+     "entity_hit": 1,
+     "entity_recall": 0.5,
+     "entity_precision": 1.0,
+     "file_hit": 1
+    },
+    "layer2_top1": {
+     "entity_hit": 0,
+     "entity_recall": 0.0,
+     "entity_precision": 0.0,
+     "file_hit": 1
+    },
+    "layer2_top3": {
+     "entity_hit": 1,
+     "entity_recall": 0.5,
+     "entity_precision": 0.3333,
+     "file_hit": 1
+    },
+    "layer2_top5": {
+     "entity_hit": 1,
+     "entity_recall": 0.5,
+     "entity_precision": 0.2,
+     "file_hit": 1
+    }
+   }
+  }
+ ]
+}
