@@ -4,6 +4,8 @@
   python -m autose.retrieval --repo sympy/sympy pallets/flask [--skip-existing]
       -> reads public/bug_reports.json, public/code/<id> and workspaces/<id>/repository_index.json
       -> writes workspaces/<id>/retrieval.json
+  python -m autose.retrieval --repo sympy/sympy --embed --trace
+      -> ranks only the code that ran for the report's example; writes retrieval_trace.json
 """
 from __future__ import annotations
 
@@ -15,6 +17,7 @@ from pathlib import Path
 
 from autose.retrieval import Retriever
 from autose.retrieval.semantic import Embedder
+from autose.trace.rank import new_entities
 
 PUBLIC = Path("benchmarks/swe_bench_lite/public")
 WORKSPACES = Path("workspaces")
@@ -27,6 +30,9 @@ def main() -> int:
     ap.add_argument("--repo", nargs="*")
     ap.add_argument("--skip-existing", action="store_true")
     ap.add_argument("--embed", action="store_true", help="add the embedding ranker (Ollama nomic-embed-text)")
+    ap.add_argument("--trace", action="store_true",
+                    help="rank only the code that ran for the report's example (workspaces/<id>/trace.json, "
+                         "from python -m autose.trace) -> retrieval_trace.json")
     a = ap.parse_args()
     embedder = Embedder(EMBED_CACHE) if a.embed else None
     reports = {b["instance_id"]: b for b in json.loads((PUBLIC / "bug_reports.json").read_text(encoding="utf-8"))}
@@ -34,17 +40,26 @@ def main() -> int:
     if not ids:
         ap.error("give --instance or --repo")
     for iid in ids:
-        out = WORKSPACES / iid / "retrieval.json"
+        out = WORKSPACES / iid / ("retrieval_trace.json" if a.trace else "retrieval.json")
         src = WORKSPACES / iid / "repository_index.json"
         if a.skip_existing and out.exists():
             continue
+        restrict = None
+        if a.trace:
+            tpath = WORKSPACES / iid / "trace.json"
+            trace = json.loads(tpath.read_text(encoding="utf-8")) if tpath.exists() else {}
+            if trace.get("status") != "ran":
+                print(f"{iid}: no usable trace.json, skipped", flush=True)
+                continue
+            restrict = set(new_entities(trace)) | set(trace.get("frames", []))
         if not src.exists():
             print(f"{iid}: no repository_index.json, skipped", flush=True)
             continue
         t = time.time()
         index = json.loads(src.read_text(encoding="utf-8"))
         before = embedder.embedded if embedder else 0
-        result = Retriever(index, PUBLIC / "code" / iid, embedder).retrieve(reports[iid]["bug_report"])
+        result = Retriever(index, PUBLIC / "code" / iid, embedder).retrieve(reports[iid]["bug_report"],
+                                                                          restrict=restrict)
         del index
         if embedder:
             embedder.save()

@@ -66,22 +66,29 @@ class Retriever:
             seen.update(dict.fromkeys(self.by_file.get(f, [])))
         return list(seen)[:POOL_MAX]
 
-    def retrieve(self, bug_report, top_k: int = 50) -> dict:
+    def retrieve(self, bug_report, top_k: int = 50, restrict: set[str] | None = None) -> dict:
+        """restrict: rank only these entities (e.g. the code that ran for the report's example,
+        from autose.trace); every source and the embedding pool are limited to them."""
         text = mentions.report_text(bug_report)
         ment = mentions.find(text, self.index, self.resolver)
-        lex = self.bm25.rank(text, top_k=100)
+        lex = self.bm25.rank(text, top_k=100 if restrict is None else len(self.bm25.ids))
+        if restrict is not None:
+            ment = [m for m in ment if m[0] in restrict]
+            lex = [x for x in lex if x[0] in restrict][:POOL_MAX]
         seeds = {}
         for rank, (eid, *_) in enumerate(ment[:SEEDS_PER_SOURCE]):
             seeds[eid] = max(seeds.get(eid, 0), 1.0 / (rank + 1))
         for rank, (eid, _) in enumerate(lex[:SEEDS_PER_SOURCE]):
             seeds[eid] = max(seeds.get(eid, 0), 1.0 / (rank + 1))
-        walk = self.graph.expand(seeds)
+        walk = [w for w in self.graph.expand(seeds) if restrict is None or w[0] in restrict]
         sources = {"mentions": [m[0] for m in ment], "bm25": [x[0] for x in lex], "graph": [w[0] for w in walk]}
         order, fused, ranks, file_score = fuse(sources, self.file_of)
 
         if self.embedder is not None:
             files_now = sorted(file_score, key=lambda f: (-file_score[f], f))
-            pool = self.pool(sources, files_now)
+            pool = self.pool(sources, files_now) if restrict is None else \
+                list(dict.fromkeys([i for ids in sources.values() for i in ids]
+                                   + sorted(i for i in restrict if i in self.doc)))[:POOL_MAX]
             ranked = self.embedder.rank(text, pool, [self.doc[i] for i in pool])
             sources["embedding"] = [i for i, _ in ranked]
             order, fused, ranks, file_score = fuse(sources, self.file_of)

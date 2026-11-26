@@ -13,3 +13,7 @@ dev = ["pytest>=8"]
 
 [tool.setuptools.packages.find]
 include = ["autose*"]
+
+[tool.pytest.ini_options]
+# the code snapshots under benchmarks/ hold thousands of upstream test files: never collect them
+testpaths = ["tests"]

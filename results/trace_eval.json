@@ -1,0 +1,2325 @@
+{
+ "summary": {
+  "instances": 77,
+  "ran": 73,
+  "statuses": {
+   "no_code": 1,
+   "ran": 76
+  },
+  "timed_out": 0,
+  "median_new": 59,
+  "executed": 0.726,
+  "new": 0.6849,
+  "frame": 0.2192,
+  "file": 0.7534,
+  "trace_at": {
+   "1": 0.2192,
+   "5": 0.3973,
+   "10": 0.4521,
+   "20": 0.4795
+  },
+  "layer2_at": {
+   "1": 0.2192,
+   "5": 0.3973,
+   "10": 0.5068,
+   "20": 0.5616,
+   "50": 0.6575
+  },
+  "either@10": 0.6164,
+  "layer2_absent": {
+   "n": 25,
+   "trace_new": 16,
+   "trace@10": 4,
+   "trace@20": 4
+  }
+ },
+ "instances": [
+  {
+   "instance_id": "sympy__sympy-11400",
+   "status": "ran",
+   "statements": 3,
+   "ok_statements": 2,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 63,
+   "n_new": 16,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-11870",
+   "status": "ran",
+   "statements": 6,
+   "ok_statements": 6,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 237,
+   "n_new": 66,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 1
+   },
+   "either@10": 0,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-11897",
+   "status": "ran",
+   "statements": 9,
+   "ok_statements": 8,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 403,
+   "n_new": 264,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-12171",
+   "status": "ran",
+   "statements": 6,
+   "ok_statements": 4,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 43,
+   "n_new": 12,
+   "has_gold": false,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-12236",
+   "status": "ran",
+   "statements": 6,
+   "ok_statements": 6,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 580,
+   "n_new": 405,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-12419",
+   "status": "ran",
+   "statements": 8,
+   "ok_statements": 8,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 587,
+   "n_new": 418,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-12454",
+   "status": "ran",
+   "statements": 5,
+   "ok_statements": 0,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 0,
+   "n_new": 0,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-12481",
+   "status": "ran",
+   "statements": 1,
+   "ok_statements": 0,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 0,
+   "n_new": 0,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-13031",
+   "status": "ran",
+   "statements": 5,
+   "ok_statements": 5,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 27,
+   "n_new": 18,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-13043",
+   "status": "ran",
+   "statements": 2,
+   "ok_statements": 2,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 132,
+   "n_new": 29,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-13146",
+   "status": "ran",
+   "statements": 2,
+   "ok_statements": 2,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 497,
+   "n_new": 331,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-13177",
+   "status": "ran",
+   "statements": 8,
+   "ok_statements": 7,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 126,
+   "n_new": 33,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-13437",
+   "status": "ran",
+   "statements": 5,
+   "ok_statements": 5,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 454,
+   "n_new": 311,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 1
+   },
+   "either@10": 0,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-13471",
+   "status": "ran",
+   "statements": 1,
+   "ok_statements": 0,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 0,
+   "n_new": 0,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-13480",
+   "status": "ran",
+   "statements": 5,
+   "ok_statements": 3,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 219,
+   "n_new": 82,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 1,
+   "file": 1,
+   "trace": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-13647",
+   "status": "ran",
+   "statements": 4,
+   "ok_statements": 4,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 49,
+   "n_new": 32,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 0,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-13773",
+   "status": "ran",
+   "statements": 3,
+   "ok_statements": 2,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 44,
+   "n_new": 24,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-13895",
+   "status": "ran",
+   "statements": 8,
+   "ok_statements": 8,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 542,
+   "n_new": 356,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-13915",
+   "status": "ran",
+   "statements": 3,
+   "ok_statements": 3,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 189,
+   "n_new": 46,
+   "has_gold": true,
+   "executed": 1,
+   "new": 0,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-13971",
+   "status": "ran",
+   "statements": 4,
+   "ok_statements": 4,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 74,
+   "n_new": 27,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-14024",
+   "status": "ran",
+   "statements": 10,
+   "ok_statements": 10,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 489,
+   "n_new": 307,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-14308",
+   "status": "ran",
+   "statements": 4,
+   "ok_statements": 4,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 187,
+   "n_new": 63,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-14317",
+   "status": "ran",
+   "statements": 6,
+   "ok_statements": 6,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 473,
+   "n_new": 290,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-14396",
+   "status": "ran",
+   "statements": 2,
+   "ok_statements": 0,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 232,
+   "n_new": 131,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 1,
+   "file": 1,
+   "trace": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-14774",
+   "status": "ran",
+   "statements": 4,
+   "ok_statements": 4,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 46,
+   "n_new": 17,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-14817",
+   "status": "ran",
+   "statements": 3,
+   "ok_statements": 2,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 84,
+   "n_new": 59,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 1,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-15011",
+   "status": "ran",
+   "statements": 6,
+   "ok_statements": 4,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 57,
+   "n_new": 38,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-15308",
+   "status": "ran",
+   "statements": 6,
+   "ok_statements": 6,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 57,
+   "n_new": 26,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-15345",
+   "status": "ran",
+   "statements": 5,
+   "ok_statements": 5,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 224,
+   "n_new": 87,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-15346",
+   "status": "ran",
+   "statements": 8,
+   "ok_statements": 8,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 780,
+   "n_new": 588,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-15609",
+   "status": "ran",
+   "statements": 4,
+   "ok_statements": 4,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 439,
+   "n_new": 268,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-15678",
+   "status": "ran",
+   "statements": 4,
+   "ok_statements": 1,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 736,
+   "n_new": 544,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 1,
+   "file": 1,
+   "trace": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-16106",
+   "status": "ran",
+   "statements": 4,
+   "ok_statements": 4,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 28,
+   "n_new": 16,
+   "has_gold": false,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-16281",
+   "status": "ran",
+   "statements": 6,
+   "ok_statements": 4,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 184,
+   "n_new": 78,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 1,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-16503",
+   "status": "ran",
+   "statements": 1,
+   "ok_statements": 1,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 662,
+   "n_new": 484,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-16792",
+   "status": "ran",
+   "statements": 7,
+   "ok_statements": 2,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 345,
+   "n_new": 196,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-16988",
+   "status": "ran",
+   "statements": 2,
+   "ok_statements": 1,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 117,
+   "n_new": 41,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 1
+   },
+   "either@10": 0,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-17022",
+   "status": "ran",
+   "statements": 2,
+   "ok_statements": 0,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 1,
+   "n_new": 1,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-17139",
+   "status": "ran",
+   "statements": 4,
+   "ok_statements": 2,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 435,
+   "n_new": 269,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 1,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-17630",
+   "status": "ran",
+   "statements": 8,
+   "ok_statements": 5,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 195,
+   "n_new": 121,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-17655",
+   "status": "ran",
+   "statements": 5,
+   "ok_statements": 4,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 125,
+   "n_new": 46,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 1,
+   "file": 1,
+   "trace": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-18057",
+   "status": "ran",
+   "statements": 8,
+   "ok_statements": 0,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 23,
+   "n_new": 18,
+   "has_gold": true,
+   "executed": 1,
+   "new": 0,
+   "frame": 1,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 1,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-18087",
+   "status": "ran",
+   "statements": 4,
+   "ok_statements": 4,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 613,
+   "n_new": 424,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-18189",
+   "status": "ran",
+   "statements": 4,
+   "ok_statements": 4,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 520,
+   "n_new": 347,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-18199",
+   "status": "ran",
+   "statements": 1,
+   "ok_statements": 1,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 5,
+   "n_new": 4,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-18532",
+   "status": "ran",
+   "statements": 4,
+   "ok_statements": 3,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 5,
+   "n_new": 2,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-18621",
+   "status": "ran",
+   "statements": 13,
+   "ok_statements": 5,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 116,
+   "n_new": 53,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-18698",
+   "status": "ran",
+   "statements": 1,
+   "ok_statements": 1,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 343,
+   "n_new": 173,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-18835",
+   "status": "ran",
+   "statements": 5,
+   "ok_statements": 4,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 1,
+   "n_new": 0,
+   "has_gold": true,
+   "executed": 1,
+   "new": 0,
+   "frame": 0,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-19007",
+   "status": "ran",
+   "statements": 6,
+   "ok_statements": 6,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 193,
+   "n_new": 100,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 0,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-19254",
+   "status": "ran",
+   "statements": 3,
+   "ok_statements": 2,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 52,
+   "n_new": 5,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 1,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-19487",
+   "status": "ran",
+   "statements": 5,
+   "ok_statements": 5,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 57,
+   "n_new": 12,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-20049",
+   "status": "ran",
+   "statements": 6,
+   "ok_statements": 4,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 400,
+   "n_new": 246,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 1,
+   "file": 1,
+   "trace": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-20154",
+   "status": "ran",
+   "statements": 2,
+   "ok_statements": 0,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 0,
+   "n_new": 0,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-20212",
+   "status": "no_code",
+   "statements": null,
+   "ok_statements": null,
+   "timed_out": null
+  },
+  {
+   "instance_id": "sympy__sympy-20322",
+   "status": "ran",
+   "statements": 3,
+   "ok_statements": 0,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 0,
+   "n_new": 0,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-20442",
+   "status": "ran",
+   "statements": 6,
+   "ok_statements": 5,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 278,
+   "n_new": 138,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 0,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-20590",
+   "status": "ran",
+   "statements": 3,
+   "ok_statements": 3,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 10,
+   "n_new": 3,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-20639",
+   "status": "ran",
+   "statements": 2,
+   "ok_statements": 2,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 93,
+   "n_new": 29,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-21055",
+   "status": "ran",
+   "statements": 4,
+   "ok_statements": 4,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 1361,
+   "n_new": 1118,
+   "has_gold": false,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-21171",
+   "status": "ran",
+   "statements": 4,
+   "ok_statements": 3,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 928,
+   "n_new": 705,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-21379",
+   "status": "ran",
+   "statements": 5,
+   "ok_statements": 3,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 510,
+   "n_new": 311,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 1,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 1,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-21612",
+   "status": "ran",
+   "statements": 3,
+   "ok_statements": 1,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 480,
+   "n_new": 304,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-21614",
+   "status": "ran",
+   "statements": 7,
+   "ok_statements": 7,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 82,
+   "n_new": 48,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-21627",
+   "status": "ran",
+   "statements": 3,
+   "ok_statements": 2,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 275,
+   "n_new": 98,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 0,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-21847",
+   "status": "ran",
+   "statements": 2,
+   "ok_statements": 2,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 182,
+   "n_new": 96,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-22005",
+   "status": "ran",
+   "statements": 5,
+   "ok_statements": 1,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 245,
+   "n_new": 188,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 1,
+   "file": 1,
+   "trace": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-22714",
+   "status": "ran",
+   "statements": 9,
+   "ok_statements": 3,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 75,
+   "n_new": 33,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 1,
+   "file": 1,
+   "trace": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-22840",
+   "status": "ran",
+   "statements": 9,
+   "ok_statements": 1,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 0,
+   "n_new": 0,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 0,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 0,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-23117",
+   "status": "ran",
+   "statements": 3,
+   "ok_statements": 1,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 5,
+   "n_new": 5,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 1,
+   "file": 1,
+   "trace": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-23191",
+   "status": "ran",
+   "statements": 1,
+   "ok_statements": 0,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 411,
+   "n_new": 241,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 1,
+   "file": 1,
+   "trace": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0,
+    "50": 0
+   },
+   "either@10": 1,
+   "layer2_absent": 1
+  },
+  {
+   "instance_id": "sympy__sympy-23262",
+   "status": "ran",
+   "statements": 6,
+   "ok_statements": 6,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 95,
+   "n_new": 70,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-24066",
+   "status": "ran",
+   "statements": 8,
+   "ok_statements": 6,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 243,
+   "n_new": 82,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 1,
+   "file": 1,
+   "trace": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-24102",
+   "status": "ran",
+   "statements": 2,
+   "ok_statements": 1,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 41,
+   "n_new": 24,
+   "has_gold": true,
+   "executed": 0,
+   "new": 0,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+   },
+   "layer2": {
+    "1": 0,
+    "5": 0,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-24152",
+   "status": "ran",
+   "statements": 8,
+   "ok_statements": 8,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 147,
+   "n_new": 31,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-24213",
+   "status": "ran",
+   "statements": 14,
+   "ok_statements": 12,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 130,
+   "n_new": 41,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 1,
+   "file": 1,
+   "trace": {
+    "1": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  },
+  {
+   "instance_id": "sympy__sympy-24909",
+   "status": "ran",
+   "statements": 2,
+   "ok_statements": 2,
+   "timed_out": false,
+   "fused": null,
+   "n_executed": 77,
+   "n_new": 12,
+   "has_gold": true,
+   "executed": 1,
+   "new": 1,
+   "frame": 0,
+   "file": 1,
+   "trace": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1
+   },
+   "layer2": {
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "20": 1,
+    "50": 1
+   },
+   "either@10": 1,
+   "layer2_absent": 0
+  }
+ ]
+}

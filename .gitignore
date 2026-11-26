@@ -13,6 +13,8 @@ architecture.html
 workspaces/
 runs/
 data/
+# Trace sandboxes (python 3.9 + snapshot deps)
+envs/
 
 # --- Local machine files ---
 user_path_backup.txt
