@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -20,6 +21,12 @@ ENVS = Path("envs")
 DEADLINE = 60
 
 REPOS = {
+    # env: envs/<env> (python + the snapshot's dependencies); preamble: run first, untraced;
+    # baseline: trivial use of the library (its code is "generic"); path: extra sys.path entries
+    # inside the snapshot (src layouts); display: after an expression, call its _repr_png_ as a
+    # notebook would (seaborn.objects draws only then); test_runner: "plain" (module-level test_*
+    # functions, sympy's own pytest stand-in) or "pytest" (fixtures, test classes); env_vars:
+    # paths under envs/, made absolute.
     "sympy/sympy": {
         "env": "trace-sympy",
         "preamble": ["from sympy import *",
@@ -27,29 +34,84 @@ REPOS = {
                      "f, g, h = symbols('f g h', cls=Function)"],
         "baseline": ["(x + 1)*y - 2", "str(x**2 + y)", "repr(sin(x) + Rational(1, 2))"],
     },
+    # Environments as SWE-bench's own (swebench/harness/constants/python.py at v3.0.17,
+    # SPECS_SEABORN / SPECS_FLASK), so the sandbox behaves like the containers that grade:
+    # seaborn 0.12-0.14: Python 3.9, numpy 1.25.2, pandas 2.0.0, matplotlib 3.7.2, scipy 1.11.2 (+ pins)
+    "mwaskom/seaborn": {
+        "env": "trace-seaborn",
+        "preamble": ["import matplotlib", "matplotlib.use('Agg')", "import numpy as np", "import pandas as pd",
+                     "import matplotlib.pyplot as plt", "import seaborn as sns", "import seaborn.objects as so"],
+        "baseline": ["sns.set_theme()", "plt.figure()", "plt.plot([1, 2], [1, 2])", "plt.close('all')"],
+        "display": True,
+        "test_runner": "pytest",
+        "env_vars": {"SEABORN_DATA": "seaborn-data", "MPLCONFIGDIR": "mplconfig"},
+    },
+    # flask 2.0: Python 3.9, Werkzeug 2.3.7, Jinja2 3.0.1, click 8.0.1, MarkupSafe 2.1.3;
+    # flask 2.2-3.1: Python 3.11, Werkzeug 2.3.7, Jinja2 3.1.2, click 8.1.3, MarkupSafe 2.1.1 (+ blinker 1.6.2,
+    # a dependency of the 2.3 snapshots); chosen by the snapshot's own __version__
+    "pallets/flask": {
+        "env": "trace-flask23",
+        "envs": {"2.0": "trace-flask20", "2.1": "trace-flask23", "2.2": "trace-flask23", "2.3": "trace-flask23"},
+        "version_file": "src/flask/__init__.py",
+        "preamble": ["import os", "import tomllib", "import flask", "from flask import Flask, Blueprint, request",
+                     "app = Flask('app')"],
+        "baseline": ["Flask('baseline')"],
+        "path": ["src"],
+        "test_runner": "pytest",
+    },
 }
 
 
-def interpreter(repo: str) -> Path | None:
-    env = os.environ.get("AUTOSE_TRACE_PYTHON")
-    if env:
-        return Path(env)
+def job_options(repo: str) -> tuple[dict, dict]:
+    """(child.py job keys, environment variables) for a repository's sandbox."""
+    cfg = REPOS.get(repo, {})
+    job = {"path": cfg.get("path", []), "display": cfg.get("display", False),
+           "test_runner": cfg.get("test_runner", "plain")}
+    env = {k: str((ENVS / v).resolve()) for k, v in cfg.get("env_vars", {}).items()}
+    return job, env
+
+
+def env_name(repo: str, snapshot: Path | None = None) -> str | None:
+    """The sandbox for a repository, per version when it has several (read from the snapshot's
+    own __version__, e.g. flask 2.0 vs 2.3)."""
     cfg = REPOS.get(repo)
     if not cfg:
         return None
-    exe = ENVS / cfg["env"] / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
+    if cfg.get("envs") and snapshot is not None:
+        try:
+            text = (Path(snapshot) / cfg["version_file"]).read_text(encoding="utf-8")
+            m = re.search(r"__version__\s*=\s*['\"](\d+)\.(\d+)", text)
+            if m and f"{m.group(1)}.{m.group(2)}" in cfg["envs"]:
+                return cfg["envs"][f"{m.group(1)}.{m.group(2)}"]
+        except OSError:
+            pass
+    return cfg["env"]
+
+
+def interpreter(repo: str, snapshot: Path | None = None) -> Path | None:
+    env = os.environ.get("AUTOSE_TRACE_PYTHON")
+    if env:
+        return Path(env)
+    name = env_name(repo, snapshot)
+    if not name:
+        return None
+    exe = ENVS / name / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
     return exe if exe.exists() else None
 
 
 def run_statements(snapshot: Path, statements: list[str], preamble: list[str], baseline: list[str],
-                   python: Path, deadline: int = DEADLINE) -> dict:
+                   python: Path, deadline: int = DEADLINE, extra: dict | None = None,
+                   repo: str | None = None) -> dict:
+    """extra: further job keys for child.py (overrides: edited files; trace: False; tests: files);
+    repo: adds that repository's sandbox options (job_options)."""
+    opts, env_vars = job_options(repo) if repo else ({}, {})
     with tempfile.TemporaryDirectory(prefix="autose_trace_") as tmp:
         job, out = Path(tmp) / "job.json", Path(tmp) / "out.json"
         job.write_text(json.dumps({"snapshot": str(Path(snapshot).resolve()), "preamble": preamble,
                                    "baseline": baseline, "statements": statements, "deadline": deadline,
-                                   "out": str(out)}), encoding="utf-8")
+                                   "out": str(out)} | opts | (extra or {})), encoding="utf-8")
         env = {k: os.environ[k] for k in ("SYSTEMROOT", "PATH", "TEMP", "TMP") if k in os.environ}
-        env |= {"MPLBACKEND": "Agg", "PYTHONHASHSEED": "0", "PYTHONWARNINGS": "ignore"}
+        env |= {"MPLBACKEND": "Agg", "PYTHONHASHSEED": "0", "PYTHONWARNINGS": "ignore"} | env_vars
         try:
             p = subprocess.run([str(python), "-I", "-X", "utf8", str(CHILD.resolve()), str(job)], cwd=tmp, env=env,
                                capture_output=True, text=True, encoding="utf-8", errors="replace",
@@ -87,13 +149,13 @@ class EntityMap:
 
 def trace_instance(repo: str, bug_report, snapshot: Path, index: dict, statements: list[str],
                    deadline: int = DEADLINE) -> dict:
-    python = interpreter(repo)
+    python = interpreter(repo, snapshot)
     if not python:
         return {"status": "no_interpreter", "statements": len(statements)}
     if not statements:
         return {"status": "no_code"}
     cfg = REPOS.get(repo, {"preamble": [], "baseline": []})
-    raw = run_statements(snapshot, statements, cfg["preamble"], cfg["baseline"], python, deadline)
+    raw = run_statements(snapshot, statements, cfg["preamble"], cfg["baseline"], python, deadline, repo=repo)
     if raw["status"] != "ran":
         return raw | {"statements": len(statements)}
     emap = EntityMap(index)
