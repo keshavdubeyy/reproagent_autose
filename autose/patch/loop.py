@@ -362,6 +362,7 @@ def summarise(job: Job, attempts: list, best, steps: list, llm, t0: float) -> di
     chosen = attempts[best] if best is not None else None
     return {"status": "patched" if chosen else "no_patch", "profile": job.prof.name, "mode": job.prof.edit_mode,
             "targets": [t["id"] for t in job.targets], "paged_in": job.paged, "plan": steps,
+            "hypotheses": getattr(job, "hypotheses", None),
             "new_methods": job.new_methods, "statements": len(job.stmts),
             "tests_before": len(job.tests_before.get("tests", {})), "best": best,
             "verified": bool(chosen and chosen.get("score") and check.good_enough(chosen.get("check"))),
@@ -437,6 +438,8 @@ def patch_instance(repo: str, original_report: dict, agent: dict, index: dict, s
         edits, parsed = parse_edits(answer)
         errors = apply_edits(ws, edits, job.targets, job.classes, job.members, job.others) if edits else \
             ["your answer was not complete JSON with at least one edit (keep it shorter)"]
+        if not errors and ws.diff() == Workspace(read=job.original, files=dict(state)).diff():
+            errors = [prompts.NO_CHANGE]
         if errors and prof.atomic:
             ws.files = dict(state)   # all or nothing (AutoSE-Labs DR-007): the base stays clean
         diff = ws.diff()

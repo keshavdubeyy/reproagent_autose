@@ -35,12 +35,20 @@ def main() -> int:
                     help="patch strategy; auto picks it from the model size in its name (default)")
     ap.add_argument("--mode", choices=["json", "tools"], help="override the profile's edit mode")
     ap.add_argument("--candidates", type=int, help="sample this many candidates and vote (JSON mode)")
+    ap.add_argument("--alt-locations", type=int, help="of the candidates, how many go to other suspects (default 0)")
     ap.add_argument("--repro", action=argparse.BooleanOptionalAction, default=None,
                     help="use the reproduction stage's tests (workspaces/<id>/repro.json) in the checks")
     ap.add_argument("--line-hints", action=argparse.BooleanOptionalAction, default=None,
                     help="show the located lines that ran when the example failed (default: on)")
     ap.add_argument("--fix-rules", action=argparse.BooleanOptionalAction, default=None,
                     help="add context-engineering-v2's fix guidelines to the prompt (default: the profile's)")
+    ap.add_argument("--tie-break", choices=["smallest", "size"],
+                    help="order of tied candidates: the smaller patch, or the one changing more code")
+    ap.add_argument("--propagate", action=argparse.BooleanOptionalAction, default=None,
+                    help="also try each edit at the other identical places in the located functions")
+    ap.add_argument("--hypotheses", type=int, help="one thinking call names this many root causes for the candidates")
+    ap.add_argument("--rewrite-hint", action=argparse.BooleanOptionalAction, default=None,
+                    help="after a search mismatch, let the retry rewrite the whole function")
     ap.add_argument("--num-ctx", type=int, help="override the profile's context window")
     ap.add_argument("--max-attempts", type=int, help="override the profile's attempts")
     ap.add_argument("--skip-existing", action="store_true")
@@ -49,7 +57,8 @@ def main() -> int:
     a = ap.parse_args()
     prof = for_model(a.model, a.profile, num_ctx=a.num_ctx, max_attempts=a.max_attempts, plan=a.plan,
                     edit_mode=a.mode, fix_rules=a.fix_rules, candidates=a.candidates, line_hints=a.line_hints,
-                    repro=a.repro)
+                    repro=a.repro, alt_locations=a.alt_locations, tie_break=a.tie_break, propagate=a.propagate,
+                    hypotheses=a.hypotheses, rewrite_hint=a.rewrite_hint)
     print(f"profile {prof.name}: {prof}", flush=True)
     bugs = {b["instance_id"]: b for b in json.loads((PUBLIC / "bug_reports.json").read_text(encoding="utf-8"))}
     ids = list(a.instance or []) + sorted(i for i, b in bugs.items() if a.repo and b["repo"] in a.repo)

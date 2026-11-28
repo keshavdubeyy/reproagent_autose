@@ -99,9 +99,46 @@ def rewrite(ws: Workspace, ent: dict, new_code: str) -> None:
     ws.log.append(f"rewrote {ent['id']}")
 
 
+FUZZY_RATIO = 0.9    # a near-copy of the code counts as a match only above this similarity
+FUZZY_MARGIN = 0.05  # ... and only if it beats the next best place by this much
+
+
+def _norm(line: str) -> str:
+    return re.sub(r"\s+", " ", line).strip()
+
+
+def _loose_matches(lines: list[str], want: list[str], lo: int, hi: int) -> tuple[list[tuple[int, int]], str]:
+    """Blocks (start, end) that match `want` when spacing and blank lines are ignored, else the
+    one block that is a near-copy (small models misquote a character or two). Returns the blocks
+    and how they matched ("" when none)."""
+    wn = [_norm(w) for w in want if w.strip()]
+    rows = [(i, _norm(lines[i])) for i in range(lo, hi) if lines[i].strip()]
+    n = len(wn)
+    if not n or len(rows) < n:
+        return [], ""
+    seq = [x for _, x in rows]
+    hits = [(rows[j][0], rows[j + n - 1][0] + 1) for j in range(len(rows) - n + 1) if seq[j:j + n] == wn]
+    if hits:
+        return hits, "spacing-insensitive"
+    if n < 2:  # one misquoted line may be the very difference that matters (`<` for `<=`)
+        return [], ""
+    joined = "\n".join(wn)
+    scored = []
+    for j in range(len(rows) - n + 1):
+        if difflib.SequenceMatcher(None, seq[j], wn[0]).quick_ratio() < 0.6:
+            continue
+        scored.append((difflib.SequenceMatcher(None, "\n".join(seq[j:j + n]), joined).ratio(), j))
+    scored.sort(reverse=True)
+    if scored and scored[0][0] >= FUZZY_RATIO and (len(scored) == 1 or scored[0][0] - scored[1][0] >= FUZZY_MARGIN):
+        j = scored[0][1]
+        return [(rows[j][0], rows[j + n - 1][0] + 1)], f"near-copy ({scored[0][0]:.2f})"
+    return [], ""
+
+
 def search_replace(ws: Workspace, file: str, search: str, replace: str, within: tuple[int, int] | None = None) -> None:
-    """Replace one exact block of lines (trailing whitespace ignored; re-indented if the block's
-    indentation differs only by a constant). `within` limits the match to a 0-based line range."""
+    """Replace one block of lines: exact (trailing whitespace ignored; re-indented if the block's
+    indentation differs only by a constant), else ignoring spacing and blank lines, else the one
+    near-copy of it. `within` limits the match to a 0-based line range."""
     text = ws.text(file)
     lines = text.splitlines(keepends=True)
     want = [l.rstrip() for l in search.strip("\n").splitlines()]
@@ -122,6 +159,10 @@ def search_replace(ws: Workspace, file: str, search: str, replace: str, within: 
                 if _indent(lines[i]) == cand + _indent(first) and matches(cand):
                     hits, shift = matches(cand), cand
                     break
+    blocks, how = [(i, i + len(want)) for i in hits], ""
+    if not blocks:
+        blocks, how = _loose_matches(lines, want, lo, hi)
+        hits = [b[0] for b in blocks]
     if not hits:
         first = next(w for w in want if w).strip()
         near = difflib.get_close_matches(first, [l.strip() for l in lines[lo:hi]], n=1, cutoff=0.5)
@@ -134,7 +175,7 @@ def search_replace(ws: Workspace, file: str, search: str, replace: str, within: 
                         f"method instead).{hint}")
     if len(hits) > 1:
         raise EditError(f"the SEARCH block matches {len(hits)} places in {file}; include more lines to make it unique")
-    i = hits[0]
+    i, end = blocks[0]
     # the replacement's first line goes where the matched first line was; the rest keep their
     # indentation relative to it (models indent replacements inconsistently with the search)
     base = _indent(lines[i])
@@ -144,7 +185,7 @@ def search_replace(ws: Workspace, file: str, search: str, replace: str, within: 
                   for l in new) if replace.strip() else ""
     # a replacement that also repeats the lines right after the match (the search was only the
     # `if` line, the replacement the whole `if` block) replaces those lines too, not duplicates them
-    end = i + len(want)
+    n_matched = end - i
     def code_only(l: str) -> str:  # compare code, not spacing or comments
         return re.sub(r"\s+", "", l.split("#")[0])
     rl = [code_only(l) for l in new if l.strip()]
@@ -155,7 +196,54 @@ def search_replace(ws: Workspace, file: str, search: str, replace: str, within: 
     edited = "".join(lines[:i]) + rep + "".join(lines[end:])
     parses(edited, file)
     ws.files[file] = edited
-    ws.log.append(f"replaced {len(want)} lines at {file}:{i + 1}")
+    ws.log.append(f"replaced {n_matched} lines at {file}:{i + 1}" + (f" ({how} match)" if how else ""))
+
+
+def replace_all(ws: Workspace, ent: dict, search: str, code: str, cap: int = 8) -> int:
+    """Replace every block inside the entity that matches `search` (ignoring spacing) with `code`;
+    for an edit whose search lines occur at several identical places of one located function.
+    Returns how many places were changed (0 if the new code contains the search lines)."""
+    want = [l.rstrip() for l in search.strip("\n").splitlines()]
+    wn = [_norm(w) for w in want if w.strip()]
+    cn = [_norm(c) for c in code.splitlines() if c.strip()]
+    if not wn or any(cn[j:j + len(wn)] == wn for j in range(len(cn) - len(wn) + 1)):
+        return 0
+    n = 0
+    for _ in range(cap):
+        try:
+            text = ws.text(ent["file"])
+            lo, hi = _span(text, ent)
+        except (EditError, SyntaxError):
+            break
+        blocks, how = _loose_matches(text.splitlines(keepends=True), want, lo, hi)
+        if not blocks or how != "spacing-insensitive":
+            break
+        try:
+            search_replace(ws, ent["file"], search, code, blocks[0])
+        except EditError:
+            break
+        n += 1
+    return n
+
+
+def propagate(ws: Workspace, edits: list[dict], targets: list[dict], cap: int = 8) -> int:
+    """Make each applied search/replace edit also at the other places inside the located functions
+    where its search lines still occur (ignoring spacing): a small model often fixes one of several
+    identical sites (the same `yield ms` twice, the same check in two branches). Edits whose new
+    code contains the search lines themselves are skipped, so a replacement is never re-applied to
+    its own output. Returns how many extra places were changed."""
+    n = 0
+    funcs = [t for t in {t["id"]: t for t in targets}.values() if t.get("kind") != "class"]
+    for ed in edits:
+        search, code = ed.get("search") or "", ed.get("code") or ""
+        if not search.strip() or search.strip().startswith(("def ", "async def ", "@", "class ")):
+            continue
+        for t in funcs:
+            k = replace_all(ws, t, search, code, cap)
+            for j in range(1, k + 1):
+                ws.log[-j] += " (the same change at another identical place)"
+            n += k
+    return n
 
 
 def unified_diff(file: str, old: str, new: str) -> str:
@@ -238,7 +326,8 @@ def answer_edits(answer: str) -> list[dict]:
 
 
 def apply_edits(ws: Workspace, edits: list[dict], targets: list[dict], classes: list[dict] | None = None,
-                members: dict[str, list[dict]] | None = None, others: set[str] | None = None) -> list[str]:
+                members: dict[str, list[dict]] | None = None, others: set[str] | None = None,
+                all_places: bool = False) -> list[str]:
     """Apply edits {function, search, code}. With `search`, the exact lines are replaced by `code`
     inside the named function (else inside any target). Without, each def in `code` is matched by
     name: a target, else an existing method of a located class (classes / members), else it is
@@ -269,15 +358,35 @@ def apply_edits(ws: Workspace, edits: list[dict], targets: list[dict], classes: 
         if search.strip():
             named = find((ed.get("function") or "").split(".")[-1].split(":")[-1])
             last = "no location to edit"
-            for t in ([named] if named else []) + [t for t in targets if t is not named]:
+            order = ([named] if named else []) + [t for t in targets if t is not named]
+            for t in order:
                 try:
                     start, end = _span(ws.text(t["file"]), t)
                     search_replace(ws, t["file"], search, code, (start, end))
                     break
                 except EditError as e:
                     last = str(e)
+                    # the same lines at several identical places of one located function: with
+                    # all_places they all get the change (the usual case is a repeated line that
+                    # needs the same fix everywhere) instead of a refusal
+                    if all_places and "places" in last and t.get("kind") != "class":
+                        k = replace_all(ws, t, search, code)
+                        if k:
+                            ws.log[-1] += f" (one of {k} identical places, all changed)"
+                            break
             else:
-                errors.append(last)
+                # not inside any located function: the lines may be just outside one (a helper
+                # next to it, module code); accept them anywhere in a located file if unique there
+                for f in dict.fromkeys(t["file"] for t in order):
+                    try:
+                        search_replace(ws, f, search, code)
+                        ws.log[-1] += " (outside the located functions)"
+                        break
+                    except EditError as e:
+                        if "matches" in str(e) and "places" in str(e):
+                            last = str(e)
+                else:
+                    errors.append(last)
             continue
         try:
             defs, imports = _pieces(code)

@@ -108,6 +108,48 @@ def test_line_hints_name_the_lines_that_ran_only_for_the_failing_example(repo):
     assert res["verified"]
 
 
+def test_size_tie_break_prefers_the_candidate_changing_more_code(repo):
+    # both keep the tests and give the same result on the report's example (one behaviour group):
+    # "smallest" takes the one-line change, "size" the fuller one
+    replies = [_edit("return self.w + self.h", "return self.w * self.h"),
+               _edit("if self.w < 0:\n    return 0\nreturn self.w + self.h",
+                     "if self.w < 0 or self.h < 0:\n    return 0\nreturn self.w * self.h")]
+    runs = {}
+    for tb in ("smallest", "size"):
+        prof = replace(PROFILES["slm4"], candidates=2, alt_locations=0, tie_break=tb)
+        runs[tb] = patch_instance("toy/toy", REPORT, AGENT, build_index(repo, "x"), repo, Scripted(list(replies)),
+                                  TRACE, log=lambda m: None, profile=prof)
+    assert runs["smallest"]["best"] == 0 and runs["size"]["best"] == 1
+    assert runs["size"]["attempts"][1]["size"] > runs["size"]["attempts"][0]["size"] > 0
+
+
+def test_code_size_ignores_docstrings_comments_and_formatting():
+    from autose.patch.sample import code_size
+    old = 'def f(x):\n    """Doc."""\n    return x\n'
+    assert code_size(lambda f: old, {"m.py": "def f(x):\n    return x  # same\n"}) == 0
+    assert code_size(lambda f: old, {"m.py": 'def f(x):\n    """Doc."""\n    return x + 1\n'}) == 1
+
+
+def test_causes_from_one_thinking_call_go_to_the_later_candidates(repo):
+    causes = json.dumps({"causes": [{"function": "area", "line": "return self.w + self.h", "change": "multiply"},
+                                    {"function": "area", "line": "if self.w < 0:", "change": "check h too"}],
+                         "sites": [{"function": "area", "line": "return self.w + self.h"}]})
+    llm = Scripted([causes] + [_edit("return self.w + self.h", "return self.w * self.h")] * 4)
+    llm.think, llm.think_tokens = False, 0
+    thinking = []
+    chat = llm.chat
+    llm.chat = lambda messages, **k: (thinking.append(llm.think), chat(messages, **k))[1]
+    prof = replace(PROFILES["slm4"], candidates=4, alt_locations=0, hypotheses=2, plain_candidates=2)
+    res = patch_instance("toy/toy", REPORT, AGENT, build_index(repo, "x"), repo, llm, TRACE, log=lambda m: None,
+                         profile=prof)
+    assert thinking == [True, False, False, False, False] and llm.think is False   # only the first call thinks
+    prompts = [m[1]["content"] for m in llm.seen[1:]]
+    assert "A possible root cause" not in prompts[0] and "A possible root cause" not in prompts[1]
+    assert "area: `return self.w + self.h`: multiply" in prompts[2] and "check h too" in prompts[3]
+    assert "The same faulty logic may also appear here" in prompts[2]
+    assert res["hypotheses"]["causes"][1].endswith("check h too") and res["attempts"][2]["cause"]
+
+
 def test_patch_key_ignores_formatting_and_comments():
     a = {"m.py": "def f(x):\n    return x*2\n"}
     b = {"m.py": "def f(x):\n\n    return x * 2  # double\n"}

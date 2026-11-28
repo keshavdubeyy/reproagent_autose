@@ -1,0 +1,7293 @@
+{
+ "runs": {
+  "final": {
+   "patches": "runs\\layer4_final",
+   "scores": {
+    "sympy__sympy-13480": {
+     "0": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "43/43",
+      "applied": true,
+      "reused": true
+     },
+     "4": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "43/43",
+      "applied": true,
+      "error": null
+     }
+    },
+    "mwaskom__seaborn-2848": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "48/50",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "48/50",
+      "applied": true,
+      "error": null
+     }
+    },
+    "mwaskom__seaborn-3010": {
+     "0": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "2/2",
+      "applied": true,
+      "reused": true
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     }
+    },
+    "mwaskom__seaborn-3190": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/84",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "84/84",
+      "applied": true,
+      "reused": true
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "84/84",
+      "applied": true,
+      "error": null
+     }
+    },
+    "mwaskom__seaborn-3407": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "106/120",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "118/120",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "pallets__flask-4045": {
+     "0": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "50/50",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "50/50",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "50/50",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "50/50",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "50/50",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "50/50",
+      "applied": true,
+      "error": null
+     }
+    },
+    "pallets__flask-4992": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "applied": true,
+      "error": null
+     }
+    },
+    "pallets__flask-5063": {
+     "1": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "52/54",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "54/54",
+      "applied": true,
+      "reused": true
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "52/54",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-11400": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "29/29",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "29/29",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "29/29",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "4/29",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "29/29",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-12171": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/8",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/8",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/8",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-12419": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "25/25",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/25",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/25",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/25",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/25",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "25/25",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-12481": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/7",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/7",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-13031": {
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "applied": true,
+      "reused": true
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-13043": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "1/1",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "1/1",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "1/1",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "1/1",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-13177": {
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "75/75",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-13437": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "14/15",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "14/15",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-13773": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-13971": {
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "102/102",
+      "applied": true,
+      "reused": true
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "102/102",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "102/102",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "102/102",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-14308": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "111/113",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "113/113",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-14317": {
+     "2": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "116/116",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "112/116",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "112/116",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "116/116",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-14774": {
+     "0": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "114/114",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-15011": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "10/53",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "10/53",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "53/53",
+      "applied": true,
+      "reused": true
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/53",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-15308": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/120",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/120",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "reused": true
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-15345": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "8/8",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-15609": {
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "121/121",
+      "applied": true,
+      "reused": true
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "121/121",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-15678": {
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "reused": true
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-16281": {
+     "2": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "120/120",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "119/120",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-16988": {
+     "0": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "71/72",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "71/72",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "51/72",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "33/72",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "72/72",
+      "applied": true,
+      "reused": true
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "72/72",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-17022": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "reused": true
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-17139": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "67/67",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "67/67",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "67/67",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "62/67",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-17630": {
+     "1": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "19/19",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "17/19",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "17/19",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "19/19",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-17655": {
+     "0": {
+      "resolved": true,
+      "f2p": "2/2",
+      "p2p": "9/9",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": true,
+      "f2p": "2/2",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": true,
+      "f2p": "2/2",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-18057": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "1/98",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "98/98",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "98/98",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "96/98",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "0/98",
+      "applied": true,
+      "error": "no parseable test output"
+     }
+    },
+    "sympy__sympy-18189": {
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "39/41",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-18199": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-18621": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-19254": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "16/18",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "16/18",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-20154": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "40/40",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "40/40",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "40/40",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "38/40",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "40/40",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "40/40",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-20442": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/24",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/24",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "21/24",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/24",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/24",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/24",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/24",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-20590": {
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "21/21",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "21/21",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-20639": {
+     "0": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "138/139",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "137/139",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "138/139",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "131/139",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-21055": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "reused": true
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "1/13",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-21171": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "152/152",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "152/152",
+      "applied": true,
+      "reused": true
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "152/152",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-21379": {
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "86/91",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-21612": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-21614": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/6",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/6",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/6",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/6",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "6/6",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-21627": {
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "11/26",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "26/26",
+      "applied": true,
+      "reused": true
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "26/26",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-21847": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-22714": {
+     "1": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "11/11",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "11/11",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/11",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "11/11",
+      "applied": true,
+      "reused": true
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "0/11",
+      "applied": true,
+      "error": "no parseable test output"
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/11",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-23191": {
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-23262": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "61/61",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "61/61",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "50/61",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "61/61",
+      "applied": true,
+      "reused": true
+     },
+     "4": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "61/61",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "61/61",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "61/61",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-24909": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/2",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     }
+    }
+   },
+   "summary": {
+    "all": {
+     "bugs": 52,
+     "candidates": 218,
+     "candidates_resolved": 20,
+     "any_resolved": 10,
+     "chosen_resolved": 6,
+     "lost_by_selection": 4,
+     "never_generated": 42,
+     "any_f2p_fixed": 14,
+     "incomplete": 0
+    },
+    "unseen": {
+     "bugs": 19,
+     "candidates": 88,
+     "candidates_resolved": 8,
+     "any_resolved": 3,
+     "chosen_resolved": 2,
+     "lost_by_selection": 1,
+     "never_generated": 16,
+     "any_f2p_fixed": 4,
+     "incomplete": 0
+    },
+    "fresh": {
+     "bugs": 20,
+     "candidates": 77,
+     "candidates_resolved": 5,
+     "any_resolved": 3,
+     "chosen_resolved": 1,
+     "lost_by_selection": 2,
+     "never_generated": 17,
+     "any_f2p_fixed": 4,
+     "incomplete": 0
+    },
+    "seen": {
+     "bugs": 13,
+     "candidates": 53,
+     "candidates_resolved": 7,
+     "any_resolved": 4,
+     "chosen_resolved": 3,
+     "lost_by_selection": 1,
+     "never_generated": 9,
+     "any_f2p_fixed": 6,
+     "incomplete": 0
+    }
+   },
+   "instances": {
+    "mwaskom__seaborn-2848": {
+     "group": "seen",
+     "candidates": 2,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "mwaskom__seaborn-3010": {
+     "group": "seen",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 3,
+     "chosen_resolved": true,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located",
+      "located",
+      "located"
+     ],
+     "resolved_votes": [
+      5,
+      5,
+      5
+     ],
+     "top_votes": 5
+    },
+    "mwaskom__seaborn-3190": {
+     "group": "seen",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 4
+    },
+    "mwaskom__seaborn-3407": {
+     "group": "seen",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    },
+    "pallets__flask-4045": {
+     "group": "seen",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "pallets__flask-4992": {
+     "group": "seen",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 4
+    },
+    "pallets__flask-5063": {
+     "group": "seen",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "sympy__sympy-11400": {
+     "group": "seen",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    },
+    "sympy__sympy-12171": {
+     "group": "fresh",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "sympy__sympy-12419": {
+     "group": "unseen",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 1
+    },
+    "sympy__sympy-12481": {
+     "group": "fresh",
+     "candidates": 2,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "sympy__sympy-13031": {
+     "group": "fresh",
+     "candidates": 2,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    },
+    "sympy__sympy-13043": {
+     "group": "unseen",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 5
+    },
+    "sympy__sympy-13177": {
+     "group": "unseen",
+     "candidates": 1,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 1
+    },
+    "sympy__sympy-13437": {
+     "group": "fresh",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 4
+    },
+    "sympy__sympy-13480": {
+     "group": "seen",
+     "candidates": 2,
+     "complete": true,
+     "resolved": 2,
+     "chosen_resolved": true,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located",
+      "located"
+     ],
+     "resolved_votes": [
+      6,
+      6
+     ],
+     "top_votes": 6
+    },
+    "sympy__sympy-13773": {
+     "group": "seen",
+     "candidates": 8,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 5
+    },
+    "sympy__sympy-13971": {
+     "group": "unseen",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 1
+    },
+    "sympy__sympy-14308": {
+     "group": "fresh",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 8
+    },
+    "sympy__sympy-14317": {
+     "group": "fresh",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    },
+    "sympy__sympy-14774": {
+     "group": "seen",
+     "candidates": 1,
+     "complete": true,
+     "resolved": 1,
+     "chosen_resolved": true,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located"
+     ],
+     "resolved_votes": [
+      6
+     ],
+     "top_votes": 6
+    },
+    "sympy__sympy-15011": {
+     "group": "fresh",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    },
+    "sympy__sympy-15308": {
+     "group": "unseen",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 1
+    },
+    "sympy__sympy-15345": {
+     "group": "seen",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 1,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located"
+     ],
+     "resolved_votes": [
+      3
+     ],
+     "top_votes": 3
+    },
+    "sympy__sympy-15609": {
+     "group": "unseen",
+     "candidates": 2,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 1
+    },
+    "sympy__sympy-15678": {
+     "group": "fresh",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "sympy__sympy-16281": {
+     "group": "fresh",
+     "candidates": 2,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 1
+    },
+    "sympy__sympy-16988": {
+     "group": "unseen",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "sympy__sympy-17022": {
+     "group": "fresh",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 5
+    },
+    "sympy__sympy-17139": {
+     "group": "seen",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 5
+    },
+    "sympy__sympy-17630": {
+     "group": "unseen",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 1
+    },
+    "sympy__sympy-17655": {
+     "group": "unseen",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 3,
+     "chosen_resolved": true,
+     "best_f2p": 2,
+     "resolved_where": [
+      "located",
+      "located",
+      "located"
+     ],
+     "resolved_votes": [
+      2,
+      1,
+      1
+     ],
+     "top_votes": 2
+    },
+    "sympy__sympy-18057": {
+     "group": "fresh",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 2,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located",
+      "located"
+     ],
+     "resolved_votes": [
+      3,
+      3
+     ],
+     "top_votes": 3
+    },
+    "sympy__sympy-18189": {
+     "group": "fresh",
+     "candidates": 1,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 1
+    },
+    "sympy__sympy-18199": {
+     "group": "unseen",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 1
+    },
+    "sympy__sympy-18621": {
+     "group": "fresh",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 6
+    },
+    "sympy__sympy-19254": {
+     "group": "fresh",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 5
+    },
+    "sympy__sympy-20154": {
+     "group": "unseen",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    },
+    "sympy__sympy-20442": {
+     "group": "unseen",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 1
+    },
+    "sympy__sympy-20590": {
+     "group": "unseen",
+     "candidates": 2,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 1
+    },
+    "sympy__sympy-20639": {
+     "group": "fresh",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 6
+    },
+    "sympy__sympy-21055": {
+     "group": "fresh",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 6
+    },
+    "sympy__sympy-21171": {
+     "group": "unseen",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    },
+    "sympy__sympy-21379": {
+     "group": "fresh",
+     "candidates": 1,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 1
+    },
+    "sympy__sympy-21612": {
+     "group": "fresh",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 5
+    },
+    "sympy__sympy-21614": {
+     "group": "unseen",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 1,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located"
+     ],
+     "resolved_votes": [
+      1
+     ],
+     "top_votes": 2
+    },
+    "sympy__sympy-21627": {
+     "group": "unseen",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 1
+    },
+    "sympy__sympy-21847": {
+     "group": "fresh",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 1,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located"
+     ],
+     "resolved_votes": [
+      1
+     ],
+     "top_votes": 2
+    },
+    "sympy__sympy-22714": {
+     "group": "fresh",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 2,
+     "chosen_resolved": true,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located",
+      "located"
+     ],
+     "resolved_votes": [
+      2,
+      2
+     ],
+     "top_votes": 2
+    },
+    "sympy__sympy-23191": {
+     "group": "unseen",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 1
+    },
+    "sympy__sympy-23262": {
+     "group": "unseen",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 4,
+     "chosen_resolved": true,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located",
+      "located",
+      "located",
+      "located"
+     ],
+     "resolved_votes": [
+      1,
+      1,
+      1,
+      1
+     ],
+     "top_votes": 1
+    },
+    "sympy__sympy-24909": {
+     "group": "unseen",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 1
+    }
+   }
+  },
+  "v2": {
+   "patches": "runs\\layer4_v2",
+   "scores": {
+    "mwaskom__seaborn-2848": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "48/50",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "48/50",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "50/50",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "50/50",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "50/50",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "mwaskom__seaborn-3010": {
+     "0": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "2/2",
+      "applied": true,
+      "reused": true
+     },
+     "7": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     }
+    },
+    "mwaskom__seaborn-3190": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/84",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "38/84",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/84",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "84/84",
+      "applied": true,
+      "reused": true
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "37/84",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "37/84",
+      "applied": true,
+      "error": null
+     }
+    },
+    "mwaskom__seaborn-3407": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "118/120",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "111/120",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "116/120",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "reused": true
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "117/120",
+      "applied": true,
+      "error": null
+     }
+    },
+    "pallets__flask-4045": {
+     "0": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "50/50",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "41/50",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "50/50",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "50/50",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "50/50",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "50/50",
+      "applied": true,
+      "error": null
+     }
+    },
+    "pallets__flask-4992": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "applied": true,
+      "reused": true
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "applied": true,
+      "error": null
+     }
+    },
+    "pallets__flask-5063": {
+     "1": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "52/54",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "52/54",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "52/54",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "52/54",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "52/54",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "52/54",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-11400": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "29/29",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "29/29",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "29/29",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "29/29",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "29/29",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "25/29",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-12171": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/8",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/8",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/8",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "0/8",
+      "applied": true,
+      "error": "no parseable test output"
+     }
+    },
+    "sympy__sympy-12419": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "25/25",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "25/25",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/25",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "25/25",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "25/25",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "25/25",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "25/25",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-12481": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/7",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "7/7",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/7",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/7",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-13031": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "applied": true,
+      "reused": true
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-13043": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "1/1",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "1/1",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "1/1",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "1/1",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-13177": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "75/75",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "75/75",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "75/75",
+      "applied": true,
+      "reused": true
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "75/75",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "75/75",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "75/75",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "75/75",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-13437": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "14/15",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "14/15",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "14/15",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "14/15",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "reused": true
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-13480": {
+     "0": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "43/43",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-13773": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-13971": {
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "102/102",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "102/102",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "102/102",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-14308": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "113/113",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-14317": {
+     "1": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "80/116",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "95/116",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "80/116",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "112/116",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "112/116",
+      "applied": true,
+      "reused": true
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "112/116",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "80/116",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-14774": {
+     "0": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "114/114",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "114/114",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-15011": {
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "53/53",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "10/53",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "10/53",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-15308": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/120",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/120",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/120",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-15345": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "5/8",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "5/8",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-15609": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "121/121",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "121/121",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "121/121",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-15678": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "reused": true
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-16281": {
+     "4": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "120/120",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "120/120",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-16988": {
+     "0": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "71/72",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "71/72",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "72/72",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-17022": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-17139": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "67/67",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "67/67",
+      "applied": true,
+      "reused": true
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "67/67",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "53/67",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-17630": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "19/19",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "12/19",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "19/19",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "19/19",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "19/19",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "17/19",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-17655": {
+     "0": {
+      "resolved": true,
+      "f2p": "2/2",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "8/9",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": true,
+      "f2p": "2/2",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "9/9",
+      "applied": true,
+      "reused": true
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "0/9",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-18057": {
+     "0": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "98/98",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "96/98",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "0/98",
+      "applied": true,
+      "error": "no parseable test output"
+     }
+    },
+    "sympy__sympy-18189": {
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "41/41",
+      "applied": true,
+      "reused": true
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "41/41",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-18199": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-18621": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-19254": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "16/18",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-20154": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "40/40",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "40/40",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": true,
+      "f2p": "2/2",
+      "p2p": "40/40",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "38/40",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "40/40",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "40/40",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-20442": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/24",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/24",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/24",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "21/24",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "21/24",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/24",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-20590": {
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "0/21",
+      "applied": true,
+      "error": "no parseable test output"
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "21/21",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-20639": {
+     "0": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "138/139",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "138/139",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "138/139",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-21055": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-21171": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "152/152",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "152/152",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "152/152",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "152/152",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-21379": {
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "84/91",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "84/91",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "91/91",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "91/91",
+      "applied": true,
+      "reused": true
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "91/91",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-21612": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-21614": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/6",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/6",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/6",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/6",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/6",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-21627": {
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "11/26",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "26/26",
+      "applied": true,
+      "reused": true
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "10/26",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "11/26",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "11/26",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-21847": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-22714": {
+     "1": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "11/11",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "1/1",
+      "p2p": "10/11",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/11",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "0/11",
+      "applied": true,
+      "error": "no parseable test output"
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/11",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-23191": {
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/3",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/3",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/3",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-23262": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "61/61",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "61/61",
+      "applied": true,
+      "reused": true
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "60/61",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "60/61",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-24909": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/2",
+      "applied": true,
+      "reused": true
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     }
+    }
+   },
+   "summary": {
+    "all": {
+     "bugs": 52,
+     "candidates": 243,
+     "candidates_resolved": 15,
+     "any_resolved": 10,
+     "chosen_resolved": 5,
+     "lost_by_selection": 5,
+     "never_generated": 42,
+     "any_f2p_fixed": 14,
+     "incomplete": 0
+    },
+    "unseen": {
+     "bugs": 19,
+     "candidates": 90,
+     "candidates_resolved": 4,
+     "any_resolved": 3,
+     "chosen_resolved": 1,
+     "lost_by_selection": 2,
+     "never_generated": 16,
+     "any_f2p_fixed": 4,
+     "incomplete": 0
+    },
+    "fresh": {
+     "bugs": 20,
+     "candidates": 94,
+     "candidates_resolved": 5,
+     "any_resolved": 4,
+     "chosen_resolved": 1,
+     "lost_by_selection": 3,
+     "never_generated": 16,
+     "any_f2p_fixed": 5,
+     "incomplete": 0
+    },
+    "seen": {
+     "bugs": 13,
+     "candidates": 59,
+     "candidates_resolved": 6,
+     "any_resolved": 3,
+     "chosen_resolved": 3,
+     "lost_by_selection": 0,
+     "never_generated": 10,
+     "any_f2p_fixed": 5,
+     "incomplete": 0
+    }
+   },
+   "instances": {
+    "mwaskom__seaborn-2848": {
+     "group": "seen",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 5
+    },
+    "mwaskom__seaborn-3010": {
+     "group": "seen",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 3,
+     "chosen_resolved": true,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located",
+      "located",
+      "located"
+     ],
+     "resolved_votes": [
+      8,
+      8,
+      8
+     ],
+     "top_votes": 8
+    },
+    "mwaskom__seaborn-3190": {
+     "group": "seen",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "mwaskom__seaborn-3407": {
+     "group": "seen",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "pallets__flask-4045": {
+     "group": "seen",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "pallets__flask-4992": {
+     "group": "seen",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "pallets__flask-5063": {
+     "group": "seen",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 6
+    },
+    "sympy__sympy-11400": {
+     "group": "seen",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 4
+    },
+    "sympy__sympy-12171": {
+     "group": "fresh",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 6
+    },
+    "sympy__sympy-12419": {
+     "group": "unseen",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 6
+    },
+    "sympy__sympy-12481": {
+     "group": "fresh",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 1,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located"
+     ],
+     "resolved_votes": [
+      6
+     ],
+     "top_votes": 6
+    },
+    "sympy__sympy-13031": {
+     "group": "fresh",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "sympy__sympy-13043": {
+     "group": "unseen",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 8
+    },
+    "sympy__sympy-13177": {
+     "group": "unseen",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 4
+    },
+    "sympy__sympy-13437": {
+     "group": "fresh",
+     "candidates": 8,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 4
+    },
+    "sympy__sympy-13480": {
+     "group": "seen",
+     "candidates": 1,
+     "complete": true,
+     "resolved": 1,
+     "chosen_resolved": true,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located"
+     ],
+     "resolved_votes": [
+      8
+     ],
+     "top_votes": 8
+    },
+    "sympy__sympy-13773": {
+     "group": "seen",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 8
+    },
+    "sympy__sympy-13971": {
+     "group": "unseen",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    },
+    "sympy__sympy-14308": {
+     "group": "fresh",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 7
+    },
+    "sympy__sympy-14317": {
+     "group": "fresh",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    },
+    "sympy__sympy-14774": {
+     "group": "seen",
+     "candidates": 2,
+     "complete": true,
+     "resolved": 2,
+     "chosen_resolved": true,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located",
+      "located"
+     ],
+     "resolved_votes": [
+      8,
+      8
+     ],
+     "top_votes": 8
+    },
+    "sympy__sympy-15011": {
+     "group": "fresh",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    },
+    "sympy__sympy-15308": {
+     "group": "unseen",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 5
+    },
+    "sympy__sympy-15345": {
+     "group": "seen",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 1
+    },
+    "sympy__sympy-15609": {
+     "group": "unseen",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 5
+    },
+    "sympy__sympy-15678": {
+     "group": "fresh",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 4
+    },
+    "sympy__sympy-16281": {
+     "group": "fresh",
+     "candidates": 2,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "sympy__sympy-16988": {
+     "group": "unseen",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 4
+    },
+    "sympy__sympy-17022": {
+     "group": "fresh",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 6
+    },
+    "sympy__sympy-17139": {
+     "group": "seen",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 4
+    },
+    "sympy__sympy-17630": {
+     "group": "unseen",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 5
+    },
+    "sympy__sympy-17655": {
+     "group": "unseen",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 2,
+     "chosen_resolved": false,
+     "best_f2p": 2,
+     "resolved_where": [
+      "located",
+      "located"
+     ],
+     "resolved_votes": [
+      6,
+      6
+     ],
+     "top_votes": 6
+    },
+    "sympy__sympy-18057": {
+     "group": "fresh",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 1,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located"
+     ],
+     "resolved_votes": [
+      2
+     ],
+     "top_votes": 2
+    },
+    "sympy__sympy-18189": {
+     "group": "fresh",
+     "candidates": 2,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "sympy__sympy-18199": {
+     "group": "unseen",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 8
+    },
+    "sympy__sympy-18621": {
+     "group": "fresh",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 8
+    },
+    "sympy__sympy-19254": {
+     "group": "fresh",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 6
+    },
+    "sympy__sympy-20154": {
+     "group": "unseen",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 1,
+     "chosen_resolved": false,
+     "best_f2p": 2,
+     "resolved_where": [
+      "located"
+     ],
+     "resolved_votes": [
+      8
+     ],
+     "top_votes": 8
+    },
+    "sympy__sympy-20442": {
+     "group": "unseen",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 5
+    },
+    "sympy__sympy-20590": {
+     "group": "unseen",
+     "candidates": 2,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 1
+    },
+    "sympy__sympy-20639": {
+     "group": "fresh",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 8
+    },
+    "sympy__sympy-21055": {
+     "group": "fresh",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "sympy__sympy-21171": {
+     "group": "unseen",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 5
+    },
+    "sympy__sympy-21379": {
+     "group": "fresh",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    },
+    "sympy__sympy-21612": {
+     "group": "fresh",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 8
+    },
+    "sympy__sympy-21614": {
+     "group": "unseen",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 5
+    },
+    "sympy__sympy-21627": {
+     "group": "unseen",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 4
+    },
+    "sympy__sympy-21847": {
+     "group": "fresh",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 2,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located",
+      "located"
+     ],
+     "resolved_votes": [
+      1,
+      1
+     ],
+     "top_votes": 1
+    },
+    "sympy__sympy-22714": {
+     "group": "fresh",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 1,
+     "chosen_resolved": true,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located"
+     ],
+     "resolved_votes": [
+      2
+     ],
+     "top_votes": 2
+    },
+    "sympy__sympy-23191": {
+     "group": "unseen",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 4
+    },
+    "sympy__sympy-23262": {
+     "group": "unseen",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 1,
+     "chosen_resolved": true,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located"
+     ],
+     "resolved_votes": [
+      2
+     ],
+     "top_votes": 2
+    },
+    "sympy__sympy-24909": {
+     "group": "unseen",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    }
+   }
+  },
+  "v3": {
+   "patches": "runs\\layer4_v3",
+   "scores": {
+    "mwaskom__seaborn-2848": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "48/50",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "0/50",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "0/50",
+      "applied": true,
+      "error": "no parseable test output (no_tests_collected)"
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "48/50",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "50/50",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "mwaskom__seaborn-3010": {
+     "0": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "2/2",
+      "applied": true,
+      "reused": true
+     },
+     "6": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     }
+    },
+    "mwaskom__seaborn-3190": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/84",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/84",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "84/84",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "71/84",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "84/84",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "84/84",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "84/84",
+      "applied": true,
+      "error": null
+     }
+    },
+    "mwaskom__seaborn-3407": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "106/120",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "106/120",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "118/120",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "116/120",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "pallets__flask-4045": {
+     "0": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "50/50",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "50/50",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "41/50",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "50/50",
+      "applied": true,
+      "error": null
+     }
+    },
+    "pallets__flask-4992": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "applied": true,
+      "reused": true
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "17/18",
+      "applied": true,
+      "error": null
+     }
+    },
+    "pallets__flask-5063": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "52/54",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "52/54",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "52/54",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "52/54",
+      "applied": true,
+      "reused": true
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "52/54",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "52/54",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "52/54",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-11400": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "29/29",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "29/29",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "29/29",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "28/29",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "29/29",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-12171": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/8",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "reused": true
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "5/8",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-12419": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "25/25",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/25",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "25/25",
+      "applied": true,
+      "reused": true
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "25/25",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/25",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "25/25",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "25/25",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-12481": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/7",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "0/7",
+      "applied": true,
+      "error": "no parseable test output"
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/7",
+      "applied": true,
+      "reused": true
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/7",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/7",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/7",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-13031": {
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "applied": true,
+      "reused": true
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-13043": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "1/1",
+      "applied": true,
+      "reused": true
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "1/1",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-13177": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "75/75",
+      "applied": true,
+      "reused": true
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "75/75",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-13437": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "14/15",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-13480": {
+     "0": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "43/43",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "43/43",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "42/43",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "43/43",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "43/43",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-13773": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-13971": {
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "102/102",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-14308": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "92/113",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "113/113",
+      "applied": true,
+      "reused": true
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-14317": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "80/116",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "1/116",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "79/116",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "112/116",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "79/116",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "112/116",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "112/116",
+      "applied": true,
+      "reused": true
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "112/116",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-14774": {
+     "0": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "114/114",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "114/114",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-15011": {
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "10/53",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "51/53",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "50/53",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/53",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "51/53",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-15308": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/120",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/120",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "reused": true
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-15345": {
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "reused": true
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "5/8",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/8",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-15609": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "121/121",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "121/121",
+      "applied": true,
+      "reused": true
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "121/121",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "121/121",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-15678": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-16281": {},
+    "sympy__sympy-16988": {
+     "0": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "71/72",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "32/72",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "56/72",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "2/2",
+      "p2p": "71/72",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-17022": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-17139": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "67/67",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "65/67",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "67/67",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "67/67",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "67/67",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-17630": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "14/19",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "19/19",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "11/19",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "16/19",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "12/19",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "16/19",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-17655": {
+     "0": {
+      "resolved": true,
+      "f2p": "2/2",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": true,
+      "f2p": "2/2",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "9/9",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-18057": {
+     "0": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "98/98",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "98/98",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "0/98",
+      "applied": true,
+      "error": "no parseable test output"
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/98",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-18189": {
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "41/41",
+      "applied": true,
+      "reused": true
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "25/41",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "25/41",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-18199": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-18621": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "11/15",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "reused": true
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-19254": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "11/18",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "16/18",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "16/18",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "16/18",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-20154": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "40/40",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "40/40",
+      "applied": true,
+      "error": null
+     },
+     "8": {
+      "resolved": true,
+      "f2p": "2/2",
+      "p2p": "40/40",
+      "applied": true,
+      "reused": true
+     },
+     "9": {
+      "resolved": true,
+      "f2p": "2/2",
+      "p2p": "40/40",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-20442": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/24",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/24",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "22/24",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/24",
+      "applied": true,
+      "reused": true
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "20/24",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "22/24",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "21/24",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-20590": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "0/21",
+      "applied": true,
+      "error": "no parseable test output"
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "0/21",
+      "applied": true,
+      "error": "no parseable test output"
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "21/21",
+      "applied": true,
+      "reused": true
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "21/21",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "0/21",
+      "applied": true,
+      "error": "no parseable test output"
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "21/21",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-20639": {
+     "0": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "138/139",
+      "applied": true,
+      "reused": true
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "138/139",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-21055": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "error": null
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-21171": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "152/152",
+      "applied": true,
+      "reused": true
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "152/152",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-21379": {
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "91/91",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "91/91",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "84/91",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "91/91",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-21612": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-21614": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/6",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/6",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/6",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/6",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-21627": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "11/26",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "0/26",
+      "applied": true,
+      "error": "no parseable test output"
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "0/26",
+      "applied": true,
+      "error": "no parseable test output"
+     },
+     "4": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "26/26",
+      "applied": true,
+      "reused": true
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "26/26",
+      "applied": true,
+      "error": null
+     },
+     "6": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "0/26",
+      "applied": true,
+      "error": "no parseable test output"
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "11/26",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-21847": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "applied": true,
+      "reused": true
+     },
+     "1": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "9/9",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-22714": {
+     "1": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "11/11",
+      "applied": true,
+      "reused": true
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "10/11",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-23191": {
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/3",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "applied": true,
+      "error": null
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/3",
+      "applied": true,
+      "error": null
+     },
+     "7": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/3",
+      "applied": true,
+      "reused": true
+     }
+    },
+    "sympy__sympy-23262": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "52/61",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "61/61",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "61/61",
+      "applied": true,
+      "reused": true
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "60/61",
+      "applied": true,
+      "error": null
+     }
+    },
+    "sympy__sympy-24909": {
+     "0": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     },
+     "1": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     },
+     "2": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     },
+     "3": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/2",
+      "applied": true,
+      "reused": true
+     },
+     "5": {
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/2",
+      "applied": true,
+      "error": null
+     }
+    }
+   },
+   "summary": {
+    "all": {
+     "bugs": 52,
+     "candidates": 243,
+     "candidates_resolved": 17,
+     "any_resolved": 10,
+     "chosen_resolved": 6,
+     "lost_by_selection": 4,
+     "never_generated": 42,
+     "any_f2p_fixed": 14,
+     "incomplete": 0
+    },
+    "unseen": {
+     "bugs": 19,
+     "candidates": 87,
+     "candidates_resolved": 5,
+     "any_resolved": 3,
+     "chosen_resolved": 2,
+     "lost_by_selection": 1,
+     "never_generated": 16,
+     "any_f2p_fixed": 4,
+     "incomplete": 0
+    },
+    "fresh": {
+     "bugs": 20,
+     "candidates": 94,
+     "candidates_resolved": 5,
+     "any_resolved": 3,
+     "chosen_resolved": 1,
+     "lost_by_selection": 2,
+     "never_generated": 17,
+     "any_f2p_fixed": 4,
+     "incomplete": 0
+    },
+    "new": {
+     "bugs": 0,
+     "candidates": 0,
+     "candidates_resolved": 0,
+     "any_resolved": 0,
+     "chosen_resolved": 0,
+     "lost_by_selection": 0,
+     "never_generated": 0,
+     "any_f2p_fixed": 0,
+     "incomplete": 0
+    },
+    "seen": {
+     "bugs": 13,
+     "candidates": 62,
+     "candidates_resolved": 7,
+     "any_resolved": 4,
+     "chosen_resolved": 3,
+     "lost_by_selection": 1,
+     "never_generated": 9,
+     "any_f2p_fixed": 6,
+     "incomplete": 0
+    }
+   },
+   "instances": {
+    "mwaskom__seaborn-2848": {
+     "group": "seen",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 4
+    },
+    "mwaskom__seaborn-3010": {
+     "group": "seen",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 3,
+     "chosen_resolved": true,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located",
+      "located",
+      "located"
+     ],
+     "resolved_votes": [
+      6,
+      6,
+      1
+     ],
+     "top_votes": 6
+    },
+    "mwaskom__seaborn-3190": {
+     "group": "seen",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 1,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located"
+     ],
+     "resolved_votes": [
+      1
+     ],
+     "top_votes": 6
+    },
+    "mwaskom__seaborn-3407": {
+     "group": "seen",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 4
+    },
+    "pallets__flask-4045": {
+     "group": "seen",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "pallets__flask-4992": {
+     "group": "seen",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 6
+    },
+    "pallets__flask-5063": {
+     "group": "seen",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 7
+    },
+    "sympy__sympy-11400": {
+     "group": "seen",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "sympy__sympy-12171": {
+     "group": "fresh",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 4
+    },
+    "sympy__sympy-12419": {
+     "group": "unseen",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 5
+    },
+    "sympy__sympy-12481": {
+     "group": "fresh",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 6
+    },
+    "sympy__sympy-13031": {
+     "group": "fresh",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    },
+    "sympy__sympy-13043": {
+     "group": "unseen",
+     "candidates": 2,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 7
+    },
+    "sympy__sympy-13177": {
+     "group": "unseen",
+     "candidates": 2,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 8
+    },
+    "sympy__sympy-13437": {
+     "group": "fresh",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    },
+    "sympy__sympy-13480": {
+     "group": "seen",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 1,
+     "chosen_resolved": true,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located"
+     ],
+     "resolved_votes": [
+      3
+     ],
+     "top_votes": 3
+    },
+    "sympy__sympy-13773": {
+     "group": "seen",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 7
+    },
+    "sympy__sympy-13971": {
+     "group": "unseen",
+     "candidates": 1,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 1
+    },
+    "sympy__sympy-14308": {
+     "group": "fresh",
+     "candidates": 8,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 8
+    },
+    "sympy__sympy-14317": {
+     "group": "fresh",
+     "candidates": 8,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    },
+    "sympy__sympy-14774": {
+     "group": "seen",
+     "candidates": 2,
+     "complete": true,
+     "resolved": 2,
+     "chosen_resolved": true,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located",
+      "located"
+     ],
+     "resolved_votes": [
+      8,
+      8
+     ],
+     "top_votes": 8
+    },
+    "sympy__sympy-15011": {
+     "group": "fresh",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 4
+    },
+    "sympy__sympy-15308": {
+     "group": "unseen",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 6
+    },
+    "sympy__sympy-15345": {
+     "group": "seen",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "sympy__sympy-15609": {
+     "group": "unseen",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 4
+    },
+    "sympy__sympy-15678": {
+     "group": "fresh",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    },
+    "sympy__sympy-16281": {
+     "group": "fresh",
+     "candidates": 0,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 0
+    },
+    "sympy__sympy-16988": {
+     "group": "unseen",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 2,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    },
+    "sympy__sympy-17022": {
+     "group": "fresh",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 5
+    },
+    "sympy__sympy-17139": {
+     "group": "seen",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 5
+    },
+    "sympy__sympy-17630": {
+     "group": "unseen",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    },
+    "sympy__sympy-17655": {
+     "group": "unseen",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 2,
+     "chosen_resolved": false,
+     "best_f2p": 2,
+     "resolved_where": [
+      "located",
+      "located"
+     ],
+     "resolved_votes": [
+      6,
+      6
+     ],
+     "top_votes": 6
+    },
+    "sympy__sympy-18057": {
+     "group": "fresh",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 2,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located",
+      "located"
+     ],
+     "resolved_votes": [
+      2,
+      3
+     ],
+     "top_votes": 3
+    },
+    "sympy__sympy-18189": {
+     "group": "fresh",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "sympy__sympy-18199": {
+     "group": "unseen",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 8
+    },
+    "sympy__sympy-18621": {
+     "group": "fresh",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 5
+    },
+    "sympy__sympy-19254": {
+     "group": "fresh",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 6
+    },
+    "sympy__sympy-20154": {
+     "group": "unseen",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 2,
+     "chosen_resolved": true,
+     "best_f2p": 2,
+     "resolved_where": [
+      "located",
+      "located"
+     ],
+     "resolved_votes": [
+      8,
+      8
+     ],
+     "top_votes": 8
+    },
+    "sympy__sympy-20442": {
+     "group": "unseen",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "sympy__sympy-20590": {
+     "group": "unseen",
+     "candidates": 6,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "sympy__sympy-20639": {
+     "group": "fresh",
+     "candidates": 2,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 8
+    },
+    "sympy__sympy-21055": {
+     "group": "fresh",
+     "candidates": 8,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 7
+    },
+    "sympy__sympy-21171": {
+     "group": "unseen",
+     "candidates": 2,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "sympy__sympy-21379": {
+     "group": "fresh",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    },
+    "sympy__sympy-21612": {
+     "group": "fresh",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 7
+    },
+    "sympy__sympy-21614": {
+     "group": "unseen",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "sympy__sympy-21627": {
+     "group": "unseen",
+     "candidates": 7,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 3
+    },
+    "sympy__sympy-21847": {
+     "group": "fresh",
+     "candidates": 3,
+     "complete": true,
+     "resolved": 2,
+     "chosen_resolved": false,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located",
+      "located"
+     ],
+     "resolved_votes": [
+      1,
+      1
+     ],
+     "top_votes": 2
+    },
+    "sympy__sympy-22714": {
+     "group": "fresh",
+     "candidates": 2,
+     "complete": true,
+     "resolved": 1,
+     "chosen_resolved": true,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located"
+     ],
+     "resolved_votes": [
+      1
+     ],
+     "top_votes": 1
+    },
+    "sympy__sympy-23191": {
+     "group": "unseen",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 5
+    },
+    "sympy__sympy-23262": {
+     "group": "unseen",
+     "candidates": 4,
+     "complete": true,
+     "resolved": 1,
+     "chosen_resolved": true,
+     "best_f2p": 1,
+     "resolved_where": [
+      "located"
+     ],
+     "resolved_votes": [
+      2
+     ],
+     "top_votes": 4
+    },
+    "sympy__sympy-24909": {
+     "group": "unseen",
+     "candidates": 5,
+     "complete": true,
+     "resolved": 0,
+     "chosen_resolved": false,
+     "best_f2p": 0,
+     "resolved_where": [],
+     "resolved_votes": [],
+     "top_votes": 2
+    }
+   }
+  }
+ }
+}

@@ -39,9 +39,24 @@ class Profile:
     tool_steps: int = 12        # tool mode: model turns allowed
     fix_rules: bool = False     # add prompts.FIX_RULES (context-engineering-v2 fix guidelines) to the system prompt
     candidates: int = 1         # >1 (JSON mode): sample this many candidates, filter by tests, vote (sample.py)
-    alt_locations: int = 2      # with candidates: how many go one each to the next suspect locations
+    # with candidates: how many go one each to the next suspect locations. 0: on the final 52-bug
+    # run none of the 50 candidates placed there resolved its bug (all 20 that did were at the located code)
+    alt_locations: int = 0
     line_hints: bool = True     # show the located lines that ran when the report's example failed
     repro: bool = True          # add the reproduction stage's kept tests (repro.json) to the checks
+    # with candidates: how tied candidates are ordered. "smallest" (the smaller patch) lost to a
+    # random pick on both 52-bug runs: the 4B model's typical miss is a fix of one of several
+    # identical sites, so the complete fix is the larger one. "size" prefers more changed code
+    # (docstrings, comments and formatting not counted).
+    tie_break: str = "smallest"
+    propagate: bool = False     # with candidates: also try each edit at the other identical places (edits.propagate)
+    hypotheses: int = 0         # with candidates: one thinking call names this many root causes, spread over the candidates
+    plain_candidates: int = 2   # ... the first this many candidates get no cause (as without hypotheses)
+    # ... the thinking call's budget for its reasoning; qwen3:4b often reasons past 4.7K tokens on a
+    # real bug, so the call is cut and answered from the reasoning so far (gains saturate near 2K
+    # reasoning tokens in Co-PatcheR, arXiv 2505.18955)
+    think_tokens: int = 2000
+    rewrite_hint: bool = False  # with candidates: a retry after a search mismatch may rewrite the whole function
 
 
 PROFILES = {

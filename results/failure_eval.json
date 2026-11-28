@@ -1,2902 +1,5804 @@
 {
- "summary": {
-  "label": "final",
-  "all": {
-   "bugs": 52,
-   "l1_gold_indexed": 50,
-   "l2_gold@8": 29,
-   "l2_gold@50": 36,
-   "l2_file@1": 26,
-   "trace_ran": 51,
-   "trace_gold_new": 33,
-   "trace_gold_frame": 12,
-   "l3_gold_shown_or_read": 36,
-   "l3_entity": 34,
-   "l3_file": 40,
-   "l4_targets_gold": 34,
-   "l4_any_candidate_on_gold": 31,
-   "l4_patch_on_gold": 26,
-   "l4_patch_on_gold_file": 35,
-   "l4_any_failing_test_fixed": 8,
-   "l4_all_failing_tests_fixed": 6,
-   "l4_no_regression": 47,
-   "l4_verified_locally": 3,
-   "resolved": 6,
-   "first_loss": {
-    "resolved": 6,
-    "L4 fix": 21,
-    "L1 index": 2,
-    "L4 location": 7,
-    "L3 choice": 8,
-    "L2 ranking": 2,
-    "L2 recall": 6
+ "runs": {
+  "final": {
+   "summary": {
+    "label": "final",
+    "all": {
+     "bugs": 52,
+     "l1_gold_indexed": 50,
+     "l2_gold@8": 29,
+     "l2_gold@50": 36,
+     "l2_file@1": 26,
+     "trace_ran": 51,
+     "trace_gold_new": 33,
+     "trace_gold_frame": 12,
+     "l3_gold_shown_or_read": 36,
+     "l3_entity": 34,
+     "l3_file": 40,
+     "l4_targets_gold": 34,
+     "l4_any_candidate_on_gold": 31,
+     "l4_patch_on_gold": 26,
+     "l4_patch_on_gold_file": 35,
+     "l4_any_failing_test_fixed": 8,
+     "l4_all_failing_tests_fixed": 6,
+     "l4_no_regression": 47,
+     "l4_verified_locally": 3,
+     "resolved": 6,
+     "first_loss": {
+      "resolved": 6,
+      "L4 fix": 21,
+      "L1 index": 2,
+      "L4 location": 7,
+      "L3 choice": 8,
+      "L2 ranking": 2,
+      "L2 recall": 6
+     },
+     "why": {
+      "L4 fix: fix_none": 19,
+      "L4 fix: fix_partial": 2,
+      "L4 location: a candidate edited gold": 5,
+      "L1 index: gold only adds new code": 2,
+      "L3 choice: read": 1,
+      "L4 location: no candidate edited gold": 2,
+      "L3 choice: trace only": 6,
+      "L3 choice: shown": 1
+     },
+     "vs_gold_all": {
+      "same_function": 24,
+      "same_file": 9,
+      "elsewhere": 17,
+      "identical": 2
+     },
+     "vs_gold_resolved": {
+      "same_file": 1,
+      "identical": 2,
+      "same_function": 3
+     }
+    },
+    "unseen": {
+     "bugs": 19,
+     "l1_gold_indexed": 19,
+     "l2_gold@8": 10,
+     "l2_gold@50": 14,
+     "l2_file@1": 9,
+     "trace_ran": 19,
+     "trace_gold_new": 14,
+     "trace_gold_frame": 2,
+     "l3_gold_shown_or_read": 12,
+     "l3_entity": 11,
+     "l3_file": 12,
+     "l4_targets_gold": 11,
+     "l4_any_candidate_on_gold": 10,
+     "l4_patch_on_gold": 8,
+     "l4_patch_on_gold_file": 9,
+     "l4_any_failing_test_fixed": 2,
+     "l4_all_failing_tests_fixed": 2,
+     "l4_no_regression": 19,
+     "l4_verified_locally": 0,
+     "resolved": 2,
+     "first_loss": {
+      "resolved": 2,
+      "L4 fix": 6,
+      "L1 index": 0,
+      "L4 location": 3,
+      "L3 choice": 6,
+      "L2 ranking": 1,
+      "L2 recall": 1
+     },
+     "why": {
+      "L3 choice: read": 1,
+      "L4 fix: fix_none": 6,
+      "L4 location: no candidate edited gold": 1,
+      "L4 location: a candidate edited gold": 2,
+      "L3 choice: trace only": 5
+     },
+     "vs_gold_all": {
+      "elsewhere": 10,
+      "same_function": 8,
+      "same_file": 1
+     },
+     "vs_gold_resolved": {
+      "same_function": 2
+     }
+    },
+    "fresh": {
+     "bugs": 20,
+     "l1_gold_indexed": 18,
+     "l2_gold@8": 9,
+     "l2_gold@50": 10,
+     "l2_file@1": 10,
+     "trace_ran": 20,
+     "trace_gold_new": 9,
+     "trace_gold_frame": 5,
+     "l3_gold_shown_or_read": 11,
+     "l3_entity": 10,
+     "l3_file": 15,
+     "l4_targets_gold": 10,
+     "l4_any_candidate_on_gold": 9,
+     "l4_patch_on_gold": 8,
+     "l4_patch_on_gold_file": 13,
+     "l4_any_failing_test_fixed": 2,
+     "l4_all_failing_tests_fixed": 1,
+     "l4_no_regression": 16,
+     "l4_verified_locally": 0,
+     "resolved": 1,
+     "first_loss": {
+      "resolved": 1,
+      "L4 fix": 7,
+      "L1 index": 2,
+      "L4 location": 2,
+      "L3 choice": 2,
+      "L2 ranking": 1,
+      "L2 recall": 5
+     },
+     "why": {
+      "L1 index: gold only adds new code": 2,
+      "L4 fix: fix_none": 6,
+      "L4 location: a candidate edited gold": 1,
+      "L3 choice: trace only": 1,
+      "L4 location: no candidate edited gold": 1,
+      "L4 fix: fix_partial": 1,
+      "L3 choice: shown": 1
+     },
+     "vs_gold_all": {
+      "same_file": 5,
+      "same_function": 8,
+      "elsewhere": 7
+     },
+     "vs_gold_resolved": {
+      "same_function": 1
+     }
+    },
+    "seen": {
+     "bugs": 13,
+     "l1_gold_indexed": 13,
+     "l2_gold@8": 10,
+     "l2_gold@50": 12,
+     "l2_file@1": 7,
+     "trace_ran": 12,
+     "trace_gold_new": 10,
+     "trace_gold_frame": 5,
+     "l3_gold_shown_or_read": 13,
+     "l3_entity": 13,
+     "l3_file": 13,
+     "l4_targets_gold": 13,
+     "l4_any_candidate_on_gold": 12,
+     "l4_patch_on_gold": 10,
+     "l4_patch_on_gold_file": 13,
+     "l4_any_failing_test_fixed": 4,
+     "l4_all_failing_tests_fixed": 3,
+     "l4_no_regression": 12,
+     "l4_verified_locally": 3,
+     "resolved": 3,
+     "first_loss": {
+      "resolved": 3,
+      "L4 fix": 8,
+      "L1 index": 0,
+      "L4 location": 2,
+      "L3 choice": 0,
+      "L2 ranking": 0,
+      "L2 recall": 0
+     },
+     "why": {
+      "L4 fix: fix_none": 7,
+      "L4 fix: fix_partial": 1,
+      "L4 location: a candidate edited gold": 2
+     },
+     "vs_gold_all": {
+      "same_function": 8,
+      "same_file": 3,
+      "identical": 2
+     },
+     "vs_gold_resolved": {
+      "same_file": 1,
+      "identical": 2
+     }
+    }
    },
-   "why": {
-    "L4 fix: fix_none": 19,
-    "L4 fix: fix_partial": 2,
-    "L4 location: a candidate edited gold": 5,
-    "L1 index: gold only adds new code": 2,
-    "L3 choice: read": 1,
-    "L4 location: no candidate edited gold": 2,
-    "L3 choice: trace only": 6,
-    "L3 choice: shown": 1
-   },
-   "vs_gold_all": {
-    "same_function": 24,
-    "same_file": 9,
-    "elsewhere": 17,
-    "identical": 2
-   },
-   "vs_gold_resolved": {
-    "same_file": 1,
-    "identical": 2,
-    "same_function": 3
-   }
+   "instances": [
+    {
+     "instance_id": "mwaskom__seaborn-2848",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 5,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": false,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 2,
+      "candidates_on_gold": 2,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "48/50",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": false
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 14,
+      "lines_gold": 2
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "seen"
+    },
+    {
+     "instance_id": "mwaskom__seaborn-3010",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 6,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": false,
+      "gold_shown": true,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 5,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "2/2",
+      "f2p_any": true,
+      "f2p_all": true,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_file",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 5
+     },
+     "first_loss": "resolved",
+     "why": null,
+     "group": "seen"
+    },
+    {
+     "instance_id": "mwaskom__seaborn-3190",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 3,
+      "file_rank": 2,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 3,
+      "candidates_on_gold": 3,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "84/84",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 2
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "seen"
+    },
+    {
+     "instance_id": "mwaskom__seaborn-3407",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "2/2"
+     },
+     "l2": {
+      "entity_rank": 4,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 6,
+      "candidates_on_gold": 6,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 4
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "seen"
+    },
+    {
+     "instance_id": "pallets__flask-4045",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "7/7"
+     },
+     "l2": {
+      "entity_rank": 4,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "no_code",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 6,
+      "candidates_on_gold": 4,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "50/50",
+      "f2p_any": true,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 12
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_partial",
+     "group": "seen"
+    },
+    {
+     "instance_id": "pallets__flask-4992",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "6/6"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 3,
+      "candidates_on_gold": 3,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.083,
+      "lines_ours": 3,
+      "lines_gold": 10
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "seen"
+    },
+    {
+     "instance_id": "pallets__flask-5063",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "23/27"
+     },
+     "l2": {
+      "entity_rank": 4,
+      "file_rank": 7,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 3,
+      "candidates_on_gold": 3,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "54/54",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.017,
+      "lines_ours": 2,
+      "lines_gold": 59
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "seen"
+    },
+    {
+     "instance_id": "sympy__sympy-11400",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 33,
+      "file_rank": 2,
+      "hit@8": false,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 5,
+      "candidates_on_gold": 1,
+      "patch_on_gold": false,
+      "patch_on_gold_file": true,
+      "verified": true,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "29/29",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_file",
+      "line_overlap": 0.071,
+      "lines_ours": 3,
+      "lines_gold": 12
+     },
+     "first_loss": "L4 location",
+     "why": "a candidate edited gold",
+     "group": "seen"
+    },
+    {
+     "instance_id": "sympy__sympy-12171",
+     "l1": {
+      "files": true,
+      "entity": false,
+      "lines_in_entity": "0/1"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 2,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": true,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 3,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/8",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": false
+     },
+     "vs_gold": {
+      "kind": "same_file",
+      "line_overlap": 0.0,
+      "lines_ours": 3,
+      "lines_gold": 2
+     },
+     "first_loss": "L1 index",
+     "why": "gold only adds new code",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-12419",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "4/6"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 5,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 6,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "25/25",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 3,
+      "lines_gold": 10
+     },
+     "first_loss": "L3 choice",
+     "why": "read",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-12481",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "6/6"
+     },
+     "l2": {
+      "entity_rank": 6,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 2,
+      "candidates_on_gold": 2,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/7",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.2,
+      "lines_ours": 10,
+      "lines_gold": 8
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-13031",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "4/4"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 5,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 2,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 8
+     },
+     "first_loss": "L2 recall",
+     "why": null,
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-13043",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "3/3"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 2,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 4,
+      "candidates_on_gold": 2,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "1/1",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.143,
+      "lines_ours": 2,
+      "lines_gold": 6
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-13177",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 5,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": false,
+      "gold_shown": true,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 1,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "75/75",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 3
+     },
+     "first_loss": "L4 location",
+     "why": "no candidate edited gold",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-13437",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 22,
+      "file_rank": 1,
+      "hit@8": false,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": true,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 5,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_file",
+      "line_overlap": 0.125,
+      "lines_ours": 2,
+      "lines_gold": 7
+     },
+     "first_loss": "L2 ranking",
+     "why": null,
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-13480",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 2,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 2,
+      "candidates_on_gold": 2,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": true,
+      "applied": true,
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "43/43",
+      "f2p_any": true,
+      "f2p_all": true,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "identical",
+      "line_overlap": 1.0,
+      "lines_ours": 2,
+      "lines_gold": 2
+     },
+     "first_loss": "resolved",
+     "why": null,
+     "group": "seen"
+    },
+    {
+     "instance_id": "sympy__sympy-13773",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "2/2"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 8,
+      "candidates_on_gold": 6,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 3,
+      "lines_gold": 6
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "seen"
+    },
+    {
+     "instance_id": "sympy__sympy-13971",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "2/2"
+     },
+     "l2": {
+      "entity_rank": 10,
+      "file_rank": 2,
+      "hit@8": false,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 4,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "102/102",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 3,
+      "lines_gold": 4
+     },
+     "first_loss": "L2 ranking",
+     "why": null,
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-14308",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "11/11"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 9,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": true,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 6,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "113/113",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 1,
+      "lines_gold": 36
+     },
+     "first_loss": "L2 recall",
+     "why": null,
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-14317",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 16,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": true,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 4,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "116/116",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_file",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 37
+     },
+     "first_loss": "L2 recall",
+     "why": null,
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-14774",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 6,
+      "file_rank": 2,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 1,
+      "candidates_on_gold": 1,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": true,
+      "applied": true,
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "114/114",
+      "f2p_any": true,
+      "f2p_all": true,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "identical",
+      "line_overlap": 1.0,
+      "lines_ours": 2,
+      "lines_gold": 2
+     },
+     "first_loss": "resolved",
+     "why": null,
+     "group": "seen"
+    },
+    {
+     "instance_id": "sympy__sympy-15011",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "4/4"
+     },
+     "l2": {
+      "entity_rank": 5,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 4,
+      "candidates_on_gold": 2,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "53/53",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 12
+     },
+     "first_loss": "L4 location",
+     "why": "a candidate edited gold",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-15308",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "2/2"
+     },
+     "l2": {
+      "entity_rank": 7,
+      "file_rank": 2,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": false,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 7,
+      "candidates_on_gold": 2,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 5,
+      "lines_gold": 6
+     },
+     "first_loss": "L4 location",
+     "why": "a candidate edited gold",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-15345",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/2"
+     },
+     "l2": {
+      "entity_rank": 8,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 5,
+      "candidates_on_gold": 1,
+      "patch_on_gold": false,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_file",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 3
+     },
+     "first_loss": "L4 location",
+     "why": "a candidate edited gold",
+     "group": "seen"
+    },
+    {
+     "instance_id": "sympy__sympy-15609",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 28,
+      "file_rank": 3,
+      "hit@8": false,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 2,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "121/121",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 197,
+      "lines_gold": 5
+     },
+     "first_loss": "L3 choice",
+     "why": "trace only",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-15678",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "3/3"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 7,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 3,
+      "candidates_on_gold": 1,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 0,
+      "lines_gold": 9
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-16281",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "4/4"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 24,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": true,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 2,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "120/120",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_file",
+      "line_overlap": 0.0,
+      "lines_ours": 9,
+      "lines_gold": 7
+     },
+     "first_loss": "L3 choice",
+     "why": "trace only",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-16988",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 21,
+      "file_rank": 1,
+      "hit@8": false,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 6,
+      "candidates_on_gold": 3,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "72/72",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 1,
+      "lines_gold": 2
+     },
+     "first_loss": "L4 location",
+     "why": "a candidate edited gold",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-17022",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": null,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 5,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 9,
+      "lines_gold": 6
+     },
+     "first_loss": "L2 recall",
+     "why": null,
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-17139",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 38,
+      "file_rank": 2,
+      "hit@8": false,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": false,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 4,
+      "candidates_on_gold": 4,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "67/67",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 2
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "seen"
+    },
+    {
+     "instance_id": "sympy__sympy-17630",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 2,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 4,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "19/19",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 5,
+      "lines_gold": 2
+     },
+     "first_loss": "L3 choice",
+     "why": "trace only",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-17655",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 6,
+      "candidates_on_gold": 4,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": true,
+      "f2p": "2/2",
+      "p2p": "9/9",
+      "f2p_any": true,
+      "f2p_all": true,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.042,
+      "lines_ours": 22,
+      "lines_gold": 3
+     },
+     "first_loss": "resolved",
+     "why": null,
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-18057",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 3,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": false,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 7,
+      "candidates_on_gold": 5,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.333,
+      "lines_ours": 2,
+      "lines_gold": 2
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-18189",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 2,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 1,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "39/41",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": false
+     },
+     "vs_gold": {
+      "kind": "same_file",
+      "line_overlap": 0.0,
+      "lines_ours": 5,
+      "lines_gold": 2
+     },
+     "first_loss": "L4 location",
+     "why": "no candidate edited gold",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-18199",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "4/6"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 7,
+      "candidates_on_gold": 6,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.02,
+      "lines_ours": 2,
+      "lines_gold": 49
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-18621",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 2,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": false,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 3,
+      "candidates_on_gold": 2,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 2
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-19254",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "5/6"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": false,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 4,
+      "candidates_on_gold": 2,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.023,
+      "lines_ours": 2,
+      "lines_gold": 43
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-20154",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "19/19"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 6,
+      "candidates_on_gold": 4,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "40/40",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.095,
+      "lines_ours": 4,
+      "lines_gold": 19
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-20442",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/2"
+     },
+     "l2": {
+      "entity_rank": 19,
+      "file_rank": 1,
+      "hit@8": false,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": true,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 7,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/24",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_file",
+      "line_overlap": 0.0,
+      "lines_ours": 5,
+      "lines_gold": 6
+     },
+     "first_loss": "L3 choice",
+     "why": "trace only",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-20590",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": null,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 2,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "21/21",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 37,
+      "lines_gold": 1
+     },
+     "first_loss": "L2 recall",
+     "why": null,
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-20639",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "12/12"
+     },
+     "l2": {
+      "entity_rank": 4,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 4,
+      "candidates_on_gold": 3,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "138/139",
+      "f2p_any": true,
+      "f2p_all": false,
+      "p2p_all": false
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.048,
+      "lines_ours": 2,
+      "lines_gold": 20
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_partial",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-21055",
+     "l1": {
+      "files": true,
+      "entity": false,
+      "lines_in_entity": "0/2"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 1,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 7,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.037,
+      "lines_ours": 8,
+      "lines_gold": 20
+     },
+     "first_loss": "L1 index",
+     "why": "gold only adds new code",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-21171",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "2/2"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 3,
+      "candidates_on_gold": 2,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "152/152",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.5,
+      "lines_ours": 2,
+      "lines_gold": 4
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-21379",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "5/5"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": null,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": true,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 1,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "86/91",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": false
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.04,
+      "lines_ours": 14,
+      "lines_gold": 12
+     },
+     "first_loss": "L3 choice",
+     "why": "shown",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-21612",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": null,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 4,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 2
+     },
+     "first_loss": "L2 recall",
+     "why": null,
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-21614",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 6,
+      "file_rank": 17,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 5,
+      "candidates_on_gold": 5,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/6",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.667,
+      "lines_ours": 2,
+      "lines_gold": 3
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-21627",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": null,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 3,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "26/26",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 9,
+      "lines_gold": 2
+     },
+     "first_loss": "L3 choice",
+     "why": "trace only",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-21847",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "2/2"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 4,
+      "candidates_on_gold": 3,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.167,
+      "lines_ours": 3,
+      "lines_gold": 4
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-22714",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 4,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": false,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 6,
+      "candidates_on_gold": 4,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "11/11",
+      "f2p_any": true,
+      "f2p_all": true,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.333,
+      "lines_ours": 2,
+      "lines_gold": 2
+     },
+     "first_loss": "resolved",
+     "why": null,
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-23191",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "11/11"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 34,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 3,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 3,
+      "lines_gold": 19
+     },
+     "first_loss": "L3 choice",
+     "why": "trace only",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-23262",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "2/2"
+     },
+     "l2": {
+      "entity_rank": 5,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 7,
+      "candidates_on_gold": 6,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "61/61",
+      "f2p_any": true,
+      "f2p_all": true,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 4
+     },
+     "first_loss": "resolved",
+     "why": null,
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-24909",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "4/5"
+     },
+     "l2": {
+      "entity_rank": 3,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 5,
+      "candidates_on_gold": 5,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/2",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.1,
+      "lines_ours": 2,
+      "lines_gold": 9
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "unseen"
+    }
+   ]
   },
-  "unseen": {
-   "bugs": 19,
-   "l1_gold_indexed": 19,
-   "l2_gold@8": 10,
-   "l2_gold@50": 14,
-   "l2_file@1": 9,
-   "trace_ran": 19,
-   "trace_gold_new": 14,
-   "trace_gold_frame": 2,
-   "l3_gold_shown_or_read": 12,
-   "l3_entity": 11,
-   "l3_file": 12,
-   "l4_targets_gold": 11,
-   "l4_any_candidate_on_gold": 10,
-   "l4_patch_on_gold": 8,
-   "l4_patch_on_gold_file": 9,
-   "l4_any_failing_test_fixed": 2,
-   "l4_all_failing_tests_fixed": 2,
-   "l4_no_regression": 19,
-   "l4_verified_locally": 0,
-   "resolved": 2,
-   "first_loss": {
-    "resolved": 2,
-    "L4 fix": 6,
-    "L1 index": 0,
-    "L4 location": 3,
-    "L3 choice": 6,
-    "L2 ranking": 1,
-    "L2 recall": 1
+  "v2": {
+   "summary": {
+    "label": "v2",
+    "all": {
+     "bugs": 52,
+     "l1_gold_indexed": 50,
+     "l2_gold@8": 29,
+     "l2_gold@50": 36,
+     "l2_file@1": 26,
+     "trace_ran": 51,
+     "trace_gold_new": 33,
+     "trace_gold_frame": 12,
+     "l3_gold_shown_or_read": 36,
+     "l3_entity": 34,
+     "l3_file": 40,
+     "l4_targets_gold": 34,
+     "l4_any_candidate_on_gold": 33,
+     "l4_patch_on_gold": 30,
+     "l4_patch_on_gold_file": 37,
+     "l4_any_failing_test_fixed": 8,
+     "l4_all_failing_tests_fixed": 5,
+     "l4_no_regression": 47,
+     "l4_verified_locally": 3,
+     "resolved": 5,
+     "first_loss": {
+      "resolved": 5,
+      "L4 fix": 26,
+      "L1 index": 2,
+      "L4 location": 3,
+      "L3 choice": 8,
+      "L2 ranking": 2,
+      "L2 recall": 6
+     },
+     "why": {
+      "L4 fix: fix_none": 23,
+      "L4 fix: fix_partial": 3,
+      "L4 location: a candidate edited gold": 3,
+      "L1 index: gold only adds new code": 2,
+      "L3 choice: read": 1,
+      "L3 choice: trace only": 6,
+      "L3 choice: shown": 1
+     },
+     "vs_gold_all": {
+      "same_function": 28,
+      "same_file": 7,
+      "elsewhere": 15,
+      "identical": 2
+     },
+     "vs_gold_resolved": {
+      "same_file": 1,
+      "identical": 2,
+      "same_function": 2
+     }
+    },
+    "unseen": {
+     "bugs": 19,
+     "l1_gold_indexed": 19,
+     "l2_gold@8": 10,
+     "l2_gold@50": 14,
+     "l2_file@1": 9,
+     "trace_ran": 19,
+     "trace_gold_new": 14,
+     "trace_gold_frame": 2,
+     "l3_gold_shown_or_read": 12,
+     "l3_entity": 11,
+     "l3_file": 12,
+     "l4_targets_gold": 11,
+     "l4_any_candidate_on_gold": 11,
+     "l4_patch_on_gold": 10,
+     "l4_patch_on_gold_file": 11,
+     "l4_any_failing_test_fixed": 1,
+     "l4_all_failing_tests_fixed": 1,
+     "l4_no_regression": 18,
+     "l4_verified_locally": 0,
+     "resolved": 1,
+     "first_loss": {
+      "resolved": 1,
+      "L4 fix": 9,
+      "L1 index": 0,
+      "L4 location": 1,
+      "L3 choice": 6,
+      "L2 ranking": 1,
+      "L2 recall": 1
+     },
+     "why": {
+      "L3 choice: read": 1,
+      "L4 fix: fix_none": 9,
+      "L4 location: a candidate edited gold": 1,
+      "L3 choice: trace only": 5
+     },
+     "vs_gold_all": {
+      "elsewhere": 8,
+      "same_function": 10,
+      "same_file": 1
+     },
+     "vs_gold_resolved": {
+      "same_function": 1
+     }
+    },
+    "fresh": {
+     "bugs": 20,
+     "l1_gold_indexed": 18,
+     "l2_gold@8": 9,
+     "l2_gold@50": 10,
+     "l2_file@1": 10,
+     "trace_ran": 20,
+     "trace_gold_new": 9,
+     "trace_gold_frame": 5,
+     "l3_gold_shown_or_read": 11,
+     "l3_entity": 10,
+     "l3_file": 15,
+     "l4_targets_gold": 10,
+     "l4_any_candidate_on_gold": 10,
+     "l4_patch_on_gold": 10,
+     "l4_patch_on_gold_file": 13,
+     "l4_any_failing_test_fixed": 2,
+     "l4_all_failing_tests_fixed": 1,
+     "l4_no_regression": 17,
+     "l4_verified_locally": 0,
+     "resolved": 1,
+     "first_loss": {
+      "resolved": 1,
+      "L4 fix": 9,
+      "L1 index": 2,
+      "L4 location": 0,
+      "L3 choice": 2,
+      "L2 ranking": 1,
+      "L2 recall": 5
+     },
+     "why": {
+      "L1 index: gold only adds new code": 2,
+      "L4 fix: fix_none": 8,
+      "L3 choice: trace only": 1,
+      "L4 fix: fix_partial": 1,
+      "L3 choice: shown": 1
+     },
+     "vs_gold_all": {
+      "same_file": 3,
+      "same_function": 10,
+      "elsewhere": 7
+     },
+     "vs_gold_resolved": {
+      "same_function": 1
+     }
+    },
+    "seen": {
+     "bugs": 13,
+     "l1_gold_indexed": 13,
+     "l2_gold@8": 10,
+     "l2_gold@50": 12,
+     "l2_file@1": 7,
+     "trace_ran": 12,
+     "trace_gold_new": 10,
+     "trace_gold_frame": 5,
+     "l3_gold_shown_or_read": 13,
+     "l3_entity": 13,
+     "l3_file": 13,
+     "l4_targets_gold": 13,
+     "l4_any_candidate_on_gold": 12,
+     "l4_patch_on_gold": 10,
+     "l4_patch_on_gold_file": 13,
+     "l4_any_failing_test_fixed": 5,
+     "l4_all_failing_tests_fixed": 3,
+     "l4_no_regression": 12,
+     "l4_verified_locally": 3,
+     "resolved": 3,
+     "first_loss": {
+      "resolved": 3,
+      "L4 fix": 8,
+      "L1 index": 0,
+      "L4 location": 2,
+      "L3 choice": 0,
+      "L2 ranking": 0,
+      "L2 recall": 0
+     },
+     "why": {
+      "L4 fix: fix_none": 6,
+      "L4 fix: fix_partial": 2,
+      "L4 location: a candidate edited gold": 2
+     },
+     "vs_gold_all": {
+      "same_function": 8,
+      "same_file": 3,
+      "identical": 2
+     },
+     "vs_gold_resolved": {
+      "same_file": 1,
+      "identical": 2
+     }
+    }
    },
-   "why": {
-    "L3 choice: read": 1,
-    "L4 fix: fix_none": 6,
-    "L4 location: no candidate edited gold": 1,
-    "L4 location: a candidate edited gold": 2,
-    "L3 choice: trace only": 5
-   },
-   "vs_gold_all": {
-    "elsewhere": 10,
-    "same_function": 8,
-    "same_file": 1
-   },
-   "vs_gold_resolved": {
-    "same_function": 2
-   }
-  },
-  "fresh": {
-   "bugs": 20,
-   "l1_gold_indexed": 18,
-   "l2_gold@8": 9,
-   "l2_gold@50": 10,
-   "l2_file@1": 10,
-   "trace_ran": 20,
-   "trace_gold_new": 9,
-   "trace_gold_frame": 5,
-   "l3_gold_shown_or_read": 11,
-   "l3_entity": 10,
-   "l3_file": 15,
-   "l4_targets_gold": 10,
-   "l4_any_candidate_on_gold": 9,
-   "l4_patch_on_gold": 8,
-   "l4_patch_on_gold_file": 13,
-   "l4_any_failing_test_fixed": 2,
-   "l4_all_failing_tests_fixed": 1,
-   "l4_no_regression": 16,
-   "l4_verified_locally": 0,
-   "resolved": 1,
-   "first_loss": {
-    "resolved": 1,
-    "L4 fix": 7,
-    "L1 index": 2,
-    "L4 location": 2,
-    "L3 choice": 2,
-    "L2 ranking": 1,
-    "L2 recall": 5
-   },
-   "why": {
-    "L1 index: gold only adds new code": 2,
-    "L4 fix: fix_none": 6,
-    "L4 location: a candidate edited gold": 1,
-    "L3 choice: trace only": 1,
-    "L4 location: no candidate edited gold": 1,
-    "L4 fix: fix_partial": 1,
-    "L3 choice: shown": 1
-   },
-   "vs_gold_all": {
-    "same_file": 5,
-    "same_function": 8,
-    "elsewhere": 7
-   },
-   "vs_gold_resolved": {
-    "same_function": 1
-   }
-  },
-  "seen": {
-   "bugs": 13,
-   "l1_gold_indexed": 13,
-   "l2_gold@8": 10,
-   "l2_gold@50": 12,
-   "l2_file@1": 7,
-   "trace_ran": 12,
-   "trace_gold_new": 10,
-   "trace_gold_frame": 5,
-   "l3_gold_shown_or_read": 13,
-   "l3_entity": 13,
-   "l3_file": 13,
-   "l4_targets_gold": 13,
-   "l4_any_candidate_on_gold": 12,
-   "l4_patch_on_gold": 10,
-   "l4_patch_on_gold_file": 13,
-   "l4_any_failing_test_fixed": 4,
-   "l4_all_failing_tests_fixed": 3,
-   "l4_no_regression": 12,
-   "l4_verified_locally": 3,
-   "resolved": 3,
-   "first_loss": {
-    "resolved": 3,
-    "L4 fix": 8,
-    "L1 index": 0,
-    "L4 location": 2,
-    "L3 choice": 0,
-    "L2 ranking": 0,
-    "L2 recall": 0
-   },
-   "why": {
-    "L4 fix: fix_none": 7,
-    "L4 fix: fix_partial": 1,
-    "L4 location: a candidate edited gold": 2
-   },
-   "vs_gold_all": {
-    "same_function": 8,
-    "same_file": 3,
-    "identical": 2
-   },
-   "vs_gold_resolved": {
-    "same_file": 1,
-    "identical": 2
-   }
+   "instances": [
+    {
+     "instance_id": "mwaskom__seaborn-2848",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 5,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": false,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 5,
+      "candidates_on_gold": 5,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "50/50",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 1,
+      "lines_gold": 2
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "seen"
+    },
+    {
+     "instance_id": "mwaskom__seaborn-3010",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 6,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": false,
+      "gold_shown": true,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 3,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "2/2",
+      "f2p_any": true,
+      "f2p_all": true,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_file",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 5
+     },
+     "first_loss": "resolved",
+     "why": null,
+     "group": "seen"
+    },
+    {
+     "instance_id": "mwaskom__seaborn-3190",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 3,
+      "file_rank": 2,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 6,
+      "candidates_on_gold": 6,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "84/84",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 4,
+      "lines_gold": 2
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "seen"
+    },
+    {
+     "instance_id": "mwaskom__seaborn-3407",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "2/2"
+     },
+     "l2": {
+      "entity_rank": 4,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 7,
+      "candidates_on_gold": 7,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 4
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "seen"
+    },
+    {
+     "instance_id": "pallets__flask-4045",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "7/7"
+     },
+     "l2": {
+      "entity_rank": 4,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "no_code",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 6,
+      "candidates_on_gold": 5,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "50/50",
+      "f2p_any": true,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 12
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_partial",
+     "group": "seen"
+    },
+    {
+     "instance_id": "pallets__flask-4992",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "6/6"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 4,
+      "candidates_on_gold": 4,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 1,
+      "lines_gold": 10
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "seen"
+    },
+    {
+     "instance_id": "pallets__flask-5063",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "23/27"
+     },
+     "l2": {
+      "entity_rank": 4,
+      "file_rank": 7,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 6,
+      "candidates_on_gold": 6,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "52/54",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": false
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.031,
+      "lines_ours": 7,
+      "lines_gold": 59
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "seen"
+    },
+    {
+     "instance_id": "sympy__sympy-11400",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 33,
+      "file_rank": 2,
+      "hit@8": false,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 6,
+      "candidates_on_gold": 1,
+      "patch_on_gold": false,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "29/29",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_file",
+      "line_overlap": 0.067,
+      "lines_ours": 4,
+      "lines_gold": 12
+     },
+     "first_loss": "L4 location",
+     "why": "a candidate edited gold",
+     "group": "seen"
+    },
+    {
+     "instance_id": "sympy__sympy-12171",
+     "l1": {
+      "files": true,
+      "entity": false,
+      "lines_in_entity": "0/1"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 2,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": true,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 4,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/8",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": false
+     },
+     "vs_gold": {
+      "kind": "same_file",
+      "line_overlap": 0.0,
+      "lines_ours": 3,
+      "lines_gold": 2
+     },
+     "first_loss": "L1 index",
+     "why": "gold only adds new code",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-12419",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "4/6"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 5,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 7,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "25/25",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 3,
+      "lines_gold": 10
+     },
+     "first_loss": "L3 choice",
+     "why": "read",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-12481",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "6/6"
+     },
+     "l2": {
+      "entity_rank": 6,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 4,
+      "candidates_on_gold": 4,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "7/7",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.2,
+      "lines_ours": 10,
+      "lines_gold": 8
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-13031",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "4/4"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 5,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 6,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 8
+     },
+     "first_loss": "L2 recall",
+     "why": null,
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-13043",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "3/3"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 2,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 4,
+      "candidates_on_gold": 4,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "1/1",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.143,
+      "lines_ours": 2,
+      "lines_gold": 6
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-13177",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 5,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": false,
+      "gold_shown": true,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 7,
+      "candidates_on_gold": 7,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "75/75",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.25,
+      "lines_ours": 2,
+      "lines_gold": 3
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-13437",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 22,
+      "file_rank": 1,
+      "hit@8": false,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": true,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 8,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_file",
+      "line_overlap": 0.143,
+      "lines_ours": 9,
+      "lines_gold": 7
+     },
+     "first_loss": "L2 ranking",
+     "why": null,
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-13480",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 2,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 1,
+      "candidates_on_gold": 1,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": true,
+      "applied": true,
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "43/43",
+      "f2p_any": true,
+      "f2p_all": true,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "identical",
+      "line_overlap": 1.0,
+      "lines_ours": 2,
+      "lines_gold": 2
+     },
+     "first_loss": "resolved",
+     "why": null,
+     "group": "seen"
+    },
+    {
+     "instance_id": "sympy__sympy-13773",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "2/2"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 6,
+      "candidates_on_gold": 6,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "69/69",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 6
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "seen"
+    },
+    {
+     "instance_id": "sympy__sympy-13971",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "2/2"
+     },
+     "l2": {
+      "entity_rank": 10,
+      "file_rank": 2,
+      "hit@8": false,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 3,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "102/102",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 4
+     },
+     "first_loss": "L2 ranking",
+     "why": null,
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-14308",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "11/11"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 9,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": true,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 4,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "113/113",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 36
+     },
+     "first_loss": "L2 recall",
+     "why": null,
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-14317",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 16,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": true,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 7,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "112/116",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": false
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 14,
+      "lines_gold": 37
+     },
+     "first_loss": "L2 recall",
+     "why": null,
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-14774",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 6,
+      "file_rank": 2,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 2,
+      "candidates_on_gold": 2,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": true,
+      "applied": true,
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "114/114",
+      "f2p_any": true,
+      "f2p_all": true,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "identical",
+      "line_overlap": 1.0,
+      "lines_ours": 2,
+      "lines_gold": 2
+     },
+     "first_loss": "resolved",
+     "why": null,
+     "group": "seen"
+    },
+    {
+     "instance_id": "sympy__sympy-15011",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "4/4"
+     },
+     "l2": {
+      "entity_rank": 5,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 3,
+      "candidates_on_gold": 3,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "53/53",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 0,
+      "lines_gold": 12
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-15308",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "2/2"
+     },
+     "l2": {
+      "entity_rank": 7,
+      "file_rank": 2,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": false,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 7,
+      "candidates_on_gold": 3,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "120/120",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 5,
+      "lines_gold": 6
+     },
+     "first_loss": "L4 location",
+     "why": "a candidate edited gold",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-15345",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/2"
+     },
+     "l2": {
+      "entity_rank": 8,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 3,
+      "candidates_on_gold": 1,
+      "patch_on_gold": false,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_file",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 3
+     },
+     "first_loss": "L4 location",
+     "why": "a candidate edited gold",
+     "group": "seen"
+    },
+    {
+     "instance_id": "sympy__sympy-15609",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 28,
+      "file_rank": 3,
+      "hit@8": false,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 3,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "121/121",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 5
+     },
+     "first_loss": "L3 choice",
+     "why": "trace only",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-15678",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "3/3"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 7,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 7,
+      "candidates_on_gold": 7,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "3/3",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.1,
+      "lines_ours": 2,
+      "lines_gold": 9
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-16281",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "4/4"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 24,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": true,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 3,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "120/120",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_file",
+      "line_overlap": 0.0,
+      "lines_ours": 4,
+      "lines_gold": 7
+     },
+     "first_loss": "L3 choice",
+     "why": "trace only",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-16988",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 21,
+      "file_rank": 1,
+      "hit@8": false,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 3,
+      "candidates_on_gold": 2,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "72/72",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 5,
+      "lines_gold": 2
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-17022",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": null,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 6,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "8/8",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 23,
+      "lines_gold": 6
+     },
+     "first_loss": "L2 recall",
+     "why": null,
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-17139",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 38,
+      "file_rank": 2,
+      "hit@8": false,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": false,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 4,
+      "candidates_on_gold": 4,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": true,
+      "applied": true,
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "67/67",
+      "f2p_any": true,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.143,
+      "lines_ours": 6,
+      "lines_gold": 2
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_partial",
+     "group": "seen"
+    },
+    {
+     "instance_id": "sympy__sympy-17630",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 2,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 6,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "19/19",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 2
+     },
+     "first_loss": "L3 choice",
+     "why": "trace only",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-17655",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 5,
+      "candidates_on_gold": 5,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "9/9",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 18,
+      "lines_gold": 3
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-18057",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 3,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": false,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 5,
+      "candidates_on_gold": 4,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.2,
+      "lines_ours": 4,
+      "lines_gold": 2
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-18189",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 2,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 2,
+      "candidates_on_gold": 1,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "41/41",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 3,
+      "lines_gold": 2
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-18199",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "4/6"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 5,
+      "candidates_on_gold": 5,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "113/113",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.02,
+      "lines_ours": 2,
+      "lines_gold": 49
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-18621",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 2,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": false,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 3,
+      "candidates_on_gold": 3,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "15/15",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 2
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-19254",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "5/6"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": false,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 4,
+      "candidates_on_gold": 4,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "18/18",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.022,
+      "lines_ours": 4,
+      "lines_gold": 43
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-20154",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "19/19"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 6,
+      "candidates_on_gold": 6,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/2",
+      "p2p": "40/40",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.095,
+      "lines_ours": 4,
+      "lines_gold": 19
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-20442",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/2"
+     },
+     "l2": {
+      "entity_rank": 19,
+      "file_rank": 1,
+      "hit@8": false,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": true,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 6,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "24/24",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_file",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 6
+     },
+     "first_loss": "L3 choice",
+     "why": "trace only",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-20590",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": null,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 2,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "21/21",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 1
+     },
+     "first_loss": "L2 recall",
+     "why": null,
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-20639",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "12/12"
+     },
+     "l2": {
+      "entity_rank": 4,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 3,
+      "candidates_on_gold": 3,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "1/2",
+      "p2p": "138/139",
+      "f2p_any": true,
+      "f2p_all": false,
+      "p2p_all": false
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.048,
+      "lines_ours": 2,
+      "lines_gold": 20
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_partial",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-21055",
+     "l1": {
+      "files": true,
+      "entity": false,
+      "lines_in_entity": "0/2"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 1,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 8,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "13/13",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 19,
+      "lines_gold": 20
+     },
+     "first_loss": "L1 index",
+     "why": "gold only adds new code",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-21171",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "2/2"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 4,
+      "candidates_on_gold": 4,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "152/152",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.2,
+      "lines_ours": 2,
+      "lines_gold": 4
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-21379",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "5/5"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": null,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": true,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 5,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "91/91",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 3,
+      "lines_gold": 12
+     },
+     "first_loss": "L3 choice",
+     "why": "shown",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-21612",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": null,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": false,
+      "new": false,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 4,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "98/98",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 2
+     },
+     "first_loss": "L2 recall",
+     "why": null,
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-21614",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 6,
+      "file_rank": 17,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 5,
+      "candidates_on_gold": 5,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "6/6",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.667,
+      "lines_ours": 2,
+      "lines_gold": 3
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-21627",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": null,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 5,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "26/26",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 0,
+      "lines_gold": 2
+     },
+     "first_loss": "L3 choice",
+     "why": "trace only",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-21847",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "2/2"
+     },
+     "l2": {
+      "entity_rank": 1,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 5,
+      "candidates_on_gold": 5,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "9/9",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.167,
+      "lines_ours": 3,
+      "lines_gold": 4
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-22714",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "1/1"
+     },
+     "l2": {
+      "entity_rank": 4,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": false,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 5,
+      "candidates_on_gold": 4,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "11/11",
+      "f2p_any": true,
+      "f2p_all": true,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.333,
+      "lines_ours": 2,
+      "lines_gold": 2
+     },
+     "first_loss": "resolved",
+     "why": null,
+     "group": "fresh"
+    },
+    {
+     "instance_id": "sympy__sympy-23191",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "11/11"
+     },
+     "l2": {
+      "entity_rank": null,
+      "file_rank": 34,
+      "hit@8": false,
+      "hit@50": false
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": true
+     },
+     "l3": {
+      "status": "ok",
+      "entity": false,
+      "file": false,
+      "primary": false,
+      "gold_shown": false,
+      "gold_read": false
+     },
+     "l4": {
+      "targets": false,
+      "candidates": 4,
+      "candidates_on_gold": 0,
+      "patch_on_gold": false,
+      "patch_on_gold_file": false,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/3",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": false
+     },
+     "vs_gold": {
+      "kind": "elsewhere",
+      "line_overlap": 0.0,
+      "lines_ours": 2,
+      "lines_gold": 19
+     },
+     "first_loss": "L3 choice",
+     "why": "trace only",
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-23262",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "2/2"
+     },
+     "l2": {
+      "entity_rank": 5,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 4,
+      "candidates_on_gold": 4,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": true,
+      "f2p": "1/1",
+      "p2p": "61/61",
+      "f2p_any": true,
+      "f2p_all": true,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 4,
+      "lines_gold": 4
+     },
+     "first_loss": "resolved",
+     "why": null,
+     "group": "unseen"
+    },
+    {
+     "instance_id": "sympy__sympy-24909",
+     "l1": {
+      "files": true,
+      "entity": true,
+      "lines_in_entity": "4/5"
+     },
+     "l2": {
+      "entity_rank": 3,
+      "file_rank": 1,
+      "hit@8": true,
+      "hit@50": true
+     },
+     "trace": {
+      "status": "ran",
+      "ran": true,
+      "new": true,
+      "frame": false
+     },
+     "l3": {
+      "status": "ok",
+      "entity": true,
+      "file": true,
+      "primary": true,
+      "gold_shown": true,
+      "gold_read": true
+     },
+     "l4": {
+      "targets": true,
+      "candidates": 4,
+      "candidates_on_gold": 4,
+      "patch_on_gold": true,
+      "patch_on_gold_file": true,
+      "verified": false,
+      "applied": true,
+      "resolved": false,
+      "f2p": "0/1",
+      "p2p": "2/2",
+      "f2p_any": false,
+      "f2p_all": false,
+      "p2p_all": true
+     },
+     "vs_gold": {
+      "kind": "same_function",
+      "line_overlap": 0.0,
+      "lines_ours": 0,
+      "lines_gold": 9
+     },
+     "first_loss": "L4 fix",
+     "why": "fix_none",
+     "group": "unseen"
+    }
+   ]
   }
- },
- "instances": [
-  {
-   "instance_id": "mwaskom__seaborn-2848",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": null,
-    "file_rank": 5,
-    "hit@8": false,
-    "hit@50": false
-   },
-   "trace": {
-    "status": "ran",
-    "ran": false,
-    "new": false,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": false,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 2,
-    "candidates_on_gold": 2,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "48/50",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": false
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.0,
-    "lines_ours": 14,
-    "lines_gold": 2
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "seen"
-  },
-  {
-   "instance_id": "mwaskom__seaborn-3010",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": 6,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": true
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": false,
-    "gold_shown": true,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 5,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": true,
-    "f2p": "1/1",
-    "p2p": "2/2",
-    "f2p_any": true,
-    "f2p_all": true,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_file",
-    "line_overlap": 0.0,
-    "lines_ours": 2,
-    "lines_gold": 5
-   },
-   "first_loss": "resolved",
-   "why": null,
-   "group": "seen"
-  },
-  {
-   "instance_id": "mwaskom__seaborn-3190",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": 3,
-    "file_rank": 2,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 3,
-    "candidates_on_gold": 3,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "84/84",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.0,
-    "lines_ours": 2,
-    "lines_gold": 2
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "seen"
-  },
-  {
-   "instance_id": "mwaskom__seaborn-3407",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "2/2"
-   },
-   "l2": {
-    "entity_rank": 4,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": true
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 6,
-    "candidates_on_gold": 6,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "120/120",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.0,
-    "lines_ours": 2,
-    "lines_gold": 4
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "seen"
-  },
-  {
-   "instance_id": "pallets__flask-4045",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "7/7"
-   },
-   "l2": {
-    "entity_rank": 4,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "no_code",
-    "ran": false,
-    "new": false,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 6,
-    "candidates_on_gold": 4,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "1/2",
-    "p2p": "50/50",
-    "f2p_any": true,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.0,
-    "lines_ours": 2,
-    "lines_gold": 12
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_partial",
-   "group": "seen"
-  },
-  {
-   "instance_id": "pallets__flask-4992",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "6/6"
-   },
-   "l2": {
-    "entity_rank": 1,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": true
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 3,
-    "candidates_on_gold": 3,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "18/18",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.083,
-    "lines_ours": 3,
-    "lines_gold": 10
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "seen"
-  },
-  {
-   "instance_id": "pallets__flask-5063",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "23/27"
-   },
-   "l2": {
-    "entity_rank": 4,
-    "file_rank": 7,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": false,
-    "new": false,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 3,
-    "candidates_on_gold": 3,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/2",
-    "p2p": "54/54",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.017,
-    "lines_ours": 2,
-    "lines_gold": 59
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "seen"
-  },
-  {
-   "instance_id": "sympy__sympy-11400",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": 33,
-    "file_rank": 2,
-    "hit@8": false,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 5,
-    "candidates_on_gold": 1,
-    "patch_on_gold": false,
-    "patch_on_gold_file": true,
-    "verified": true,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/2",
-    "p2p": "29/29",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_file",
-    "line_overlap": 0.071,
-    "lines_ours": 3,
-    "lines_gold": 12
-   },
-   "first_loss": "L4 location",
-   "why": "a candidate edited gold",
-   "group": "seen"
-  },
-  {
-   "instance_id": "sympy__sympy-12171",
-   "l1": {
-    "files": true,
-    "entity": false,
-    "lines_in_entity": "0/1"
-   },
-   "l2": {
-    "entity_rank": null,
-    "file_rank": 2,
-    "hit@8": false,
-    "hit@50": false
-   },
-   "trace": {
-    "status": "ran",
-    "ran": false,
-    "new": false,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": false,
-    "file": true,
-    "primary": false,
-    "gold_shown": false,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": false,
-    "candidates": 3,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "7/8",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": false
-   },
-   "vs_gold": {
-    "kind": "same_file",
-    "line_overlap": 0.0,
-    "lines_ours": 3,
-    "lines_gold": 2
-   },
-   "first_loss": "L1 index",
-   "why": "gold only adds new code",
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-12419",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "4/6"
-   },
-   "l2": {
-    "entity_rank": null,
-    "file_rank": 5,
-    "hit@8": false,
-    "hit@50": false
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": false,
-    "file": false,
-    "primary": false,
-    "gold_shown": false,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": false,
-    "candidates": 6,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": false,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "25/25",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "elsewhere",
-    "line_overlap": 0.0,
-    "lines_ours": 3,
-    "lines_gold": 10
-   },
-   "first_loss": "L3 choice",
-   "why": "read",
-   "group": "unseen"
-  },
-  {
-   "instance_id": "sympy__sympy-12481",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "6/6"
-   },
-   "l2": {
-    "entity_rank": 6,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": false,
-    "new": false,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 2,
-    "candidates_on_gold": 2,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "7/7",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.2,
-    "lines_ours": 10,
-    "lines_gold": 8
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-13031",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "4/4"
-   },
-   "l2": {
-    "entity_rank": null,
-    "file_rank": 5,
-    "hit@8": false,
-    "hit@50": false
-   },
-   "trace": {
-    "status": "ran",
-    "ran": false,
-    "new": false,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": false,
-    "file": false,
-    "primary": false,
-    "gold_shown": false,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": false,
-    "candidates": 2,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": false,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "9/9",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "elsewhere",
-    "line_overlap": 0.0,
-    "lines_ours": 2,
-    "lines_gold": 8
-   },
-   "first_loss": "L2 recall",
-   "why": null,
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-13043",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "3/3"
-   },
-   "l2": {
-    "entity_rank": 1,
-    "file_rank": 2,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": false,
-    "new": false,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 4,
-    "candidates_on_gold": 2,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "1/1",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.143,
-    "lines_ours": 2,
-    "lines_gold": 6
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "unseen"
-  },
-  {
-   "instance_id": "sympy__sympy-13177",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": 5,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": false,
-    "gold_shown": true,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 1,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": false,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "75/75",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "elsewhere",
-    "line_overlap": 0.0,
-    "lines_ours": 2,
-    "lines_gold": 3
-   },
-   "first_loss": "L4 location",
-   "why": "no candidate edited gold",
-   "group": "unseen"
-  },
-  {
-   "instance_id": "sympy__sympy-13437",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": 22,
-    "file_rank": 1,
-    "hit@8": false,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": false,
-    "new": false,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": false,
-    "file": true,
-    "primary": false,
-    "gold_shown": false,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": false,
-    "candidates": 5,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "15/15",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_file",
-    "line_overlap": 0.125,
-    "lines_ours": 2,
-    "lines_gold": 7
-   },
-   "first_loss": "L2 ranking",
-   "why": null,
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-13480",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": 2,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": true
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 2,
-    "candidates_on_gold": 2,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": true,
-    "applied": true,
-    "resolved": true,
-    "f2p": "1/1",
-    "p2p": "43/43",
-    "f2p_any": true,
-    "f2p_all": true,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "identical",
-    "line_overlap": 1.0,
-    "lines_ours": 2,
-    "lines_gold": 2
-   },
-   "first_loss": "resolved",
-   "why": null,
-   "group": "seen"
-  },
-  {
-   "instance_id": "sympy__sympy-13773",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "2/2"
-   },
-   "l2": {
-    "entity_rank": 1,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 8,
-    "candidates_on_gold": 6,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "69/69",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.0,
-    "lines_ours": 3,
-    "lines_gold": 6
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "seen"
-  },
-  {
-   "instance_id": "sympy__sympy-13971",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "2/2"
-   },
-   "l2": {
-    "entity_rank": 10,
-    "file_rank": 2,
-    "hit@8": false,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": false,
-    "new": false,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": false,
-    "file": false,
-    "primary": false,
-    "gold_shown": false,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": false,
-    "candidates": 4,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": false,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "102/102",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "elsewhere",
-    "line_overlap": 0.0,
-    "lines_ours": 3,
-    "lines_gold": 4
-   },
-   "first_loss": "L2 ranking",
-   "why": null,
-   "group": "unseen"
-  },
-  {
-   "instance_id": "sympy__sympy-14308",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "11/11"
-   },
-   "l2": {
-    "entity_rank": null,
-    "file_rank": 9,
-    "hit@8": false,
-    "hit@50": false
-   },
-   "trace": {
-    "status": "ran",
-    "ran": false,
-    "new": false,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": false,
-    "file": true,
-    "primary": false,
-    "gold_shown": false,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": false,
-    "candidates": 6,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": false,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/2",
-    "p2p": "113/113",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "elsewhere",
-    "line_overlap": 0.0,
-    "lines_ours": 1,
-    "lines_gold": 36
-   },
-   "first_loss": "L2 recall",
-   "why": null,
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-14317",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": null,
-    "file_rank": 16,
-    "hit@8": false,
-    "hit@50": false
-   },
-   "trace": {
-    "status": "ran",
-    "ran": false,
-    "new": false,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": false,
-    "file": true,
-    "primary": false,
-    "gold_shown": false,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": false,
-    "candidates": 4,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/2",
-    "p2p": "116/116",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_file",
-    "line_overlap": 0.0,
-    "lines_ours": 2,
-    "lines_gold": 37
-   },
-   "first_loss": "L2 recall",
-   "why": null,
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-14774",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": 6,
-    "file_rank": 2,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 1,
-    "candidates_on_gold": 1,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": true,
-    "applied": true,
-    "resolved": true,
-    "f2p": "1/1",
-    "p2p": "114/114",
-    "f2p_any": true,
-    "f2p_all": true,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "identical",
-    "line_overlap": 1.0,
-    "lines_ours": 2,
-    "lines_gold": 2
-   },
-   "first_loss": "resolved",
-   "why": null,
-   "group": "seen"
-  },
-  {
-   "instance_id": "sympy__sympy-15011",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "4/4"
-   },
-   "l2": {
-    "entity_rank": 5,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 4,
-    "candidates_on_gold": 2,
-    "patch_on_gold": false,
-    "patch_on_gold_file": false,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "53/53",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "elsewhere",
-    "line_overlap": 0.0,
-    "lines_ours": 2,
-    "lines_gold": 12
-   },
-   "first_loss": "L4 location",
-   "why": "a candidate edited gold",
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-15308",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "2/2"
-   },
-   "l2": {
-    "entity_rank": 7,
-    "file_rank": 2,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": false,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 7,
-    "candidates_on_gold": 2,
-    "patch_on_gold": false,
-    "patch_on_gold_file": false,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "120/120",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "elsewhere",
-    "line_overlap": 0.0,
-    "lines_ours": 5,
-    "lines_gold": 6
-   },
-   "first_loss": "L4 location",
-   "why": "a candidate edited gold",
-   "group": "unseen"
-  },
-  {
-   "instance_id": "sympy__sympy-15345",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/2"
-   },
-   "l2": {
-    "entity_rank": 8,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 5,
-    "candidates_on_gold": 1,
-    "patch_on_gold": false,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "8/8",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_file",
-    "line_overlap": 0.0,
-    "lines_ours": 2,
-    "lines_gold": 3
-   },
-   "first_loss": "L4 location",
-   "why": "a candidate edited gold",
-   "group": "seen"
-  },
-  {
-   "instance_id": "sympy__sympy-15609",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": 28,
-    "file_rank": 3,
-    "hit@8": false,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": false,
-    "file": false,
-    "primary": false,
-    "gold_shown": false,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": false,
-    "candidates": 2,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": false,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "121/121",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "elsewhere",
-    "line_overlap": 0.0,
-    "lines_ours": 197,
-    "lines_gold": 5
-   },
-   "first_loss": "L3 choice",
-   "why": "trace only",
-   "group": "unseen"
-  },
-  {
-   "instance_id": "sympy__sympy-15678",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "3/3"
-   },
-   "l2": {
-    "entity_rank": 1,
-    "file_rank": 7,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": true
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 3,
-    "candidates_on_gold": 1,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "3/3",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.0,
-    "lines_ours": 0,
-    "lines_gold": 9
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-16281",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "4/4"
-   },
-   "l2": {
-    "entity_rank": null,
-    "file_rank": 24,
-    "hit@8": false,
-    "hit@50": false
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": false,
-    "file": true,
-    "primary": false,
-    "gold_shown": false,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": false,
-    "candidates": 2,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/2",
-    "p2p": "120/120",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_file",
-    "line_overlap": 0.0,
-    "lines_ours": 9,
-    "lines_gold": 7
-   },
-   "first_loss": "L3 choice",
-   "why": "trace only",
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-16988",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": 21,
-    "file_rank": 1,
-    "hit@8": false,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": false,
-    "gold_shown": false,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 6,
-    "candidates_on_gold": 3,
-    "patch_on_gold": false,
-    "patch_on_gold_file": false,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/2",
-    "p2p": "72/72",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "elsewhere",
-    "line_overlap": 0.0,
-    "lines_ours": 1,
-    "lines_gold": 2
-   },
-   "first_loss": "L4 location",
-   "why": "a candidate edited gold",
-   "group": "unseen"
-  },
-  {
-   "instance_id": "sympy__sympy-17022",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": null,
-    "file_rank": null,
-    "hit@8": false,
-    "hit@50": false
-   },
-   "trace": {
-    "status": "ran",
-    "ran": false,
-    "new": false,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": false,
-    "file": false,
-    "primary": false,
-    "gold_shown": false,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": false,
-    "candidates": 5,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": false,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "8/8",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "elsewhere",
-    "line_overlap": 0.0,
-    "lines_ours": 9,
-    "lines_gold": 6
-   },
-   "first_loss": "L2 recall",
-   "why": null,
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-17139",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": 38,
-    "file_rank": 2,
-    "hit@8": false,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": true
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": false,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 4,
-    "candidates_on_gold": 4,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/2",
-    "p2p": "67/67",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.0,
-    "lines_ours": 2,
-    "lines_gold": 2
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "seen"
-  },
-  {
-   "instance_id": "sympy__sympy-17630",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": null,
-    "file_rank": 2,
-    "hit@8": false,
-    "hit@50": false
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": false,
-    "file": false,
-    "primary": false,
-    "gold_shown": false,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": false,
-    "candidates": 4,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": false,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/2",
-    "p2p": "19/19",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "elsewhere",
-    "line_overlap": 0.0,
-    "lines_ours": 5,
-    "lines_gold": 2
-   },
-   "first_loss": "L3 choice",
-   "why": "trace only",
-   "group": "unseen"
-  },
-  {
-   "instance_id": "sympy__sympy-17655",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": 1,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": true
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 6,
-    "candidates_on_gold": 4,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": true,
-    "f2p": "2/2",
-    "p2p": "9/9",
-    "f2p_any": true,
-    "f2p_all": true,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.042,
-    "lines_ours": 22,
-    "lines_gold": 3
-   },
-   "first_loss": "resolved",
-   "why": null,
-   "group": "unseen"
-  },
-  {
-   "instance_id": "sympy__sympy-18057",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": null,
-    "file_rank": 3,
-    "hit@8": false,
-    "hit@50": false
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": false,
-    "frame": true
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 7,
-    "candidates_on_gold": 5,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "98/98",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.333,
-    "lines_ours": 2,
-    "lines_gold": 2
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-18189",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": 2,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 1,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "39/41",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": false
-   },
-   "vs_gold": {
-    "kind": "same_file",
-    "line_overlap": 0.0,
-    "lines_ours": 5,
-    "lines_gold": 2
-   },
-   "first_loss": "L4 location",
-   "why": "no candidate edited gold",
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-18199",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "4/6"
-   },
-   "l2": {
-    "entity_rank": 1,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 7,
-    "candidates_on_gold": 6,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "113/113",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.02,
-    "lines_ours": 2,
-    "lines_gold": 49
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "unseen"
-  },
-  {
-   "instance_id": "sympy__sympy-18621",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": 2,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": false,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 3,
-    "candidates_on_gold": 2,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "15/15",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.0,
-    "lines_ours": 2,
-    "lines_gold": 2
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-19254",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "5/6"
-   },
-   "l2": {
-    "entity_rank": 1,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": true
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": false,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 4,
-    "candidates_on_gold": 2,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "18/18",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.023,
-    "lines_ours": 2,
-    "lines_gold": 43
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-20154",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "19/19"
-   },
-   "l2": {
-    "entity_rank": 1,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": false,
-    "new": false,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 6,
-    "candidates_on_gold": 4,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/2",
-    "p2p": "40/40",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.095,
-    "lines_ours": 4,
-    "lines_gold": 19
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "unseen"
-  },
-  {
-   "instance_id": "sympy__sympy-20442",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/2"
-   },
-   "l2": {
-    "entity_rank": 19,
-    "file_rank": 1,
-    "hit@8": false,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": false,
-    "file": true,
-    "primary": false,
-    "gold_shown": false,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": false,
-    "candidates": 7,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "24/24",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_file",
-    "line_overlap": 0.0,
-    "lines_ours": 5,
-    "lines_gold": 6
-   },
-   "first_loss": "L3 choice",
-   "why": "trace only",
-   "group": "unseen"
-  },
-  {
-   "instance_id": "sympy__sympy-20590",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": null,
-    "file_rank": null,
-    "hit@8": false,
-    "hit@50": false
-   },
-   "trace": {
-    "status": "ran",
-    "ran": false,
-    "new": false,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": false,
-    "file": false,
-    "primary": false,
-    "gold_shown": false,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": false,
-    "candidates": 2,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": false,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "21/21",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "elsewhere",
-    "line_overlap": 0.0,
-    "lines_ours": 37,
-    "lines_gold": 1
-   },
-   "first_loss": "L2 recall",
-   "why": null,
-   "group": "unseen"
-  },
-  {
-   "instance_id": "sympy__sympy-20639",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "12/12"
-   },
-   "l2": {
-    "entity_rank": 4,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": false,
-    "new": false,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 4,
-    "candidates_on_gold": 3,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "1/2",
-    "p2p": "138/139",
-    "f2p_any": true,
-    "f2p_all": false,
-    "p2p_all": false
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.048,
-    "lines_ours": 2,
-    "lines_gold": 20
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_partial",
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-21055",
-   "l1": {
-    "files": true,
-    "entity": false,
-    "lines_in_entity": "0/2"
-   },
-   "l2": {
-    "entity_rank": null,
-    "file_rank": 1,
-    "hit@8": false,
-    "hit@50": false
-   },
-   "trace": {
-    "status": "ran",
-    "ran": false,
-    "new": false,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": false,
-    "file": false,
-    "primary": false,
-    "gold_shown": false,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": false,
-    "candidates": 7,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": false,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "13/13",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "elsewhere",
-    "line_overlap": 0.037,
-    "lines_ours": 8,
-    "lines_gold": 20
-   },
-   "first_loss": "L1 index",
-   "why": "gold only adds new code",
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-21171",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "2/2"
-   },
-   "l2": {
-    "entity_rank": 1,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": false,
-    "new": false,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 3,
-    "candidates_on_gold": 2,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "152/152",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.5,
-    "lines_ours": 2,
-    "lines_gold": 4
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "unseen"
-  },
-  {
-   "instance_id": "sympy__sympy-21379",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "5/5"
-   },
-   "l2": {
-    "entity_rank": null,
-    "file_rank": null,
-    "hit@8": false,
-    "hit@50": false
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": true
-   },
-   "l3": {
-    "status": "ok",
-    "entity": false,
-    "file": false,
-    "primary": false,
-    "gold_shown": true,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": false,
-    "candidates": 1,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": false,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "86/91",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": false
-   },
-   "vs_gold": {
-    "kind": "elsewhere",
-    "line_overlap": 0.04,
-    "lines_ours": 14,
-    "lines_gold": 12
-   },
-   "first_loss": "L3 choice",
-   "why": "shown",
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-21612",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": null,
-    "file_rank": null,
-    "hit@8": false,
-    "hit@50": false
-   },
-   "trace": {
-    "status": "ran",
-    "ran": false,
-    "new": false,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": false,
-    "file": false,
-    "primary": false,
-    "gold_shown": false,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": false,
-    "candidates": 4,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": false,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "98/98",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "elsewhere",
-    "line_overlap": 0.0,
-    "lines_ours": 2,
-    "lines_gold": 2
-   },
-   "first_loss": "L2 recall",
-   "why": null,
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-21614",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": 6,
-    "file_rank": 17,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 5,
-    "candidates_on_gold": 5,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "6/6",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.667,
-    "lines_ours": 2,
-    "lines_gold": 3
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "unseen"
-  },
-  {
-   "instance_id": "sympy__sympy-21627",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": null,
-    "file_rank": null,
-    "hit@8": false,
-    "hit@50": false
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": false,
-    "file": false,
-    "primary": false,
-    "gold_shown": false,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": false,
-    "candidates": 3,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": false,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "26/26",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "elsewhere",
-    "line_overlap": 0.0,
-    "lines_ours": 9,
-    "lines_gold": 2
-   },
-   "first_loss": "L3 choice",
-   "why": "trace only",
-   "group": "unseen"
-  },
-  {
-   "instance_id": "sympy__sympy-21847",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "2/2"
-   },
-   "l2": {
-    "entity_rank": 1,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 4,
-    "candidates_on_gold": 3,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "9/9",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.167,
-    "lines_ours": 3,
-    "lines_gold": 4
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-22714",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "1/1"
-   },
-   "l2": {
-    "entity_rank": 4,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": true
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": false,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 6,
-    "candidates_on_gold": 4,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": true,
-    "f2p": "1/1",
-    "p2p": "11/11",
-    "f2p_any": true,
-    "f2p_all": true,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.333,
-    "lines_ours": 2,
-    "lines_gold": 2
-   },
-   "first_loss": "resolved",
-   "why": null,
-   "group": "fresh"
-  },
-  {
-   "instance_id": "sympy__sympy-23191",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "11/11"
-   },
-   "l2": {
-    "entity_rank": null,
-    "file_rank": 34,
-    "hit@8": false,
-    "hit@50": false
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": true
-   },
-   "l3": {
-    "status": "ok",
-    "entity": false,
-    "file": false,
-    "primary": false,
-    "gold_shown": false,
-    "gold_read": false
-   },
-   "l4": {
-    "targets": false,
-    "candidates": 3,
-    "candidates_on_gold": 0,
-    "patch_on_gold": false,
-    "patch_on_gold_file": false,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "3/3",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "elsewhere",
-    "line_overlap": 0.0,
-    "lines_ours": 3,
-    "lines_gold": 19
-   },
-   "first_loss": "L3 choice",
-   "why": "trace only",
-   "group": "unseen"
-  },
-  {
-   "instance_id": "sympy__sympy-23262",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "2/2"
-   },
-   "l2": {
-    "entity_rank": 5,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 7,
-    "candidates_on_gold": 6,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": true,
-    "f2p": "1/1",
-    "p2p": "61/61",
-    "f2p_any": true,
-    "f2p_all": true,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.0,
-    "lines_ours": 2,
-    "lines_gold": 4
-   },
-   "first_loss": "resolved",
-   "why": null,
-   "group": "unseen"
-  },
-  {
-   "instance_id": "sympy__sympy-24909",
-   "l1": {
-    "files": true,
-    "entity": true,
-    "lines_in_entity": "4/5"
-   },
-   "l2": {
-    "entity_rank": 3,
-    "file_rank": 1,
-    "hit@8": true,
-    "hit@50": true
-   },
-   "trace": {
-    "status": "ran",
-    "ran": true,
-    "new": true,
-    "frame": false
-   },
-   "l3": {
-    "status": "ok",
-    "entity": true,
-    "file": true,
-    "primary": true,
-    "gold_shown": true,
-    "gold_read": true
-   },
-   "l4": {
-    "targets": true,
-    "candidates": 5,
-    "candidates_on_gold": 5,
-    "patch_on_gold": true,
-    "patch_on_gold_file": true,
-    "verified": false,
-    "applied": true,
-    "resolved": false,
-    "f2p": "0/1",
-    "p2p": "2/2",
-    "f2p_any": false,
-    "f2p_all": false,
-    "p2p_all": true
-   },
-   "vs_gold": {
-    "kind": "same_function",
-    "line_overlap": 0.1,
-    "lines_ours": 2,
-    "lines_gold": 9
-   },
-   "first_loss": "L4 fix",
-   "why": "fix_none",
-   "group": "unseen"
-  }
- ]
+ }
 }

@@ -109,6 +109,50 @@ further edits needed on top of it."""
 ASK_DIFFERENT ="""Find a different fix: re-read the code shown and the line that raises, and change
 what actually computes the wrong thing. Give all the edits, complete."""
 
+# One thinking call per bug before the candidates (profile hypotheses): the 4B model reasons much
+# better with thinking on (Qwen3 report: LiveCodeBench 54.2 thinking vs 21.3 not), but thinking in
+# every candidate would triple the run time; the causes are spread over the candidates instead,
+# which also makes them differ (most of our candidates behaved the same on the report's example).
+HYP_SYSTEM = """You find the root cause of a bug in a Python repository. You do not write code.
+Read the bug report and the code shown, then answer in JSON:
+- causes: {n} DIFFERENT explanations of what exactly in the code produces the wrong result; each
+  names the function, quotes the faulty line, and says in one or two sentences what change fixes it
+- sites: every place in the code shown that has the same faulty logic (the same check, call or
+  value used in another branch or another line), each with its function and quoted line, so that a
+  fix can change all of them"""
+
+HYP_TASK = """Bug report:
+{report}
+
+Diagnosis from the code investigation (usually right about where, may be wrong about details):
+{diagnosis}
+
+Code:
+{code}"""
+
+HYP_NOTES = """
+
+Your analysis so far (cut short):
+{notes}
+
+Now give the JSON answer from this analysis."""
+
+HYPOTHESIS = """
+
+A possible root cause (check it against the code; if the code shows it is wrong, fix the real cause):
+{cause}{sites}"""
+
+SITES = """
+The same faulty logic may also appear here (change every place that needs it):
+{sites}"""
+
+REWRITE_HINT = """
+If you cannot copy the lines exactly, rewrite the whole function instead: function = its name,
+search = "", code = the complete new function from its def line."""
+
+NO_CHANGE = ("your edits change nothing: the new code is the same as the old code. Change the lines that "
+             "cause the wrong result")
+
 REFUSED ="""Your edits could not be applied:
 {errors}
 

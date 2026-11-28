@@ -123,4 +123,6 @@ class LLM:
         u["thinking_chars"] += removed + len(msg.get("thinking") or "")
         calls = [{"name": c["function"]["name"], "arguments": c["function"].get("arguments") or {}}
                  for c in msg.get("tool_calls") or []]
-        return {"content": content, "tool_calls": calls, "prompt_tokens": pt, "trimmed": trimmed}
+        return {"content": content, "tool_calls": calls, "prompt_tokens": pt, "trimmed": trimmed,
+                "done_reason": d.get("done_reason"), "output_tokens": d.get("eval_count", 0),
+                "thinking": msg.get("thinking") or ""}

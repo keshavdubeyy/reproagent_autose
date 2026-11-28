@@ -1555,6 +1555,1382 @@
      "seconds": 8.5
     }
    }
+  },
+  "v2": {
+   "patches": "runs/layer4_v2",
+   "summary": {
+    "instances": 52,
+    "resolved": 5,
+    "resolved_rate": 0.0962,
+    "applied": 52,
+    "empty": 0,
+    "layer3_found": 34,
+    "resolved_when_layer3_found": 5,
+    "verified": 3,
+    "resolved_when_verified": 2,
+    "resolved_when_not_verified": 3
+   },
+   "instances": {
+    "mwaskom__seaborn-2848": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "50/50",
+     "verified": false,
+     "error": null,
+     "seconds": 26.3
+    },
+    "mwaskom__seaborn-3010": {
+     "resolved": true,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/1",
+     "p2p": "2/2",
+     "verified": false,
+     "error": null,
+     "seconds": 7.2
+    },
+    "mwaskom__seaborn-3190": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "84/84",
+     "verified": false,
+     "error": null,
+     "seconds": 8.7
+    },
+    "mwaskom__seaborn-3407": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "120/120",
+     "verified": false,
+     "error": null,
+     "seconds": 75.7
+    },
+    "pallets__flask-4045": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/2",
+     "p2p": "50/50",
+     "verified": false,
+     "error": null,
+     "seconds": 10.8
+    },
+    "pallets__flask-4992": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "18/18",
+     "verified": false,
+     "error": null,
+     "seconds": 25.3
+    },
+    "pallets__flask-5063": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "52/54",
+     "verified": false,
+     "error": null,
+     "seconds": 27.5
+    },
+    "sympy__sympy-11400": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "29/29",
+     "verified": false,
+     "error": null,
+     "seconds": 4.9
+    },
+    "sympy__sympy-12171": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "7/8",
+     "verified": false,
+     "error": null,
+     "seconds": 4.8
+    },
+    "sympy__sympy-12419": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "25/25",
+     "verified": false,
+     "error": null,
+     "seconds": 4.8
+    },
+    "sympy__sympy-12481": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "7/7",
+     "verified": false,
+     "error": null,
+     "seconds": 4.4
+    },
+    "sympy__sympy-13031": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "9/9",
+     "verified": false,
+     "error": null,
+     "seconds": 4.6
+    },
+    "sympy__sympy-13043": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "1/1",
+     "verified": false,
+     "error": null,
+     "seconds": 5.0
+    },
+    "sympy__sympy-13177": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "75/75",
+     "verified": false,
+     "error": null,
+     "seconds": 5.3
+    },
+    "sympy__sympy-13437": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "15/15",
+     "verified": false,
+     "error": null,
+     "seconds": 11.7
+    },
+    "sympy__sympy-13480": {
+     "resolved": true,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/1",
+     "p2p": "43/43",
+     "verified": true,
+     "error": null,
+     "seconds": 16.7
+    },
+    "sympy__sympy-13773": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "69/69",
+     "verified": false,
+     "error": null,
+     "seconds": 7.7
+    },
+    "sympy__sympy-13971": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "102/102",
+     "verified": false,
+     "error": null,
+     "seconds": 6.6
+    },
+    "sympy__sympy-14308": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "113/113",
+     "verified": false,
+     "error": null,
+     "seconds": 9.1
+    },
+    "sympy__sympy-14317": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "112/116",
+     "verified": false,
+     "error": null,
+     "seconds": 6.2
+    },
+    "sympy__sympy-14774": {
+     "resolved": true,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/1",
+     "p2p": "114/114",
+     "verified": true,
+     "error": null,
+     "seconds": 7.3
+    },
+    "sympy__sympy-15011": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "53/53",
+     "verified": false,
+     "error": null,
+     "seconds": 6.3
+    },
+    "sympy__sympy-15308": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "120/120",
+     "verified": false,
+     "error": null,
+     "seconds": 7.1
+    },
+    "sympy__sympy-15345": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "8/8",
+     "verified": false,
+     "error": null,
+     "seconds": 4.8
+    },
+    "sympy__sympy-15609": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "121/121",
+     "verified": false,
+     "error": null,
+     "seconds": 8.4
+    },
+    "sympy__sympy-15678": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "3/3",
+     "verified": false,
+     "error": null,
+     "seconds": 11.3
+    },
+    "sympy__sympy-16281": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "120/120",
+     "verified": false,
+     "error": null,
+     "seconds": 11.5
+    },
+    "sympy__sympy-16988": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "72/72",
+     "verified": false,
+     "error": null,
+     "seconds": 94.4
+    },
+    "sympy__sympy-17022": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "8/8",
+     "verified": false,
+     "error": null,
+     "seconds": 5.2
+    },
+    "sympy__sympy-17139": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/2",
+     "p2p": "67/67",
+     "verified": true,
+     "error": null,
+     "seconds": 100.8
+    },
+    "sympy__sympy-17630": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "19/19",
+     "verified": false,
+     "error": null,
+     "seconds": 5.2
+    },
+    "sympy__sympy-17655": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "9/9",
+     "verified": false,
+     "error": null,
+     "seconds": 15.6
+    },
+    "sympy__sympy-18057": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "98/98",
+     "verified": false,
+     "error": null,
+     "seconds": 122.6
+    },
+    "sympy__sympy-18189": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "41/41",
+     "verified": false,
+     "error": null,
+     "seconds": 29.4
+    },
+    "sympy__sympy-18199": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "113/113",
+     "verified": false,
+     "error": null,
+     "seconds": 91.0
+    },
+    "sympy__sympy-18621": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "15/15",
+     "verified": false,
+     "error": null,
+     "seconds": 5.4
+    },
+    "sympy__sympy-19254": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "18/18",
+     "verified": false,
+     "error": null,
+     "seconds": 6.5
+    },
+    "sympy__sympy-20154": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "40/40",
+     "verified": false,
+     "error": null,
+     "seconds": 5.6
+    },
+    "sympy__sympy-20442": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "24/24",
+     "verified": false,
+     "error": null,
+     "seconds": 6.2
+    },
+    "sympy__sympy-20590": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "21/21",
+     "verified": false,
+     "error": null,
+     "seconds": 5.7
+    },
+    "sympy__sympy-20639": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/2",
+     "p2p": "138/139",
+     "verified": false,
+     "error": null,
+     "seconds": 9.4
+    },
+    "sympy__sympy-21055": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "13/13",
+     "verified": false,
+     "error": null,
+     "seconds": 8.3
+    },
+    "sympy__sympy-21171": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "152/152",
+     "verified": false,
+     "error": null,
+     "seconds": 7.9
+    },
+    "sympy__sympy-21379": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "91/91",
+     "verified": false,
+     "error": null,
+     "seconds": 23.9
+    },
+    "sympy__sympy-21612": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "98/98",
+     "verified": false,
+     "error": null,
+     "seconds": 21.5
+    },
+    "sympy__sympy-21614": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "6/6",
+     "verified": false,
+     "error": null,
+     "seconds": 5.9
+    },
+    "sympy__sympy-21627": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "26/26",
+     "verified": false,
+     "error": null,
+     "seconds": 13.3
+    },
+    "sympy__sympy-21847": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "9/9",
+     "verified": false,
+     "error": null,
+     "seconds": 5.8
+    },
+    "sympy__sympy-22714": {
+     "resolved": true,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/1",
+     "p2p": "11/11",
+     "verified": false,
+     "error": null,
+     "seconds": 10.2
+    },
+    "sympy__sympy-23191": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "2/3",
+     "verified": false,
+     "error": null,
+     "seconds": 6.7
+    },
+    "sympy__sympy-23262": {
+     "resolved": true,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/1",
+     "p2p": "61/61",
+     "verified": false,
+     "error": null,
+     "seconds": 9.1
+    },
+    "sympy__sympy-24909": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "2/2",
+     "verified": false,
+     "error": null,
+     "seconds": 8.7
+    }
+   }
+  },
+  "v3": {
+   "patches": "runs/layer4_v3",
+   "summary": {
+    "instances": 83,
+    "resolved": 11,
+    "resolved_rate": 0.1325,
+    "applied": 81,
+    "empty": 2,
+    "layer3_found": 49,
+    "resolved_when_layer3_found": 9,
+    "verified": 4,
+    "resolved_when_verified": 3,
+    "resolved_when_not_verified": 8
+   },
+   "instances": {
+    "mwaskom__seaborn-2848": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "50/50",
+     "verified": false,
+     "error": null,
+     "seconds": 35.3
+    },
+    "mwaskom__seaborn-3010": {
+     "resolved": true,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/1",
+     "p2p": "2/2",
+     "verified": false,
+     "error": null,
+     "seconds": 7.5
+    },
+    "mwaskom__seaborn-3190": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "84/84",
+     "verified": false,
+     "error": null,
+     "seconds": 11.1
+    },
+    "mwaskom__seaborn-3407": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "120/120",
+     "verified": false,
+     "error": null,
+     "seconds": 94.5
+    },
+    "pallets__flask-4045": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/2",
+     "p2p": "50/50",
+     "verified": false,
+     "error": null,
+     "seconds": 12.4
+    },
+    "pallets__flask-4992": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "18/18",
+     "verified": false,
+     "error": null,
+     "seconds": 6.5
+    },
+    "pallets__flask-5063": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "52/54",
+     "verified": false,
+     "error": null,
+     "seconds": 9.2
+    },
+    "sympy__sympy-11400": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "29/29",
+     "verified": false,
+     "error": null,
+     "seconds": 7.3
+    },
+    "sympy__sympy-12171": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "8/8",
+     "verified": false,
+     "error": null,
+     "seconds": 6.0
+    },
+    "sympy__sympy-12419": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "25/25",
+     "verified": false,
+     "error": null,
+     "seconds": 6.3
+    },
+    "sympy__sympy-12481": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "7/7",
+     "verified": false,
+     "error": null,
+     "seconds": 5.8
+    },
+    "sympy__sympy-13031": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "9/9",
+     "verified": false,
+     "error": null,
+     "seconds": 6.2
+    },
+    "sympy__sympy-13043": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "1/1",
+     "verified": false,
+     "error": null,
+     "seconds": 5.9
+    },
+    "sympy__sympy-13177": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "75/75",
+     "verified": false,
+     "error": null,
+     "seconds": 6.0
+    },
+    "sympy__sympy-13437": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "15/15",
+     "verified": true,
+     "error": null,
+     "seconds": 15.6
+    },
+    "sympy__sympy-13480": {
+     "resolved": true,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/1",
+     "p2p": "43/43",
+     "verified": true,
+     "error": null,
+     "seconds": 13.5
+    },
+    "sympy__sympy-13773": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "69/69",
+     "verified": false,
+     "error": null,
+     "seconds": 9.3
+    },
+    "sympy__sympy-13971": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "102/102",
+     "verified": false,
+     "error": null,
+     "seconds": 8.9
+    },
+    "sympy__sympy-14308": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "113/113",
+     "verified": false,
+     "error": null,
+     "seconds": 12.8
+    },
+    "sympy__sympy-14317": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "112/116",
+     "verified": false,
+     "error": null,
+     "seconds": 8.4
+    },
+    "sympy__sympy-14774": {
+     "resolved": true,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/1",
+     "p2p": "114/114",
+     "verified": true,
+     "error": null,
+     "seconds": 8.7
+    },
+    "sympy__sympy-15011": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "51/53",
+     "verified": false,
+     "error": null,
+     "seconds": 8.2
+    },
+    "sympy__sympy-15308": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "120/120",
+     "verified": false,
+     "error": null,
+     "seconds": 8.4
+    },
+    "sympy__sympy-15345": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "8/8",
+     "verified": false,
+     "error": null,
+     "seconds": 6.7
+    },
+    "sympy__sympy-15609": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "121/121",
+     "verified": false,
+     "error": null,
+     "seconds": 9.8
+    },
+    "sympy__sympy-15678": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "3/3",
+     "verified": false,
+     "error": null,
+     "seconds": 12.6
+    },
+    "sympy__sympy-16281": {
+     "resolved": false,
+     "applied": null,
+     "empty": true,
+     "verified": false
+    },
+    "sympy__sympy-16988": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/2",
+     "p2p": "71/72",
+     "verified": false,
+     "error": null,
+     "seconds": 97.6
+    },
+    "sympy__sympy-17022": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "8/8",
+     "verified": false,
+     "error": null,
+     "seconds": 7.3
+    },
+    "sympy__sympy-17139": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "67/67",
+     "verified": false,
+     "error": null,
+     "seconds": 114.8
+    },
+    "sympy__sympy-17630": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "19/19",
+     "verified": false,
+     "error": null,
+     "seconds": 7.0
+    },
+    "sympy__sympy-17655": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "9/9",
+     "verified": false,
+     "error": null,
+     "seconds": 17.5
+    },
+    "sympy__sympy-18057": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "98/98",
+     "verified": false,
+     "error": null,
+     "seconds": 140.5
+    },
+    "sympy__sympy-18189": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "41/41",
+     "verified": false,
+     "error": null,
+     "seconds": 34.6
+    },
+    "sympy__sympy-18199": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "113/113",
+     "verified": false,
+     "error": null,
+     "seconds": 101.3
+    },
+    "sympy__sympy-18621": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "15/15",
+     "verified": false,
+     "error": null,
+     "seconds": 6.4
+    },
+    "sympy__sympy-19254": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "18/18",
+     "verified": false,
+     "error": null,
+     "seconds": 9.3
+    },
+    "sympy__sympy-20154": {
+     "resolved": true,
+     "applied": true,
+     "empty": false,
+     "f2p": "2/2",
+     "p2p": "40/40",
+     "verified": false,
+     "error": null,
+     "seconds": 7.4
+    },
+    "sympy__sympy-20442": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "24/24",
+     "verified": false,
+     "error": null,
+     "seconds": 8.3
+    },
+    "sympy__sympy-20590": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "21/21",
+     "verified": false,
+     "error": null,
+     "seconds": 10.2
+    },
+    "sympy__sympy-20639": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/2",
+     "p2p": "138/139",
+     "verified": false,
+     "error": null,
+     "seconds": 11.7
+    },
+    "sympy__sympy-21055": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "13/13",
+     "verified": false,
+     "error": null,
+     "seconds": 11.6
+    },
+    "sympy__sympy-21171": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "152/152",
+     "verified": false,
+     "error": null,
+     "seconds": 11.0
+    },
+    "sympy__sympy-21379": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "91/91",
+     "verified": false,
+     "error": null,
+     "seconds": 40.7
+    },
+    "sympy__sympy-21612": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "98/98",
+     "verified": false,
+     "error": null,
+     "seconds": 39.0
+    },
+    "sympy__sympy-21614": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "6/6",
+     "verified": false,
+     "error": null,
+     "seconds": 66.3
+    },
+    "sympy__sympy-21627": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "26/26",
+     "verified": false,
+     "error": null,
+     "seconds": 19.6
+    },
+    "sympy__sympy-21847": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "9/9",
+     "verified": false,
+     "error": null,
+     "seconds": 10.8
+    },
+    "sympy__sympy-22714": {
+     "resolved": true,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/1",
+     "p2p": "11/11",
+     "verified": false,
+     "error": null,
+     "seconds": 12.7
+    },
+    "sympy__sympy-23191": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "2/3",
+     "verified": false,
+     "error": null,
+     "seconds": 8.2
+    },
+    "sympy__sympy-23262": {
+     "resolved": true,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/1",
+     "p2p": "61/61",
+     "verified": false,
+     "error": null,
+     "seconds": 12.9
+    },
+    "sympy__sympy-24909": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "2/2",
+     "verified": false,
+     "error": null,
+     "seconds": 14.2
+    },
+    "sympy__sympy-11870": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "58/58",
+     "verified": false,
+     "error": null,
+     "seconds": 735.3
+    },
+    "sympy__sympy-12236": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "130/133",
+     "verified": false,
+     "error": null,
+     "seconds": 8.7
+    },
+    "sympy__sympy-12454": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/2",
+     "p2p": "134/134",
+     "verified": false,
+     "error": null,
+     "seconds": 21.8
+    },
+    "sympy__sympy-13146": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "34/34",
+     "verified": false,
+     "error": null,
+     "seconds": 10.1
+    },
+    "sympy__sympy-13471": {
+     "resolved": true,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/1",
+     "p2p": "82/82",
+     "verified": false,
+     "error": null,
+     "seconds": 5.4
+    },
+    "sympy__sympy-13647": {
+     "resolved": true,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/1",
+     "p2p": "76/76",
+     "verified": false,
+     "error": null,
+     "seconds": 10.3
+    },
+    "sympy__sympy-13895": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "82/82",
+     "verified": false,
+     "error": null,
+     "seconds": 5.6
+    },
+    "sympy__sympy-13915": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "62/62",
+     "verified": false,
+     "error": null,
+     "seconds": 7.0
+    },
+    "sympy__sympy-14024": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "83/83",
+     "verified": false,
+     "error": null,
+     "seconds": 6.7
+    },
+    "sympy__sympy-14396": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "44/44",
+     "verified": false,
+     "error": null,
+     "seconds": 5.0
+    },
+    "sympy__sympy-14817": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "110/111",
+     "verified": false,
+     "error": null,
+     "seconds": 9.0
+    },
+    "sympy__sympy-15346": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "22/22",
+     "verified": false,
+     "error": null,
+     "seconds": 41.7
+    },
+    "sympy__sympy-16106": {
+     "resolved": false,
+     "applied": null,
+     "empty": true,
+     "verified": false
+    },
+    "sympy__sympy-16503": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "86/121",
+     "verified": false,
+     "error": null,
+     "seconds": 8.9
+    },
+    "sympy__sympy-16792": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "54/54",
+     "verified": false,
+     "error": null,
+     "seconds": 6.3
+    },
+    "sympy__sympy-18087": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "35/35",
+     "verified": false,
+     "error": null,
+     "seconds": 21.3
+    },
+    "sympy__sympy-18532": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "28/28",
+     "verified": false,
+     "error": null,
+     "seconds": 6.6
+    },
+    "sympy__sympy-18698": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "147/147",
+     "verified": false,
+     "error": null,
+     "seconds": 17.3
+    },
+    "sympy__sympy-18835": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "39/41",
+     "verified": false,
+     "error": null,
+     "seconds": 5.9
+    },
+    "sympy__sympy-19007": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/3",
+     "p2p": "26/26",
+     "verified": false,
+     "error": null,
+     "seconds": 6.7
+    },
+    "sympy__sympy-19487": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "90/90",
+     "verified": false,
+     "error": null,
+     "seconds": 13.2
+    },
+    "sympy__sympy-20049": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/4",
+     "p2p": "1/9",
+     "verified": false,
+     "error": null,
+     "seconds": 6.5
+    },
+    "sympy__sympy-20212": {
+     "resolved": true,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/1",
+     "p2p": "32/32",
+     "verified": false,
+     "error": null,
+     "seconds": 25.6
+    },
+    "sympy__sympy-20322": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "89/89",
+     "verified": false,
+     "error": null,
+     "seconds": 19.1
+    },
+    "sympy__sympy-22005": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "2/2",
+     "verified": false,
+     "error": null,
+     "seconds": 8.1
+    },
+    "sympy__sympy-22840": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "58/95",
+     "verified": false,
+     "error": null,
+     "seconds": 12.8
+    },
+    "sympy__sympy-23117": {
+     "resolved": true,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/1",
+     "p2p": "3/3",
+     "verified": true,
+     "error": null,
+     "seconds": 6.9
+    },
+    "sympy__sympy-24066": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "30/30",
+     "verified": false,
+     "error": null,
+     "seconds": 8.3
+    },
+    "sympy__sympy-24102": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/2",
+     "p2p": "0/0",
+     "verified": false,
+     "error": null,
+     "seconds": 6.1
+    },
+    "sympy__sympy-24152": {
+     "resolved": true,
+     "applied": true,
+     "empty": false,
+     "f2p": "1/1",
+     "p2p": "6/6",
+     "verified": false,
+     "error": null,
+     "seconds": 6.9
+    },
+    "sympy__sympy-24213": {
+     "resolved": false,
+     "applied": true,
+     "empty": false,
+     "f2p": "0/1",
+     "p2p": "27/31",
+     "verified": false,
+     "error": null,
+     "seconds": 7.7
+    }
+   }
   }
  }
 }

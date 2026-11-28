@@ -44,7 +44,8 @@ SPECS = Path("benchmarks/swe_bench_lite/private/test_specs.json")
 WORKSPACES = Path("workspaces")
 L4 = Path("results/layer4_eval.json")
 OUT = Path("results/failure_eval.json")
-GROUPS = {"unseen": Path("runs/l4_unseen19.txt"), "fresh": Path("runs/night_fresh20.txt")}
+GROUPS = {"unseen": Path("runs/l4_unseen19.txt"), "fresh": Path("runs/night_fresh20.txt"),
+          "new": Path("runs/night_rest32.txt")}  # new: never run past Layer 2 before the v3 run
 SHOWN = 8  # Layer 3 is shown the top N_CANDIDATES (autose/agents/pipeline.py) of Layer 2
 DEEP = 50
 LOSSES = ("resolved", "L4 fix", "L1 index", "L4 location", "L3 choice", "L2 ranking", "L2 recall")
@@ -224,9 +225,13 @@ def main() -> int:
               f"{r['l4']['candidates']} f2p={r['l4']['f2p']} p2p={r['l4']['p2p']} -> {r['first_loss']}"
               f"{' (' + r['why'] + ')' if r['why'] else ''} | vs gold {v.get('kind')} {v.get('line_overlap')}", flush=True)
     summary = {"label": a.label, "all": funnel(rows)}
-    for g in ("unseen", "fresh", "seen"):
+    for g in ("unseen", "fresh", "new", "seen"):
         summary[g] = funnel([r for r in rows if r["group"] == g])
-    OUT.write_text(json.dumps({"summary": summary, "instances": rows}, indent=1), encoding="utf-8")
+    # one entry per run label (an older file held a single run at the top level)
+    store = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
+    runs = store.get("runs") or ({store["summary"]["label"]: store} if "summary" in store else {})
+    runs[a.label] = {"summary": summary, "instances": rows}
+    OUT.write_text(json.dumps({"runs": runs}, indent=1), encoding="utf-8")
     print(json.dumps(summary, indent=1))
     return 0
 
